@@ -46,7 +46,7 @@
 				<a class="single" href="/together"><i class="icon together"></i><span class="nav_label">約團活動</span></a>
 				<a class="single" href="/trade"><i class="icon trade"></i><span class="nav_label">交易專區</span></a>
 				<a class="single" href="/about"><i class="icon about"></i><span class="nav_label">關於暗盟</span></a>
-				<a class="single" href="/bbs" title="前往論壇"><i class="icon bbs"></i><span class="nav_label">論壇</span></a>
+				<a class="single" href="/bbs" title="前往論壇" target="_blank"><i class="icon bbs"></i><span class="nav_label">論壇</span></a>
 				<div class="g_clear"></div>
 				</nav>
 			</div>

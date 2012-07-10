@@ -17,8 +17,8 @@ class Girls_vote_2012_model extends CI_Model {
 
 		$setting['tid'] = ( ! empty( $setting['tid'] ) ) ? $setting['tid'] : NULL;
 
-		if ( is_null( $setting['tid'] ) OR ! is_array( $setting['tid'] )  ) {
-			show_error('請以陣列格式輸入四個投票主題的tid.');
+		if ( is_null( $setting['tid'] ) or ! is_array( $setting['tid'] )  ) {
+			show_error( '請以陣列格式輸入四個投票主題的tid.' );
 		}
 
 		$girls = $this->_girls_detail();
@@ -34,6 +34,65 @@ class Girls_vote_2012_model extends CI_Model {
 	}
 
 	/**
+	 * 投票
+	 *
+	 * @param array   $setting [description]
+	 * @return [type]          [description]
+	 */
+	public function vote( $setting = array() ) {
+
+		// 檢查基礎變量
+		if ( ! $this->user->is_login() ) {
+			$this->callback->error_msg( '尚未登入' );
+		}
+
+		$setting['name']       = ( ! is_null( $setting['name'] ) ) ? $setting['name'] : NULL;
+		$setting['active_tid'] = ( ! is_null( $setting['active_tid'] ) ) ? $setting['active_tid'] : NULL;
+		
+		if ( is_null( $setting['name'] ) ) { $this->callback->error_msg( '缺少女孩暱稱' ); }
+		if ( is_null( $setting['active_tid'] ) ) { $this->callback->error_msg( '缺少投票主題 tid 配置' ); }
+
+		if ( $this->callback->is_error() ) return $this->callback->toJSON();
+
+		// 檢查是否投過票
+		$this->db->where( 'tid', $setting['active_tid'] );
+		$this->db->where( 'polloption', $setting['name'] );
+		$sql = $this->db->get( 'd3bbs_forum_polloption' );
+
+		$first_row = $sql->first_row( 'array' );
+		$voterids = explode( '	', $first_row['voterids'] );
+
+		if ( in_array( $this->user->get_id(), $voterids ) ) {
+			$this->callback->error_msg( '您已投票過了' );
+		}
+
+		if ( $this->callback->is_error() ) return $this->callback->toJSON();
+		
+		// 真正進行投票儲存
+		$voterids[] = $this->user->get_id();
+		$voterids = implode( '	', $voterids );
+		$this->db->set( 'voterids', $voterids );
+		$this->db->set( 'votes', 'votes+1', FALSE );
+		$this->db->where( 'tid', $setting['active_tid'] );
+		$this->db->where( 'polloption', $setting['name'] );
+		$this->db->update( 'd3bbs_forum_polloption' );
+		// ---
+		$this->db->set( 'voters', 'voters+1', FALSE );
+		$this->db->where( 'tid', $setting['active_tid'] );
+		$this->db->update( 'd3bbs_forum_poll' );
+		// ---
+		$this->db->set( 'tid', $setting['active_tid'] );
+		$this->db->set( 'uid', $this->user->get_id() );
+		$this->db->set( 'username', $this->user->get_username() );
+		$this->db->set( 'options', $first_row['polloptionid'] );
+		$this->db->set( 'dateline', time() );
+		$this->db->insert( 'd3bbs_forum_pollvoter' );
+		// ---
+
+		return $this->callback->success_msg( '您已投票成功!' )->toJSON();
+	}
+
+	/**
 	 * 結合論壇選票
 	 *
 	 * @param array   $setting [description]
@@ -45,7 +104,7 @@ class Girls_vote_2012_model extends CI_Model {
 		$setting['girls'] = ( ! empty( $setting['girls'] ) ) ? $setting['girls'] : NULL;
 
 		if ( is_null( $setting['tid'] ) or ! is_numeric( $setting['tid'] ) ) {
-			show_error('請輸入正確的tid數字格式.');
+			show_error( '請輸入正確的tid數字格式.' );
 		}
 
 		$this->db->where( 'tid', $setting['tid'] );
@@ -54,8 +113,8 @@ class Girls_vote_2012_model extends CI_Model {
 
 		$result = $sql->result_array();
 
-		if ( ! count($result) ) {
-			show_error("你的 tid 配置: {$setting['tid']}, 這個投票主題應該還未建立. 請先建立<b style='color: red;'>符合規劃</b>的投票主題後, 再重新配置 model 正確的 tid.");
+		if ( ! count( $result ) ) {
+			show_error( "你的 tid 配置: {$setting['tid']}, 這個投票主題應該還未建立. 請先建立<b style='color: red;'>符合規劃</b>的投票主題後, 再重新配置 model 正確的 tid." );
 		}
 
 		foreach ( $sql->result_array() as $key => $girl ) {

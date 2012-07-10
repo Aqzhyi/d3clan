@@ -247,6 +247,12 @@
   visibility: hidden;
   display: block;
 }
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_intro {
+  padding: 25px 140px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .vote_it {
+  text-align: center;
+}
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .bottom_border {
   background-image: url("/static/img/event/girls_vote_2012/fold_03.png");
   height: 178px;

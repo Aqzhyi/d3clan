@@ -23,17 +23,32 @@
 			<div class="inner">
 				<div class="info">{include file='./girl_personal.html'}</div>
 				<div class="vote_amount">
-					{foreach ['氣質','萌度','性感','活潑','總分'] as $index => $val}
+					{foreach ['氣質','萌度','性感','活潑'] as $index => $val}
 					<div class="kind_polls"><span>{$val}</span>
-						<div class="progress"><div class="bar" style="width: {$girl['polls'][$index]}%; max-width: 100%;"></div></div>
+						<div class="progress"><div class="bar" style="width: {$girl['polls'][$index]/13}%; max-width: 100%;"></div></div>
 					</div>
 					{/foreach}
+
+					<div class="kind_polls"><span>總分</span>
+						<div class="progress progress-info progress-striped active"><div class="bar" style="width: {$girl['total_votes']/(3*2)}%; max-width: 100%;"></div></div>
+					</div>
 				</div>
 			</div>
 		</div>
 
+		<!-- 自我介紹 -->
+		<div class="detail_intro">
+			{$girl['intro']}
+		</div>
+
 		<!-- 影片 -->
 		<div class="detail_video"></div>
+
+		<!-- 投票 -->
+		<div class="vote_it">
+			<button id="vote_she" class="btn btn-large btn-primary" data-vote-name="{$girl['text_fields']['nickname']}">我要投票給她</button>
+			<button id="detail_close" class="btn btn-large">取消</button>
+		</div>
 	</div>
 	<!-- 下框 -->
 	<div class="bottom_border"></div>
