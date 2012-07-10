@@ -1,0 +1,25 @@
+/**
+ * ?®å?é¡žåˆ¥
+ */
+.namespace_msi_game_2012 .msi_banner {
+  background-color: #11114E;
+}
+.namespace_msi_game_2012 .msi_nav {
+  *zoom: 1;
+  display: block;
+}
+.namespace_msi_game_2012 .msi_nav:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.namespace_msi_game_2012 .msi_nav a {
+  float: left;
+  width: 90px;
+}
+.namespace_msi_game_2012 .msi_main {
+  background-color: #575715;
+  min-height: 500px;
+}

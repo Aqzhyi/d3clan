@@ -56,6 +56,9 @@ $route['vod/(:any)/(:any)']            = 'vod/index/$1/$2';
 $route['event/2012-girls-vote']         = 'event/girls_vote_2012';
 $route['event/2012-girls-vote/(:any)']  = 'event/girls_vote_2012/$1';
 
+// MSI盃
+$route['event/2012-msi']         = 'event/msi_game_2012';
+$route['event/2012-msi/(:any)']  = 'event/msi_game_2012/$1';
 
 
 /* End of file routes.php */
