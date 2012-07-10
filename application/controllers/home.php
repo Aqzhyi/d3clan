@@ -26,20 +26,20 @@ class Home extends CI_Controller {
 
 		// 流水資訊流條目列
 		$this->view->data['news_flows']['comprehensive'] = $this->News_model->get_flow(); // 綜合
-		$this->view->data['news_flows']['game_strategy'] = $this->News_model->get_flow( array( 'fid' => array( '37' ) ) );
-		$this->view->data['news_flows']['videos']        = $this->News_model->get_flow( array( 'fid' => array( '56' ) ) );
-		$this->view->data['news_flows']['blue_posts']    = $this->News_model->get_flow( array( 'fid' => array( '37' ) ) );
-		$this->view->data['news_flows']['hardware']      = $this->News_model->get_flow( array( 'fid' => array( '37' ) ) );
-		$this->view->data['news_flows']['events']        = $this->News_model->get_flow( array( 'fid' => array( '37' ) ) );
+		$this->view->data['news_flows']['game_strategy'] = $this->News_model->get_flow( array( 'fid' => array( '55' ) ) );
+		$this->view->data['news_flows']['videos']        = $this->News_model->get_flow( array( 'fid' => array( '54' ) ) );
+		$this->view->data['news_flows']['blue_posts']    = $this->News_model->get_flow( array( 'fid' => array( '63', '64' ) ) );
+		$this->view->data['news_flows']['hardware']      = $this->News_model->get_flow( array( 'fid' => array( '44', '45' ) ) );
+		$this->view->data['news_flows']['events']        = $this->News_model->get_flow( array( 'fid' => array( '54', '55', '56' ) ) );
 
 		// 流水資訊流條目分類
 		$this->view->data['news_cata'] = array(
 			'comprehensive' => '綜合',
 			'game_strategy' => '攻略',
-			'videos'        => 'VOD',
-			'blue_posts'    => '藍貼',
-			'hardware'      => '硬體',
+			'blue_posts'    => '藍帖',
 			'events'        => '活動',
+			'hardware'      => '硬體',
+			'elite'         => '精選(測試)',
 		);
 
 		// 直播列表

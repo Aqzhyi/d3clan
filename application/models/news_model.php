@@ -33,15 +33,15 @@ class News_model extends CI_Model {
             $setting = array();
         }
 
-        $this->db->order_by( 'tid', 'desc' );
-
         if ( empty( $setting['fid'] ) or ! is_array( $setting['fid'] ) ) {
-            $this->db->where_in( 'fid', array(
+            $this->db->where_in( 't.fid', array(
                     '44', // 硬體設備評測分享
                     '45', // 週邊設備新聞
                     '54', // 最新消息
                     '55', // 攻略推薦
                     '56', // 精彩視頻
+                    '63', // msi盃
+                    '64', // d-girl選拔
                     // '39', // 約團專區
                     // '40', // 交易專區
                     // '60', // 站務公告
@@ -52,11 +52,15 @@ class News_model extends CI_Model {
             );
         }
         else {
-            $this->db->where_in( 'fid', $setting['fid'] );
+            $this->db->where_in( 't.fid', $setting['fid'] );
         }
 
-        // $this->db->or_where('fid', '54');
+        $this->db->select( 't.*, tc.name' );
+        $this->db->from( 'd3bbs_forum_thread as t' );
+        $this->db->join( 'd3bbs_forum_threadclass as tc', 't.typeid = tc.typeid' );
+        $this->db->limit( 15, 0 );
+        $this->db->order_by( 'tid', 'desc' );
 
-        return $this->db->get( 'd3bbs_forum_thread', 15, 0 )->result_array();
+        return $this->db->get()->result_array();
     }
 }
