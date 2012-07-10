@@ -33,6 +33,8 @@ class News_model extends CI_Model {
             $setting = array();
         }
 
+        $this->db->order_by( 'tid', 'desc' );
+
         if ( empty( $setting['fid'] ) or ! is_array( $setting['fid'] ) ) {
             $this->db->where_in( 'fid', array(
                     '44', // 硬體設備評測分享

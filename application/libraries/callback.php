@@ -2,7 +2,9 @@
 
 /**
  * 回調類
- * 用來自動格式化給 js 能夠吃的 json 格式，使 js 能夠理解控制器或模型所返回的狀態。
+ * 用來自動格式化給 JS 能夠吃的 JSON 格式，
+ * 協助 JS 能夠理解 Controller 或 Model 所返回的狀態。
+ * 這是一種暗盟的 PHP 與 AJAX 溝通的標準。
  */
 class Callback {
 
