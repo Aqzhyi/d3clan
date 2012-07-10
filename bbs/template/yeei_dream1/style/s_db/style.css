@@ -1,0 +1,64 @@
+/*
+[name]暗黑破壞神3[/name]
+[iconbgcolor]#811604[/iconbgcolor]
+Powered by Yeei.cn
+更多配色下載：http://www.yeei.cn/forum-54-1.html
+*/
+body{background:#08090D url(body.jpg) no-repeat center 0;background-attachment: fixed;}
+#scrolltop {background: url(top.gif) no-repeat 50% 0; bottom:250px}
+.a_h{ padding:0px}
+.head_y{background:none;}
+.head_yn_bg{}
+.head_yn{ background:none;height:260px; }
+.head_logo{display: none;}
+.nv_l{background:url(nv_bg.png) no-repeat 0 0}
+.nv_c{background:url(nv_bg.png) repeat-x 0 -36px;}
+.nv_q li a {color:#F8EEC7;  }
+.nv_q li.a a { color:#FFA51B;background:url(gl.png) no-repeat center bottom}
+.nv_q li a:hover {background:url(gl.png) no-repeat center bottom}
+.nv_r #qmenu {background:url(qmenu.png) no-repeat 0 0;_background:url(ie_qmenu.gif) repeat-y 0 0;}
+.slidebar li.on { background:#D95A17; filter:none; color: #fff; font-weight: 700; }
+.c_yt{background: url(central_t.png) repeat-x 0 0;}
+.c_yt2{background: url(central_t2.png) no-repeat center 3px;}
+.c_yt .c_r{background:url(central_t.png) no-repeat right -125px;}
+.c_yt .c_l{background:url(central_t.png) no-repeat 0 -62px;}
+.c_yt{ color:#C2A684;}
+.c_yt a{ color:#C2A684;}
+.c_yt .xi2{ color:#8D281A;}
+.c_yt .pipe{ color:#493D34}
+.mb_2 a{background:url(function.gif) no-repeat 0px -1px;}
+.member .avt img{background:#213141; border:1px solid #444; border-bottom:1px solid #333;border-right:1px solid #333 }
+.mb_11 span{ color:#A07C4F;}
+.c_yc{_margin:0 1px}
+.c_yb{background:url(central_b.png) repeat-x 0 0;_background:url(central_b.gif) repeat-x 0 0}
+.c_yb .c_r{background:url(central_b.png) no-repeat right -94px;_background:url(central_b.gif) no-repeat right -94px;}
+.c_yb .c_l{background:url(central_b.png) no-repeat 0 -47px;_background:url(central_b.gif) no-repeat 0 -47px}
+.c_yb2{background: url(central_b2.png) no-repeat center 0;}
+.c_yb ul a{ color:#C4A989;}
+.c_yb .pipe { color:#846642;}
+.mb_2 .fc4{background:url(sslct.gif) no-repeat 8px 9px;}
+.mb_2 .fc4:hover{background:url(sslct.gif) no-repeat 8px -46px;}
+.a_mu{ background:none}
+#scbar_yeei{background: url(search.png) no-repeat 0 0;}
+#scbar_yeei #scbar_type{ background:none; padding-left:10px!important }
+#scbar_type{color:#BE7745!important;}
+#scbar_txt{color:#847037!important;width:245px; padding-left:5px;}
+#scbar_type_menu { border:1px solid #2B190E; background:#2B190E;margin-top:6px;filter:alpha(opacity=60);opacity:0.6;}
+#scbar_type_menu a { color:#ddd; border-bottom:1px dotted #666}
+#scbar_type_menu a:hover { background:#2B190E; color:#847037; border-bottom:1px dotted #666}
+.yeei_sw2l .tb .a a {background:url(tab_a.gif) no-repeat 0 0!important;font-weight: 700; color:#4D5D74;}
+.c_yeeib{margin:0 4px;background:url(c_yeeib.png);_background:#fff}
+.bm{ background:none}
+.yeei_sw{background:#fff;}
+.fl{ border:none!important}
+.fl .bm_h,#online .bm_h{ border:none; padding:0px; background:#251A14 url(t.gif) repeat-x 0 0!important;margin-bottom:1px}
+.fl .bm_h h2,#online .bm_h h3{background:url(t.gif) no-repeat 0 -42px!important; padding-left:10px; font-size:12px; color:#ddd!important}
+.fl .bm_h h2 a,#online .bm_h h3 a{ color:#C4A989!important}
+.fl .bm_h .o,#online .bm_h .o{background:url(t.gif) no-repeat right -83px!important; height:31px; padding-right:10px}
+.fl .bm_h .y{color:#888!important}
+.fl .bm_h .y a{color:#C4A989!important}
+.fl .fl_tb tr {background:none;}
+#online { border:none!important}
+#ft {background:url(bb.jpg) no-repeat center bottom; color:#403924; padding-bottom:80px}
+#ft .xs0 a{ color:#85764B}
+

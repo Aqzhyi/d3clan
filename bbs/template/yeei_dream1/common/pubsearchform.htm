@@ -1,0 +1,28 @@
+
+<!--{if $_G['setting']['search'] && $slist}-->
+<div id="scbar_yeei">
+	<form id="scbar_form" method="post" autocomplete="off" onsubmit="searchFocus($('scbar_txt'))" action="search.php?searchsubmit=yes" target="_blank">
+		<input type="hidden" name="mod" id="scbar_mod" value="search" />
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<input type="hidden" name="srchtype" value="title" />
+		<input type="hidden" name="srhfid" value="$_G[fid]" />
+		<input type="hidden" name="srhlocality" value="$_G['basescript']::{CURMODULE}" />
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="scbar_icon_td"></td>
+                <td class="scbar_type_td"><a href="javascript:;" id="scbar_type" class="showmenu xg1 xs2" onclick="showMenu(this.id)" hidefocus="true" onfocus="this.blur()">{lang search}</a></td>
+				<td class="scbar_txt_td"><input type="text" name="srchtxt" id="scbar_txt" value="{lang enter_content}" autocomplete="off" /></td>
+				
+				<td class="scbar_btn_td"><button type="submit" name="searchsubmit" id="scbar_btn" class="pn pnc" style="border:none" value="true"><strong class="xi2 xs2" title="{lang search}"> </strong></button></td>
+				<td class="scbar_hot_td">
+					
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+<ul id="scbar_type_menu" class="p_pop" style="display: none;"><!--{echo implode('', $slist);}--></ul>
+<script type="text/javascript">
+	initSearchmenu('scbar');
+</script>
+<!--{/if}-->

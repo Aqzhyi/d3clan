@@ -1,0 +1,40 @@
+<div class="girl_detail_info" id="girl_detail_info">
+	<div class="inner_border">
+		<!-- 關閉按鈕 -->
+		<div class="detail_close" id="detail_close"></div>
+		<div class="g_clear"></div>
+		<!-- 照片集 -->
+		<div class="detail_photos">
+			<button class="btn btn_left_click" id="btn_left_click">左</button>
+			<!-- 照片一次顯示兩次 -->
+			{foreach $girl['photos'] as $index => $photo_url}
+				{if $photo_url@index is even by 1}
+				<div class="twinned {if $photo_url@first}first{/if}" id="twinned">
+					<img src="{$photo_url}" alt="">
+					{if $girl['photos'][$index+1]}<img src="{$girl['photos'][$index+1]}" alt="">{/if}
+				</div>
+				{/if}
+			{/foreach}
+			<button class="btn btn_right_click" id="btn_right_click">右</button>
+		</div>
+
+		<!-- 詳細資料 -->
+		<div class="detail_info">
+			<div class="inner">
+				<div class="info">{include file='./girl_personal.html'}</div>
+				<div class="vote_amount">
+					{foreach ['氣質','萌度','性感','活潑','總分'] as $index => $val}
+					<div class="kind_polls"><span>{$val}</span>
+						<div class="progress"><div class="bar" style="width: {$girl['polls'][$index]}%; max-width: 100%;"></div></div>
+					</div>
+					{/foreach}
+				</div>
+			</div>
+		</div>
+
+		<!-- 影片 -->
+		<div class="detail_video"></div>
+	</div>
+	<!-- 下框 -->
+	<div class="bottom_border"></div>
+</div>

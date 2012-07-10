@@ -1,0 +1,26 @@
+/**
+ * @link http://danneu.com/darkstrap/darkstrap.html
+ */
+img {
+  max-width: none;
+}
+.alert {
+  font-size: 14px;
+  text-shadow: 1px 1px 0px black;
+}
+.alert-info h4 {
+  font-size: 18px;
+  color: white;
+}
+.alert-info a {
+  color: #c0d555;
+}
+.alert-info a:hover {
+  color: #c7e23e;
+}
+.alert-warning {
+  background-color: #CF8C2D;
+}
+.table tbody tr:hover td {
+  background-color: #333333;
+}

@@ -1,0 +1,64 @@
+/**
+ * ?ох?
+ */
+.namespace_lives .lives_banner {
+  padding: 20px;
+}
+.namespace_lives .lives_banner .lives_ad {
+  background-color: white;
+  margin: 0 auto;
+  height: 90px;
+  width: 728px;
+  box-shadow: 1px 1px 5px white;
+}
+.namespace_lives .lives_menu {
+  height: 80px;
+}
+.namespace_lives .lives_channels .inner_top {
+  background-image: url("/static/img/lives/index/live_bg_01.png");
+  background-position: 32px 0;
+  height: 96px;
+}
+.namespace_lives .lives_channels .inner {
+  *zoom: 1;
+  display: block;
+  background-image: url("/static/img/lives/index/live_bg_02.png");
+  background-repeat: repeat-y;
+  min-height: 400px;
+  padding: 0 53px;
+}
+.namespace_lives .lives_channels .inner:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.namespace_lives .lives_channels .inner .lives_kind {
+  float: left;
+  width: 427px;
+  min-height: 300px;
+  margin-top: -120px;
+}
+.namespace_lives .lives_channels .inner .lives_kind .lives_title {
+  background-image: url("/static/img/lives/index/live_title_bg.png");
+  height: 49px;
+  text-align: center;
+  line-height: 55px;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: bold;
+}
+.namespace_lives .lives_channels .inner .lives_kind .padding .lives_channel {
+  background-image: url("/static/img/lives/index/live_channel.png");
+  height: 44px;
+  line-height: 40px;
+  font-size: 16px;
+  text-align: center;
+  margin: 15px 0;
+}
+.namespace_lives .lives_channels .inner_bottom {
+  background-image: url("/static/img/lives/index/live_bg_03.png");
+  height: 38px;
+  background-position: 50% -50px;
+}

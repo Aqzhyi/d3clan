@@ -1,0 +1,35 @@
+/**
+ * 單品類別
+ */
+// 預設按紐
+.g_btn(){
+	background-image    : url("@{utils}mid-button.png");
+	display             : inline-block;
+	line-height         : 31px;
+	height              : 31px;
+	width               : 104px;
+	background-position : 50% 50%;
+	text-align          : center;
+	cursor              : pointer;
+
+	&:hover{
+		background-position : (0) (-31px);
+	}
+	&.current,&.active{
+		background-position : (0) (-62px);
+	}
+}
+// 清除浮動
+.g_clear(){
+	*zoom   :1;
+	display : block;
+
+	&:after{
+		content    : ".";
+		clear      : both;
+		height     : 0;
+		visibility : hidden;
+		display    : block;
+	}
+}
+// 

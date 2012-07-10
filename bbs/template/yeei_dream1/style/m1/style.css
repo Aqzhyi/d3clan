@@ -1,0 +1,36 @@
+/*
+[name]梦幻星空[/name]
+[iconbgcolor]#333333[/iconbgcolor]
+Powered by Yeei.cn
+更多配色下载：http://www.yeei.cn/forum-54-1.html
+*/
+
+body{background:#08090D url(body.jpg) no-repeat center 0;background-attachment: fixed;}
+.a_h{ padding:0px}
+.head_y{background:none;}
+.head_yn_bg{}
+.head_yn{ background:none;height:200px; }
+.head_logo{ padding-top:50px}
+.slidebar li.on { background:#81BCEB; filter:none; color: #fff; font-weight: 700; }
+.c_yt{background: url(central_t.png) repeat-x 0 0;}
+.c_yt .c_r{background:url(central_t.png) no-repeat right -125px;}
+.c_yt .c_l{background:url(central_t.png) no-repeat 0 -62px;}
+.c_yt { color:#ddd}
+.c_yt a{ color:#ddd;}
+.c_yt .pipe{ color:#555}
+.member .avt img{background:#213141; border:1px solid #444; border-bottom:1px solid #333;border-right:1px solid #333 }
+.mb_11 span{ color:#999;}
+.a_mu{ background:none}
+#scbar_yeei{background: url(search.png) no-repeat 0 0;}
+#scbar_yeei #scbar_type{ background:none;}
+#scbar_type{color:#888!important;}
+#scbar_txt{color:#999!important;width:245px; padding-left:5px;}
+#scbar_type_menu { border:1px solid #000; background:#333;margin-top:6px;filter:alpha(opacity=60);opacity:0.6;}
+#scbar_type_menu a { color:#ddd; border-bottom:1px dotted #666}
+#scbar_type_menu a:hover { background:#000; color:#ddd; border-bottom:1px dotted #666}
+.yeei_sw2l .tb .a a {background:url(tab_a.gif) no-repeat 0 0!important;font-weight: 700; color:#4D5D74;}
+.c_yeeib{margin:0 4px;background:url(c_yeeib.png);_background:#fff}
+.bm{ background:none}
+.yeei_sw{background:#fff;}
+.fl .fl_tb tr {background:none;}
+#ft .xs0 a{ color:#aaa}

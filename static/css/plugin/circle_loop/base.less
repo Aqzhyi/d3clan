@@ -1,0 +1,70 @@
+@import '../../__config.less';
+.circle_loop{
+	width: 600px;
+
+	// 輪播按鈕
+	.circle_switch_set{
+		float: left;
+
+		.switcher{
+			padding: 2px;
+
+			&.current{
+				padding: 0px;
+				img{
+					border: 2px solid #09F;
+				}
+			}
+
+			img{
+				width: 110px;
+				height: 70px;
+			}	
+		}
+	}
+	// 輪播顯示器視窗
+	.circle_windows{
+		float: left;
+
+		.window{
+			position: relative;
+			a{
+				display: block;
+			}
+			img{
+				width: 585px;
+				height: 300px;
+			}
+			.textarea{
+				background-image    : url("@{layout}top_shadow_bg.png");
+				position            : absolute;
+				height              : 70px;
+				padding             : 0 5px;
+				padding-top         : 10px;
+				// padding-bottom   : 10px;
+				bottom              : 0px;
+				width               : 100%;
+				background-position : -5px 0;
+			}
+			.title{
+				font-size      : 20px;
+				font-style     : italic;
+				padding-bottom : 10px;
+				// text-align  : center;
+			}
+			.descr{
+				padding     : 0 5px;
+				padding-top : 5px;
+				color       : #fff;
+				font-weight : bold;
+				font-size   : 14px;
+				text-shadow : 1px 1px 1px black;
+				display     : block;
+				height      : 36px;
+				overflow    : hidden;
+			}
+		}
+	}
+}
+
+// 

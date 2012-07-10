@@ -1,0 +1,276 @@
+@import '../../instance';
+@img: '/static/img/event/girls_vote_2012/';
+
+.namespace_event_2012_girls_vote{
+	// 女孩廣告橫幅
+	.girls_banner{
+		width            : 100%;
+		height           : 300px;
+		background-color : #150068;
+	}
+
+	// 贊助商
+	.girls_sponsor{
+		height           : 85px;
+		background-color : #6E7E65;
+	}
+
+	// 女孩投票日期進度
+	.girls_vote_progress{
+		.g_clear();
+		padding: 0 20px;
+
+		.girl_vote_kind_date{
+			padding-top    : 22px;
+			padding-bottom : 11px;
+			float          : left;
+			width          : 177px;
+			text-align     : center;
+			line-height    : 30px;
+			font-style     : italic;
+
+			&.active{
+				background-image: url("@{img}Dgirl_01.png");
+			}
+
+			.the_title, .the_date{
+				font-size : 18px;
+				display   : block;
+			}
+		}
+
+		// 規則label
+		.the_rule{
+			background-image : url("@{img}rule.png");
+			width            : 201px;
+			height           : 45px;
+			float            : right;
+			margin-top       : 30px;
+		}
+	}
+
+	// 女孩們
+	.girls_intro{
+		padding-left: 1px;
+		.g_clear();
+
+		// each女孩
+		.girl_intro{
+			background-image    : url("@{img}paper.png");
+			width               : 268px;
+			height              : 431px;
+			float               : left;
+			display             : block;
+			padding-top         : 20px;
+			padding-left        : 20px;
+			background-position : 0 0;
+			padding-right       : 15px;
+			padding-bottom      : 20px;
+			color               : #8A622F;
+			font-size           : 14px;
+			font-weight         : bold;
+			margin              : 8px;
+
+			// 我要投票
+			.girl_vote{
+				background-image : url("@{img}Dgirl_03.png");
+				height           : 45px;
+				text-align       : center;
+				font-size        : 24px;
+				line-height      : 45px;
+				font-style       : italic;
+				cursor           : pointer;
+			}
+
+			// 女孩的照片 兩張
+			.girl_photos{
+				.g_clear();
+				text-align: center;
+
+				// 女孩照片
+				.girl_photo{
+					background-color : white;
+					float            : left;
+					display          : inline-block;
+					margin           : 0 15px;
+					margin-top       : 20px;
+					margin-bottom    : 20px;
+
+					img{
+						height           : 150px;
+						width            : 100px;
+					}
+				}
+			}
+
+			// 女孩個資
+			&>.girl_personal{
+				.g_clear();
+
+				// 個資欄位
+				.txt_row{
+					float       : left;
+					display     : inline-block;
+					width       : 120px;
+					margin-left : 12px;
+
+					// label
+					.descr{
+						color     : #5F4E48;
+						font-size : 12px;
+					}
+					// 內容
+					.value{
+						color     : #5F2A1A;
+						font-size : 14px;
+					}
+				}
+
+				// 詳細介紹
+				.girl_intro_detail{
+					color  : black;
+					margin : 10px
+				}
+			}
+
+			// 得票數
+			.girl_vote_amount{
+				color: red;
+				font-size: 20px;
+				text-align: center;
+			}
+
+			// 女孩詳細資料
+			.girl_detail_info{
+				background-image : url("@{img}fold_01.png");
+				display          : none;
+				position         : absolute;
+				top              : 900px;
+				left             : 50%;
+				padding-top      : 55px;
+				margin-left      : -400px;
+				background-color : #3D3737;
+				width            : 800px;
+				height           : 50%;
+
+				// 內框
+				.inner_border{
+					background-image  : url("@{img}fold_02.png");
+					background-repeat : repeat-y;
+					background-color  : #3D3737;
+
+					// 關閉
+					.detail_close{
+						background-image : url("@{img}x.png");
+						width            : 25px;
+						height           : 25px;
+						float            : right;
+						cursor           : pointer;
+						margin-right     : 54px;
+					}
+
+					// 照片集
+					.detail_photos{
+
+						.btn_left_click{
+							position : absolute;
+							top      : 260px;
+							left     : 53px;
+						}
+						.btn_right_click{
+							position : absolute;
+							top      : 260px;
+							right    : 52px;
+						}
+
+						.twinned{
+							text-align : center;
+							display    : none;
+
+							&.first{
+								display: block;
+							}
+
+							img{
+								width: 300px;
+								height: 400px;
+							}
+						}
+
+					}
+
+					// 女孩資訊圖
+					.detail_info{
+						&>.inner{
+							.g_clear();
+
+							.info{
+								// 女孩個資
+								&>.girl_personal{
+									float       : left;
+									margin-left : 100px;
+									margin-top  : 20px;
+
+									// 個資欄位
+									.txt_row{
+										margin-left : 12px;
+										line-height : 30px;
+
+										// label
+										.descr{
+											color     : #D5B3A7;
+											font-size : 18px;
+										}
+										// 內容
+										.value{
+											color     : #DA6542;
+											font-size : 24px;
+										}
+									}
+
+									// 詳細介紹
+									.girl_intro_detail{
+										color  : black;
+										margin : 10px
+									}
+								}
+							}
+							.vote_amount{
+								float            : right;
+								width            : 400px;
+								margin-right     : 64px;
+
+								.kind_polls{
+									margin: 20px 0;
+
+									.progress{
+										width         : 350px;
+										display       : inline-block;
+										margin        : 0px;
+										margin-bottom : -4px;
+									}
+									.progress.bar{
+										background-color: #E298E9;
+									}
+								}
+							}
+						}
+					}
+
+					// 影片
+					.detail_video{
+						.g_clear();
+					}
+				}
+
+				// 下半部框
+				.bottom_border{
+					background-image : url("@{img}fold_03.png");
+					height           : 178px;
+					background-color : #3D3737;
+				}
+			}
+		}
+	}
+}
+// 

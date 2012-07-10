@@ -1,0 +1,174 @@
+@import '../__config.less';
+@img   : '../../img/home/index/';
+
+// home/index
+.namespace_home{
+
+	.top_block{
+		// background-image : url('@{img}M1-1.png');
+		height        : 300px;
+		margin-bottom : 10px;
+		
+		// 圖片輪播
+		.circle_loop{
+			width: 700px;
+			float: left;
+		}
+		// 上右方小方塊
+		.recommend_videos{
+			// background-color : pink;
+			width            : 258px;
+			height           : 300px;
+			float            : left;
+			// margin-top       : 16px;
+			// margin-left      : 8px;
+			
+			.inner{
+				padding-top: 2px;
+
+				.single{
+					width  : 122px;
+					height : 120px;
+					float  : left;
+					margin : 10px 3px;
+
+					.thumb_wrapper{
+						vertical-align : top;
+						height         : 80px;
+						
+						.thumb{
+							// background-image : url(""); // Waiting php given;
+							background-position : 50%;
+							display             : inline-block;
+							width               : 100%;
+							height              : 75px;
+							border-radius       : 5px;
+						}
+					}
+					.subject_thumb{
+						display: inline-block;
+						vertical-align: top;
+					}
+				}
+				
+
+				.more_link{
+					display       : block;
+					text-align    : right;
+					font-size     : 18px;
+					// padding-top   : 10px;
+					padding-right : 20px;
+				}
+			}
+		}
+	}
+
+	.middle_block{
+		// 流水新聞
+		.news_block{
+			// background-image : url('@{layout}hr.png');
+			// height           : 505px;
+			// width            : 675px;
+			float            : left;
+
+			.caption{
+				background-image    : url('@{layout}hr.png');
+				background-repeat   : no-repeat;
+				background-position : 0 0;
+				width               : 100%;
+				height              : 57px;
+				font-size           : 30px;
+				line-height         : 57px;
+				padding-left        : 45px;
+				font-style          : italic;
+			}
+
+			.inner{
+				border: 1px solid #b07800;
+				margin: 15px;
+
+				// 流水新聞分類選單
+				.sub_menu{
+					padding: 0 15px;
+					margin-top: -15px;
+
+					// 分類功能按鈕
+					.sub_menu_btn{
+						display          : inline-block;
+						background-image : url('@{img}M2-2.png');
+						width            : 106px;
+						height           : 31px;
+						float            : left;
+						color            : yellow;
+						font-size        : 16px;
+						line-height      : 31px;
+						text-align       : center;
+						cursor           : pointer;
+
+						&:hover{
+							background-position      : (0) (-31px);
+							// background-position-y : -31px;
+						}
+						&.current{
+							background-position   : (0) (-62px);
+							// background-position-y : -62px;
+						}
+					}
+				}
+			}
+
+			// 流水新聞外框
+			.news_flows{
+				padding-left   : 15px;
+				padding-top    : 10px;
+				padding-right  : 15px;
+				padding-bottom : 15px;
+				min-height     : 328px;
+
+				.g_loading{
+					height: 328px;
+				}
+
+				.news_flow{
+					display  : none;
+
+					.news_row{
+						background-image    : url('@{img}M3-2.png');
+						display             : block;
+						padding-left        : 35px;
+						background-position : 0 2px;
+						line-height         : 30px;
+
+						&:hover{
+							background-color: #251111;
+						}
+					}
+				}
+			}
+		}
+		// 直播列表
+		.live_list_block{
+			background-image : url('@{img}M3-1_01.png');
+			float            : left;
+			width            : 246px;
+			height           : 465px;
+
+			// 內縮
+			.inner{
+				padding-top  : 65px;
+				padding-left : 24px;
+
+				// 列
+				.live_row{
+					display                  : block;
+					background-image         : url('@{img}M3-2.png');
+					background-position      : (0) (0);
+					// background-position-x : 0;
+					height                   : 29px;
+					padding-left             : 30px;
+					line-height              : 24px;
+				}
+			}
+		}
+	}
+}

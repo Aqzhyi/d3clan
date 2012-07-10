@@ -1,0 +1,245 @@
+@import '../__config.less';
+
+body,html{
+	background-color: black;
+}
+body{
+	height: 100%;
+}
+body,html,div,span,input,table,td,th,textarea,button,a,dt,dd,dl,h1,h2,h3,h4,h5,h6{
+	color               : @website_font_color;
+	background-position : 50% 0;
+	background-repeat   : no-repeat;
+	font-family         : "\5fae\8edf\6b63\9ed1\9ad4"; // 微軟正黑體
+}
+body{
+	// background-image      : url('@{layout}pre_bg.jpg');
+	// background-image      : url('@{layout}Big_bg1.jpg');
+	background-image      : url('@{layout}Big_bg2.jpg');
+	background-repeat     : repeat;
+	background-attachment : fixed;
+}
+table{
+	width: 100%;
+
+	th{
+		font-weight : bold;
+		font-size   : 16px;
+		color       : @website_font_color - 35;
+	}
+
+	td{}
+}
+a{
+	color: @website_link_color;
+
+	&:hover{
+		color: @website_link_hover_color;
+	}
+}
+p{
+	line-height: 175%;
+}
+
+::selection{
+	background-color: #8B480B;
+}
+
+// 網頁主體框架
+.wrapper{
+	// 各 controller DIY 區塊.
+	// 以 CtrlName/diy.less 可重定義.
+	.diy{
+		// padding: 0 20px;
+		padding-bottom: 20px;
+		background-image: url("@{layout}fabric-red.jpg");
+		background-repeat: repeat;
+		background-attachment: fixed;
+	}
+	// ---
+	
+	box-shadow       : 0 0 25px 2px black;
+	width            : 960px;
+	margin           : 0 auto;
+	background-color : black;
+
+	.header{
+		background-image  : url("@{layout}header.jpg");
+		background-repeat : no-repeat;
+		height            : 387px;
+
+		// DiabloIII Logo
+		@site-logo-width: 270px;
+		
+		.game_logo{
+			width    : 300px;
+			height   : 200px;
+			position : relative;
+			top      : 0;
+			left     : 325px - @site-logo-width;
+			display  : inline-block;
+
+			&:hover{
+				border : 1px solid #B99D6E;
+				width  : 300-2px;
+				height : 200-2px;
+			}
+		}
+
+		.site_logo{
+			width    : @site-logo-width;
+			height   : 100px;
+			position : relative;
+			top      : 88px;
+			left     : 0;
+			display  : inline-block;
+			float    : left;
+
+			&:hover{
+				border : 1px solid #B99D6E;
+				width  : @site-logo-width - 2px;
+				height : 100-2px;
+			}
+		}
+
+		// 商業廣告小橫幅
+		.commercial_ad{
+			padding-top    : 11px;
+			padding-left   : 59px -36;
+			padding-bottom : 9px;
+
+			.g_fb{
+				float        : left;
+				margin       : 0 11px;
+				margin-top   : 11px;
+				margin-right : 12px;
+			}
+
+			.single{
+				display          : inline-block;
+				width            : 270px;
+				height           : 60px;
+				margin-right     : 8px;
+				float            : left;
+				background-color : black;
+
+				&:hover{
+					background-color: pink;
+				}
+
+				&.offset{
+					margin-left: -1px;
+					margin-right: 9px;
+				}
+			}
+
+			.sc2clan{
+				float   : left;
+				display : inline-block;
+				height  : 60px;
+				width   : 64px;
+			}
+		}
+
+		// 全站導航
+		.navigation{
+			// background-image : url('@{layout}index_menu.png');
+			padding-top         : 23px;
+			padding-left        : 15px;
+
+			// 按鈕wrapper
+			.single{
+				// 文字標籤
+				.nav_label{
+					text-align : center;
+					display    : block;
+					font-size  : 16px;
+				}
+
+				// 開始定位按鈕
+				@base-x: -3px;
+				@base-y: -10px;
+				@base-width: 47px;
+				@base-padding: -4px;
+
+				// 設計按鈕圖標
+				.icon{
+					background-image    : url('@{icon}toolbar_icon.png');
+					display             : block;
+					width               : @base-width;
+					height              : 35px;
+					margin              : 0 auto;
+					margin-top          : 10px;
+				}
+				.set_icon( @index:0, @hover:0, @x-offset:0 ) when ( @hover = 0 ){
+					@x: (@base-x - (@index * @base-width) - (@index * @base-padding));
+					@y: @base-y;
+					
+					background-position : (@x + @x-offset) (@y);
+				}
+				// 設計按鈕圖標 hover
+				.set_icon( @index:0, @hover:0, @x-offset:0 ) when ( @hover = 1 ){
+					@x: (@base-x - (@index * @base-width) - (@index * @base-padding));
+					@y: @base-y;
+
+					background-position: (@x + @x-offset) (@y - 48);
+				}
+
+				// 定位按鈕 圖標
+				.home{					.set_icon(0, 0);	}
+				.game{					.set_icon(1, 0);	}
+				.hardware{				.set_icon(2, 0);	}
+				.lives{					.set_icon(3, 0);	}
+				.event-2012-msi{		.set_icon(4, 0);	}
+				.event-2012-girls-vote{	.set_icon(5, 0, 5);	}
+				.together{				.set_icon(6, 0, 7);	}
+				.trade{					.set_icon(7, 0, 12);	}
+				.about{					.set_icon(8, 0, 11);	}
+				.bbs{					.set_icon(9, 0, 11);	}
+
+				// pure
+				background-image    : url("@{layout}toolbar_bg.png");
+				background-position : 1px -2px;
+				background-repeat   : no-repeat;
+				display             : inline-block;
+				width               : 93px;
+				height              : 67px;
+				float               : left;
+				color               : #ffb400;
+				text-decoration     : none;
+
+				// pure hover
+                &:hover{
+                	// 
+					.nav_label{
+						color: #ffffff;
+					}
+
+					// 
+					background-position: 1px -74px;
+
+					// 定位按鈕 hover
+					.home{					.set_icon(0, 1);	}
+					.game{					.set_icon(1, 1);	}
+					.hardware{				.set_icon(2, 1);	}
+					.lives{					.set_icon(3, 1);	}
+					.event-2012-msi{		.set_icon(4, 1);	}
+					.event-2012-girls-vote{	.set_icon(5, 1, 5);	}
+					.together{				.set_icon(6, 1, 7);	}
+					.trade{					.set_icon(7, 1, 12);	}
+					.about{					.set_icon(8, 1, 11);	}
+					.bbs{					.set_icon(9, 1, 11);	}
+				}
+
+				&.current{
+					background-position: 1px -141px;
+				}
+			}
+		}
+	}
+
+	.footer{
+		text-align: center;
+	}
+}
+// 

@@ -1,0 +1,29 @@
+@import '../instance';
+@img: '/static/img/lives/channel/';
+
+
+.namespace_lives_channel{
+	// 美術
+	.channel_border{
+		background-image: url("@{img}channel_border.png");
+		.inner{
+			.g_clear();
+			padding-top  : 76px;
+			padding-left : 21px;
+
+			// 直播頻道
+			.channel{
+				float  : left;
+				width  : 585px;
+				height : 500px;
+			}
+			// 聊天室
+			.chatroom{
+				float       : left;
+				width       : 325px;
+				margin-left : 13px;
+				margin-top  : 4px;
+			}
+		}
+	}
+}

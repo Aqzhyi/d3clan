@@ -1,0 +1,41 @@
+/**
+ * @link http://danneu.com/darkstrap/darkstrap.html
+ */
+img{
+	// max-width原本是100%在IE8底下的circle_loop會UI BUG,故重新配置為none.
+	max-width: none;
+}
+select{
+	// background-color: #333;
+}
+.alert{
+	font-size: 14px;
+	text-shadow : 1px 1px 0px black;
+}
+.alert-info{
+	h4{
+		font-size : 18px;
+		color     : white;
+	}
+	a{
+		color : rgb(192, 213, 85);
+
+		&:hover{
+			color: rgb(199, 226, 62);
+		}
+	}
+}
+.alert-warning{
+	background-color: #CF8C2D;
+}
+.table{
+	tbody{
+		tr{
+			&:hover{
+				td{
+					background-color: #333333;
+				}
+			}
+		}
+	}
+}

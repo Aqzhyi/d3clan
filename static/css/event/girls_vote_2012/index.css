@@ -1,0 +1,254 @@
+/**
+ * ?®å?é¡žåˆ¥
+ */
+.namespace_event_2012_girls_vote .girls_banner {
+  width: 100%;
+  height: 300px;
+  background-color: #150068;
+}
+.namespace_event_2012_girls_vote .girls_sponsor {
+  height: 85px;
+  background-color: #6E7E65;
+}
+.namespace_event_2012_girls_vote .girls_vote_progress {
+  *zoom: 1;
+  display: block;
+  padding: 0 20px;
+}
+.namespace_event_2012_girls_vote .girls_vote_progress:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.namespace_event_2012_girls_vote .girls_vote_progress .girl_vote_kind_date {
+  padding-top: 22px;
+  padding-bottom: 11px;
+  float: left;
+  width: 177px;
+  text-align: center;
+  line-height: 30px;
+  font-style: italic;
+}
+.namespace_event_2012_girls_vote .girls_vote_progress .girl_vote_kind_date.active {
+  background-image: url("/static/img/event/girls_vote_2012/Dgirl_01.png");
+}
+.namespace_event_2012_girls_vote .girls_vote_progress .girl_vote_kind_date .the_title,
+.namespace_event_2012_girls_vote .girls_vote_progress .girl_vote_kind_date .the_date {
+  font-size: 18px;
+  display: block;
+}
+.namespace_event_2012_girls_vote .girls_vote_progress .the_rule {
+  background-image: url("/static/img/event/girls_vote_2012/rule.png");
+  width: 201px;
+  height: 45px;
+  float: right;
+  margin-top: 30px;
+}
+.namespace_event_2012_girls_vote .girls_intro {
+  padding-left: 1px;
+  *zoom: 1;
+  display: block;
+}
+.namespace_event_2012_girls_vote .girls_intro:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro {
+  background-image: url("/static/img/event/girls_vote_2012/paper.png");
+  width: 268px;
+  height: 431px;
+  float: left;
+  display: block;
+  padding-top: 20px;
+  padding-left: 20px;
+  background-position: 0 0;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  color: #8A622F;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 8px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_vote {
+  background-image: url("/static/img/event/girls_vote_2012/Dgirl_03.png");
+  height: 45px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 45px;
+  font-style: italic;
+  cursor: pointer;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_photos {
+  *zoom: 1;
+  display: block;
+  text-align: center;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_photos:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_photos .girl_photo {
+  background-color: white;
+  float: left;
+  display: inline-block;
+  margin: 0 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_photos .girl_photo img {
+  height: 150px;
+  width: 100px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro > .girl_personal {
+  *zoom: 1;
+  display: block;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro > .girl_personal:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro > .girl_personal .txt_row {
+  float: left;
+  display: inline-block;
+  width: 120px;
+  margin-left: 12px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro > .girl_personal .txt_row .descr {
+  color: #5F4E48;
+  font-size: 12px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro > .girl_personal .txt_row .value {
+  color: #5F2A1A;
+  font-size: 14px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro > .girl_personal .girl_intro_detail {
+  color: black;
+  margin: 10px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_vote_amount {
+  color: red;
+  font-size: 20px;
+  text-align: center;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info {
+  background-image: url("/static/img/event/girls_vote_2012/fold_01.png");
+  display: none;
+  position: absolute;
+  top: 900px;
+  left: 50%;
+  padding-top: 55px;
+  margin-left: -400px;
+  background-color: #3D3737;
+  width: 800px;
+  height: 50%;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border {
+  background-image: url("/static/img/event/girls_vote_2012/fold_02.png");
+  background-repeat: repeat-y;
+  background-color: #3D3737;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_close {
+  background-image: url("/static/img/event/girls_vote_2012/x.png");
+  width: 25px;
+  height: 25px;
+  float: right;
+  cursor: pointer;
+  margin-right: 54px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_photos .btn_left_click {
+  position: absolute;
+  top: 260px;
+  left: 53px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_photos .btn_right_click {
+  position: absolute;
+  top: 260px;
+  right: 52px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_photos .twinned {
+  text-align: center;
+  display: none;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_photos .twinned.first {
+  display: block;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_photos .twinned img {
+  width: 300px;
+  height: 400px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_info > .inner {
+  *zoom: 1;
+  display: block;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_info > .inner:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_info > .inner .info > .girl_personal {
+  float: left;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_info > .inner .info > .girl_personal .txt_row {
+  margin-left: 12px;
+  line-height: 30px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_info > .inner .info > .girl_personal .txt_row .descr {
+  color: #D5B3A7;
+  font-size: 18px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_info > .inner .info > .girl_personal .txt_row .value {
+  color: #DA6542;
+  font-size: 24px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_info > .inner .info > .girl_personal .girl_intro_detail {
+  color: black;
+  margin: 10px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_info > .inner .vote_amount {
+  float: right;
+  width: 400px;
+  margin-right: 64px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_info > .inner .vote_amount .kind_polls {
+  margin: 20px 0;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_info > .inner .vote_amount .kind_polls .progress {
+  width: 350px;
+  display: inline-block;
+  margin: 0px;
+  margin-bottom: -4px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_info > .inner .vote_amount .kind_polls .progress.bar {
+  background-color: #E298E9;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_video {
+  *zoom: 1;
+  display: block;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .inner_border .detail_video:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_detail_info .bottom_border {
+  background-image: url("/static/img/event/girls_vote_2012/fold_03.png");
+  height: 178px;
+  background-color: #3D3737;
+}

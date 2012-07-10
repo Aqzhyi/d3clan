@@ -1,0 +1,8 @@
+#inpage-content .class_art{float:left;height:300px;margin-right:10px;}
+#inpage-content .excerpt-info{margin-bottom:20px;}#inpage-content .excerpt-info img{float:left;margin-right:20px;}
+#inpage-content .excerpt-info p{font-size:20px;}
+#inpage-content table{width:90%;background-color:#141212;margin:0 auto;border:1px solid;}#inpage-content table p{margin:0;padding:0;}
+#inpage-content table th{min-width:120px;height:48px;background-color:#000;background-image:url("/static/img/common/layout/data-options-top.jpg");}
+#inpage-content table td{padding:5px;}
+#inpage-content .hr{height:48px;width:100%;margin:15px auto;}
+#inpage-content #post-article-content2{margin-top:35px;}

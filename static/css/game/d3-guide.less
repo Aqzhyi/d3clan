@@ -1,0 +1,106 @@
+@import '../__config.less';
+
+.guide-right{
+
+	p{
+		padding: 0!important;
+		margin: 0!important;
+	}
+
+	.guide-section {
+		h3.category {
+			text-align          : left;
+			padding-bottom      : 6px;
+			background-position : 0 0;
+			padding-left        : 50px;
+		}
+	}
+	
+
+	/* wrappers */
+	.page-header { margin: 30px; position: relative; }
+	.page-header .header { margin-bottom: 15px; }
+	.page-header .header small { color: #7B6D55; display: block; font-size: 14px; font-family: Arial, sans-serif; letter-spacing: normal; line-height: normal; padding-top: 10px; }
+	.page-header .header small a { color: #95856A; }
+	.page-header .desc { font-size: 14px; line-height: 2em; width: 50%; }
+	.page-body { margin: 30px 0; padding: 0 30px; }
+
+	/*guide */
+	float       : left;
+	width       : 765px;
+	border-left : 1px solid #2a241c;
+	p.caption { margin: 5px 0 0 0; font-size: 12px; color: #7b6d55; font-size: 11px; }
+	.guide-wrapper { padding: 0 4px 30px 4px; }
+	.guide-left { float: left; width: 220px; padding-top: 30px; }
+	.guide-footer-previous,
+	.guide-footer-next { padding-top: 15px; }
+	.guide-footer-previous { padding-left: 30px; }
+	.guide-footer-next { padding-right: 30px; float: right; }
+
+	.page-header .desc { width: auto; padding-top: 5px;  }
+	.page-header p { margin: 0 0 10px 0; }
+	.page-header .guide-media { margin-top: 15px; }
+	.page-body p { margin: 0 0 20px 0; }
+	.page-body strong { color: #AD835A; }
+	.page-body ul { padding-left: 30px; list-style: square; margin-bottom: 20px; }
+	.page-body ul li { margin-top: 8px; list-style-position: outside; list-style-image: url("http://tw.battle.net/d3/static/images/icons/bullet.gif"); }
+	.page-body ol { padding-left: 30px; list-style: decimal; margin-bottom: 20px; }
+	.page-body ol li { margin-top: 15px; }
+	.page-body .category { margin-top: 30px; margin-bottom: 10px; }
+
+	/* sections */
+	.guide-section    { margin-top: 45px; clear: both; }
+	.guide-subsection { margin-top: 30px; clear: both; }
+	.guide-section .header { border-bottom: 1px solid #28241d; font-size: 24px; letter-spacing: 0; padding-bottom: 8px; margin-bottom: 15px; }
+
+	/* integrated thumbnails, images and icons  */
+	.guide-image { display: block; margin: 20px 0; text-align: center; }
+	.guide-media .media-frame .mm a:hover .frame { background: rgba(0, 0, 0, .3) url("http://tw.battle.net/d3/static/images/media/view-image.png") 50% 50% no-repeat; }
+	.guide-media p.caption { max-width: 200px; }
+
+	.guide-icons-left a { float:left }
+	.guide-align-left,
+	.guide-icons-left .d3-icon { float: left;  margin: 0 15px 30px 0; }
+	.guide-icons-right { float:right }
+	.guide-align-right,
+	.guide-icons-right .d3-icon{ float: right; margin: 0 0 30px 15px; }
+
+	.guide-media-center { float: none; margin: 30px 0; width: auto; text-align: center; }
+	.guide-media-center p { max-width: none; }
+
+	/* media frame */
+	.media-frame { display: inline-block; -moz-box-shadow: 5px 5px 5px #000; -webkit-box-shadow: 5px 5px 5px #000; box-shadow: 5px 5px 5px #000; }
+	.media-frame .tl,
+	.media-frame .tr,
+	.media-frame .bl,
+	.media-frame .br { width: 5px; height: 5px; background: url("http://tw.battle.net/d3/static/images/ui/media-corners.gif") no-repeat; }
+	.media-frame .tr { background-position: -5px 0; }
+	.media-frame .bl { background-position: 0 -5px; }
+	.media-frame .br { background-position: -5px -5px; }
+	.media-frame .ml,
+	.media-frame .mr { width: 5px; background: url("http://tw.battle.net/d3/static/images/ui/media-lr.gif") repeat-y; }
+	.media-frame .mr { background-position: -5px 0; }
+	.media-frame .tm,
+	.media-frame .bm { height: 5px; background: url("http://tw.battle.net/d3/static/images/ui/media-tb.gif") repeat-x; }
+	.media-frame .bm { background-position: 0 -5px; }
+	.media-frame .mm { background:  #000; }
+	.media-frame .mm img { display: block; }
+	.media-frame .mm a { display: block; border: 1px solid #000; position: relative; }
+	.media-frame .mm a:hover { border-color: #824c06; }
+	.media-frame .mm a .frame { display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0;
+		-moz-box-shadow: inset 0 0 7px 2px #000; -webkit-box-shadow: inset 0 0 7px 2px #000; box-shadow: inset 0 0 7px 2px #000; }
+	.media-frame.view-video .mm a:hover .frame { background: rgba(0, 0, 0, .3) url("http://tw.battle.net/d3/static/images/media/play-video.png") 50% 50% no-repeat; }
+	.media-frame.view-image .mm a:hover .frame { background: rgba(0, 0, 0, .3) url("http://tw.battle.net/d3/static/images/media/view-image.png") 50% 50% no-repeat; }
+	.media-frame .mm a.view-all { border: none; padding: 5px; text-align: right; }
+
+	/* followers/artisans */
+	.portrait-row { position: relative; padding-left: 120px; padding-bottom: 15px; }
+	.portrait-row .icon-portrait { position: absolute; left: 0; top: 0; }
+	.portrait-row .category { margin-top: 0; }
+	.portrait-row ul li { margin-top: 8px; }
+
+
+}
+
+
+/**/

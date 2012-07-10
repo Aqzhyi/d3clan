@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	
+	RewriteRule ^e\/m\/(.*) /extention/Minify2.1.5/?f=$1 [QSA,L]
+
+	RewriteCond %{HTTP_HOST} ^www\.d3clan\.tw$ [NC]
+	RewriteRule ^(.*)$ http://d3clan.tw/$1 [R=301,L]
+
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>

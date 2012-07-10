@@ -1,0 +1,114 @@
+//
+@import '../__config.less';
+@img: '/static/img/vod/index/';
+
+.namespace_vod{
+	// 影片播放視窗
+	.player{
+		width   : 600px;
+		height  : 450px;
+		float   : left;
+		padding : 20px;
+	}
+
+	// 右弦最近視頻
+	.lasest_vod_at_right{
+		float: left;
+		width: 315px;
+
+		.inner{
+			padding-top: 26px;
+
+			// 視頻
+			.single{
+				display: block;
+				clear: both;
+				height: 100px;
+
+				.thumb{
+					display             : inline-block;
+					width               : 120px;
+					height              : 75px;
+					background-position : 50%;
+					border-radius       : 5px;
+				}
+				// 標題
+				.subject_thumb{
+					font-size : 18px;
+				}
+			}
+		}
+	}
+
+	.search{
+		width      : 300px;
+		float      : left;
+		text-align : center;
+
+		.keyword{
+			background-image    : url("@{img}search.png");
+			padding-top         : 8px;
+			padding-left        : 43px;
+			background-position : 0 0;
+			padding-bottom      : 12px;
+			font-size           : 16px;
+			width               : 166px;
+			border              : 0;
+			box-shadow          : none;
+			background-color    : transparent;
+
+			&:hover,&:focus{
+				background-position: 0 -42px;
+			}
+		}
+	}
+
+	.line01{
+		background-image: url("@{img}line_01.png");
+		height: 10px;
+	}
+
+	// 尾翼最近視頻
+	.lasest_vod_at_bottom{
+		background-color: black;
+
+		.inner{
+			padding: 20px 0;
+
+			// 視頻
+			.single{
+				width      : 150px;
+				height     : 140px;
+				float      : left;
+				text-align : center;
+				margin     : 0 5px;
+
+				.thumb_wrapper{
+					height: 80px;
+
+					.thumb{
+						background-position: 50%;
+						display: inline-block;
+						width: 120px;
+						height: 75px;
+					}
+				}
+
+				// 標題
+				.subject_thumb{
+					font-size      : 14px;
+					text-align     : left;
+					vertical-align : top;
+				}
+
+			}
+
+		}
+	}
+
+	.line02{
+		background-image: url("@{img}line_02.png");
+		height: 19px;
+	}
+}
+//

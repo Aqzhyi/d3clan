@@ -1,0 +1,101 @@
+@import '../__config.less';
+
+.namespace_game{
+	// 遊戲資料選單
+	.data_list{
+		@border-width     : 0px;
+		width             : 200-@border-width;
+		float             : left;
+		border-right      : @border-width solid #fff;
+		min-height        : 500px;
+		box-shadow        : 1px 0 2px black;
+		background-image  : url("@{utils}sider_cen.jpg");
+		background-repeat : repeat-y;
+
+		.data_list_search{
+			width         : 170px;
+		}
+
+		// 標題
+		.data_title{
+			.title{
+				@background-position-x : 5px;
+				background-image       : url("@{icon}18modifier_add.gif");
+				background-position    : @background-position-x -3px;
+				color                  : yellow;
+				font-size              : 18px;
+				font-weight            : bold;
+				padding-left           : 30+@background-position-x;
+				text-align             : left;
+				line-height            : 30px;
+			}
+
+			// 內容區塊
+			.data_hide{
+				// display: none;
+				
+				.data_group{
+					padding-left  : 39px;
+					font-size     : 16px;
+					line-height   : 16px;
+					margin-bottom : 5px;
+				}
+				// 連結
+				.data_link{
+					display: block;
+					padding-left: 45px;
+					font-size: 100%;
+				}
+			}
+
+			&:hover{
+				.title{
+					background-image   : url("@{icon}18modifier_subtract.gif");
+				}
+
+				.data_hide{
+					display: block;
+				}
+			}
+		}
+	}
+	// 主內容
+	.content{
+		width      : 760px;
+		float      : left;
+		min-height : 300px;
+
+		// 各頁內容
+		.each_page_content{
+			// padding-top: 35px;
+
+			h2{
+				text-align        : center;
+				background-image  : url("@{layout}h2.jpg");
+				background-repeat : no-repeat;
+				height            : 56px;
+				line-height       : 56px;
+				padding-bottom    : 12px;
+				margin-top        : 35px;
+			}
+			h3{
+				text-align        : center;
+				background-image  : url("@{layout}h3.jpg");
+				background-repeat : no-repeat;
+				height            : 40px;
+				line-height       : 40px;
+				padding-bottom    : 6px;
+			}
+			.quote{
+				font-size  : 24px;
+				font-style : italic;
+				color      : #AD835A;
+			}
+
+			p{
+				padding: 0 40px;
+			}
+		}
+	}
+}
+// 

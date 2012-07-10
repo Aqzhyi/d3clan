@@ -1,0 +1,45 @@
+.abgneImgCircle {
+	width    : 100%;
+	height   : 100%;
+	position : relative;
+	overflow : hidden;
+}
+.abgneImgCircle ul.list {
+	padding    : 0;
+	margin     : 0;
+	list-style : none;
+	position   : absolute;
+	width      : 9999px;
+	height     : 100%;
+}
+.abgneImgCircle ul.list li {
+	float  : left;
+	width  : 403px;
+	height : 100%;
+
+}
+.abgneImgCircle .list img{
+	width  : 100%;
+	height : 100%;
+	border : 0;
+}
+.abgneImgCircle ul.playerControl {
+	margin     : 0;
+	padding    : 0;
+	list-style : none;
+	position   : absolute;
+	bottom     : 5px;
+	right      : 5px;
+	height     : 14px;
+}
+.abgneImgCircle ul.playerControl li {
+	float      : left;
+	width      : 25px;
+	height     : 29px;
+	cursor     : pointer;
+	margin     : 0 2px;
+	background : url("/static/img/plugin/abgneImgCircle/M1-3.png") no-repeat 0 0;
+}
+.abgneImgCircle ul.playerControl .current { 
+	background-position: 0 -61px;
+}

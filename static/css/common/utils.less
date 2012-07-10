@@ -1,0 +1,89 @@
+@import '../__config.less';
+/**
+ * 修飾
+ */
+.g_left{
+	float: left;
+}
+.g_right{
+	float: right;
+}
+
+.g_dpb{
+	display: block!important;
+}
+.g_hide{
+	display: none!important;
+}
+
+.g_txt_c{
+	text-align: center!important;
+}
+
+.g_w500{
+	width: 500px;
+}
+.g_w100p{
+	width: 100%;
+}
+
+/**
+ * 單品
+ */
+.clear:after,.g_clear:after{
+	content    : ".";
+	clear      : both;
+	height     : 0;
+	visibility : hidden;
+	display    : block;
+}
+.clear,.g_clear{
+	*zoom   :1;
+	display : block;	
+}
+// 16x讀取圖標
+.g_loading{
+	background-position : (50%) (50%);
+	background-image    : url("@{icon}16_bg000_ajax_loader.gif");
+	width               : 100%;
+	height              : 100%;
+}
+// 搜尋框
+input.g_search, .g_search{
+	background-image    : url("@{icon}16search.png");
+	padding-left        : 24px;
+	background-position : 4px 50%;
+}
+// 影片播放圖標
+.g_vod_play_icon_hover{
+	background-image    : url("@{layout}layout_sprite.png");
+	background-repeat   : no-repeat;
+	display             : inline-block;
+	width               : 100%;
+	height              : 75px;
+	background-position : -80px -150px;
+	cursor              : pointer;
+	border-radius       : 5px;
+
+	&:hover{
+		border         : 1px solid #fff;
+		-moz-filter    : brightness(0.2);
+		-ms-filter     : brightness(0.2);
+		-o-filter      : brightness(0.2);
+		-webkit-filter : brightness(0.2);
+	}
+}
+// FB圖標
+.g_fb{
+	background-image    : url("@{icon}social-media.jpg");
+	background-repeat   : no-repeat;
+	background-position : 0 0;
+	width               : 36px;
+	height              : 36px;
+	display             : inline-block;
+
+	&:hover{
+		background-position: 0 -36px;
+	}
+}
+// 
