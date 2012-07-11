@@ -9,6 +9,7 @@ class Template {
 	public function fetch( $template = '', $data = array() ) {
 		$smarty = $this->create_smarty_lib();
 		$smarty->assign( 'data', $data );
+		$smarty->assign( 'CI', $CI =& get_instance() );
 		return $smarty->fetch( $template . '.html' );
 	}
 

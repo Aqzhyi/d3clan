@@ -67,12 +67,12 @@ p {
   background-repeat: repeat;
   background-attachment: fixed;
 }
-.wrapper .header {
+.wrapper > header > .header {
   background-image: url("/static/img/common/layout/header.jpg");
   background-repeat: no-repeat;
   height: 387px;
 }
-.wrapper .header .game_logo {
+.wrapper > header > .header .game_logo {
   width: 300px;
   height: 200px;
   position: relative;
@@ -80,12 +80,12 @@ p {
   left: 55px;
   display: inline-block;
 }
-.wrapper .header .game_logo:hover {
+.wrapper > header > .header .game_logo:hover {
   border: 1px solid #B99D6E;
   width: 298px;
   height: 198px;
 }
-.wrapper .header .site_logo {
+.wrapper > header > .header .site_logo {
   width: 270px;
   height: 100px;
   position: relative;
@@ -94,23 +94,23 @@ p {
   display: inline-block;
   float: left;
 }
-.wrapper .header .site_logo:hover {
+.wrapper > header > .header .site_logo:hover {
   border: 1px solid #B99D6E;
   width: 268px;
   height: 98px;
 }
-.wrapper .header .commercial_ad {
+.wrapper > header > .header .commercial_ad {
   padding-top: 11px;
   padding-left: 59px -36;
   padding-bottom: 9px;
 }
-.wrapper .header .commercial_ad .g_fb {
+.wrapper > header > .header .commercial_ad .g_fb {
   float: left;
   margin: 0 11px;
   margin-top: 11px;
   margin-right: 12px;
 }
-.wrapper .header .commercial_ad .single {
+.wrapper > header > .header .commercial_ad .single {
   display: inline-block;
   width: 270px;
   height: 60px;
@@ -118,24 +118,24 @@ p {
   float: left;
   background-color: black;
 }
-.wrapper .header .commercial_ad .single:hover {
+.wrapper > header > .header .commercial_ad .single:hover {
   background-color: pink;
 }
-.wrapper .header .commercial_ad .single.offset {
+.wrapper > header > .header .commercial_ad .single.offset {
   margin-left: -1px;
   margin-right: 9px;
 }
-.wrapper .header .commercial_ad .sc2clan {
+.wrapper > header > .header .commercial_ad .sc2clan {
   float: left;
   display: inline-block;
   height: 60px;
   width: 64px;
 }
-.wrapper .header .navigation {
+.wrapper > header > .header .navigation {
   padding-top: 23px;
   padding-left: 15px;
 }
-.wrapper .header .navigation .single {
+.wrapper > header > .header .navigation .single {
   background-image: url("/static/img/common/layout/toolbar_bg.png");
   background-position: 1px -2px;
   background-repeat: no-repeat;
@@ -146,12 +146,12 @@ p {
   color: #ffb400;
   text-decoration: none;
 }
-.wrapper .header .navigation .single .nav_label {
+.wrapper > header > .header .navigation .single .nav_label {
   text-align: center;
   display: block;
   font-size: 16px;
 }
-.wrapper .header .navigation .single .icon {
+.wrapper > header > .header .navigation .single .icon {
   background-image: url('/static/img/common/icon/toolbar_icon.png');
   display: block;
   width: 47px;
@@ -159,75 +159,75 @@ p {
   margin: 0 auto;
   margin-top: 10px;
 }
-.wrapper .header .navigation .single .home {
+.wrapper > header > .header .navigation .single .home {
   background-position: -3px -10px;
 }
-.wrapper .header .navigation .single .game {
+.wrapper > header > .header .navigation .single .game {
   background-position: -46px -10px;
 }
-.wrapper .header .navigation .single .hardware {
+.wrapper > header > .header .navigation .single .hardware {
   background-position: -89px -10px;
 }
-.wrapper .header .navigation .single .lives {
+.wrapper > header > .header .navigation .single .lives {
   background-position: -132px -10px;
 }
-.wrapper .header .navigation .single .event-2012-msi {
+.wrapper > header > .header .navigation .single .event-2012-msi {
   background-position: -175px -10px;
 }
-.wrapper .header .navigation .single .event-2012-girls-vote {
+.wrapper > header > .header .navigation .single .event-2012-girls-vote {
   background-position: -213px -10px;
 }
-.wrapper .header .navigation .single .together {
+.wrapper > header > .header .navigation .single .together {
   background-position: -254px -10px;
 }
-.wrapper .header .navigation .single .trade {
+.wrapper > header > .header .navigation .single .trade {
   background-position: -292px -10px;
 }
-.wrapper .header .navigation .single .about {
+.wrapper > header > .header .navigation .single .about {
   background-position: -336px -10px;
 }
-.wrapper .header .navigation .single .bbs {
+.wrapper > header > .header .navigation .single .bbs {
   background-position: -379px -10px;
 }
-.wrapper .header .navigation .single:hover {
+.wrapper > header > .header .navigation .single:hover {
   background-position: 1px -74px;
 }
-.wrapper .header .navigation .single:hover .nav_label {
+.wrapper > header > .header .navigation .single:hover .nav_label {
   color: #ffffff;
 }
-.wrapper .header .navigation .single:hover .home {
+.wrapper > header > .header .navigation .single:hover .home {
   background-position: -3px -58px;
 }
-.wrapper .header .navigation .single:hover .game {
+.wrapper > header > .header .navigation .single:hover .game {
   background-position: -46px -58px;
 }
-.wrapper .header .navigation .single:hover .hardware {
+.wrapper > header > .header .navigation .single:hover .hardware {
   background-position: -89px -58px;
 }
-.wrapper .header .navigation .single:hover .lives {
+.wrapper > header > .header .navigation .single:hover .lives {
   background-position: -132px -58px;
 }
-.wrapper .header .navigation .single:hover .event-2012-msi {
+.wrapper > header > .header .navigation .single:hover .event-2012-msi {
   background-position: -175px -58px;
 }
-.wrapper .header .navigation .single:hover .event-2012-girls-vote {
+.wrapper > header > .header .navigation .single:hover .event-2012-girls-vote {
   background-position: -213px -58px;
 }
-.wrapper .header .navigation .single:hover .together {
+.wrapper > header > .header .navigation .single:hover .together {
   background-position: -254px -58px;
 }
-.wrapper .header .navigation .single:hover .trade {
+.wrapper > header > .header .navigation .single:hover .trade {
   background-position: -292px -58px;
 }
-.wrapper .header .navigation .single:hover .about {
+.wrapper > header > .header .navigation .single:hover .about {
   background-position: -336px -58px;
 }
-.wrapper .header .navigation .single:hover .bbs {
+.wrapper > header > .header .navigation .single:hover .bbs {
   background-position: -379px -58px;
 }
-.wrapper .header .navigation .single.current {
+.wrapper > header > .header .navigation .single.current {
   background-position: 1px -141px;
 }
-.wrapper .footer {
+.wrapper > footer > .footer {
   text-align: center;
 }

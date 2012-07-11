@@ -53,7 +53,7 @@ class site_output_hook {
 	 *                $setting['output_display'] => 是否直接輸出給瀏覽器。FALSE代表不直接輸出，僅回存至buffer。
 	 * @return NULL                    不會回傳東西。
 	 */
-	public function images_auto_set_alt( $setting=array() ) {
+	public function images_auto_set( $setting=array() ) {
 		$CI =& get_instance();
 		$CI->load->library( 'simple_html_dom' ); // require_once APPPATH . 'libraries/simple_html_dom.php';
 		$buffer = $CI->output->get_output();
@@ -61,11 +61,18 @@ class site_output_hook {
 		if ( ! empty($buffer)) {
 			$DOM = str_get_html( $buffer );
 			foreach ( $DOM->find( 'img' ) as $key => $img ) {
-				if ( empty( $img->alt ) && ! strpos( $img->alt, $CI->config->item( 'site_name' ) ) ) {
-					$img->alt = $CI->config->item( 'site_name' );
+				// 缺乏圖片網址
+				if ( empty( $img->src ) ) {
+					$img->style = 'background: url(/static/img/common/icon/32img-landscape-error.png) no-repeat 50% 50%;';
+					$img->alt = '圖片遺失 - ' . $CI->config->item( 'site_name' );
 				}
 				else {
-					$img->alt .= ' - ' . $CI->config->item( 'site_name' );
+					if ( empty( $img->alt ) && ! strpos( $img->alt, $CI->config->item( 'site_name' ) ) ) {
+					$img->alt = $CI->config->item( 'site_name' );
+					}
+					else {
+						$img->alt .= ' - ' . $CI->config->item( 'site_name' );
+					}
 				}
 			}
 

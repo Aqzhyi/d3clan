@@ -22,7 +22,7 @@ $hook['display_override'][] = array(
 // 處理<img>缺省alt=""
 $hook['display_override'][] = array(
 	'class'    => 'site_output_hook',
-	'function' => 'images_auto_set_alt',
+	'function' => 'images_auto_set',
 	'filename' => 'site_output_hook.php',
 	'filepath' => 'hooks',
 	'params'   => array( 'output_display' => TRUE )
