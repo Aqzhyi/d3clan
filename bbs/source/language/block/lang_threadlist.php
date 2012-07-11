@@ -65,6 +65,7 @@ $lang = array
 	'threadlist_special_reward_1' => '已解決',
 	'threadlist_special_reward_2' => '未解決',
 	'threadlist_recommend' => '推薦主題過濾',
+	'threadlist_replies' => '未回覆主題過濾',
 	'threadlist_viewmod' => '文章模式查看',
 	'threadlist_recommend_comment' => '設置是否只顯示推薦的主題',
 	'threadlist_picrequired' => '必須含圖片附件',

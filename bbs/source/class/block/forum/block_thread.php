@@ -69,6 +69,10 @@ class block_thread extends discuz_block {
 				'title' => 'threadlist_recommend',
 				'type' => 'radio'
 			),
+			'replies' => array(
+				'title' => 'threadlist_replies',
+				'type' => 'radio'
+			),
 			'special' => array(
 				'title' => 'threadlist_special',
 				'type' => 'mcheckbox',
@@ -262,6 +266,7 @@ class block_thread extends discuz_block {
 		$titlelength	= !empty($parameter['titlelength']) ? intval($parameter['titlelength']) : 40;
 		$summarylength	= !empty($parameter['summarylength']) ? intval($parameter['summarylength']) : 80;
 		$recommend	= !empty($parameter['recommend']) ? 1 : 0;
+		$replies    = !empty($parameter['replies']) ? 1 : 0;
 		$keyword	= !empty($parameter['keyword']) ? $parameter['keyword'] : '';
 		$tagkeyword	= !empty($parameter['tagkeyword']) ? $parameter['tagkeyword'] : '';
 		$typeids	= !empty($parameter['typeids']) ? explode(',',$parameter['typeids']) : array();
@@ -343,6 +348,10 @@ class block_thread extends discuz_block {
 		if($recommend) {
 			$sqlfrom .= " $joinmethod JOIN `".DB::table('forum_forumrecommend')."` fc ON fc.tid=t.tid";
 		}
+
+		if($replies) {
+            $sql .= " AND t.replies > '0'";
+        }
 
 		if($tagids) {
 			$sqlfrom .= " $joinmethod JOIN `".DB::table('common_tagitem')."` tim ON tim.tagid IN (".dimplode(array_keys($tagids)).") AND tim.itemid=t.tid AND tim.idtype='tid' ";
