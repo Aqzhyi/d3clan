@@ -727,6 +727,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 		.t_fsz { min-height: 100px; }
 			* html .t_fsz { height: 100px; overflow: visible; }
 		.t_f, .t_f td { font-size: {MSGFONTSIZE}; }
+		.t_f, .t_f p { padding: 10px 0; }
 			.t_f a { color: {HIGHLIGHTLINK}; text-decoration: underline; }
 		.t_f ul { margin-left: 14px; }
 			.t_f li { margin-left: 2em; }
