@@ -17,7 +17,7 @@
 					<?php foreach ( $flow as $index => $news ): ?>
 						<a target="_blank" href="/bbs/forum.php?mod=viewthread&tid=<?php echo $news['tid'] ?>" class="news_row">
 							<span style="color: white;"><?php echo "[{$news['name']}]" ?></span>
-							<?php echo $news['subject'] ?> (<?php echo $news['views'] ?>) posted by [<?php echo $news['author'] ?>]
+							<?php echo $news['subject'] ?>
 						</a>
 					<?php endforeach ?>
 				</div>
