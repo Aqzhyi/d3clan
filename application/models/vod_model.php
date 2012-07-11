@@ -8,6 +8,8 @@ class Vod_model extends CI_Model {
 
 	public function get_vod( $setting = array() ) {
 
+		$this->load->helper( 'string' );
+
 		$setting['limit']  = ( ! empty( $setting['limit'] ) ) ? $setting['limit'] : 10;
 		$setting['offset'] = ( ! empty( $setting['offset'] ) ) ? $setting['offset'] : 0;
 
@@ -25,7 +27,7 @@ class Vod_model extends CI_Model {
 
 		// 檢測首篇影片為哪種平台的影片, 抓取略縮圖, 以及其唯一識別碼.
 		foreach ( $result as $index => $vod ) {
-			$result[$index]['subject_thumb'] = ( mb_strlen( $vod['subject'] )>15 ) ? mb_substr( $vod['subject'], 0, 14 ) . '…' : $vod['subject'];
+			$result[$index]['subject_thumb'] = string_cut( $vod['subject'], 15 );  
 
 			// 辨識 youtube
 			if ( preg_match( '@\[youtube\](.*)\[\/youtube\]@m', $vod['message'], $vod_type ) ) {
