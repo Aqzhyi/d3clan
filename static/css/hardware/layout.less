@@ -1,0 +1,68 @@
+@import '../instance';
+@img: '/static/img/event/girls_vote_2012/';
+
+.namespace_hardware{
+	.g_clear;
+
+	>.header{
+		.g_clear;
+		>.banner{
+			float: left;
+			width: 560px;
+			min-height: 400px;
+			background-color: pink;
+		}
+
+		>.news_flow{
+			float: left;
+			width: 400px;
+			min-height: 400px;
+			background-color: yellow;
+		}
+	}
+
+	>.body{}
+
+	// 焦點新聞六則
+	.class_news_flow{
+		.g_clear;
+
+		>.header{
+			font-size    : 30px;
+			line-height  : 42px;
+			padding-top  : 100px;
+			padding-left : 20px;
+			color        : red;
+		}
+		>.body{
+			.g_clear;
+
+			// 每則焦點
+			.item{
+				float: left;
+				>.img{
+					float: left;
+					.thumb {
+						width: 200px;
+						height: 150px;
+					}
+				}
+				>.text{
+					float: right;
+					width: 280px;
+					.title{
+						font-size: 18px;
+						padding: 5px;
+						line-height: 22px;
+					}
+					.thumb{
+						font-size: 12px;
+						padding: 10px;
+						padding-top: 5px;
+						padding-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}

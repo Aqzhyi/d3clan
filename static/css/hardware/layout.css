@@ -1,0 +1,91 @@
+/**
+ * ?®å?é¡žåˆ¥
+ */
+.namespace_hardware {
+  *zoom: 1;
+  display: block;
+}
+.namespace_hardware:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.namespace_hardware > .header {
+  *zoom: 1;
+  display: block;
+}
+.namespace_hardware > .header:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.namespace_hardware > .header > .banner {
+  float: left;
+  width: 560px;
+  min-height: 400px;
+  background-color: pink;
+}
+.namespace_hardware > .header > .news_flow {
+  float: left;
+  width: 400px;
+  min-height: 400px;
+  background-color: yellow;
+}
+.namespace_hardware .class_news_flow {
+  *zoom: 1;
+  display: block;
+}
+.namespace_hardware .class_news_flow:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.namespace_hardware .class_news_flow > .header {
+  font-size: 30px;
+  line-height: 42px;
+  padding-top: 100px;
+  padding-left: 20px;
+  color: red;
+}
+.namespace_hardware .class_news_flow > .body {
+  *zoom: 1;
+  display: block;
+}
+.namespace_hardware .class_news_flow > .body:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.namespace_hardware .class_news_flow > .body .item {
+  float: left;
+}
+.namespace_hardware .class_news_flow > .body .item > .img {
+  float: left;
+}
+.namespace_hardware .class_news_flow > .body .item > .img .thumb {
+  width: 200px;
+  height: 150px;
+}
+.namespace_hardware .class_news_flow > .body .item > .text {
+  float: right;
+  width: 280px;
+}
+.namespace_hardware .class_news_flow > .body .item > .text .title {
+  font-size: 18px;
+  padding: 5px;
+  line-height: 22px;
+}
+.namespace_hardware .class_news_flow > .body .item > .text .thumb {
+  font-size: 12px;
+  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 0;
+}

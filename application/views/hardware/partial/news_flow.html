@@ -1,0 +1,18 @@
+<div class="body">
+{foreach $data as $index => $news}
+	<div class="item">
+		<div class="img">
+			<img class="thumb" src="{$news['first_img_thumb']}" alt="" />
+		</div>
+		<div class="text">
+			<div class="title">
+				{$CI->discuzx->alink_to_bbs([
+					'text' => $news['subject'],
+					'tid'  => $news['tid']
+				])}
+			</div>
+			<div class="thumb">{$news['first_text_thumb']}</div>
+		</div>
+	</div>
+{/foreach}
+</div>
