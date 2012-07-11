@@ -186,6 +186,28 @@ class Girls_vote_2012_model extends CI_Model {
 			'intro' => '如今，天生閃著妖異的亮光。如今，天生閃著妖異的亮光。如今，天生閃著妖異的亮光。如今，天生閃著妖異的亮光。如今，天生閃著妖異的亮光。',
 		);
 
+		$girls['哈哈哈'] = array(
+			'video' => 'http://www.youtube.com/watch?v=UL4xVMtXP8k',
+			'photos' => array(
+				'http://i.imgur.com/OzcoP.png',
+				'http://i.imgur.com/hCAX3.png',
+				'http://i.imgur.com/hCAX3.png',
+				'http://i.imgur.com/OzcoP.png',
+				'http://i.imgur.com/OzcoP.png',
+				'http://i.imgur.com/hCAX3.png',
+				'http://i.imgur.com/OzcoP.png',
+			),
+			'text_fields' => array(
+				'nickname'   => '哈哈哈',
+				'server'     => '亞服',
+				'role_level' => '60',
+				'birthday'   => '1995/03/24',
+				'city'       => '台北',
+				'class'      => '武僧',
+			),
+			'intro' => '如今，天生閃著妖異的亮光。如今，天生閃著妖異的亮光。如今，天生閃著妖異的亮光。如今，天生閃著妖異的亮光。如今，天生閃著妖異的亮光。',
+		);
+
 		return $girls;
 	}
 }

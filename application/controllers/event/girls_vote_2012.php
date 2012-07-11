@@ -35,7 +35,7 @@ class Girls_vote_2012 extends CI_Controller {
 		// 女孩們的詳細資料檔案
 		$this->view->data['girls'] = $this->Girls_vote_2012_model->get_girls( array(
 				// 'tid' => array('367', '368', '369', '340') // 關聯投票主題,順序為 氣質系->萌系->性感系->活潑系.
-				'tid' => array( '367', '368' ) // 關聯投票主題,順序為 氣質系->萌系->性感系->活潑系.
+				'tid' => array( '376' ) // 關聯投票主題,順序為 氣質系->萌系->性感系->活潑系.
 			) );
 
 		$this->view->cache( 5 );

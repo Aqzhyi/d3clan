@@ -17,7 +17,7 @@
 	<meta property="og:locale" content="zh_TW" />
 	<meta property="og:url" content="<?php echo $this->view->get_canonical_url() ?>" />
 	<script>
-		// if (location.host === 'dev.d3clan.tw') document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+		if (location.host === 'dev.d3clan.tw') document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
 	</script>
 	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>

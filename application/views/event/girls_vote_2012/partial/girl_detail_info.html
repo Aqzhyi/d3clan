@@ -5,7 +5,7 @@
 		<div class="g_clear"></div>
 		<!-- 照片集 -->
 		<div class="detail_photos">
-			<button class="btn btn_left_click" id="btn_left_click">左</button>
+			<button class="btn btn-large btn-primary btn_left_click" id="btn_left_click">左</button>
 			<!-- 照片一次顯示兩次 -->
 			{foreach $girl['photos'] as $index => $photo_url}
 				{if $photo_url@index is even by 1}
@@ -15,7 +15,7 @@
 				</div>
 				{/if}
 			{/foreach}
-			<button class="btn btn_right_click" id="btn_right_click">右</button>
+			<button class="btn btn-large btn-primary btn_right_click" id="btn_right_click">右</button>
 		</div>
 
 		<!-- 詳細資料 -->
@@ -30,7 +30,7 @@
 					{/foreach}
 
 					<div class="kind_polls"><span>總分</span>
-						<div class="progress progress-info progress-striped active"><div class="bar" style="width: {$girl['total_votes']/(3*2)}%; max-width: 100%;"></div></div>
+						<div class="progress progress-info"><div class="bar" style="width: {$girl['total_votes']/(3*2)}%; max-width: 100%;"></div></div>
 					</div>
 				</div>
 			</div>

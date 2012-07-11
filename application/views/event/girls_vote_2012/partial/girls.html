@@ -1,28 +1,34 @@
 {foreach $data as $index => $girl}
 <div class="girl_intro" id="girl_id_{$index}">
-	<!-- 立馬投票 -->
-	<div class="girl_vote" id="girl_vote">我要投票</div>
-	<!-- 女孩照片(左右) -->
-	<div class="girl_photos">
-		<div class="girl_photo">
-			<img src="{$girl['photos'][0]}" alt="">
+	<div class="girl_div_top_border"></div>
+	<div class="girl_div_inner">
+		<!-- 女孩照片(左右) -->
+		<div class="girl_photos">
+			<div class="girl_photo">
+				<img src="{$girl['photos'][0]}" alt="">
+			</div>
+			<div class="girl_photo">
+				<img src="{$girl['photos'][1]}" alt="">
+			</div>
 		</div>
-		<div class="girl_photo">
-			<img src="{$girl['photos'][1]}" alt="">
+		<!-- 女孩個資(左右各三) // div.girl_personal -->
+		{include file='./girl_personal.html'}
+		
+		<!-- 女孩自介 -->
+		<div class="girl_personal">
+			<div class="girl_intro_detail">{$girl['intro']}</div>
 		</div>
-	</div>
-	<!-- 女孩個資(左右各三) // div.girl_personal -->
-	{include file='./girl_personal.html'}
-	
-	<!-- 女孩自介 -->
-	<div class="girl_personal">
-		<div class="girl_intro_detail">{$girl['intro']}</div>
-	</div>
+		
+		<!-- 得票數 -->
+		<div class="girl_vote_amount">{$girl['total_votes']}</div>
+		<!-- 投票 -->
+		<div class="girl_vote" id="girl_vote"></div>
+		
+		<!-- 詳細資料 // div.girl_detail_info#girl_detail_info -->
+		{include file='./girl_detail_info.html'}
 
-	<!-- 得票數 -->
-	<div class="girl_vote_amount">得票數: {$girl['total_votes']}</div>
-
-	<!-- 詳細資料 // div.girl_detail_info#girl_detail_info -->
-	{include file='./girl_detail_info.html'}
+		<div class="g_clear"></div>
+	</div>
+	<div class="girl_div_bottom_border"></div>
 </div>
 {/foreach}

@@ -4,6 +4,7 @@ html {
 }
 body {
   height: 100%;
+  color: #e4cfbe;
 }
 body,
 html,
@@ -25,7 +26,6 @@ h3,
 h4,
 h5,
 h6 {
-  color: #e4cfbe;
   background-position: 50% 0;
   background-repeat: no-repeat;
   font-family: "\5fae\8edf\6b63\9ed1\9ad4";
