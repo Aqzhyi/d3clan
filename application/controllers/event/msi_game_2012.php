@@ -37,7 +37,7 @@ class Msi_game_2012 extends CI_Controller {
 					'event/msi_game_2012/signup',
 				),
 				'css_files' => array(
-					'event/msi_game_2012/signup'
+					'event/msi_game_2012/signup',
 				),
 			)
 		);

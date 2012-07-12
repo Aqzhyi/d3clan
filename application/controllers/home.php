@@ -15,12 +15,15 @@ class Home extends CI_Controller {
 		$this->load->model( 'Vod_model' );
 		$this->load->model( 'News_model' );
 		$this->load->model( 'Live_channel_model' );
-		$this->view->cache( 10 );
+		$this->load->library( 'storage' );
+		$this->view->cache( 5 );
 
 		// 隨選視訊條目
-		$this->view->data["videos"] = $this->Vod_model->get_vod( array(
-				'limit'     => 4,
-			) );
+		$this->view->data["videos"] = $this->storage->get( array(
+			'cache_name' => 'home---index',
+			'callback'   => array( $this->Vod_model, 'get_vod' ),
+			'params'     => array( 'limit' => 4 ),
+		) );
 
 		// 流水資訊流條目列
 		$this->view->data['news_flows']['comprehensive'] = $this->News_model->get_flow( array( // 綜合
