@@ -1,7 +1,7 @@
 <div class="namespace_hardware">
 	
 	<div class="header">
-		<div class="banner"></div>
+		<?php echo $this->load->view( 'plugin/circle_loop/base', $circle_loop ) ?>
 
 		<div class="news_flow"></div>
 	</div>
