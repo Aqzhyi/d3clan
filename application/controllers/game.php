@@ -34,6 +34,9 @@ class Game extends CI_Controller {
 					"game/$path",
 					"game/$path/$page",
 				),
+				'js_links' => array(
+					'http://tw.battle.net/d3/static/js/tooltips.js',
+				),
 			)
 		);
 	}

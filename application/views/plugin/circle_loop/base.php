@@ -35,8 +35,7 @@
 					<div class="title">
 						<a href="<?php echo $item['link'] ?>"><?php echo $item['title'] ?></a>
 					</div>
-					<!-- 空兩格全形空白 -->
-					<div class="descr">　　<?php echo $item['descr'] ?></div>
+					<div class="descr"><!-- 空兩格全形空白 -->　　<?php echo $item['descr'] ?></div>
 				</div>
 			</div>
 		<?php endforeach ?>

@@ -26,12 +26,12 @@ $config['css_common_links'] = array();
 
 $config['js_common_files'] = array(
 	'plugin/jQuery/jquery.1.7.2.min',
-	// 'plugin/jQuery.dataSelector/dataSelector.2009.5.12',
+	// 'plugin/mustache/mustache.0.5.1-dev',
 	'plugin/Underscore/underscore.1.3.3.min',
 	'plugin/Backbone/backbone.0.9.2.min',
 );
 $config['js_common_links'] = array(
-	'http://tw.battle.net/d3/static/js/tooltips.js',
+	// 'http://tw.battle.net/d3/static/js/tooltips.js',
 );
 
 // 缺省路徑

@@ -59,11 +59,12 @@
 
 		<footer>
 		<div class="footer">
-			執行長: 虎虎(HUhu)、營運經理: 萱萱太太(Marjorie)、實習工程師: 甜豬太太(lzzpnk)、美術設計師: 小伊(Ithil)<br />
+			執行長: 虎虎(HUhu)、營運經理: 萱萱太太(Marjorie)、實習暨助理工程師: 甜豬太太(lzzpnk)、美術設計師: 小伊(Ithil)<br />
 			建議您使用<a href="http://www.google.com/chrome/index.html?hl=zh-TW&amp;brand=CHMA&amp;utm_campaign=zh_hk&amp;utm_source=zh-TW-ha-apac-tw-bk&amp;utm_medium=ha" target="_blank">Google Chrome 20+ 瀏覽器</a>來瀏覽本網站。
 		</div>
 		</footer>
 
+		<div id="metadata-root" data-metadata='<?php echo $loaded_json_metadata ?>'></div>
 	</div>
 	<script src="/e/m/<?php foreach ( $loaded_js_files as $index => $js_file ) {if ( count( $loaded_js_files )-1 > $index ) {echo $this->config->item( 'js_static_path' ) . "$js_file.js,";}else {echo $this->config->item( 'js_static_path' ) . "$js_file.js";}} ?>"></script>
 

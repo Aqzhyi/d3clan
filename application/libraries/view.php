@@ -5,8 +5,14 @@
  * @author aiyswu at gmail
  */
 class View {
-	public $data; // 給內嵌於樣版中的view用的data
-	private $cache_time; // 緩存時間
+	// 給內嵌於樣版中的view用的data
+	public $data = array();
+
+	// 輸出給js的data
+	public $json = array();
+
+	// 緩存時間
+	private $_cache_time = 5;
 
 	/**
 	 * 對 html view 初始化, 配置 controller 對應的 view 檔案以及各別 css/js 檔案.
@@ -17,20 +23,29 @@ class View {
 	public function instance( $setting = array() ) {
 
 		if ( ! empty( $setting['cache'] ) and is_numeric( $setting['cache'] ) ) {
-			$this->cache_time = $setting['cache'];
+			$this->_cache_time = $setting['cache'];
 		}
 		else {
-			$this->cache_time = 0;
+			$this->_cache_time = 0;
 		}
 
 		return array(
-			'loaded_title'     => $this->_set_title( $setting['title'] ), // 配置 view 的標題。
-			'loaded_view'      => $this->_load_view( $setting['view'] ), // 配置內嵌在樣版之中的 diy view。
-			'loaded_js_files'  => $this->_load_js_files( $setting['js_files'] ), // 配置 view 各別的 js 檔案(們)。
-			'loaded_css_files' => $this->_load_css_files( $setting['css_files'] ), // 配置 view 各別的 css 檔案(們)。
-			'linked_js_files'  => $this->_link_js_files( $setting['js_links'] ), // 配置 view 各別的 css 檔案(們)。
-			'linked_css_files' => $this->_link_css_files( $setting['css_links'] ), // 配置 view 各別的 css 檔案(們)。
-			'loaded_og_image'  => ( $setting['og_image'] ) ? $setting['og_image'] : base_url()."static/img/common/layout/160.d3clan_logo.png",
+			// 配置 view 的標題
+			'loaded_title'         => $this->_set_title( $setting['title'] ),
+			// 配置內嵌在樣版之中的 diy view
+			'loaded_view'          => $this->_load_view( $setting['view'] ),
+			// 配置 view 各別的 js 檔案(們)
+			'loaded_js_files'      => $this->_load_js_files( $setting['js_files'] ),
+			// 配置 view 各別的 css 檔案(們)
+			'loaded_css_files'     => $this->_load_css_files( $setting['css_files'] ),
+			// 配置 view 各別的 css 檔案(們)
+			'linked_js_files'      => $this->_link_js_files( $setting['js_links'] ),
+			// 配置 view 各別的 css 檔案(們)
+			'linked_css_files'     => $this->_link_css_files( $setting['css_links'] ),
+			// 輸出給js的data
+			'loaded_json_metadata' => json_encode( $this->json ),
+			// 輸出ogimage
+			'loaded_og_image'      => ( $setting['og_image'] ) ? $setting['og_image'] : base_url()."static/img/common/layout/160.d3clan_logo.png",
 		);
 	}
 
@@ -56,12 +71,12 @@ class View {
 
 		// 緩存
 		if ( ENVIRONMENT === 'production' ) {
-			$CI->output->cache( $this->cache_time );
+			$CI->output->cache( $this->_cache_time );
 		}
 
 		// Profile
 		if ( ENVIRONMENT !== 'production' ) {
-			$CI->output->enable_profiler(TRUE);
+			$CI->output->enable_profiler( TRUE );
 		}
 
 		// 輸出 view 給瀏覽器
@@ -77,10 +92,10 @@ class View {
 	 */
 	public function cache( $cache_time = 0 ) {
 		if ( is_numeric( $cache_time ) ) {
-			$this->cache_time = $cache_time;
+			$this->_cache_time = $cache_time;
 		}
 		else {
-			$this->cache_time = 0;
+			$this->_cache_time = 0;
 		}
 
 		return $this;
