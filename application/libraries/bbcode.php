@@ -20,6 +20,7 @@ class Bbcode {
 			"@\[color=([\w#]*)\](.*?)\[\/color\]@",
 			"@\[hr\]@",
 			"@\[align=([\w]*)\](.*?)\[\/align\]@",
+			"@\[quote\](.*?)\[\/quote\]@",
 		);
 		$replace = array(
 			"<br />",
@@ -34,6 +35,7 @@ class Bbcode {
 			"<span style='color: \\1'>\\2</span>",
 			"<hr />",
 			"<div align='\\1'>\\2</div>",
+			"<blockquote>\\1</blockquote>",
 		);
 
 		$return = preg_replace($search, $replace, $string);

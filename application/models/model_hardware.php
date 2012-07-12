@@ -30,7 +30,6 @@ class Model_hardware extends CI_Model {
 		$this->db->limit( $setting['limit'], $setting['offset'] );
 		$this->db->order_by( 'pid', 'desc' );
 		$sql = $this->db->get();
-
 		$threads = array();
 		// 取得略縮圖,略縮文
 		foreach ( $sql->result_array() as $key => $thread ) {
@@ -45,8 +44,14 @@ class Model_hardware extends CI_Model {
 			// 略縮文
 			foreach ( $html->find( 'img' ) as $index => $dom ) $dom->outertext = '';
 			$html->save();
-			$threads[$key]['first_text_thumb'] = string_cut( strip_tags( $html->find( 'strong,font,span,p,div', 0 )->innertext ), 100 );
 
+			if ( $html->find( 'blockquote', 0 )->innertext ) {
+				$threads[$key]['first_text_thumb'] = string_cut( strip_tags( $html->find( 'blockquote', 0 )->innertext ), 100 );
+			}
+			else {
+				$threads[$key]['first_text_thumb'] = string_cut( strip_tags( $html->find( 'div,p,strong,font,span,p', 0 )->innertext ), 100 );	
+			}
+			
 			// 略縮標題
 			$threads[$key]['subject'] = string_cut( $threads[$key]['subject'], 20 );
 
