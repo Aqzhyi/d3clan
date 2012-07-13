@@ -3,7 +3,7 @@
 
 // home/index
 .namespace_home{
-
+	// 上半塊
 	.top_block{
 		// background-image : url('@{img}M1-1.png');
 		height        : 300px;
@@ -63,6 +63,7 @@
 		}
 	}
 
+	// 下半塊
 	.middle_block{
 		// 流水新聞
 		.news_block{
@@ -139,6 +140,13 @@
 						background-position : 0 2px;
 						line-height         : 30px;
 
+						.thread_class{
+							color: #ffffff - 100;
+						}
+						.thread_subject{
+							color: white;
+						}
+
 						&:hover{
 							background-color: #251111;
 						}
@@ -154,7 +162,7 @@
 			height           : 465px;
 
 			// 內縮
-			.inner{
+			.body{
 				padding-top  : 65px;
 				padding-left : 24px;
 
@@ -167,6 +175,10 @@
 					height                   : 29px;
 					padding-left             : 30px;
 					line-height              : 24px;
+
+					&.online{
+						color: lime;
+					}
 				}
 			}
 		}

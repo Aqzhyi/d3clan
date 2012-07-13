@@ -16,6 +16,7 @@ class Home extends CI_Controller {
 		$this->load->model( 'Model_news' );
 		$this->load->model( 'Model_live_channel' );
 		$this->load->library( 'storage' );
+		$this->load->library( 'template' );
 		$this->view->cache( 5 );
 
 		// 隨選視訊條目

@@ -59,7 +59,7 @@ class Discuzx {
 		 */
 		include APPPATH . "config/error_reporting.php";
 	}
-	
+
 	/**
 	 * 將檔案上傳至 discuz 附件目錄
 	 * 不包含主題發表
@@ -135,7 +135,8 @@ class Discuzx {
 
 	/**
 	 * 簡單產生出 link 到 bbs thread 的 helper
-	 * @param  array $setting 參數陣列
+	 *
+	 * @param array   $setting 參數陣列
 	 *                        target => '_blank', 同 html 屬性
 	 *                        text => '',         包含在 a 元素內的顯示文字
 	 *                        tid => '',          欲連結論壇 thread 的 threadId
@@ -144,17 +145,29 @@ class Discuzx {
 	 */
 	public function alink_to_bbs( $setting ) {
 		// 必須
-		$setting['text']   = ( ! empty( $setting['text'] ) )   ? $setting['text'] : '';
-		$setting['tid']    = ( ! empty( $setting['tid'] ) )    ? $setting['tid'] : '';
+		$setting['text']      = ( ! empty( $setting['text'] ) )   ? $setting['text'] : '';
+		$setting['tid']       = ( ! empty( $setting['tid'] ) )    ? $setting['tid'] : '';
 		// 選填
-		$setting['target'] = ( ! empty( $setting['target'] ) ) ? $setting['target'] : '_blank';
+		$setting['target']    = ( ! empty( $setting['target'] ) ) ? $setting['target'] : '_blank';
+		$setting['class']     = ( ! is_null( $setting['class'] ) ) ? $setting['class'] : NULL;
+		$setting['open_tag']  = ( ! is_null( $setting['open_tag'] ) ) ? $setting['open_tag'] : NULL;
+		$setting['close_tag'] = ( ! is_null( $setting['close_tag'] ) ) ? $setting['close_tag'] : NULL;
 		// 例外
-		$setting['href']   = ( ! empty( $setting['tid'] ) )    ? "/bbs/forum.php?mod=viewthread&tid={$setting['tid']}" : '/bbs';
+		$setting['href']      = ( ! empty( $setting['tid'] ) )    ? "/bbs/forum.php?mod=viewthread&tid={$setting['tid']}" : '/bbs';
 
-		$link_tpl = "<a target='{$setting['target']}' href='{$setting['href']}'>{$setting['text']}</a>";
+		$open_tag  = "<a class='{$setting['class']}' target='{$setting['target']}' href='{$setting['href']}'>";
+		$body      = "{$setting['text']}";
+		$close_tag = "</a>";
 
-		return $link_tpl;
+		if ( $setting['open_tag'] ) {
+			return $open_tag;
+		}
+		elseif ( $setting['close_tag'] ) {
+			return $close_tag;
+		}
+		else {
+			return $open_tag . $body . $close_tag;
+		}
 	}
-
 }
 //

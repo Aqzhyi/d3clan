@@ -30,7 +30,7 @@ class Model_live_channel extends CI_Model {
 		$setting['id']        = ( ! empty( $setting['id'] ) ) ? $setting['id'] : NULL;
 		$setting['limit']     = ( ! empty( $setting['limit'] ) ) ? $setting['limit'] : 15;
 		$setting['offset']    = ( ! empty( $setting['offset'] ) ) ? $setting['offset'] : 0;
-		$setting['order_by']  = ( ! empty( $setting['order_by'] ) ) ? $setting['order_by'] : 'viewer_count desc';
+		$setting['order_by']  = ( ! empty( $setting['order_by'] ) ) ? $setting['order_by'] : 'status asc, viewer_count desc';
 		$setting['game_type'] = ( ! empty( $setting['game_type'] ) ) ? $setting['game_type'] : NULL;
 		$setting['location']  = ( ! empty( $setting['location'] ) ) ? $setting['location'] : NULL;
 		$setting['status']    = ( ! empty( $setting['status'] ) ) ? $setting['status'] : NULL;
