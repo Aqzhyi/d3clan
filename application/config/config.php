@@ -16,6 +16,7 @@
 |
 */
 $config['css_common_files'] = array(
+	// 'plugin/jQuery/jquery-ui-1.8.21.custom',
 	'twitter-bootstrap/bootstrap',
 	'twitter-bootstrap/darkstrap',
 	'common/layout',
@@ -26,6 +27,7 @@ $config['css_common_links'] = array();
 
 $config['js_common_files'] = array(
 	'plugin/jQuery/jquery.1.7.2.min',
+	// 'plugin/jQuery/jquery-ui-1.8.21.no.effects.min',
 	// 'plugin/mustache/mustache.0.5.1-dev',
 	'plugin/Underscore/underscore.1.3.3.min',
 	'plugin/Backbone/backbone.0.9.2.min',
