@@ -101,6 +101,12 @@
   background-position: 0 2px;
   line-height: 30px;
 }
+.namespace_home .middle_block .news_block .news_flows .news_flow .news_row .thread_class {
+  color: #9b9b9b;
+}
+.namespace_home .middle_block .news_block .news_flows .news_flow .news_row .thread_subject {
+  color: white;
+}
 .namespace_home .middle_block .news_block .news_flows .news_flow .news_row:hover {
   background-color: #251111;
 }
@@ -110,15 +116,18 @@
   width: 246px;
   height: 465px;
 }
-.namespace_home .middle_block .live_list_block .inner {
+.namespace_home .middle_block .live_list_block .body {
   padding-top: 65px;
   padding-left: 24px;
 }
-.namespace_home .middle_block .live_list_block .inner .live_row {
+.namespace_home .middle_block .live_list_block .body .live_row {
   display: block;
   background-image: url('../../img/home/index/M3-2.png');
   background-position: 0 0;
   height: 29px;
   padding-left: 30px;
   line-height: 24px;
+}
+.namespace_home .middle_block .live_list_block .body .live_row.online {
+  color: lime;
 }

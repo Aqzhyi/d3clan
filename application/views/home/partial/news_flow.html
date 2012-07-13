@@ -1,0 +1,26 @@
+<div id="news_block" class="news_block" data-explain="流水新聞分類條目">
+	<div class="caption">
+		<img src="static/img/home/index/news.png" alt="">
+	</div>
+	<div class="inner">
+		<div id="sub_menu" class="sub_menu g_clear">
+			{foreach $data['news_cata'] as $cata_name => $cata_val}
+				<span data-kind="{$cata_name}" class="sub_menu_btn">{$cata_val}</span>
+			{/foreach}
+		</div>
+
+		<div id="news_flows" class="news_flows">
+			<div id="loading" class="g_loading"></div>
+			{foreach $data['news_flows'] as $flow_kind => $flow}
+				<div data-kind="{$flow_kind}" class="news_flow">
+					{foreach $flow as $index => $news}
+						{$CI->discuzx->alink_to_bbs(['tid' => $news['tid'],'class'=>'news_row','open_tag' => true])}
+							<span class='thread_class'>[{$news['name']}]</span>
+							<span class='thread_subject'>{$news['subject']}</span>
+						{$CI->discuzx->alink_to_bbs(['close_tag' => true])}
+					{/foreach}
+				</div>
+			{/foreach}
+		</div>
+	</div>
+</div>

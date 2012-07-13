@@ -17,10 +17,10 @@
 	<!-- main中部 -->
 	<div id="middle_block" class="middle_block">
 		<!-- div#news_block.news_block[data-explain=流水新聞分類條目] -->
-		<?php echo $this->load->view( 'home/partial/news_flow', array( 'news_flows' => $news_flows, 'news_cata' => $news_cata ) ) ?>
+		<?php echo $this->template->fetch( 'home/partial/news_flow', array( 'news_flows' => $news_flows, 'news_cata' => $news_cata ) ) ?>
 
 		<!-- div.live_list_block[data-explain=直播頻道條目] -->
-		<?php echo $this->load->view( 'home/partial/live_channels_flow', array( 'live_channels' => $live_channels ) ) ?>
+		<?php echo $this->template->fetch( 'home/partial/live_channels_flow', $live_channels ) ?>
 	</div>
 	<div class="g_clear"></div>
 	
