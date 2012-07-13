@@ -10,12 +10,12 @@ class Vod extends CI_Controller {
 
 		$this->load->library( 'media' );
 		$this->load->library( 'storage' );
-		$this->load->model( 'Vod_model' );
+		$this->load->model( 'Model_vod' );
 
 		// 取論壇精彩vod推薦
 		$_vod_list = $this->storage->get( array(
 			'cache_name' => 'vod---index',
-			'callback'   => array( $this->Vod_model, 'get_vod' ),
+			'callback'   => array( $this->Model_vod, 'get_vod' ),
 			'params'     => array( 'limit' => 16 ),
 		) );
 

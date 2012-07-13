@@ -29,8 +29,8 @@ class admin extends CI_Controller {
 	}
 
 	public function live_channels() {
-		$this->load->model( 'Live_channel_model' );
-		$this->view->data['live_channels'] = $this->Live_channel_model->get_d3_channels( array(
+		$this->load->model( 'Model_live_channel' );
+		$this->view->data['live_channels'] = $this->Model_live_channel->get_d3_channels( array(
 				'limit' => 200,
 				'game_type' => 'DiabloIII',
 			) );
@@ -89,13 +89,13 @@ class admin extends CI_Controller {
 	 */
 	private function _fetch_latest_vod( $setting = array() ) {
 		$this->load->library( 'simple_html_dom' );
-		$this->load->model( 'Vod_model' );
+		$this->load->model( 'Model_vod' );
 		// require_once FCPATH . 'extention/big2gb/big2gb.php';
 		$html = file_get_html( "http://d.163.com/special/new_shipin/" );
 		// $code = new big2gb;
 
 		// 載入已轉過的vod
-		$exisit_vod = $this->Vod_model->get_vod( array(
+		$exisit_vod = $this->Model_vod->get_vod( array(
 				'limit' => 60,
 				'offset' => 0,
 			) );
@@ -187,9 +187,9 @@ class admin extends CI_Controller {
 	 * @return [type]          [description]
 	 */
 	private function _post_live_channel() {
-		$this->load->model( 'Live_channel_model' );
+		$this->load->model( 'Model_live_channel' );
 
-		$this->Live_channel_model->post_channel( $this->input->post() );
+		$this->Model_live_channel->post_channel( $this->input->post() );
 
 		return $this;
 	}
@@ -202,9 +202,9 @@ class admin extends CI_Controller {
 	 */
 	private function _delete_live_channel( $id = 0 ) {
 
-		$this->load->model( 'Live_channel_model' );
+		$this->load->model( 'Model_live_channel' );
 
-		$this->Live_channel_model->delete( array(
+		$this->Model_live_channel->delete( array(
 				'id' => $id,
 			) );
 	}

@@ -5,7 +5,7 @@ class Girls_vote_2012 extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->library( 'template' );
-		$this->load->model( 'event/Girls_vote_2012_model' );
+		$this->load->model( 'event/Model_girls_vote_2012' );
 
 		// 處理女孩們票選種類日期的active屬性與acitve主題
 		$this->view->active_tid = 0;
@@ -34,7 +34,7 @@ class Girls_vote_2012 extends CI_Controller {
 	public function index() {
 
 		// 女孩們的詳細資料檔案
-		$this->view->data['girls'] = $this->Girls_vote_2012_model->get_girls( array(
+		$this->view->data['girls'] = $this->Model_girls_vote_2012->get_girls( array(
 				// 'tid' => array( '367', '368', '369', '340' ) // 關聯投票主題,順序為 氣質系->萌系->性感系->活潑系.
 				// 'tid' => array( '376' ) // 關聯投票主題,順序為 氣質系->萌系->性感系->活潑系.
 			) );
@@ -58,7 +58,7 @@ class Girls_vote_2012 extends CI_Controller {
 
 		$setting = $this->input->post();
 
-		echo $this->Girls_vote_2012_model->vote( array(
+		echo $this->Model_girls_vote_2012->vote( array(
 				'name'       => $setting['name'],
 				'active_tid' => $this->view->active_tid,
 			) );

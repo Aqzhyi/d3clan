@@ -5,7 +5,7 @@ class Msi_game_2012 extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->library( 'template' );
-		// $this->load->model( 'event/Girls_vote_2012_model' );
+		// $this->load->model( 'event/Model_girls_vote_2012' );
 	}
 
 	public function index( $page = 'index' ) {

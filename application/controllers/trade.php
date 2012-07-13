@@ -67,9 +67,9 @@ class Trade extends CI_Controller {
 			}
 
 			$file_info = $this->discuzx->attach_file();
-			$this->load->model( 'Trade_model' );
+			$this->load->model( 'Model_trade' );
 			$item = $this->ocr->parser( $file_info );
-			$this->view->data['tid'] = $this->Trade_model->create_good( $file_info, $item['identifed_item'], array() );
+			$this->view->data['tid'] = $this->Model_trade->create_good( $file_info, $item['identifed_item'], array() );
 			$this->view->data['identifed_item'] = $item['identifed_item'];
 			break;
 

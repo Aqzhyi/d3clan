@@ -1,6 +1,6 @@
 <?php if ( ! defined( 'BASEPATH' ) ) exit( 'No direct script access allowed' );
 
-class Girls_vote_2012_model extends CI_Model {
+class Model_girls_vote_2012 extends CI_Model {
 
 	public function __construct() {
 		parent::__construct();
