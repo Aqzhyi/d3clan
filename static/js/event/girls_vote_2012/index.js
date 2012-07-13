@@ -1,5 +1,23 @@
 jQuery(function() {
 
+	// 活動規則
+	var $the_rule = jQuery('#the_rule');
+
+	$the_rule.on('click', function() {
+		var template = $the_rule.find('#template').html();
+
+		jQuery('<div>')
+		.html(template)
+		.dialog({
+			title: '詳細說明',
+			width: 640,
+			modal: true
+		})
+		.dialog( "widget" )
+		.css('top', $(window).scrollTop()+50 )
+	});
+
+
 	var $girls_area = jQuery('[id^=girl_id_]');
 
 	// 展開詳細資料/投票

@@ -7,7 +7,9 @@
 	<div class="girls_sponsor">贊助商單位</div>
 
 	<div class="girls_vote_progress">
-		<div class="the_rule"></div>
+		<div id="the_rule" class="the_rule">
+			<div class="hide" id="template"><?php echo $this->template->fetch( 'event/girls_vote_2012/partial/rule' ) ?></div>
+		</div>
 	</div>
 
 	<div class="girls_intro">

@@ -42,6 +42,7 @@
   float: right;
   margin-top: 27px;
   margin-right: 50px;
+  cursor: pointer;
 }
 .namespace_event_2012_girls_vote .girls_intro {
   *zoom: 1;
@@ -155,8 +156,8 @@
   display: none;
   position: absolute;
   left: 50%;
-  margin-left: -341.5px;
   width: 683px;
+  margin-left: -341.5px;
   min-height: 50%;
   padding-top: 56px;
 }
