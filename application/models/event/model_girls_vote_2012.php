@@ -49,25 +49,32 @@ class Model_girls_vote_2012 extends CI_Model {
 		$setting['name']       = ( ! is_null( $setting['name'] ) ) ? $setting['name'] : NULL;
 		$setting['active_tid'] = ( ! is_null( $setting['active_tid'] ) ) ? $setting['active_tid'] : NULL;
 		
-		if ( is_null( $setting['name'] ) ) { $this->callback->error_msg( '缺少女孩暱稱' ); }
-		if ( is_null( $setting['active_tid'] ) ) { $this->callback->error_msg( '缺少投票主題 tid 配置' ); }
+		if ( is_null( $setting['name'] ) ) $this->callback->error_msg( '缺少女孩暱稱' );
+		if ( is_null( $setting['active_tid'] ) ) $this->callback->error_msg( '缺少投票主題 tid 配置' );
+		if ( $setting['active_tid'] === 0 ) $this->callback->error_msg( '活動尚未開始!' );
+		if ( $setting['active_tid'] === -1 ) $this->callback->error_msg( '投票已經結束!' );
 
 		if ( $this->callback->is_error() ) return $this->callback->toJSON();
 
 		// 檢查是否投過票
 		$this->db->where( 'tid', $setting['active_tid'] );
-		$this->db->where( 'polloption', $setting['name'] );
 		$sql = $this->db->get( 'd3bbs_forum_polloption' );
 
-		$first_row = $sql->first_row( 'array' );
-		$voterids = explode( '	', $first_row['voterids'] );
+		$result_array = $sql->result_array();
 
-		if ( in_array( $this->user->get_id(), $voterids ) ) {
-			$this->callback->error_msg( '您已投票過了' );
+		foreach ($result_array as $key => $result) {
+			$voterids = explode( '	', $result['voterids'] );
+			if ( in_array( $this->user->get_id(), $voterids ) ) {
+				return $this->callback->error_msg( '您已投票過了' )->toJSON();;
+			}
 		}
 
-		if ( $this->callback->is_error() ) return $this->callback->toJSON();
-		
+		// 獲取 polloptionid
+		$this->db->where( 'tid', $setting['active_tid'] );
+		$this->db->where( 'polloption', $setting['name'] );
+		$sql = $this->db->get( 'd3bbs_forum_polloption' );
+		$first_row = $sql->first_row('array');
+
 		// 真正進行投票儲存
 		$voterids[] = $this->user->get_id();
 		$voterids = implode( '	', $voterids );
