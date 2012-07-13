@@ -26,23 +26,6 @@ class Msi_game_2012 extends CI_Controller {
 			)
 		);
 	}
-
-	public function signup() {
-		$this->view->cache( 5 );
-		$this->view->display(
-			array(
-				'title'    => '微星盃 - 賽事報名',
-				'view'     => 'event/msi_game_2012/signup',
-				'js_files' => array(
-					'event/msi_game_2012/signup',
-				),
-				'css_files' => array(
-					'event/msi_game_2012/signup',
-				),
-			)
-		);
-
-	}
 }
 
 //
