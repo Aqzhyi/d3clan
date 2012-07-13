@@ -18,7 +18,7 @@ class Girls_vote_2012_model extends CI_Model {
 		$setting['tid'] = ( ! empty( $setting['tid'] ) ) ? $setting['tid'] : NULL;
 
 		if ( is_null( $setting['tid'] ) or ! is_array( $setting['tid'] )  ) {
-			show_error( '請以陣列格式輸入四個投票主題的tid.' );
+			return array();
 		}
 
 		$girls = $this->_girls_detail();
