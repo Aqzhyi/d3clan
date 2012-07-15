@@ -134,6 +134,46 @@ class Discuzx {
 	}
 
 	/**
+	 * 產生bbs搜尋框
+	 * 關聯至bbs內建的搜尋引擎，只需一行指令
+	 *
+	 * @param array   $setting [description]
+	 * @return [type]          [description]
+	 */
+	public function search_in_bbs( $setting = array() ) {
+		// how to build?
+		// @link http://d3clan.tw/bbs/search.php?mod=forum&adv=yes&srchtxt=%E8%87%AA%E7%94%B1
+
+		// 必填
+		$setting['srchfid']      = ( ! is_null( $setting['srchfid'] ) ) ? $setting['srchfid'] : NULL; // @[\d]+(?:,?[\d])*@
+		// 選填
+		// $setting['scbar_mod']   = ( ! is_null( $setting['scbar_mod'] ) ) ? $setting['scbar_mod'] : 'curforum'; // @curforum|forum@
+		$setting['srchtype']    = ( ! is_null( $setting['srchtype'] ) ) ? $setting['srchtype'] : 'title';
+		$setting['srhlocality'] = ( ! is_null( $setting['srhlocality'] ) ) ? $setting['srhlocality'] : 'forum::index';
+
+		$output = "";
+		$output .= "<form action='/bbs/search.php?mod=forum' method='POST' target='_blank'>";
+		// $output .= "	<input type='hidden' name='mod' id='scbar_mod' value='{$setting['scbar_mod']}'>";
+		$output .= "	<input type='hidden' name='srchfrom' value='0'>"; // 
+		$output .= "	<input type='hidden' name='formhash' value='f24f90dc'>"; // 
+		$output .= "	<input type='hidden' name='special[]' value=''>"; // 
+		$output .= "	<input type='hidden' name='searchsubmit' value='yes'>"; // 
+		$output .= "	<input type='hidden' name='before' value=''>"; // 
+		$output .= "	<input type='hidden' name='srchfilter' value='all'>"; // 搜尋主題
+		$output .= "	<input type='hidden' name='orderby' value='dateline'>"; // 排序類型
+		$output .= "	<input type='hidden' name='ascdesc' value='desc'>"; // 排序方式
+		foreach ($setting['srchfid'] as $key => $value) {
+			$output .= "	<input type='hidden' name='srchfid[]' value='{$value}'>";
+		}
+		$output .= "	<input type='hidden' name='srchtype' value='{$setting['srchtype']}'>";
+		$output .= "	<input type='hidden' name='srhlocality' value='{$setting['srhlocality']}'>";
+		$output .= "	<input class='search_keyword' type='text' name='srchtxt' value='' placeholder='搜尋標題...' />";
+		$output .= "</form>";
+
+		return $output;
+	}
+
+	/**
 	 * 簡單產生出 link 到 bbs thread 的 helper
 	 *
 	 * @param array   $setting 參數陣列
@@ -152,8 +192,14 @@ class Discuzx {
 		$setting['class']     = ( ! is_null( $setting['class'] ) ) ? $setting['class'] : NULL;
 		$setting['open_tag']  = ( ! is_null( $setting['open_tag'] ) ) ? $setting['open_tag'] : NULL;
 		$setting['close_tag'] = ( ! is_null( $setting['close_tag'] ) ) ? $setting['close_tag'] : NULL;
+		$setting['string_cut'] = ( ! is_null( $setting['string_cut'] ) ) ? $setting['string_cut'] : NULL;
 		// 例外
 		$setting['href']      = ( ! empty( $setting['tid'] ) )    ? "/bbs/forum.php?mod=viewthread&tid={$setting['tid']}" : '/bbs';
+
+		if ( $setting['string_cut'] ) {
+			$this->CI->load->helper( 'string' );
+			$setting['text'] = string_cut( $setting['text'], $setting['string_cut'] );
+		}
 
 		$open_tag  = "<a class='{$setting['class']}' target='{$setting['target']}' href='{$setting['href']}'>";
 		$body      = "{$setting['text']}";

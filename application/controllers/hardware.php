@@ -11,7 +11,24 @@ class Hardware extends CI_Controller {
 	// 週邊設備
 	public function index() {
 
-		$this->view->data['circle_loop']['circle_loop_data'] = array(
+		$this->load->model( 'Model_news' );
+
+		$this->view->data['news_class'] = array(
+				0 => $this->Model_news->get_flow( array(
+						'fid' => array( 44 ), // 硬體評測
+					) ),
+				1 =>$this->Model_news->get_flow( array(
+						'fid' => array( 45 ), // 新聞快遞/週邊設備新聞
+					) ),
+				2 =>$this->Model_news->get_flow( array(
+						'fid' => array( 44, 45, 46, 47 ), // 最新文章
+					) ),
+				3 =>$this->Model_news->get_flow( array(
+						'fid' => array( 46 ), // 硬體綜合
+					) ),
+			);
+
+		$this->view->data['circle_news'] = array(
 			'0' => array(
 				'img' => 'http://i1258.photobucket.com/albums/ii528/joe200362/IMG_0625.jpg',
 				'link' => 'http://d3clan.tw/bbs/forum.php?mod=viewthread&tid=376&extra=page%3D1',
@@ -45,11 +62,11 @@ class Hardware extends CI_Controller {
 				'title'     => '週邊設備',
 				'view'      => 'hardware/layout',
 				'js_files'  => array(
-					'plugin/circle_loop/base',
+					// 'plugin/circle_loop/base',
 					'hardware/layout',
 				),
 				'css_files' => array(
-					'plugin/circle_loop/base',
+					// 'plugin/circle_loop/base',
 					'hardware/layout',
 				),
 			)

@@ -1,0 +1,25 @@
+<div class="news_class" id="bb-news_class">
+	<div class="header">
+		<span id="menu_btn" class="item current">硬體評測</span>
+		<span id="menu_btn" class="item">新聞快遞</span>
+		<span id="menu_btn" class="item">最新文章</span>
+		<span id="menu_btn" class="item">硬體綜合</span>
+	</div>
+	<div class="body">
+		{foreach $data as $index => $list}
+			{if $list@first}{$class = 'current'}{else}{$class = ''}{/if}
+			<div id="list_block" class="list {$class}">
+				{foreach $list as $id => $news}
+					<div class="link">
+						[{$news['name']}]
+						{$CI->discuzx->alink_to_bbs([
+							'text'       => $news['subject'],
+							'tid'        => $news['tid']
+						])}
+					</div>
+				{/foreach}
+			</div>
+		{/foreach}
+	</div>
+	<div class="footer"></div>
+</div>

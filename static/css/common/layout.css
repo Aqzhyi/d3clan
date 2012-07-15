@@ -1,233 +1,40 @@
-body,
-html {
-  background-color: black;
-}
-body {
-  height: 100%;
-  color: #e4cfbe;
-}
-body,
-html,
-div,
-span,
-input,
-table,
-td,
-th,
-textarea,
-button,
-a,
-dt,
-dd,
-dl,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  background-position: 50% 0;
-  background-repeat: no-repeat;
-  font-family: "\5fae\8edf\6b63\9ed1\9ad4";
-}
-body {
-  background-image: url('/static/img/common/layout/Big_bg2.jpg');
-  background-repeat: repeat;
-  background-attachment: fixed;
-}
-table {
-  width: 100%;
-}
-table th {
-  font-weight: bold;
-  font-size: 16px;
-  color: #c1ac9b;
-}
-a {
-  color: #e3b48e;
-}
-a:hover {
-  color: #ffffff;
-}
-p {
-  line-height: 175%;
-}
-::selection {
-  background-color: #8B480B;
-}
-.wrapper {
-  box-shadow: 0 0 25px 2px black;
-  width: 960px;
-  margin: 0 auto;
-  background-color: black;
-}
-.wrapper .diy {
-  padding-bottom: 20px;
-  background-image: url("/static/img/common/layout/fabric-red.jpg");
-  background-repeat: repeat;
-  background-attachment: fixed;
-}
-.wrapper > header > .header {
-  background-image: url("/static/img/common/layout/header.jpg");
-  background-repeat: no-repeat;
-  height: 387px;
-}
-.wrapper > header > .header .game_logo {
-  width: 300px;
-  height: 200px;
-  position: relative;
-  top: 0;
-  left: 55px;
-  display: inline-block;
-}
-.wrapper > header > .header .game_logo:hover {
-  border: 1px solid #B99D6E;
-  width: 298px;
-  height: 198px;
-}
-.wrapper > header > .header .site_logo {
-  width: 270px;
-  height: 100px;
-  position: relative;
-  top: 88px;
-  left: 0;
-  display: inline-block;
-  float: left;
-}
-.wrapper > header > .header .site_logo:hover {
-  border: 1px solid #B99D6E;
-  width: 268px;
-  height: 98px;
-}
-.wrapper > header > .header .commercial_ad {
-  padding-top: 11px;
-  padding-left: 59px -36;
-  padding-bottom: 9px;
-}
-.wrapper > header > .header .commercial_ad .g_fb {
-  float: left;
-  margin: 0 11px;
-  margin-top: 11px;
-  margin-right: 12px;
-}
-.wrapper > header > .header .commercial_ad .single {
-  display: inline-block;
-  width: 270px;
-  height: 60px;
-  margin-right: 8px;
-  float: left;
-  background-color: black;
-}
-.wrapper > header > .header .commercial_ad .single:hover {
-  background-color: pink;
-}
-.wrapper > header > .header .commercial_ad .single.offset {
-  margin-left: -1px;
-  margin-right: 9px;
-}
-.wrapper > header > .header .commercial_ad .sc2clan {
-  float: left;
-  display: inline-block;
-  height: 60px;
-  width: 64px;
-}
-.wrapper > header > .header .navigation {
-  padding-top: 23px;
-  padding-left: 15px;
-}
-.wrapper > header > .header .navigation .single {
-  background-image: url("/static/img/common/layout/toolbar_bg.png");
-  background-position: 1px -2px;
-  background-repeat: no-repeat;
-  display: inline-block;
-  width: 93px;
-  height: 67px;
-  float: left;
-  color: #ffb400;
-  text-decoration: none;
-}
-.wrapper > header > .header .navigation .single .nav_label {
-  text-align: center;
-  display: block;
-  font-size: 16px;
-}
-.wrapper > header > .header .navigation .single .icon {
-  background-image: url('/static/img/common/icon/toolbar_icon.png');
-  display: block;
-  width: 47px;
-  height: 35px;
-  margin: 0 auto;
-  margin-top: 10px;
-}
-.wrapper > header > .header .navigation .single .home {
-  background-position: -3px -10px;
-}
-.wrapper > header > .header .navigation .single .game {
-  background-position: -46px -10px;
-}
-.wrapper > header > .header .navigation .single .hardware {
-  background-position: -89px -10px;
-}
-.wrapper > header > .header .navigation .single .lives {
-  background-position: -132px -10px;
-}
-.wrapper > header > .header .navigation .single .event-2012-msi {
-  background-position: -175px -10px;
-}
-.wrapper > header > .header .navigation .single .event-2012-girls-vote {
-  background-position: -213px -10px;
-}
-.wrapper > header > .header .navigation .single .together {
-  background-position: -254px -10px;
-}
-.wrapper > header > .header .navigation .single .trade {
-  background-position: -292px -10px;
-}
-.wrapper > header > .header .navigation .single .about {
-  background-position: -336px -10px;
-}
-.wrapper > header > .header .navigation .single .bbs {
-  background-position: -379px -10px;
-}
-.wrapper > header > .header .navigation .single:hover {
-  background-position: 1px -74px;
-}
-.wrapper > header > .header .navigation .single:hover .nav_label {
-  color: #ffffff;
-}
-.wrapper > header > .header .navigation .single:hover .home {
-  background-position: -3px -58px;
-}
-.wrapper > header > .header .navigation .single:hover .game {
-  background-position: -46px -58px;
-}
-.wrapper > header > .header .navigation .single:hover .hardware {
-  background-position: -89px -58px;
-}
-.wrapper > header > .header .navigation .single:hover .lives {
-  background-position: -132px -58px;
-}
-.wrapper > header > .header .navigation .single:hover .event-2012-msi {
-  background-position: -175px -58px;
-}
-.wrapper > header > .header .navigation .single:hover .event-2012-girls-vote {
-  background-position: -213px -58px;
-}
-.wrapper > header > .header .navigation .single:hover .together {
-  background-position: -254px -58px;
-}
-.wrapper > header > .header .navigation .single:hover .trade {
-  background-position: -292px -58px;
-}
-.wrapper > header > .header .navigation .single:hover .about {
-  background-position: -336px -58px;
-}
-.wrapper > header > .header .navigation .single:hover .bbs {
-  background-position: -379px -58px;
-}
-.wrapper > header > .header .navigation .single.current {
-  background-position: 1px -141px;
-}
-.wrapper > footer > .footer {
-  text-align: center;
-}
+body,html{background-color:black;}
+body{height:100%;color:#e4cfbe;}
+body,html,div,span,input,table,td,th,textarea,button,a,dt,dd,dl,h1,h2,h3,h4,h5,h6{background-position:50% 0;background-repeat:no-repeat;font-family:"\5fae\8edf\6b63\9ed1\9ad4";}
+body{background-image:url('/static/img/common/layout/Big_bg2.jpg');background-repeat:repeat;background-attachment:fixed;}
+table{width:100%;}table th{font-weight:bold;font-size:16px;color:#c1ac9b;}
+a{color:#e3b48e;}a:hover{color:#ffffff;}
+p{line-height:175%;}
+::selection{background-color:#8B480B;}
+.wrapper{box-shadow:0 0 25px 2px black;width:960px;margin:0 auto;background-color:black;}.wrapper .diy{padding-bottom:20px;background-image:url("/static/img/common/layout/fabric-red.jpg");background-repeat:repeat;background-attachment:fixed;}
+.wrapper>header>.header{background-image:url("/static/img/common/layout/header.jpg");background-repeat:no-repeat;height:387px;}.wrapper>header>.header .game_logo{width:300px;height:200px;position:relative;top:0;left:55px;display:inline-block;}.wrapper>header>.header .game_logo:hover{border:1px solid #B99D6E;width:298px;height:198px;}
+.wrapper>header>.header .site_logo{width:270px;height:100px;position:relative;top:88px;left:0;display:inline-block;float:left;}.wrapper>header>.header .site_logo:hover{border:1px solid #B99D6E;width:268px;height:98px;}
+.wrapper>header>.header .commercial_ad{padding-top:11px;padding-left:59px -36;padding-bottom:9px;}.wrapper>header>.header .commercial_ad .g_fb{float:left;margin:0 11px;margin-top:11px;margin-right:12px;}
+.wrapper>header>.header .commercial_ad .single{display:inline-block;width:270px;height:60px;margin-right:8px;float:left;background-color:black;}.wrapper>header>.header .commercial_ad .single:hover{background-color:pink;}
+.wrapper>header>.header .commercial_ad .single.offset{margin-left:-1px;margin-right:9px;}
+.wrapper>header>.header .commercial_ad .sc2clan{float:left;display:inline-block;height:60px;width:64px;}
+.wrapper>header>.header .navigation{padding-top:23px;padding-left:15px;}.wrapper>header>.header .navigation .single{background-image:url("/static/img/common/layout/toolbar_bg.png");background-position:1px -2px;background-repeat:no-repeat;display:inline-block;width:93px;height:67px;float:left;color:#ffb400;text-decoration:none;}.wrapper>header>.header .navigation .single .nav_label{text-align:center;display:block;font-size:16px;}
+.wrapper>header>.header .navigation .single .icon{background-image:url('/static/img/common/icon/toolbar_icon.png');display:block;width:47px;height:35px;margin:0 auto;margin-top:10px;}
+.wrapper>header>.header .navigation .single .home{background-position:-3px -10px;}
+.wrapper>header>.header .navigation .single .game{background-position:-46px -10px;}
+.wrapper>header>.header .navigation .single .hardware{background-position:-89px -10px;}
+.wrapper>header>.header .navigation .single .lives{background-position:-132px -10px;}
+.wrapper>header>.header .navigation .single .event-2012-msi{background-position:-175px -10px;}
+.wrapper>header>.header .navigation .single .event-2012-girls-vote{background-position:-213px -10px;}
+.wrapper>header>.header .navigation .single .together{background-position:-254px -10px;}
+.wrapper>header>.header .navigation .single .trade{background-position:-292px -10px;}
+.wrapper>header>.header .navigation .single .about{background-position:-336px -10px;}
+.wrapper>header>.header .navigation .single .bbs{background-position:-379px -10px;}
+.wrapper>header>.header .navigation .single:hover{background-position:1px -74px;}.wrapper>header>.header .navigation .single:hover .nav_label{color:#ffffff;}
+.wrapper>header>.header .navigation .single:hover .home{background-position:-3px -58px;}
+.wrapper>header>.header .navigation .single:hover .game{background-position:-46px -58px;}
+.wrapper>header>.header .navigation .single:hover .hardware{background-position:-89px -58px;}
+.wrapper>header>.header .navigation .single:hover .lives{background-position:-132px -58px;}
+.wrapper>header>.header .navigation .single:hover .event-2012-msi{background-position:-175px -58px;}
+.wrapper>header>.header .navigation .single:hover .event-2012-girls-vote{background-position:-213px -58px;}
+.wrapper>header>.header .navigation .single:hover .together{background-position:-254px -58px;}
+.wrapper>header>.header .navigation .single:hover .trade{background-position:-292px -58px;}
+.wrapper>header>.header .navigation .single:hover .about{background-position:-336px -58px;}
+.wrapper>header>.header .navigation .single:hover .bbs{background-position:-379px -58px;}
+.wrapper>header>.header .navigation .single.current{background-position:1px -141px;}
+.wrapper>footer>.footer{text-align:center;}
