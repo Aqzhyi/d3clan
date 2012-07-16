@@ -2,9 +2,17 @@
 
 	<div class="girls_topin"></div>
 
-	<div class="girls_banner">女孩廣告橫幅</div>
+	<div class="girls_banner" id="girls_banner">
+		<div id="item" class="item current"><img src="/static/img/event/girls_vote_2012/GFlVu.jpg" alt=""></div>
+		<div id="item" class="item"><?php echo $this->media->embed_flash( array(
+			'height' => '400',
+			'src' => '\static\file\common\ad\960x400-DGirl.swf',
+		) ) ?></div>
+	</div>
 
-	<div class="girls_sponsor">贊助商單位</div>
+	<div class="girls_sponsor">
+		<img src="/static/img/event/girls_vote_2012/girls_sponsor.jpg" alt="">
+	</div>
 
 	<div class="girls_vote_progress">
 		<div id="the_rule" class="the_rule">

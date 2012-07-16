@@ -1,8 +1,28 @@
 <?php if ( ! defined( 'BASEPATH' ) ) exit( 'No direct script access allowed' );
 
+/**
+ * 
+ */
 class Media {
 	function __construct() {
 		// code...
+	}
+
+	/**
+	 * [embed_flash description]
+	 * @param  array  $setting [description]
+	 * @return [type]          [description]
+	 */
+	public function embed_flash( $setting = array() ) {
+
+		$setting['width']  = ( ! is_null( $setting['width'] ) ) ? $setting['width'] : '100%';
+		$setting['height'] = ( ! is_null( $setting['height'] ) ) ? $setting['height'] : '100%';
+		$setting['class']  = ( ! is_null( $setting['class'] ) ) ? $setting['class'] : '';
+		$setting['src']    = ( ! is_null( $setting['src'] ) ) ? $setting['src'] : NULL;
+
+		$output = "<embed width='{$setting['width']}' height='{$setting['height']}' class='{$setting['class']}' type='application/x-shockwave-flash' src='{$setting['src']}' allowscriptaccess='always' allowfullscreen='true' wmode='transparent'>";
+	
+		return $output;
 	}
 
 	/**

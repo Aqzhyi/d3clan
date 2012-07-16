@@ -11,10 +11,11 @@
 			<div id="list_block" class="list {$class}">
 				{foreach $list as $id => $news}
 					<div class="link">
-						[{$news['name']}]
+						<span class="thread_class">[{$news['name']}]</span>
 						{$CI->discuzx->alink_to_bbs([
 							'text'       => $news['subject'],
-							'tid'        => $news['tid']
+							'tid'        => $news['tid'],
+							'class'      => 'thread_subject'
 						])}
 					</div>
 				{/foreach}

@@ -8,7 +8,13 @@ class Together extends CI_Controller {
 
 	// 週邊設備
 	public function index() {
-		// $this->view->data["some_key"] = "some_data";
+		$this->load->model( 'Model_news' );
+		$this->view->data['news_flow'] = $this->Model_news->get_flow( array(
+				'fid'            => array( 39 ),
+				'limit'          => 90,
+				'exclude_typeid' => TRUE,
+			) );
+
 		$this->view->cache( 5 );
 		$this->view->display(
 			array(

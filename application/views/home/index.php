@@ -9,7 +9,7 @@
 			<div class="inner">
 				<?php echo $this->load->view( 'vod/partial/vod_list', array( 'layout' => 'TB', 'videos' => $videos ) ) ?>
 				<div class="g_clear"></div>
-				<a class="more_link" href="/vod">點這裡看更多VOD...</a>
+				<a class="more_link" href="/vod">更多..</a>
 			</div>
 		</div>
 	</div>

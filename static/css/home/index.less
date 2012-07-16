@@ -5,57 +5,68 @@
 .namespace_home{
 	// 上半塊
 	.top_block{
-		// background-image : url('@{img}M1-1.png');
-		height        : 300px;
+		background-image : url('@{img}M1_BG.png');
+		height        : 321px;
 		margin-bottom : 10px;
 		
 		// 圖片輪播
 		.circle_loop{
 			width: 700px;
 			float: left;
+			padding-top: 16px;
+			padding-left: 12px;
 		}
 		// 上右方小方塊
 		.recommend_videos{
-			// background-color : pink;
-			width            : 258px;
-			height           : 300px;
-			float            : left;
-			// margin-top       : 16px;
-			// margin-left      : 8px;
+			width  : 240px;
+			height : 300px;
+			float  : left;
 			
 			.inner{
-				padding-top: 2px;
+				padding-top  : 32px;
+				padding-left : 7px;
 
 				.single{
-					width  : 122px;
-					height : 120px;
+					width  : 108px;
+					height : 125px;
 					float  : left;
-					margin : 10px 3px;
+					// margin : 10px 3px;
 
 					.thumb_wrapper{
+						text-align     : center;
 						vertical-align : top;
 						height         : 80px;
 						
+						.g_vod_play_icon_hover{
+							background-position: -92px -150px;
+							border: 1px solid #854F09;
+						}
+
 						.thumb{
-							// background-image : url(""); // Waiting php given;
 							background-position : 50%;
 							display             : inline-block;
-							width               : 100%;
+							width               : 95px;
 							height              : 75px;
 							border-radius       : 5px;
 						}
 					}
 					.subject_thumb{
-						display: inline-block;
-						vertical-align: top;
+						display        : inline-block;
+						vertical-align : top;
+						padding-left   : 9px;
+
+						a{
+							overflow : hidden;
+							height   : 35px;
+							display  : inline-block;
+						}
 					}
 				}
-				
 
 				.more_link{
 					display       : block;
 					text-align    : right;
-					font-size     : 18px;
+					font-size     : 14px;
 					// padding-top   : 10px;
 					padding-right : 20px;
 				}
@@ -67,10 +78,7 @@
 	.middle_block{
 		// 流水新聞
 		.news_block{
-			// background-image : url('@{layout}hr.png');
-			// height           : 505px;
-			// width            : 675px;
-			float            : left;
+			float: left;
 
 			.caption{
 				background-image    : url('@{layout}hr.png');
@@ -156,14 +164,19 @@
 		}
 		// 直播列表
 		.live_list_block{
-			background-image : url('@{img}M3-1_01.png');
+			background-image : url("@{img}M3-1_01.png");
 			float            : left;
 			width            : 246px;
 			height           : 465px;
 
-			// 內縮
+			.header{
+				background-image: url("@{img}M3-1_02.png");
+				height: 18px;
+				margin-top: 30px;
+			}
+
 			.body{
-				padding-top  : 65px;
+				padding-top  : 17px;
 				padding-left : 24px;
 
 				// 列
@@ -178,6 +191,10 @@
 
 					&.online{
 						color: lime;
+
+						.online_viewer{
+							color: red;
+						}
 					}
 				}
 			}

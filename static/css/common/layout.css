@@ -10,7 +10,7 @@ p{line-height:175%;}
 .wrapper>header>.header{background-image:url("/static/img/common/layout/header.jpg");background-repeat:no-repeat;height:387px;}.wrapper>header>.header .game_logo{width:300px;height:200px;position:relative;top:0;left:55px;display:inline-block;}.wrapper>header>.header .game_logo:hover{border:1px solid #B99D6E;width:298px;height:198px;}
 .wrapper>header>.header .site_logo{width:270px;height:100px;position:relative;top:88px;left:0;display:inline-block;float:left;}.wrapper>header>.header .site_logo:hover{border:1px solid #B99D6E;width:268px;height:98px;}
 .wrapper>header>.header .commercial_ad{padding-top:11px;padding-left:59px -36;padding-bottom:9px;}.wrapper>header>.header .commercial_ad .g_fb{float:left;margin:0 11px;margin-top:11px;margin-right:12px;}
-.wrapper>header>.header .commercial_ad .single{display:inline-block;width:270px;height:60px;margin-right:8px;float:left;background-color:black;}.wrapper>header>.header .commercial_ad .single:hover{background-color:pink;}
+.wrapper>header>.header .commercial_ad .single{display:inline-block;width:270px;height:60px;margin-right:8px;float:left;background-color:black;}
 .wrapper>header>.header .commercial_ad .single.offset{margin-left:-1px;margin-right:9px;}
 .wrapper>header>.header .commercial_ad .sc2clan{float:left;display:inline-block;height:60px;width:64px;}
 .wrapper>header>.header .navigation{padding-top:23px;padding-left:15px;}.wrapper>header>.header .navigation .single{background-image:url("/static/img/common/layout/toolbar_bg.png");background-position:1px -2px;background-repeat:no-repeat;display:inline-block;width:93px;height:67px;float:left;color:#ffb400;text-decoration:none;}.wrapper>header>.header .navigation .single .nav_label{text-align:center;display:block;font-size:16px;}

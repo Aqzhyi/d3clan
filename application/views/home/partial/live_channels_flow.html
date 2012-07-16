@@ -1,4 +1,5 @@
 <div class="live_list_block" data-explain="直播頻道條目">
+	<div class="header"></div>
 	<div class="body">
 		{foreach $data as $index => $channel}
 			{if $channel['status'] == '上線'}
@@ -6,7 +7,7 @@
 			{else}
 				{$is_online = ''}
 			{/if}
-			<a class="live_row {$is_online}" href="/lives/channel/{$channel['sn']}">{$channel['live_name']} ({$channel['viewer_count']})</a>
+			<a class="live_row {$is_online}" href="/lives/channel/{$channel['sn']}">{$channel['live_name']} <span class="online_viewer">({$channel['viewer_count']})</span></a>
 		{/foreach}
 	</div>
 </div>

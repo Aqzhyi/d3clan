@@ -27,6 +27,7 @@ class Model_hardware extends CI_Model {
 		if ( ! is_null( $setting['typeid'] ) ) $this->db->where_in( 't.typeid', $setting['typeid'] );
 		if ( ! is_null( $setting['not_typeid'] ) ) $this->db->where_not_in( 't.typeid', $setting['not_typeid'] );
 		$this->db->where_in( 't.fid', array( 44, 45 ) );
+		$this->db->where( 't.displayorder !=', '-1' );
 		$this->db->limit( $setting['limit'], $setting['offset'] );
 		$this->db->order_by( 'pid', 'desc' );
 		$sql = $this->db->get();
@@ -46,14 +47,14 @@ class Model_hardware extends CI_Model {
 			$html->save();
 
 			if ( $html->find( 'blockquote', 0 )->innertext ) {
-				$threads[$key]['first_text_thumb'] = string_cut( strip_tags( $html->find( 'blockquote', 0 )->innertext ), 100 );
+				$threads[$key]['first_text_thumb'] = strip_tags( $html->find( 'blockquote', 0 )->plaintext );
 			}
 			else {
-				$threads[$key]['first_text_thumb'] = string_cut( strip_tags( $html->find( 'div,p,strong,font,span,p', 0 )->innertext ), 100 );	
+				$threads[$key]['first_text_thumb'] = strip_tags( $html->plaintext );
 			}
 			
 			// 略縮標題
-			$threads[$key]['subject'] = string_cut( $threads[$key]['subject'], 20 );
+			// $threads[$key]['subject'] = string_cut( $threads[$key]['subject'], 20 );
 
 			// 垃圾回收
 			$html->clear();

@@ -14,13 +14,15 @@ class Bbcode {
 			"@\[i\](.*?)\[\/i\]@",
 			"@\[u\](.*?)\[\/u\]@",
 			"@\[img\](.*?)\[\/img\]@",
-			"@\[img=(\d*),0\](.*?)\[\/img\]@",
+			"@\[img=(\d*),(\d*)\](.*?)\[\/img\]@",
 			"@\[url\=(.*?)\](.*?)\[\/url\]@",
 			"@\[code\](.*?)\[\/code\]@",
 			"@\[color=([\w#]*)\](.*?)\[\/color\]@",
 			"@\[hr\]@",
 			"@\[align=([\w]*)\](.*?)\[\/align\]@",
 			"@\[quote\](.*?)\[\/quote\]@",
+			"@\[font=([\w]*)\](.*?)\[\/font\]@",
+			"@\[i=([\w]*)\](.*?)\[\/i\]@",
 		);
 		$replace = array(
 			"<br />",
@@ -29,13 +31,15 @@ class Bbcode {
 			"<i>\\1</i>",
 			"<u>\\1</u>",
 			"<img src='\\1' alt='>",
-			"<img width='\\1' src='\\2' alt=''>",
+			"<img width='\\1' height='\\2' src='\\3' alt=''>",
 			"<a href='\\1'>\\2</a>",
 			"<code>\\1</code>",
 			"<span style='color: \\1'>\\2</span>",
 			"<hr />",
 			"<div align='\\1'>\\2</div>",
 			"<blockquote>\\1</blockquote>",
+			"\\2",
+			"\\2",
 		);
 
 		$return = preg_replace($search, $replace, $string);

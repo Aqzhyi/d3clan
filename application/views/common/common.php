@@ -26,15 +26,36 @@
 
 		<header>
 		<div class="header" id="header">
+			<!-- 網站LOGO -->
 			<a href="/" class="site_logo"></a>
+			<!-- 遊戲LOGO -->
 			<a href="/" class="game_logo g_clear"></a>
+
+			<!-- 商業廣告 -->
 			<div class="commercial_ad g_clear">
 				<a href="http://www.facebook.com/d3clan.tw" class="g_fb" target="_blank"></a>
-				<a href="/" class="single"></a>
-				<a href="/" class="single offset"></a>
-				<a href="/" class="single"></a>
+				<?php echo $this->media->embed_flash( array(
+					'width' => '270',
+					'height' => '60',
+					'src' => '\static\file\common\ad\270x60-ASROCK.swf',
+					'class' => 'single',
+				) ) ?>
+				<?php echo $this->media->embed_flash( array(
+					'width' => '270',
+					'height' => '60',
+					'src' => '\static\file\common\ad\270x60-kinston.swf',
+					'class' => 'single offset',
+				) ) ?>
+				<?php echo $this->media->embed_flash( array(
+					'width' => '270',
+					'height' => '60',
+					'src' => '\static\file\common\ad\270x60-msi.swf',
+					'class' => 'single',
+				) ) ?>
 				<a href="http://sc2clan.tw/" class="sc2clan" target="_blank"></a>
 			</div>
+
+			<!-- 網站導航 -->
 			<div class="navigation">
 				<nav>
 				<a class="single" href="/"><i class="icon home"></i><span class="nav_label">首頁</span></a>
@@ -53,14 +74,16 @@
 		</div>
 		</header>
 
+		<!-- 動態網頁 -->
 		<div role="main" class="diy">
 			<?php echo $loaded_view ?>
 		</div>
 
+		<!-- 頁腳 -->
 		<footer>
 		<div class="footer">
-			執行長: 虎虎(HUhu)、營運經理: 萱萱太太(Marjorie)、實習暨助理工程師: 甜豬太太(lzzpnk)、美術設計師: 小伊(Ithil)<br />
-			建議您使用<a href="http://www.google.com/chrome/index.html?hl=zh-TW&amp;brand=CHMA&amp;utm_campaign=zh_hk&amp;utm_source=zh-TW-ha-apac-tw-bk&amp;utm_medium=ha" target="_blank">Google Chrome 20+ 瀏覽器</a>來瀏覽本網站。
+			執行長: 虎虎(HUhu)、營運經理: 萱萱太太(Cynthia)、實習暨助理工程師: 甜豬太太(lzzpnk)、美術設計師: 小伊(Ithil)<br />
+			我們極度建議您使用<a href="http://www.google.com/chrome/index.html?hl=zh-TW&amp;brand=CHMA&amp;utm_campaign=zh_hk&amp;utm_source=zh-TW-ha-apac-tw-bk&amp;utm_medium=ha" target="_blank">Google Chrome 20+ 瀏覽器</a>來瀏覽本網站。
 		</div>
 		</footer>
 

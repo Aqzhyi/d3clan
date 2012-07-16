@@ -7,6 +7,15 @@ class Trade extends CI_Controller {
 	}
 
 	public function index() {
+
+		$this->load->model( 'Model_news' );
+
+		$this->view->data['news_flow'] = $this->Model_news->get_flow( array(
+				'fid'            => array( 40 ),
+				'limit'          => 90,
+				'exclude_typeid' => TRUE,
+			) );
+
 		$this->view->cache( 5 );
 		$this->view->display(
 			array(

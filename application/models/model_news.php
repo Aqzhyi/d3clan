@@ -8,18 +8,25 @@ class Model_news extends CI_Model {
 
 	/**
 	 * 首頁輪播
-	 * @param  array  $setting [description]
+	 *
+	 * @param array   $setting [description]
 	 * @return [type]          [description]
 	 */
 	public function get_circle_loop( $setting = array() ) {
-		
+
 		return array(
 			'circle_loop_data' => array(
 				array(
-					'img'   => '/static/img/unsorted/CTipI.png',
-					'title' => '暗盟《暗黑破壞神III》電競情報站 開張!!',
-					'descr' => '由星盟電競團隊全力開發，全台唯一以《暗黑破壞神III》為主題之專屬網站，提供各類暗黑破壞神的全球新訊、直播頻道、交易平台、約戰中心，與電競賽事等專業服務。',
-					'link'  => '',
+					'img'   => '/bbs/data/attachment/forum/201207/17/023955ihu52yhh6ahthaih.jpg',
+					'title' => '全台唯一＜暗黑破壞神III＞專題網站『暗盟』, 正式開始營運',
+					'descr' => '＜暗黑破壞神III＞的來臨，讓全球玩家為之瘋狂，全球銷量首週更超過630萬套，刷新史上所有電腦遊戲銷量紀錄。以星海爭霸2起家的知名網站星盟電競情報網，為了提供台灣玩家有更多、更專業的遊戲情報，特別以原班人馬，創立了『暗盟電競情報網』，並預計於 7月17日正式開台運作，本網站亦為目前台灣唯一以暗黑破壞神為主題的專門網站，相信一定能因此造福更多喜愛遊戲的玩家。',
+					'link'  => '/bbs/forum.php?mod=viewthread&tid=429',
+				),
+				array(
+					'img'   => '/static/img/event/girls_vote_2012/GFlVu.jpg',
+					'title' => '台灣暗盟電競情報網「暗黑美少女D-Girl年度選拔賽賽」開跑',
+					'descr' => '【2012年7月17日台北訊】由台灣暗盟電競情報網舉辦，台灣暴雪協辦，Intel主要贊助，知名品牌Kingston、ASRock、ROCCAT、曜越科技、微星電競筆電、BenQ聯合贊助的「暗黑美少女D-Girl年度選拔賽聯賽」，即將於7月底正式開跑！本次競賽最終總獎金高達新台幣十萬元，熱絡的活動勢必引爆整個暑假！',
+					'link'  => '/bbs/forum.php?mod=viewthread&tid=430',
 				),
 			),
 		);
@@ -33,18 +40,21 @@ class Model_news extends CI_Model {
 	 */
 	public function get_flow( $setting = array() ) {
 
-		$setting['fid']    = ( ! is_null( $setting['fid'] ) ) ? $setting['fid'] : NULL;
-		$setting['typeid'] = ( ! is_null( $setting['typeid'] ) ) ? $setting['typeid'] : NULL;
-		$setting['digest'] = ( ! is_null( $setting['digest'] ) ) ? $setting['digest'] : NULL;
+		/* (array) */$setting['fid']           = ( ! is_null( $setting['fid'] ) ) ? $setting['fid'] : NULL;
+		/* (array) */$setting['typeid']        = ( ! is_null( $setting['typeid'] ) ) ? $setting['typeid'] : NULL;
+		/* (array) */$setting['digest']        = ( ! is_null( $setting['digest'] ) ) ? $setting['digest'] : NULL;
+		/* (int) */$setting['limit']           = ( ! is_null( $setting['limit'] ) ) ? $setting['limit'] : 15;
+		/* (bool) */$setting['exclude_typeid'] = ( ! is_null( $setting['exclude_typeid'] ) ) ? $setting['exclude_typeid'] : FALSE;
 
-		$this->db->select( 't.*, tc.name' );
+		$this->db->select( '*' );
 		$this->db->from( 'd3bbs_forum_thread as t' );
-		$this->db->join( 'd3bbs_forum_threadclass as tc', 't.typeid = tc.typeid' );
-		$this->db->limit( 15, 0 );
+		if ( $setting['exclude_typeid'] === FALSE ) $this->db->join( 'd3bbs_forum_threadclass as tc', 't.typeid = tc.typeid' );
 		if ( ! is_null( $setting['fid'] ) ) $this->db->where_in( 't.fid', $setting['fid'] );
 		if ( ! is_null( $setting['typeid'] ) ) $this->db->where_in( 't.typeid', $setting['typeid'] );
 		if ( ! is_null( $setting['digest'] ) ) $this->db->where_in( 't.digest', $setting['digest'] );
+		$this->db->where( 't.displayorder !=', '-1' );
 		$this->db->order_by( 'tid', 'desc' );
+		$this->db->limit( $setting['limit'], 0 );
 
 		return $this->db->get()->result_array();
 	}

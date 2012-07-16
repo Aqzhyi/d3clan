@@ -10,6 +10,12 @@ class Msi_game_2012 extends CI_Controller {
 
 	public function index( $page = 'index' ) {
 		$this->view->data['main_diy'] = $page;
+
+		switch ( $page ) {
+		case 'news'    : $this->_page_news(); break;
+		case 'contest' : $this->_page_contest(); break;
+		}
+
 		$this->view->cache( 5 );
 		$this->view->display(
 			array(
@@ -25,6 +31,26 @@ class Msi_game_2012 extends CI_Controller {
 				),
 			)
 		);
+	}
+
+	private function _page_news( $setting = array() ) {
+		$this->load->model( 'Model_news' );
+		$this->view->data['data']['news_flow'] = $this->Model_news->get_flow( array(
+				'fid' => array( 63 ),
+				'typeid' => array( 31, 32 ),
+			) );
+
+		return $this;
+	}
+
+	private function _page_contest( $setting = array() ) {
+		$this->load->model( 'Model_news' );
+		$this->view->data['data']['news_flow'] = $this->Model_news->get_flow( array(
+				'fid' => array( 63 ),
+				'typeid' => array( 33 ),
+			) );
+
+		return $this;
 	}
 }
 

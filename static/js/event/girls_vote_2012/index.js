@@ -1,5 +1,19 @@
 jQuery(function() {
 
+	// banner輪播
+	var $girls_banner = jQuery('#girls_banner');
+
+	var interval1 = setInterval(function(){
+		if ( $girls_banner.find('#item.current').prev('#item').length ) {
+			$girls_banner.find('#item.current').removeClass('current').prev('#item').addClass('current');
+		}
+		else {
+			$girls_banner.find('#item.current').removeClass('current');
+			$girls_banner.find('#item').last().addClass('current');
+		}
+	}, 8000);
+	
+
 	// 活動規則
 	var $the_rule = jQuery('#the_rule');
 

@@ -8,7 +8,7 @@
 		.g_clear();
 		>.circle_news{
 			float: left;
-			width: 534px;
+			width: 530px;
 
 			>.header{
 				.navi{
@@ -51,7 +51,7 @@
 		}
 
 		>.news_class{
-			width: 426px;
+			width: 430px;
 			float: right;
 
 			>.header{
@@ -63,7 +63,7 @@
 			}
 			>.body{
 				background-image: url("@{img}HM1R_02.png");
-				background-repeat: repeat;
+				background-repeat: repeat-y;
 
 				.list{
 					display: none;
@@ -80,6 +80,13 @@
 						height      : 27px;
 						width       : 395px;
 						overflow    : hidden;
+
+						.thread_class{
+							color: #ffffff - 100;
+						}
+						.thread_subject{
+							color: white;
+						}
 
 						&:hover{
 							background-color: #462027;
@@ -123,26 +130,41 @@
 				// 每則焦點
 				.item{
 					float: left;
+					height: 140px;
 					>.img{
-						float: left;
+						float   : left;
+						padding : 10px;
+
 						.thumb {
-							width: 200px;
-							height: 150px;
+							width  : 180px;
+							height : 120px;
 						}
 					}
 					>.text{
-						float: right;
-						width: 280px;
+						float : right;
+						width : 280px;
+						
 						.title{
-							font-size: 18px;
-							padding: 5px;
-							line-height: 22px;
+							font-size   : 14px;
+							padding     : 5px;
+							line-height : 22px;
+							height      : 18px;
+							width       : 100%;
+							overflow    : hidden;
+							display     : inline-block;
+
+							a{
+								color   : orange;
+							}
 						}
 						.thumb{
-							font-size: 12px;
-							padding: 10px;
-							padding-top: 5px;
-							padding-bottom: 0;
+							color          : white;
+							font-size      : 12px;
+							padding        : 10px;
+							padding-top    : 5px;
+							padding-bottom : 0;
+							height         : 90px;
+							overflow       : hidden;
 						}
 					}
 				}
