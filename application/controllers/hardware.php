@@ -30,16 +30,10 @@ class Hardware extends CI_Controller {
 
 		$this->view->data['circle_news'] = array(
 			'0' => array(
-				'img' => 'http://i1258.photobucket.com/albums/ii528/joe200362/IMG_0625.jpg',
-				'link' => 'http://d3clan.tw/bbs/forum.php?mod=viewthread&tid=376&extra=page%3D1',
-				'title' => 'Tt eSPORTS Black Element 魔戰黑者-天使白',
-				'descr' => '屈指一算,已有好一陣子沒有做新的產品開箱,畢竟一篇好的開箱文是需要花上大量時間做測試、評鑑與調教的,而我平常工作又太忙了,所以跟不少酷炫新穎的電競周邊擦肩而過,而在前陣子剛落幕的ComputeX展中,看到了這支曜越科技的《魔戰黑者-天使白》,當下就被她白金線條的包裝深深吸引,連忙請朋友幫我透過管道取得這隻線條優雅、配色大膽的電競滑鼠。',
-			),
-			'1' => array(
-				'img' => 'http://i491.photobucket.com/albums/rr273/zhen737/sc2clan/razer/Unboxing%20Razer%20StarCraft%20II%20Mesengger%20Bag/sc2-zerg-edition-messenger-bag.jpg',
-				'link' => 'http://d3clan.tw/bbs/forum.php?mod=viewthread&tid=152&extra=page%3D1',
-				'title' => '壽司の 雷蛇《星海爭霸®II》Zerg 信差包開箱文分享！',
-				'descr' => '《星海爭霸®II》蟲族版信差包是為想要保護遊戲裝備安全，保持高舒適度並且同時擁有超酷外觀的玩家所設計的。它防水耐磨的設計能夠像蟲族防禦對方攻勢一般有效抵御風雨和日常生活中的突發狀況。打開它你會發現有足夠的空間來放置你的筆記型電腦、遊戲周邊和戰場上需要的其他任何裝備。 《星海爭霸®II》蟲族版信差包確保你無論在哪都可以隨時投入戰鬥。',
+				'img' => 'http://i418.photobucket.com/albums/pp266/vic111567/ASROCKB75/DSC_5875.jpg',
+				'link' => '/bbs/forum.php?mod=viewthread&tid=431',
+				'title' => 'ASRock B75 Pro3 and Pro3-M 1155-select 平價實用',
+				'descr' => 'INTEL 1155腳位目前市面上可以購買到的晶片組，種類繁多除了之前的六系列現在還有小七系列，分別為B75、H77、Z75、Z77，其中B75也就是這次的文章主角是最讓大家訝異的，因為以往INTEL商用晶片組幾乎是沒在一般零售市場出現，不過其實去Intel官網看到此晶片定位在『為小型企業打造』，所以應該是新的模式專為一般小型企業辦公室電腦使用的晶片，這次ASRock的B75與其他家最大的不同在於B75原生只有一組SATA III 6G，而ASRock透過轉接晶片(經由PCI*1線路)多了兩組SATA III 6G，截至今天為止台灣目前可買到超過1組SATA 6G的B75板子也只有ASRock。',
 			),
 		);
 

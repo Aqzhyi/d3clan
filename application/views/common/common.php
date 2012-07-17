@@ -32,25 +32,31 @@
 			<a href="/" class="game_logo g_clear"></a>
 
 			<!-- 商業廣告 -->
-			<div class="commercial_ad g_clear">
+			<div class="commercial_ad g_clear" id="commercial_ad">
 				<a href="http://www.facebook.com/d3clan.tw" class="g_fb" target="_blank"></a>
 				<?php echo $this->media->embed_flash( array(
-					'width' => '270',
+					'width'  => '270',
 					'height' => '60',
-					'src' => '\static\file\common\ad\270x60-ASROCK.swf',
-					'class' => 'single',
+					'src'    => '\static\file\common\ad\270x60-ASROCK.swf',
+					'class'  => 'single',
 				) ) ?>
 				<?php echo $this->media->embed_flash( array(
-					'width' => '270',
+					'width'  => '270',
 					'height' => '60',
-					'src' => '\static\file\common\ad\270x60-kinston.swf',
-					'class' => 'single offset',
+					'src'    => '\static\file\common\ad\270x60-kinston.swf',
+					'class'  => 'single',
 				) ) ?>
 				<?php echo $this->media->embed_flash( array(
-					'width' => '270',
+					'width'  => '270',
 					'height' => '60',
-					'src' => '\static\file\common\ad\270x60-msi.swf',
-					'class' => 'single',
+					'src'    => '\static\file\common\ad\270x60-msi.swf',
+					'class'  => 'single',
+				) ) ?>
+				<?php echo $this->media->embed_flash( array(
+					'width'  => '270',
+					'height' => '60',
+					'src'    => '\static\file\common\ad\270x60-msi-cup-banner.swf',
+					'class'  => 'single g_hide',
 				) ) ?>
 				<a href="http://sc2clan.tw/" class="sc2clan" target="_blank"></a>
 			</div>
@@ -63,7 +69,7 @@
 				<a class="single" href="/hardware"><i class="icon hardware"></i><span class="nav_label">週邊設備</span></a>
 				<a class="single" href="/lives"><i class="icon lives"></i><span class="nav_label">Live頻道</span></a>
 				<a class="single" href="/event/2012-girls-vote"><i class="icon event-2012-msi"></i><span class="nav_label">D-Girl選拔</span></a>
-				<a class="single" href="/event/2012-msi"><i class="icon event-2012-girls-vote"></i><span class="nav_label">msi盃</span></a>
+				<a class="single" href="/event/2012-msi"><i class="icon event-2012-girls-vote"></i><span class="nav_label">微星盃</span></a>
 				<a class="single" href="/together"><i class="icon together"></i><span class="nav_label">約團活動</span></a>
 				<a class="single" href="/trade"><i class="icon trade"></i><span class="nav_label">交易專區</span></a>
 				<a class="single" href="/about"><i class="icon about"></i><span class="nav_label">關於暗盟</span></a>
@@ -82,7 +88,7 @@
 		<!-- 頁腳 -->
 		<footer>
 		<div class="footer">
-			執行長: 虎虎(HUhu)、營運經理: 萱萱太太(Cynthia)、實習暨助理工程師: 甜豬太太(lzzpnk)、美術設計師: 小伊(Ithil)<br />
+			執行長: 虎虎(HUhu)、營運經理: 萱萱太太(Cynthia)、助理工程師: 甜豬太太、美術設計師: 小伊(Ithil)<br />
 			我們極度建議您使用<a href="http://www.google.com/chrome/index.html?hl=zh-TW&amp;brand=CHMA&amp;utm_campaign=zh_hk&amp;utm_source=zh-TW-ha-apac-tw-bk&amp;utm_medium=ha" target="_blank">Google Chrome 20+ 瀏覽器</a>來瀏覽本網站。
 		</div>
 		</footer>

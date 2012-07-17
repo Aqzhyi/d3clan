@@ -31,6 +31,7 @@ $config['js_common_files'] = array(
 	// 'plugin/mustache/mustache.0.5.1-dev',
 	'plugin/Underscore/underscore.1.3.3.min',
 	'plugin/Backbone/backbone.0.9.2.min',
+	'common/layout',
 );
 $config['js_common_links'] = array(
 	// 'http://tw.battle.net/d3/static/js/tooltips.js',

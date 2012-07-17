@@ -1,4 +1,4 @@
-<div class="well">
+<div class="namespace_trade well">
 	<h2>交易專區</h2>
 	<!-- <a href="/trade/assist-sell">立刻出售商品</a> -->
 	<a href="/bbs/forum.php?mod=forumdisplay&fid=40">立刻出售商品</a>

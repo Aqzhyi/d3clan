@@ -4,6 +4,7 @@ jQuery(function() {
 	var $girls_banner = jQuery('#girls_banner');
 
 	var interval1 = setInterval(function(){
+		console.log(/banner change in 30s/);
 		if ( $girls_banner.find('#item.current').prev('#item').length ) {
 			$girls_banner.find('#item.current').removeClass('current').prev('#item').addClass('current');
 		}
@@ -11,7 +12,7 @@ jQuery(function() {
 			$girls_banner.find('#item.current').removeClass('current');
 			$girls_banner.find('#item').last().addClass('current');
 		}
-	}, 8000);
+	}, 30000);
 	
 
 	// 活動規則
