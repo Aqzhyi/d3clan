@@ -3,7 +3,7 @@
 class Template {
 
 	public function __construct() {
-		
+
 	}
 
 	public function fetch( $template = '', $data = array() ) {
@@ -11,6 +11,22 @@ class Template {
 		$smarty->assign( 'data', $data );
 		$smarty->assign( 'CI', $CI =& get_instance() );
 		return $smarty->fetch( $template . '.html' );
+	}
+
+	public function display( $template = '', $data = array() ) {
+		// 初始化 smarty
+		$smarty = $this->create_smarty_lib();
+		// 基本配置
+		$smarty->assign( '_VIEW', $data );
+		$smarty->assign( 'CI', $CI =& get_instance() );
+
+		// 從控制器 assign 進來的變數, 也要一個一個 assign 至 smarty 樣版裡.
+		foreach ( array_keys( $data['data'] ) as $index => $key_name ) {
+			$smarty->assign( $key_name, $data['data'][$key_name] );
+		}
+
+		// 輸出視圖
+		return $smarty->display( $template . '.html' );
 	}
 
 	private function create_smarty_lib() {
@@ -23,7 +39,7 @@ class Template {
 		$smarty->cache_dir       = APPPATH . 'cache/smarty_cache_dir';
 		$smarty->template_dir    = APPPATH . 'views';
 		$smarty->caching         = FALSE;
-		
+
 		if ( ! file_exists( $smarty->compile_dir ) ) {
 			mkdir( $smarty->compile_dir, 0777, true );
 		}
