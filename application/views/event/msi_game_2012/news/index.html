@@ -1,0 +1,13 @@
+<div class="well">
+	<div class="well">
+		{foreach $news_flow as $key => $news}
+		<div>
+			<span class="label label-info">[{date('Y-m-d', $news['dateline'])}]</span>
+			{$CI->discuzx->alink_to_bbs( [
+				'tid'  => $news['tid'],
+				'text' => $news['subject']
+			] )}
+		</div>
+		{/foreach}
+	</div>
+</div>

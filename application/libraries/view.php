@@ -12,7 +12,184 @@ class View {
 	public $json = array();
 
 	// 緩存時間
-	private $_cache_time = 5;
+	private $_cache_time = 15;
+
+	// 自動標題路由
+	private $_title_routes = array();
+
+	// 一級標題
+	private $_title = '';
+
+	// 二級標題
+	private $_append_title = '';
+
+	// 版型路徑
+	private $_layout = '';
+
+	// 子版型路徑
+	private $_page = '';
+
+	// js檔案路徑
+	private $_js_files = array();
+	private $_linked_js_files = array();
+
+	// css檔案路徑
+	private $_css_files = array();
+
+	// og:image
+	private $_og_image = '';
+
+	// CI核心
+	private $CI;
+
+	function __construct() {
+		$this->CI =& get_instance();
+		$this->CI->load->library( 'template' );
+		$this->_js_files  = $this->CI->config->item( 'js_common_files' );
+		$this->_css_files = $this->CI->config->item( 'css_common_files' );
+		$this->_og_image  = base_url() . "static/img/common/layout/160.d3clan_logo.png";
+		$this->_title_routes = array(
+				'index' => '首頁',
+			);
+	}
+
+	public function show( $setting = array() ) {
+		
+		// 如果該css檔案未建立, 則移除, 避免報錯.
+		foreach ( $this->_css_files as $key => $path ) {
+			if ( ! is_file( $this->CI->config->item( 'css_static_path' ) . $path . '.css' ) ) {
+				unset( $this->_css_files[$key] );
+			}
+		}
+		// 如果該js檔案未建立, 則移除, 避免報錯.
+		foreach ( $this->_js_files as $key => $path ) {
+			if ( ! is_file( $this->CI->config->item( 'js_static_path' ) . $path . '.js' ) ) {
+				unset( $this->_js_files[$key] );
+			}
+		}
+
+		// 緩存
+		if ( ENVIRONMENT === 'production' ) {
+			$this->CI->output->cache( $this->_cache_time );
+		}
+
+		// Profile
+		if ( ENVIRONMENT !== 'production' ) {
+			$this->CI->output->enable_profiler( TRUE );
+		}
+
+		// 自動標題路由
+		if ( $this->_title === '' && is_string( $this->_page ) && $this->_page !== '' ) {
+			$this->_title = $this->_title_routes[strstr( $this->_page, '/', TRUE )];
+		}
+
+		// 輸出 view 給瀏覽器
+		$this->CI->template->display( 'common/layout', array(
+				'data'            => $this->data,
+				'json'            => json_encode( $this->json ),
+				'layout'          => $this->_layout,
+				'page'            => $this->_page,
+				'js_files'        => $this->_js_files,
+				'linked_js_files' => $this->_linked_js_files,
+				'css_files'       => $this->_css_files,
+				'title'           => $this->_title,
+				'append_title'    => $this->_append_title,
+				'og_image'        => $this->_og_image,
+			) );
+	
+		return $this;
+	}
+
+	public function css_add( $paths = array() ) {
+		// 增加css檔案至視圖供瀏覽器載入.
+		if ( is_array( $paths ) ) {
+			$this->_css_files = array_merge( $this->_css_files, $paths );
+		}
+		elseif ( is_string( $paths ) ) {
+			$this->_css_files[] = $paths;
+		}
+
+		return $this;
+	}
+
+	public function js_add( $paths = array() ) {
+		// 增加js檔案至視圖供瀏覽器載入.
+		if ( is_array( $paths ) ) {
+			$this->_js_files = array_merge( $this->_js_files, $paths );
+		}
+		elseif ( is_string( $paths ) ) {
+			$this->_js_files[] = $paths;
+		}
+
+		return $this;
+	}
+
+	public function layout( $setting = '' ) {
+		$this->_layout = $setting;
+
+		return $this;
+	}
+
+	/**
+	 * 用於指定子頁面之統一接口
+	 * @param  string $setting [description]
+	 * @return [type]          [description]
+	 */
+	public function page( $setting = '' ) {
+		$this->_page = $setting;
+
+		return $this;
+	}
+
+	public function title_routes( $setting = array() ) {
+		$this->_title_routes = array_merge( $this->_title_routes, $setting );
+
+		return $this;
+	}
+
+	public function title( $setting = '' ) {
+		$this->_title = $setting;
+
+		return $this;
+	}
+
+	public function append_title( $setting = '' ) {
+		$this->_append_title = $setting;
+
+		return $this;
+	}
+
+	/**
+	 * 配置緩存
+	 * 就如同 $this->output->cache(n) 一樣。n 以分鐘計。
+	 *
+	 * @param integer $cache_time [description]
+	 * @return [type]              [description]
+	 */
+	public function cache( $cache_time = 0 ) {
+		if ( is_numeric( $cache_time ) ) {
+			$this->_cache_time = $cache_time;
+		}
+		else {
+			$this->_cache_time = 0;
+		}
+
+		return $this;
+	}
+
+	/**
+	 * 取得 canonical 網址
+	 *
+	 * @return string 返回 Canonical 網址
+	 */
+	public function get_canonical_url() {
+		$url = preg_replace( '@index.php\/?@', '', current_url() );
+		return preg_replace( '@\/%.*@', '', $url );
+	}
+
+	////////////////////////////////////////////////* 兼容 */
+	////////////////////////////////////////////////* 兼容 */
+	////////////////////////////////////////////////* 兼容 */
 
 	/**
 	 * 對 html view 初始化, 配置 controller 對應的 view 檔案以及各別 css/js 檔案.
@@ -81,34 +258,6 @@ class View {
 
 		// 輸出 view 給瀏覽器
 		$CI->load->view( $path, $this->instance( $setting ) );
-	}
-
-	/**
-	 * 配置緩存
-	 * 就如同 $this->output->cache(n) 一樣。n 以分鐘計。
-	 *
-	 * @param integer $cache_time [description]
-	 * @return [type]              [description]
-	 */
-	public function cache( $cache_time = 0 ) {
-		if ( is_numeric( $cache_time ) ) {
-			$this->_cache_time = $cache_time;
-		}
-		else {
-			$this->_cache_time = 0;
-		}
-
-		return $this;
-	}
-
-	/**
-	 * 取得 canonical 網址
-	 *
-	 * @return string 返回 Canonical 網址
-	 */
-	public function get_canonical_url() {
-		$url = preg_replace( '@index.php\/?@', '', current_url() );
-		return preg_replace( '@\/%.*@', '', $url );
 	}
 
 	/**
