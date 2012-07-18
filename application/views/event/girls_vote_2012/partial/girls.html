@@ -1,17 +1,17 @@
-{foreach $data as $index => $girl}
+{foreach $girls as $index => $girl}
 <div class="girl_intro" id="girl_id_{$index}">
 	<div class="girl_div_top_border"></div>
 	<div class="girl_div_inner">
 		<!-- 女孩照片(左右) -->
 		<div class="girl_photos">
 			<div class="girl_photo">
-				<img src="{$girl['photos'][0]}" alt="">
+				<img src="{$girl['photos'][$active_poll][0]}" alt="">
 			</div>
 			<div class="girl_photo">
-				<img src="{$girl['photos'][1]}" alt="">
+				<img src="{$girl['photos'][$active_poll][1]}" alt="">
 			</div>
 		</div>
-		<!-- 女孩個資(左右各三) // div.girl_personal -->
+		<!-- 女孩個資(左右各三) -->
 		{include file='./girl_personal.html'}
 		
 		<!-- 女孩自介 -->
@@ -20,11 +20,11 @@
 		</div>
 		
 		<!-- 得票數 -->
-		<div class="girl_vote_amount">{$girl['total_votes']}</div>
+		<div class="girl_vote_amount">{$girl['polls'][$active_poll]|default:0}</div>
 		<!-- 投票 -->
 		<div class="girl_vote" id="girl_vote"></div>
 		
-		<!-- 詳細資料 // div.girl_detail_info#girl_detail_info -->
+		<!-- 詳細資料 -->
 		{include file='./girl_detail_info.html'}
 
 		<div class="g_clear"></div>
