@@ -69,6 +69,7 @@
 		,{orig: /70後/mg, to: '六年級生'}
 		,{orig: /80後/mg, to: '七年級生'}
 		,{orig: /90後/mg, to: '八年級生'}
+		,{orig: /刷屏/mg, to: '洗畫面'}
 		,{orig: /沖動/mg, to: '衝動'}
 		,{orig: /婪欲/mg, to: '婪慾'}
 		,{orig: /北京時間/mg, to: '台北時間'}
