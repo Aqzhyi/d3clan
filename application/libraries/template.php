@@ -26,7 +26,9 @@ class Template {
 		}
 
 		// 輸出視圖
-		return $smarty->display( $template . '.html' );
+		$static_template = $smarty->fetch( $template . '.html' );
+		$CI->output->set_output( $static_template );
+		return $this;
 	}
 
 	private function create_smarty_lib() {
