@@ -87,25 +87,24 @@
 				color               : #8A622F;
 				font-size           : 14px;
 				font-weight         : bold;
-				padding             : 0 28px;
+				padding             : 0 20px;
 
 				// 女孩的照片 兩張
 				.girl_photos{
 					.g_clear();
 					text-align: center;
+					cursor: pointer;
 
 					// 女孩照片
 					.girl_photo{
 						background-color : white;
-						float            : left;
 						display          : inline-block;
 						margin           : 0 15px;
 						margin-top       : 20px;
 						margin-bottom    : 20px;
 
 						img{
-							height           : 150px;
-							width            : 100px;
+							height           : 175px;
 						}
 					}
 				}
@@ -118,7 +117,7 @@
 					.txt_row{
 						float       : left;
 						display     : inline-block;
-						width       : 110px;
+						width       : 120px;
 						margin-left : 14px;
 
 						// label
@@ -136,7 +135,8 @@
 					// 詳細介紹
 					.girl_intro_detail{
 						color  : @common_font_color - 50;
-						margin : 10px
+						margin : 10px;
+						height : 140px;
 					}
 				}
 
@@ -163,7 +163,7 @@
 					cursor              : pointer;
 				}
 
-				// 女孩詳細資料
+				// 女孩詳細資料(alt+7)
 				.girl_detail_info{
 					background-image    : url("@{img}fold_01.png");
 					background-position : 50% 0;
@@ -218,9 +218,10 @@
 								}
 
 								a{
-									display: inline-block;
+									display    : inline-block;
 									max-width  : 600px;
 									max-height : 400px;
+
 									.label{
 										font-size: 20px;
 										color: black;
@@ -228,7 +229,7 @@
 
 									img{
 										max-width  : 600px;
-										max-height : 400px;
+										height    : 400px;
 									}
 
 									&:hover{
@@ -269,14 +270,14 @@
 											}
 											// 內容
 											.value{
-												font-size : 24px;
+												font-size : 18px;
 											}
 										}
 
 										// 詳細介紹
 										.girl_intro_detail{
 											color  : black;
-											margin : 10px
+											margin : 10px;
 										}
 									}
 								}
@@ -312,7 +313,16 @@
 
 						// 自我介紹
 						.detail_intro{
-							padding: 10px 90px;
+							padding   : 10px 90px;
+							font-size : 14px;
+							line-height: 22px;
+
+							.label{
+								font-size     : 24px;
+								text-shadow   : 1px 1px 0 black;
+								line-height   : 24px;
+								margin-bottom : 5px;
+							}
 						}
 
 						// 投票

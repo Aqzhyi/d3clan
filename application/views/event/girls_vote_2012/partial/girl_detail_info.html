@@ -6,15 +6,18 @@
 		<!-- 照片集 -->
 		<div class="detail_photos">
 			<button class="btn btn-large btn-primary btn_left_click" id="btn_left_click">左</button>
-			<!-- 照片一次顯示兩次 -->
+			<!-- 顯示照片 -->
 			{foreach $polls_name as $poll_index => $poll_name}
 				{foreach $girl['photos'][$poll_index] as $index => $photo_url}
+					{*還未開選的系別不放照片*}
+					{if $poll_index <= $active_poll}
 					<div class="twinned {if $photo_url@first && $poll_index == $active_poll}first{/if}" id="twinned">
 						<a href="{$photo_url}" target="_blank">
 							<div class="label label-warning">{$poll_name}系</div>
 							<img src="{$girl['photos'][$poll_index][$index]}" alt="">
 						</a>
 					</div>
+					{/if}
 				{/foreach}
 			{/foreach}
 			<button class="btn btn-large btn-primary btn_right_click" id="btn_right_click">右</button>

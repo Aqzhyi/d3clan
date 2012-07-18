@@ -1,30 +1,28 @@
 <div class="girl_personal">
 	<div class="txt_row">
-		<span class="descr">暱稱:</span>
-		<span class="value">{$girl['text_fields']['nickname']}</span>
+		<span class="descr">暱稱：</span><span class="value">{$girl['text_fields']['nickname']}</span>
 	</div>
 	<div class="txt_row">
-		<span class="descr">生日:</span>
-		<span class="value">{$girl['text_fields']['birthday']}</span>
+		<span class="descr">生日：</span><span class="value">{$girl['text_fields']['birthday']}</span>
 	</div>
 	<div class="txt_row">
-		<span class="descr">角色名稱:</span>
-		<span class="value">{$girl['text_fields']['role_name']}</span>
+		<span class="descr">角色名稱：</span><span class="value">{$girl['text_fields']['role_name']}</span>
 	</div>
 	<div class="txt_row">
-		<span class="descr">伺服器:</span>
-		<span class="value">{$girl['text_fields']['server']}</span>
+		<span class="descr">伺服器：</span><span class="value">{$girl['text_fields']['server']}</span>
 	</div>
 	<div class="txt_row">
-		<span class="descr">居住城市:</span>
-		<span class="value">{$girl['text_fields']['city']}</span>
+		<span class="descr">居住城市：</span><span class="value">{$girl['text_fields']['city']}</span>
 	</div>
 	<div class="txt_row">
-		<span class="descr">人物等級:</span>
-		<span class="value">{$girl['text_fields']['role_level']}</span>
+		<span class="descr">人物等級：</span><span class="value">{$girl['text_fields']['role_level']}</span>
 	</div>
 	<div class="txt_row">
-		<span class="descr">角色職業:</span>
-		<span class="value">{$girl['text_fields']['class']}</span>
+		<span class="descr">角色職業：</span><span class="value">{$girl['text_fields']['class']}</span>
 	</div>
+	{if $girl['text_fields']['fb']}
+	<div class="txt_row">
+		<span class="descr"></span><span class="value"><a href="{$girl['text_fields']['fb']}" target="_blank">連至Facebook</a></span>
+	</div>
+	{/if}
 </div>

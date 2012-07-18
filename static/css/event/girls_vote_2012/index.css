@@ -103,12 +103,13 @@
   color: #8A622F;
   font-size: 14px;
   font-weight: bold;
-  padding: 0 28px;
+  padding: 0 20px;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_photos {
   *zoom: 1;
   display: block;
   text-align: center;
+  cursor: pointer;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_photos:after {
   content: ".";
@@ -119,15 +120,13 @@
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_photos .girl_photo {
   background-color: white;
-  float: left;
   display: inline-block;
   margin: 0 15px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_photos .girl_photo img {
-  height: 150px;
-  width: 100px;
+  height: 175px;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_personal {
   *zoom: 1;
@@ -143,7 +142,7 @@
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_personal .txt_row {
   float: left;
   display: inline-block;
-  width: 110px;
+  width: 120px;
   margin-left: 14px;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_personal .txt_row .descr {
@@ -157,6 +156,7 @@
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_personal .girl_intro_detail {
   color: #892a2e;
   margin: 10px;
+  height: 140px;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_vote_amount {
   background-image: url("/static/img/event/girls_vote_2012/current_votes.png");
@@ -233,7 +233,7 @@
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_detail_info .inner_border .detail_photos .twinned a img {
   max-width: 600px;
-  max-height: 400px;
+  height: 400px;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_detail_info .inner_border .detail_photos .twinned a:hover {
   position: relative;
@@ -271,7 +271,7 @@
   font-size: 18px;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_detail_info .inner_border .detail_info > .inner .info > .girl_personal .txt_row .value {
-  font-size: 24px;
+  font-size: 18px;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_detail_info .inner_border .detail_info > .inner .info > .girl_personal .girl_intro_detail {
   color: black;
@@ -308,6 +308,14 @@
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_detail_info .inner_border .detail_intro {
   padding: 10px 90px;
+  font-size: 14px;
+  line-height: 22px;
+}
+.namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_detail_info .inner_border .detail_intro .label {
+  font-size: 24px;
+  text-shadow: 1px 1px 0 black;
+  line-height: 24px;
+  margin-bottom: 5px;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_detail_info .inner_border .vote_it {
   text-align: center;

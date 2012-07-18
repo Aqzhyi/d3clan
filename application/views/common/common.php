@@ -88,7 +88,7 @@
 		<!-- 頁腳 -->
 		<footer>
 		<div class="footer">
-			執行長: 虎虎(HUhu)、營運經理: 萱萱太太(Cynthia)、助理工程師: 甜豬太太、美術設計師: 小伊(Ithil)<br />
+			執行長: 虎虎(HUhu)、營運經理: 萱萱太太(Cynthia)、助理工程師: 然苦氏太太、美術設計師: 小伊(Ithil)<br />
 			我們極度建議您使用<a href="http://www.google.com/chrome/index.html?hl=zh-TW&amp;brand=CHMA&amp;utm_campaign=zh_hk&amp;utm_source=zh-TW-ha-apac-tw-bk&amp;utm_medium=ha" target="_blank">Google Chrome 20+ 瀏覽器</a>來瀏覽本網站。
 		</div>
 		</footer>

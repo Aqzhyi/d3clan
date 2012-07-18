@@ -36,7 +36,7 @@ jQuery(function() {
 	var $girls_area = jQuery('[id^=girl_id_]');
 
 	// 展開詳細資料/投票
-	$girls_area.find('#girl_vote').on('click', function() {
+	$girls_area.find('#girl_vote, #girl_photos').on('click', function() {
 		$element = jQuery(this);
 
 		$element.siblings('#girl_detail_info').css('top', $(window).scrollTop()+30).show();

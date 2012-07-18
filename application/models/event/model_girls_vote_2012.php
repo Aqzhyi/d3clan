@@ -177,7 +177,8 @@ class Model_girls_vote_2012 extends CI_Model {
 					),
 			),
 			'text_fields' => array(
-				'nickname'     => '賴億珊',
+				'fb' => 'http://www.facebook.com/nila0518',
+				'nickname'     => '姜雨珊‏',
 				'server'       => '亞服',
 				'role_name'    => '娜塔莎',
 				'role_level'   => '60',
@@ -217,6 +218,7 @@ class Model_girls_vote_2012 extends CI_Model {
 					),
 			),
 			'text_fields' => array(
+				'fb' => 'https://www.facebook.com/only.candy',
 				'nickname'     => '糖糖',
 				'server'       => '亞服',
 				'role_name'    => '艾莉絲',
@@ -227,7 +229,7 @@ class Model_girls_vote_2012 extends CI_Model {
 				'play_per_day' => '0~3小時'
 			),
 			'intro' => '哈囉～大家好，我是糖糖。<br />很高興這次可以參加ＤIII的票選活動，<br />請大家多多支持，票選活動開始時，不要忘了投糖糖一票噢＞口＜<br />糖糖快要練到６０等了，希望有空的朋友們可以陪我一起練等唷！＞皿＜',
-			'opinion' => "ＤIII這遊戲早在１０年前就有消息了。<br />因為在ＤII的時候我就有在玩了，一直很注意這款遊戲。<br />ＤII、ＤIII其實可以說差不多的，但也可以說進步很多，大致上玩法內容差不多，<br />有玩過上一代的，一定很快就可以上手，不過ＤIII一定要先登入Battle的伺服器<br />有時比較晚下班，就會碰到伺服器爆滿的情形@@ 有時都要等超久的啦>”<<br />不能像以前ＤII一樣，自己想玩隨時都能直接登進去單機遊戲。<br />如果要區分的話，我覺得ＤIII屬於online 遊戲；ＤII的話屬於單機遊戲。在這<br />點我就覺得ＤIII做了很大的突破，畫面精緻了很多，在技能的用法不像ＤII這麼<br />的單調的樹狀圖，在ＤIII人物等級上升時 技能就會自動學好了，要自己搭配不<br />同的技能以及符文的搭配，光是用技能有時就要花了好多時間>”<<br />睽違10年的遊戲巨作真沒讓我失望!!!!! 希望大家跟糖糖一起來支持這遊戲^^”",
+			'opinion' => "ＤIII這遊戲早在１０年前就有消息了。<br />因為在ＤII的時候我就有在玩了，一直很注意這款遊戲。<br />ＤII、ＤIII其實可以說差不多的，但也可以說進步很多，<br />大致上玩法內容差不多，有玩過上一代的，一定很快就可以上手，<br />不過ＤIII一定要先登入Battle的伺服器有時比較晚下班，<br /><br />就會碰到伺服器爆滿的情形@@ 有時都要等超久的啦>”<<br />不能像以前ＤII一樣，自己想玩隨時都能直接登進去單機遊戲。<br />如果要區分的話，我覺得ＤIII屬於online 遊戲；ＤII的話屬於單機遊戲。<br /><br />在這點我就覺得ＤIII做了很大的突破，畫面精緻了很多，<br />在技能的用法不像ＤII這麼的單調的樹狀圖，在ＤIII人物等級上升時，<br />技能就會自動學好了，要自己搭配不同的技能以及符文的搭配，<br />光是用技能有時就要花了好多時間>”<<br />睽違10年的遊戲巨作真沒讓我失望!!!!! <br />希望大家跟糖糖一起來支持這遊戲^^”",
 		);
 
 		$girls['簡沛沛'] = array(
@@ -272,8 +274,8 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'\static\img\event\girls_vote_2012\girl4\11.jpg',
 						'\static\img\event\girls_vote_2012\girl4\12.jpg',
+						'\static\img\event\girls_vote_2012\girl4\11.jpg',
 					),
 				1 => array(
 						'\static\img\event\girls_vote_2012\girl4\21.jpg',
@@ -289,6 +291,7 @@ class Model_girls_vote_2012 extends CI_Model {
 					),
 			),
 			'text_fields' => array(
+				'fb' => 'https://www.facebook.com/musicsaki',
 				'nickname'     => '紫紫',
 				'server'       => '美服',
 				'role_name'    => '紫馨菲',
