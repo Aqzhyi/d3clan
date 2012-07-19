@@ -9,7 +9,11 @@ class Media {
 	}
 
 	/**
-	 * [embed_flash description]
+	 * 嵌入flash物件
+	 * 兼容各瀏覽器且符合標準的 <object> 元素用法
+	 *
+	 * @link   http://www.wilf.cn/post/Embedding-Flash-While-Supporting-Standards.html
+	 * @link   http://www.alistapart.com/articles/flashsatay
 	 * @param  array  $setting [description]
 	 * @return [type]          [description]
 	 */
@@ -20,8 +24,15 @@ class Media {
 		$setting['class']  = ( ! is_null( $setting['class'] ) ) ? $setting['class'] : '';
 		$setting['src']    = ( ! is_null( $setting['src'] ) ) ? $setting['src'] : NULL;
 
-		$output = "<embed width='{$setting['width']}' height='{$setting['height']}' class='{$setting['class']}' type='application/x-shockwave-flash' src='{$setting['src']}' allowscriptaccess='always' allowfullscreen='true' wmode='transparent'>";
-	
+		$output = "
+<object class='{$setting['class']}' data='{$setting['src']}' width='{$setting['width']}' height='{$setting['height']}' type='application/x-shockwave-flash'>
+	<param name='movie' value='{$setting['src']}' />
+	<param name='allowscriptaccess' value='always' />
+	<param name='allowfullscreen' value='true' />
+	<param name='wmode' value='transparent' />
+</object>
+";
+
 		return $output;
 	}
 
