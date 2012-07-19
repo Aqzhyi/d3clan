@@ -28,6 +28,7 @@ class View {
 
 	// 子版型路徑
 	private $_page = '';
+	private $_page_params = array();
 
 	// js檔案路徑
 	private $_js_files = array();
@@ -51,6 +52,18 @@ class View {
 		$this->_title_routes = array(
 				'index' => '首頁',
 			);
+	}
+
+	public function init( $controller = array() ) {
+		
+		// 如果控制器呼叫的頁面存在, 則執行它.
+		if ( method_exists( $controller, $this->_page ) ) {
+			return call_user_func_array( array( $controller, $this->_page ), $this->_page_params );
+		}
+
+		$this->show();
+	
+		return $this;
 	}
 
 	public function show( $setting = array() ) {
@@ -80,9 +93,9 @@ class View {
 
 		// 自動標題路由
 		if ( $this->_title === '' && is_string( $this->_page ) && $this->_page !== '' ) {
-			$this->_title = $this->_title_routes[strstr( $this->_page, '/', TRUE )];
+			$this->_title = $this->_title_routes[ $this->_page ];
 		}
-
+		
 		// 輸出 view 給瀏覽器
 		$this->CI->template->display( 'common/layout', array(
 				'data'            => $this->data,
@@ -135,8 +148,9 @@ class View {
 	 * @param  string $setting [description]
 	 * @return [type]          [description]
 	 */
-	public function page( $setting = '' ) {
-		$this->_page = $setting;
+	public function page( $page = '', $params = array() ) {
+		$this->_page = $page;
+		$this->_page_params = $params;
 
 		return $this;
 	}
@@ -153,6 +167,13 @@ class View {
 		return $this;
 	}
 
+	/**
+	 * title的二級層
+	 * title的格式為：「title('') - append_title('') - config['site_name']」
+	 * 
+	 * @param  string $setting [description]
+	 * @return [type]          [description]
+	 */
 	public function append_title( $setting = '' ) {
 		$this->_append_title = $setting;
 

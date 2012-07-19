@@ -14,7 +14,7 @@ class Msi_game_2012 extends CI_Controller {
 		$this->view->cache( 10 );
 	}
 
-	public function _remap( $page_name = 'index', $params = array() ) {
+	public function _remap( $method = 'index', $params = array() ) {
 
 		$this->view->title_routes(array(
 				'index'    => '賽事簡介',
@@ -25,35 +25,26 @@ class Msi_game_2012 extends CI_Controller {
 				'contest'  => '競賽影片',
 				'tutorial' => '錄影教學',
 			));
-
-		if ( method_exists( $this, $page_name ) ) return call_user_func_array( array( $this, $page_name ), $params );
-
-		$this->view->page( "$page_name/index" );
-		$this->view->show();
+		$this->view->page( $method, $params );
+		$this->view->init( $this );
 	}
 
 	public function news( $setting = array() ) {
-		$this->view->title( '賽事新聞' );
 		$this->load->model( 'Model_news' );
 		$this->view->data['news_flow'] = $this->Model_news->get_flow( array(
-				'fid' => array( 63 ),
+				'fid'    => array( 63 ),
 				'typeid' => array( 31, 32 ),
 			) );
-		$this->view->page( 'news/index' );
 		$this->view->show();
-		return $this;
 	}
 
 	public function contest( $setting = array() ) {
-		$this->view->title( '競賽影片' );
 		$this->load->model( 'Model_news' );
 		$this->view->data['data']['news_flow'] = $this->Model_news->get_flow( array(
-				'fid' => array( 63 ),
+				'fid'    => array( 63 ),
 				'typeid' => array( 33 ),
 			) );
-		$this->view->page( 'contest/index' );
 		$this->view->show();
-		return $this;
 	}
 }
 

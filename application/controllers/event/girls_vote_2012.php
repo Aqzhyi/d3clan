@@ -49,16 +49,13 @@ class Girls_vote_2012 extends CI_Controller {
 		}
 	}
 
-	public function _remap( $page_name = 'index', $params = array() ) {
+	public function _remap( $sub_page = 'index', $page_params = array() ) {
 
-		$this->view->page( "$page_name/index" );
 		$this->view->title_routes(array(
-				'index' => '賽事首頁',
+				'index'    => '賽事首頁',
 			));
-
-		if ( method_exists( $this, $page_name ) ) return call_user_func_array( array( $this, $page_name ), $params );
-
-		$this->view->show();
+		$this->view->page( $sub_page, $page_params );
+		$this->view->init( $this );
 	}
 
 	public function index( $params = array() ) {
@@ -66,8 +63,7 @@ class Girls_vote_2012 extends CI_Controller {
 		$this->view->data['girls'] = $this->Model_girls_vote_2012->get_girls( array(
 				'tid' => $this->_list_tid
 			) );
-
-		return $this->view->show();
+		$this->view->show();
 	}
 
 	/**
