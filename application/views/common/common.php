@@ -34,29 +34,30 @@
 			<!-- 商業廣告 -->
 			<div class="commercial_ad g_clear" id="commercial_ad">
 				<a href="http://www.facebook.com/d3clan.tw" class="g_fb" target="_blank"></a>
+				<a target="_blank" class='single' href="http://expendables2.catchplay.com/"><img src="/static/file/common/ad/270x60-expendables2.gif" alt="浴血任務2" /></a>
 				<?php echo $this->media->embed_flash( array(
 					'width'  => '270',
 					'height' => '60',
-					'src'    => '\static\file\common\ad\270x60-ASROCK.swf',
+					'src'    => '/static/file/common/ad/270x60-ASROCK.swf',
 					'class'  => 'single',
 				) ) ?>
 				<?php echo $this->media->embed_flash( array(
 					'width'  => '270',
 					'height' => '60',
-					'src'    => '\static\file\common\ad\270x60-kinston.swf',
+					'src'    => '/static/file/common/ad/270x60-kinston.swf',
 					'class'  => 'single',
 				) ) ?>
 				<?php echo $this->media->embed_flash( array(
 					'width'  => '270',
 					'height' => '60',
-					'src'    => '\static\file\common\ad\270x60-msi.swf',
+					'src'    => '/static/file/common/ad/270x60-msi.swf',
 					'class'  => 'single',
 				) ) ?>
 				<?php echo $this->media->embed_flash( array(
 					'width'  => '270',
 					'height' => '60',
-					'src'    => '\static\file\common\ad\270x60-msi-cup-banner.swf',
-					'class'  => 'single g_hide',
+					'src'    => '/static/file/common/ad/270x60-msi-cup-banner.swf',
+					'class'  => 'single',
 				) ) ?>
 				<a href="http://sc2clan.tw/" class="sc2clan" target="_blank"></a>
 			</div>

@@ -53,7 +53,7 @@ class Model_girls_vote_2012 extends CI_Model {
 		if ( $this->callback->is_error() ) return $this->callback->toJSON();
 
 		if ( is_null( $setting['name'] ) ) $this->callback->error_msg( '缺少女孩暱稱' );
-		if ( ! $setting['active_tid'] ) $this->callback->error_msg( '活動尚未開始!' );
+		if ( ! $setting['active_tid'] ) $this->callback->error_msg( '投票於07/30(一) 凌晨 00:00開始，謝謝您的支持。' );
 		if ( $setting['active_tid'] === -1 ) $this->callback->error_msg( '投票已經結束!' );
 		if ( $this->callback->is_error() ) return $this->callback->toJSON();
 
@@ -157,23 +157,23 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'\static\img\event\girls_vote_2012\girl1\1.jpg',
-						'\static\img\event\girls_vote_2012\girl1\2.jpg',
-						'\static\img\event\girls_vote_2012\girl1\3.jpg',
+						'/static/img/event/girls_vote_2012/girl1/1.jpg',
+						'/static/img/event/girls_vote_2012/girl1/2.jpg',
+						'/static/img/event/girls_vote_2012/girl1/3.jpg',
 					),
 				1 => array(
-						'\static\img\event\girls_vote_2012\girl1\4.jpg',
-						'\static\img\event\girls_vote_2012\girl1\5.jpg',
-						'\static\img\event\girls_vote_2012\girl1\6.jpg',
+						'/static/img/event/girls_vote_2012/girl1/4.jpg',
+						'/static/img/event/girls_vote_2012/girl1/5.jpg',
+						'/static/img/event/girls_vote_2012/girl1/6.jpg',
 					),
 				2 => array(
-						'\static\img\event\girls_vote_2012\girl1\7.jpg',
-						'\static\img\event\girls_vote_2012\girl1\8.jpg',
-						'\static\img\event\girls_vote_2012\girl1\9.jpg',
+						'/static/img/event/girls_vote_2012/girl1/7.jpg',
+						'/static/img/event/girls_vote_2012/girl1/8.jpg',
+						'/static/img/event/girls_vote_2012/girl1/9.jpg',
 					),
 				3 => array(
-						'\static\img\event\girls_vote_2012\girl1\10.jpg',
-						'\static\img\event\girls_vote_2012\girl1\11.jpg',
+						'/static/img/event/girls_vote_2012/girl1/10.jpg',
+						'/static/img/event/girls_vote_2012/girl1/11.jpg',
 					),
 			),
 			'text_fields' => array(
@@ -195,26 +195,26 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'\static\img\event\girls_vote_2012\girl2\11.jpg',
-						'\static\img\event\girls_vote_2012\girl2\12.jpg',
-						'\static\img\event\girls_vote_2012\girl2\13.jpg',
+						'/static/img/event/girls_vote_2012/girl2/11.jpg',
+						'/static/img/event/girls_vote_2012/girl2/12.jpg',
+						'/static/img/event/girls_vote_2012/girl2/13.jpg',
 					),
 				1 => array(
-						'\static\img\event\girls_vote_2012\girl2\21.jpg',
-						'\static\img\event\girls_vote_2012\girl2\22.jpg',
-						'\static\img\event\girls_vote_2012\girl2\23.jpg',
-						'\static\img\event\girls_vote_2012\girl2\24.jpg',
+						'/static/img/event/girls_vote_2012/girl2/21.jpg',
+						'/static/img/event/girls_vote_2012/girl2/22.jpg',
+						'/static/img/event/girls_vote_2012/girl2/23.jpg',
+						'/static/img/event/girls_vote_2012/girl2/24.jpg',
 					),
 				2 => array(
-						'\static\img\event\girls_vote_2012\girl2\31.jpg',
-						'\static\img\event\girls_vote_2012\girl2\32.jpg',
-						'\static\img\event\girls_vote_2012\girl2\33.jpg',
+						'/static/img/event/girls_vote_2012/girl2/31.jpg',
+						'/static/img/event/girls_vote_2012/girl2/32.jpg',
+						'/static/img/event/girls_vote_2012/girl2/33.jpg',
 					),
 				3 => array(
-						'\static\img\event\girls_vote_2012\girl2\41.jpg',
-						'\static\img\event\girls_vote_2012\girl2\42.jpg',
-						'\static\img\event\girls_vote_2012\girl2\43.jpg',
-						'\static\img\event\girls_vote_2012\girl2\44.jpg',
+						'/static/img/event/girls_vote_2012/girl2/41.jpg',
+						'/static/img/event/girls_vote_2012/girl2/42.jpg',
+						'/static/img/event/girls_vote_2012/girl2/43.jpg',
+						'/static/img/event/girls_vote_2012/girl2/44.jpg',
 					),
 			),
 			'text_fields' => array(
@@ -236,24 +236,24 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'\static\img\event\girls_vote_2012\girl3\11.jpg',
-						'\static\img\event\girls_vote_2012\girl3\12.jpg',
-						'\static\img\event\girls_vote_2012\girl3\13.jpg',
+						'/static/img/event/girls_vote_2012/girl3/11.jpg',
+						'/static/img/event/girls_vote_2012/girl3/12.jpg',
+						'/static/img/event/girls_vote_2012/girl3/13.jpg',
 					),
 				1 => array(
-						'\static\img\event\girls_vote_2012\girl3\21.jpg',
-						'\static\img\event\girls_vote_2012\girl3\22.jpg',
-						'\static\img\event\girls_vote_2012\girl3\23.jpg',
+						'/static/img/event/girls_vote_2012/girl3/21.jpg',
+						'/static/img/event/girls_vote_2012/girl3/22.jpg',
+						'/static/img/event/girls_vote_2012/girl3/23.jpg',
 					),
 				2 => array(
-						'\static\img\event\girls_vote_2012\girl3\31.jpg',
-						'\static\img\event\girls_vote_2012\girl3\32.jpg',
-						'\static\img\event\girls_vote_2012\girl3\33.jpg',
+						'/static/img/event/girls_vote_2012/girl3/31.jpg',
+						'/static/img/event/girls_vote_2012/girl3/32.jpg',
+						'/static/img/event/girls_vote_2012/girl3/33.jpg',
 					),
 				3 => array(
-						'\static\img\event\girls_vote_2012\girl3\41.jpg',
-						'\static\img\event\girls_vote_2012\girl3\42.jpg',
-						'\static\img\event\girls_vote_2012\girl3\43.jpg',
+						'/static/img/event/girls_vote_2012/girl3/41.jpg',
+						'/static/img/event/girls_vote_2012/girl3/42.jpg',
+						'/static/img/event/girls_vote_2012/girl3/43.jpg',
 					),
 			),
 			'text_fields' => array(
@@ -274,20 +274,20 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'\static\img\event\girls_vote_2012\girl4\12.jpg',
-						'\static\img\event\girls_vote_2012\girl4\11.jpg',
+						'/static/img/event/girls_vote_2012/girl4/12.jpg',
+						'/static/img/event/girls_vote_2012/girl4/11.jpg',
 					),
 				1 => array(
-						'\static\img\event\girls_vote_2012\girl4\21.jpg',
-						'\static\img\event\girls_vote_2012\girl4\22.jpg',
+						'/static/img/event/girls_vote_2012/girl4/21.jpg',
+						'/static/img/event/girls_vote_2012/girl4/22.jpg',
 					),
 				2 => array(
-						'\static\img\event\girls_vote_2012\girl4\31.jpg',
-						'\static\img\event\girls_vote_2012\girl4\32.jpg',
+						'/static/img/event/girls_vote_2012/girl4/31.jpg',
+						'/static/img/event/girls_vote_2012/girl4/32.jpg',
 					),
 				3 => array(
-						'\static\img\event\girls_vote_2012\girl4\41.jpg',
-						'\static\img\event\girls_vote_2012\girl4\42.jpg',
+						'/static/img/event/girls_vote_2012/girl4/41.jpg',
+						'/static/img/event/girls_vote_2012/girl4/42.jpg',
 					),
 			),
 			'text_fields' => array(

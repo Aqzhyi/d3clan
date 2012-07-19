@@ -3,9 +3,16 @@
 		<!-- 關閉按鈕 -->
 		<div class="detail_close" id="detail_close"></div>
 		<div class="g_clear"></div>
+		<!-- 投票 -->
+		<div class="vote_it">
+			<img src="/static/img/event/girls_vote_2012/vote_it.png" alt="" id="vote_she">
+		</div>
+
+		<p></p>
+
 		<!-- 照片集 -->
 		<div class="detail_photos">
-			<button class="btn btn-large btn-primary btn_left_click" id="btn_left_click">左</button>
+			<img src="/static/img/event/girls_vote_2012/left.png" class="btn_left_click" alt="" id="btn_left_click">
 			<!-- 顯示照片 -->
 			{foreach $polls_name as $poll_index => $poll_name}
 				{foreach $girl['photos'][$poll_index] as $index => $photo_url}
@@ -20,7 +27,7 @@
 					{/if}
 				{/foreach}
 			{/foreach}
-			<button class="btn btn-large btn-primary btn_right_click" id="btn_right_click">右</button>
+			<img src="/static/img/event/girls_vote_2012/right.png" class="btn_right_click" alt="" id="btn_right_click">
 		</div>
 
 		<!-- 詳細資料 -->
@@ -60,8 +67,7 @@
 
 		<!-- 投票 -->
 		<div class="vote_it">
-			<button id="vote_she" class="btn btn-large btn-primary" data-vote-name="{$girl['text_fields']['nickname']}">我要投票給她</button>
-			<button id="detail_close" class="btn btn-large">取消</button>
+			<img src="/static/img/event/girls_vote_2012/vote_it.png" alt="" id="vote_she">
 		</div>
 	</div>
 	<!-- 下框 -->
