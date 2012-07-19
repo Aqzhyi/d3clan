@@ -69,6 +69,7 @@
 		,{orig: /70後/mg, to: '六年級生'}
 		,{orig: /80後/mg, to: '七年級生'}
 		,{orig: /90後/mg, to: '八年級生'}
+		,{orig: /刷屏/mg, to: '洗畫面'}
 		,{orig: /沖動/mg, to: '衝動'}
 		,{orig: /婪欲/mg, to: '婪慾'}
 		,{orig: /北京時間/mg, to: '台北時間'}
@@ -216,6 +217,24 @@
 				$element.replaceWith('\r\n\r\n[youku]'+code+'[/youku]\r\n\r\n');
 			});
 
+			// 相容網易圖片播放器
+			$root.find('.nph_gallery').each(function() {
+				jQuery(this).after('<div style="clear: both;"></div>');
+				jQuery(this).replaceWith(
+						jQuery(this).find('.nph_list_thumb>li').each(function() {
+							var $this	   = jQuery(this);
+							var orig_img_url = $this.find('i[title=img]').html();
+							$this.find('img').wrap('<a target="_blank" href="'+orig_img_url+'"></a>');
+							$this.find('h2,p,i').remove();
+							$this.css({
+								float	    : 'left',
+								listStyleType : 'none',
+								margin	   : '3px'
+							});
+						})
+					);
+			});
+
 			// 移除掉礙事的元素
 			jQuery('.col-r').remove();
 			jQuery('span.info').remove();
@@ -227,7 +246,7 @@
 			});
 
 			var title   = jQuery('h1#h1title').html();
-			var content = jQuery('div#endText').html();
+			var content = $root.html();
 			
 			title   = libTrans.transform(title, termList.common);
 			content = libTrans.transform(content, termList.common);
@@ -242,7 +261,7 @@
 			}
 
 			jQuery('h1#h1title').html(title);
-			jQuery('div#endText').html(content);
+			$root.html(content);
 
 			libHelper.createCopyArea(title, content);
 		});
