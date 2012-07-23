@@ -158,6 +158,7 @@
   color: #892a2e;
   margin: 10px;
   height: 140px;
+  overflow: hidden;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_vote_amount {
   background-image: url("/static/img/event/girls_vote_2012/current_votes.png");
