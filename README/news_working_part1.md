@@ -7,11 +7,11 @@
 
 * [官方藍帖](http://d.163.com/special/sp/list_blue.html) to [藍帖](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=54)
 
-![](http://i.imgur.com/4fcga.png)
+![](http://i.imgur.com/V52sN.png)
 
 * [官方新聞](http://d.163.com/special/d3_off/) to [新聞](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=54)
 
-![](http://i.imgur.com/yH5H4.png)
+![](http://i.imgur.com/9HwYz.png)
 
 * [官方推特](http://d.163.com/special/d3_twitter/) to [新聞](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=54)
 
@@ -19,7 +19,7 @@
 
 * [玩家評論帖](http://d.163.com/special/list_pinglun/) to [新聞](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=54)
 
-![](http://i.imgur.com/8WGvw.png)
+![](http://i.imgur.com/XiDRi.png)
 
 * [訪談帖](http://d.163.com/special/list_caifang/) to [新聞](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=54)
 
