@@ -48,7 +48,7 @@ class Model_girls_vote_2012 extends CI_Model {
 
 		$setting['name']       = ( ! is_null( $setting['name'] ) ) ? $setting['name'] : NULL;
 		$setting['active_tid'] = ( ! is_null( $setting['active_tid'] ) ) ? $setting['active_tid'] : NULL;
-		
+
 		if ( $this->user->get_id() == 0 ) $this->callback->error_msg( "請先註冊成為《暗盟》會員並登入論壇！方可投票！\n\n本站亦採用 Facebook 登入，好快好方便！" );
 		if ( $this->callback->is_error() ) return $this->callback->toJSON();
 
@@ -63,7 +63,7 @@ class Model_girls_vote_2012 extends CI_Model {
 
 		$result_array = $sql->result_array();
 
-		foreach ($result_array as $key => $result) {
+		foreach ( $result_array as $key => $result ) {
 			$voterids = explode( '	', $result['voterids'] );
 			if ( in_array( $this->user->get_id(), $voterids ) ) {
 				return $this->callback->error_msg( '您已投票過了' )->toJSON();;
@@ -74,7 +74,7 @@ class Model_girls_vote_2012 extends CI_Model {
 		$this->db->where( 'tid', $setting['active_tid'] );
 		$this->db->where( 'polloption', $setting['name'] );
 		$sql = $this->db->get( 'd3bbs_forum_polloption' );
-		$first_row = $sql->first_row('array');
+		$first_row = $sql->first_row( 'array' );
 
 		// 真正進行投票儲存
 		$voterids[] = $this->user->get_id();
@@ -157,27 +157,27 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/girl1/1.jpg',
-						'/static/img/event/girls_vote_2012/girl1/2.jpg',
-						'/static/img/event/girls_vote_2012/girl1/3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl1/1.jpg',
+					'/static/img/event/girls_vote_2012/girl1/2.jpg',
+					'/static/img/event/girls_vote_2012/girl1/3.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/girl1/4.jpg',
-						'/static/img/event/girls_vote_2012/girl1/5.jpg',
-						'/static/img/event/girls_vote_2012/girl1/6.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl1/4.jpg',
+					'/static/img/event/girls_vote_2012/girl1/5.jpg',
+					'/static/img/event/girls_vote_2012/girl1/6.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/girl1/7.jpg',
-						'/static/img/event/girls_vote_2012/girl1/8.jpg',
-						'/static/img/event/girls_vote_2012/girl1/9.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl1/7.jpg',
+					'/static/img/event/girls_vote_2012/girl1/8.jpg',
+					'/static/img/event/girls_vote_2012/girl1/9.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/girl1/10.jpg',
-						'/static/img/event/girls_vote_2012/girl1/11.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl1/10.jpg',
+					'/static/img/event/girls_vote_2012/girl1/11.jpg',
+				),
 			),
 			'text_fields' => array(
-				'fb' => 'http://www.facebook.com/nila0518',
+				'fb'           => 'http://www.facebook.com/nila0518',
 				'nickname'     => '姜雨珊‏',
 				'server'       => '亞服',
 				'role_name'    => '娜塔莎',
@@ -195,30 +195,30 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/girl2/11.jpg',
-						'/static/img/event/girls_vote_2012/girl2/12.jpg',
-						'/static/img/event/girls_vote_2012/girl2/13.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl2/11.jpg',
+					'/static/img/event/girls_vote_2012/girl2/12.jpg',
+					'/static/img/event/girls_vote_2012/girl2/13.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/girl2/21.jpg',
-						'/static/img/event/girls_vote_2012/girl2/22.jpg',
-						'/static/img/event/girls_vote_2012/girl2/23.jpg',
-						'/static/img/event/girls_vote_2012/girl2/24.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl2/21.jpg',
+					'/static/img/event/girls_vote_2012/girl2/22.jpg',
+					'/static/img/event/girls_vote_2012/girl2/23.jpg',
+					'/static/img/event/girls_vote_2012/girl2/24.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/girl2/31.jpg',
-						'/static/img/event/girls_vote_2012/girl2/32.jpg',
-						'/static/img/event/girls_vote_2012/girl2/33.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl2/31.jpg',
+					'/static/img/event/girls_vote_2012/girl2/32.jpg',
+					'/static/img/event/girls_vote_2012/girl2/33.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/girl2/41.jpg',
-						'/static/img/event/girls_vote_2012/girl2/42.jpg',
-						'/static/img/event/girls_vote_2012/girl2/43.jpg',
-						'/static/img/event/girls_vote_2012/girl2/44.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl2/41.jpg',
+					'/static/img/event/girls_vote_2012/girl2/42.jpg',
+					'/static/img/event/girls_vote_2012/girl2/43.jpg',
+					'/static/img/event/girls_vote_2012/girl2/44.jpg',
+				),
 			),
 			'text_fields' => array(
-				'fb' => 'https://www.facebook.com/only.candy',
+				'fb'           => 'https://www.facebook.com/only.candy',
 				'nickname'     => '糖糖',
 				'server'       => '亞服',
 				'role_name'    => '艾莉絲',
@@ -236,25 +236,25 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/girl3/11.jpg',
-						'/static/img/event/girls_vote_2012/girl3/12.jpg',
-						'/static/img/event/girls_vote_2012/girl3/13.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl3/11.jpg',
+					'/static/img/event/girls_vote_2012/girl3/12.jpg',
+					'/static/img/event/girls_vote_2012/girl3/13.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/girl3/21.jpg',
-						'/static/img/event/girls_vote_2012/girl3/22.jpg',
-						'/static/img/event/girls_vote_2012/girl3/23.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl3/21.jpg',
+					'/static/img/event/girls_vote_2012/girl3/22.jpg',
+					'/static/img/event/girls_vote_2012/girl3/23.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/girl3/31.jpg',
-						'/static/img/event/girls_vote_2012/girl3/32.jpg',
-						'/static/img/event/girls_vote_2012/girl3/33.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl3/31.jpg',
+					'/static/img/event/girls_vote_2012/girl3/32.jpg',
+					'/static/img/event/girls_vote_2012/girl3/33.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/girl3/41.jpg',
-						'/static/img/event/girls_vote_2012/girl3/42.jpg',
-						'/static/img/event/girls_vote_2012/girl3/43.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl3/41.jpg',
+					'/static/img/event/girls_vote_2012/girl3/42.jpg',
+					'/static/img/event/girls_vote_2012/girl3/43.jpg',
+				),
 			),
 			'text_fields' => array(
 				'nickname'     => '簡沛沛',
@@ -274,24 +274,24 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/girl4/12.jpg',
-						'/static/img/event/girls_vote_2012/girl4/11.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl4/12.jpg',
+					'/static/img/event/girls_vote_2012/girl4/11.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/girl4/21.jpg',
-						'/static/img/event/girls_vote_2012/girl4/22.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl4/21.jpg',
+					'/static/img/event/girls_vote_2012/girl4/22.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/girl4/31.jpg',
-						'/static/img/event/girls_vote_2012/girl4/32.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl4/31.jpg',
+					'/static/img/event/girls_vote_2012/girl4/32.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/girl4/41.jpg',
-						'/static/img/event/girls_vote_2012/girl4/42.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl4/41.jpg',
+					'/static/img/event/girls_vote_2012/girl4/42.jpg',
+				),
 			),
 			'text_fields' => array(
-				'fb' => 'https://www.facebook.com/musicsaki',
+				'fb'           => 'https://www.facebook.com/musicsaki',
 				'nickname'     => '紫紫',
 				'server'       => '美服',
 				'role_name'    => '紫馨菲',
@@ -305,6 +305,128 @@ class Model_girls_vote_2012 extends CI_Model {
 			'opinion' => "一開始的簡單破關，讓我非常得意的覺得其實也還好，沒有想像中的難，<br />但到了惡夢，可能是因為裝備防禦不夠高武器不夠強，使我死亡率次數上升，<br />有的時候真的死到會生氣，尤其是第二關卡的魔王，還記得我打了30幾次才成功，<br />真的覺得那關的王要有非常好的專注力才有辦法成功打死他，再來最後的魔王，<br />我始終怎麼打都打不死，次次將我秒殺，於是只好請朋友幫忙拯救我一下，<br />終於到了地域級的關卡，我只能說我好想翻桌，連小怪都打不死！<br />每次出城都是瞬間死亡回儲存點，所以只好慢慢的來，慢慢的打，<br />不過我想我現在最重要的是先用好裝備，<br />因為我的裝備以到達這個地域級的關卡來說是非常爛的。<br />",
 		);
 
+		$girls['心儀'] = array(
+			'video' => '',
+			'photos' => array(
+				0 => array(
+					'/static/img/event/girls_vote_2012/girl5/a1.jpg',
+					'/static/img/event/girls_vote_2012/girl5/a2.jpg',
+					'/static/img/event/girls_vote_2012/girl5/a3.jpg',
+				),
+				1 => array(
+					'/static/img/event/girls_vote_2012/girl5/b1.jpg',
+					'/static/img/event/girls_vote_2012/girl5/b2.jpg',
+					'/static/img/event/girls_vote_2012/girl5/b3.jpg',
+				),
+				2 => array(
+					'/static/img/event/girls_vote_2012/girl5/c1.jpg',
+					'/static/img/event/girls_vote_2012/girl5/c2.jpg',
+				),
+				3 => array(
+					'/static/img/event/girls_vote_2012/girl5/d1.jpg',
+					'/static/img/event/girls_vote_2012/girl5/d2.jpg',
+				),
+			),
+			'text_fields' => array(
+				'fb'           => 'http://www.facebook.com/LoveHeartShin',
+				'nickname'     => '王心豬‏',
+				'server'       => '美服',
+				'role_name'    => '泰妮與安貝爾',
+				'role_level'   => '60',
+				'birthday'     => '06/02',
+				'city'         => '台北市',
+				'class'        => '秘術師',
+				'play_per_day' => '3~5小時'
+			),
+			'intro' => '哈囉大家好~~我是心儀<br />平常的興趣就是玩遊戲<br />舉凡單機 線上 家用主機都很愛玩XDD<br />希望大家可以投我一票喔!!<br />',
+			'opinion' => "其實我是個沒有玩過D2的玩家，所以當初D3預購時我並沒有跟上，後來周遭好友開始洗版FB時，才決定跟朋友借體驗序號來玩，結果整個就是愛上了！！！<br />體驗序號只能玩到13等骷髏王，結果在買到正式版之前我刷了十多次，好不容易總算買到正式版，內心完全就是吶喊加上灑花的狀態啊！！<br />第一次破關很用心的體驗所有的對話加上劇情，只能說我有猜到莉亞跟狄亞布羅有關係啊XDDD<br />之後就是跟朋友組隊刷寶囉，每次組隊總是會開SKYPE語音，打到金色裝備總是令人期待又怕受傷害，我的運氣不錯，目前資產也破千萬囉，顆顆顆。<br />還有我最愛的其實是小馬關，雖然大家都說音樂很詭異，但我超愛這種風格的！！！網路謠傳有第二隱藏關卡，我也希望可以有啊！！！！<br />最後就是要說，D3真的不錯玩XDDDD<br />",
+		);
+
+		$girls['小璇'] = array(
+			'video' => '',
+			'photos' => array(
+				0 => array(
+					'/static/img/event/girls_vote_2012/girl6/a1.jpg',
+					'/static/img/event/girls_vote_2012/girl6/a2.jpg',
+					'/static/img/event/girls_vote_2012/girl6/a3.jpg',
+					'/static/img/event/girls_vote_2012/girl6/a4.jpg',
+					'/static/img/event/girls_vote_2012/girl6/a5.jpg',
+					'/static/img/event/girls_vote_2012/girl6/a6.jpg',
+					'/static/img/event/girls_vote_2012/girl6/a7.jpg',
+				),
+				1 => array(
+					'/static/img/event/girls_vote_2012/girl6/b1.jpg',
+					'/static/img/event/girls_vote_2012/girl6/b2.jpg',
+					'/static/img/event/girls_vote_2012/girl6/b3.jpg',
+					'/static/img/event/girls_vote_2012/girl6/b4.jpg',
+					'/static/img/event/girls_vote_2012/girl6/b5.jpg',
+					'/static/img/event/girls_vote_2012/girl6/b6.jpg',
+					'/static/img/event/girls_vote_2012/girl6/b7.jpg',
+				),
+				2 => array(
+					'/static/img/event/girls_vote_2012/girl6/c1.jpg',
+					'/static/img/event/girls_vote_2012/girl6/c2.jpg',
+					'/static/img/event/girls_vote_2012/girl6/c3.jpg',
+					'/static/img/event/girls_vote_2012/girl6/c4.jpg',
+					'/static/img/event/girls_vote_2012/girl6/c5.jpg',
+				),
+				3 => array(
+					'/static/img/event/girls_vote_2012/girl6/d1.jpg',
+					'/static/img/event/girls_vote_2012/girl6/d2.jpg',
+					'/static/img/event/girls_vote_2012/girl6/d3.jpg',
+					'/static/img/event/girls_vote_2012/girl6/d4.jpg',
+					'/static/img/event/girls_vote_2012/girl6/d5.jpg',
+				),
+			),
+			'text_fields' => array(
+				'fb'           => 'https://www.facebook.com/S.humi.Fans',
+				'nickname'     => '小璇‏',
+				'server'       => '美服',
+				'role_name'    => '凜玥蕾',
+				'role_level'   => '59',
+				'class'        => '狩魔獵人',
+				'birthday'     => '1990/10/30',
+				'city'         => '基隆市',
+				'play_per_day' => '晚上不定時'
+			),
+			'intro' => '哈囉~大家好!我叫小璇(Humi)，身高<br />160公分，體重43公斤，現在是護理<br />科五專剛畢業的學生，平常就是一個<br />很喜歡交朋友的人。<br />努力練到60等中的小璇，也很歡迎<br />各位朋友們來找我一起玩呦 >w<<br />很高興可以參加這次D3的活動，<br />活動開始的時候，<br />別忘了投小璇一票呢>///',
+			'opinion' => "其實在玩這款遊戲之前，就已經聽很多朋友說過這款遊戲了<<br />聽說從一代開始就是一款很熱門的遊戲，所以在要出D3的時候<<br />真的非常的興奮，但是戰網卡還有D3包卻馬上被搶購一空<<br />我花了好多的時間才將戰網卡買到 ˊ口ˋ 但是這一切都很值得<<br />因為D3讓我覺得很熱血，不管是畫風或者是遊戲音樂都讓我覺得<<br />很酷又很震撼。<<br />在技能這塊，跟其他遊戲不同的是，快捷技能的擺放格數有限<<br />沒辦法把所有技能都丟上去 ><”所以在練習技能搭配這方面<<br />找了好多人的擺放位置來參考，才終於讓我在選擇技能上覺得完成了<<br />還有在遊戲畫面的部分，果然做得十分的細緻<<br />尤其是武器的不同屬性會有不同的特效在上面，讓我覺得超棒<<br />完全沒有辜負我跑來跑去買遊戲的努力呢^^<<br />也希望大家可以跟小璇一起來支持D3! 真的是款值得玩下去的遊戲^^<<br />",
+		);
+
+		$girls['Tiffany'] = array(
+			'video' => '',
+			'photos' => array(
+				0 => array(
+					'/static/img/event/girls_vote_2012/girl7/a1.jpg',
+
+				),
+				1 => array(
+					'/static/img/event/girls_vote_2012/girl7/b1.jpg',
+
+				),
+				2 => array(
+					'/static/img/event/girls_vote_2012/girl7/c1.jpg',
+
+				),
+				3 => array(
+					'/static/img/event/girls_vote_2012/girl7/d1.jpg',
+
+				),
+			),
+			'text_fields' => array(
+				'fb'           => 'http://www.facebook.com/rionana',
+				'nickname'     => 'Tiffany‏',
+				'server'       => '亞服',
+				'role_name'    => '月光仙子',
+				'role_level'   => '40',
+				'class'        => '狩魔獵人',
+				'birthday'     => '1990/09/22',
+				'city'         => '台北市',
+				'play_per_day' => '三小時以上'
+			),
+			'intro' => '大家好～我是Tiffany<br />平常的興趣是打電玩跟吃美食<br />希望可以跟各位成為好朋友喲～',
+			'opinion' => "雖然沒玩過二代，但是也聽很多朋友說過，雖然真的會越打越上癮，<br />不過我還不敢自己一個人玩，因為我覺得很恐怖，<br />尤其我又很喜歡在半夜玩，會怕怕的但是又很想玩，<br />所以都會找朋友陪我一起玩，哈哈。",
+		);
 
 		return $girls;
 	}
