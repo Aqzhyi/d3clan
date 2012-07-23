@@ -7,7 +7,6 @@ jQuery ->
 
 	for i in [0..ad_amount-3]
 		random = Math.round( Math.random() * ad_amount - i )
-		console.log /data/, random, i
 		$ads
 			.eq( random )
 			.hide()

@@ -8,7 +8,6 @@
     _results = [];
     for (i = _i = 0, _ref = ad_amount - 3; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
       random = Math.round(Math.random() * ad_amount - i);
-      console.log(/data/, random, i);
       $ads.eq(random).hide();
       _results.push($ads.splice(random, 1));
     }
