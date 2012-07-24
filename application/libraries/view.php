@@ -43,6 +43,9 @@ class View {
 	// CI核心
 	private $CI;
 
+	// 是否show過了版形
+	private $is_show = false;
+
 	function __construct() {
 		$this->CI =& get_instance();
 		$this->CI->load->library( 'template' );
@@ -58,10 +61,13 @@ class View {
 		
 		// 如果控制器呼叫的頁面存在, 則執行它.
 		if ( method_exists( $controller, $this->_page ) ) {
-			return call_user_func_array( array( $controller, $this->_page ), $this->_page_params );
+			call_user_func_array( array( $controller, $this->_page ), $this->_page_params );
 		}
 
-		$this->show();
+		if ( $this->is_show === false and $this->CI->input->is_ajax_request() === false ) {
+			$this->show();
+			$this->is_show = true;
+		}
 	
 		return $this;
 	}

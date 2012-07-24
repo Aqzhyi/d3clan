@@ -1,0 +1,29 @@
+<div id="circle_loop" class="circle_loop">
+	<!-- 輪播按鈕 -->
+	<div class="circle_switch_set">
+		{foreach $circle_loop as $index => $item}
+			{if $item@first}{$class='current'}{else}{$class=''}{/if}
+			<div id="switcher" data-index="{$index}" class="switcher {$current}">
+				<img src="{$item['img']}" alt="輪播新聞" />
+			</div>
+		{/foreach}
+	</div>
+
+	<!-- 輪播顯示器視窗 -->
+	<div class="circle_windows">
+		{foreach $circle_loop as $index => $item}
+			{if $item@first}{$class=''}{else}{$class='g_hide'}{/if}
+			<div id="windows" data-index="{$index}" class="window {$class}">
+				<a><img src="{$item['img']}" alt="輪播新聞" /></a>
+				<div class="textarea">
+					<div class="title">
+						<a href="{$item['link']}">{$item['title']}</a>
+					</div>
+					<div class="descr"><!-- 空兩格全形空白 -->　　{$item['descr']}</div>
+				</div>
+			</div>
+		{/foreach}
+	</div>
+	<div class="g_clear" style="clear: both;"></div>
+</div>
+

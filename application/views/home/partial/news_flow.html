@@ -4,14 +4,14 @@
 	</div>
 	<div class="inner">
 		<div id="sub_menu" class="sub_menu g_clear">
-			{foreach $data['news_cata'] as $cata_name => $cata_val}
+			{foreach $news_cata as $cata_name => $cata_val}
 				<span data-kind="{$cata_name}" class="sub_menu_btn">{$cata_val}</span>
 			{/foreach}
 		</div>
 
 		<div id="news_flows" class="news_flows">
 			<div id="loading" class="g_loading"></div>
-			{foreach $data['news_flows'] as $flow_kind => $flow}
+			{foreach $news_flows as $flow_kind => $flow}
 				<div data-kind="{$flow_kind}" class="news_flow">
 					{foreach $flow as $index => $news}
 						{$CI->discuzx->alink_to_bbs(['tid' => $news['tid'],'class'=>'news_row','open_tag' => true])}
