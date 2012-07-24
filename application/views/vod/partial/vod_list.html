@@ -1,0 +1,31 @@
+{foreach $videos as $index => $vod}
+	<table class="single">
+		<tr>
+			<td class="thumb_wrapper">
+				<a href="/vod/{$vod['first_video_type']}/{$vod['first_video_code']}" class="thumb" data-media-type="{$vod['first_video_type']}" data-subject="{$vod['subject']}" style="background-image: url({$vod['first_video_thumb']});">
+					<i class="g_vod_play_icon_hover"></i>
+				</a>
+			</td>
+			<!-- 圖左字右排版 -->
+			{if $layout=='LR'}
+			<td class='subject_thumb'>
+				{$CI->discuzx->alink_to_bbs( [
+					'tid'  => $vod['tid'],
+					'text' => $vod['subject_thumb']
+				] )}
+			</td>
+			{/if}
+		</tr>
+		<!-- 圖上字下排版 -->
+		{if $layout=='TB'}
+		<tr>
+			<td class='subject_thumb'>
+				{$CI->discuzx->alink_to_bbs( [
+					'tid'  => $vod['tid'],
+					'text' => $vod['subject_thumb']
+				] )}
+			</td>
+		</tr>
+		{/if}
+	</table>
+{/foreach}

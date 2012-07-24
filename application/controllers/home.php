@@ -8,16 +8,33 @@ class Home extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->view->append_title( '' );
+		$this->view->layout( 'home/index' );
+		$this->view->js_add( array(
+				'home/index',
+				'plugin/circle_loop/base',
+			) );
+		$this->view->css_add( array(
+				'home/index',
+				'plugin/circle_loop/base',
+			) );
+		$this->view->cache( 10 );
 	}
 
-	// 首頁..
+	public function _remap( $method = 'index', $params = array() ) {
+
+		$this->view->title_routes( array(
+				'index'    => '首頁',
+			) );
+		$this->view->page( $method, $params );
+		$this->view->init( $this );
+	}
+
 	public function index() {
 		$this->load->model( 'Model_vod' );
 		$this->load->model( 'Model_news' );
 		$this->load->model( 'Model_live_channel' );
 		$this->load->library( 'storage' );
-		$this->load->library( 'template' );
-		$this->view->cache( 5 );
 
 		// 隨選視訊條目
 		$this->view->data["videos"] = $this->storage->get( array(
@@ -74,25 +91,6 @@ class Home extends CI_Controller {
 
 		// 輪播點點點條目
 		$this->view->data['circle_loop'] = $this->Model_news->get_circle_loop();
-
-		// display
-		$this->view->display(
-			array(
-				'title'     => null,
-				'view'      => 'home/index',
-				'js_files'  => array(
-					'home/index',
-					'plugin/circle_loop/base',
-					// 'plugin/abgneImgCircle/base'
-				),
-				'css_files' => array(
-					'home/index',
-					'plugin/circle_loop/base',
-					// 'plugin/abgneImgCircle/base'
-				),
-			)
-		);
-
 	}
 }
 
