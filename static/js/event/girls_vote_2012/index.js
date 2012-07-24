@@ -4,7 +4,7 @@ jQuery(function() {
 	var $girls_banner = jQuery('#girls_banner');
 
 	var interval1 = setInterval(function(){
-		console.log(/banner change in 30s/);
+		console.log(/banner change in 10s/);
 		if ( $girls_banner.find('#item.current').prev('#item').length ) {
 			$girls_banner.find('#item.current').removeClass('current').prev('#item').addClass('current');
 		}
@@ -12,7 +12,7 @@ jQuery(function() {
 			$girls_banner.find('#item.current').removeClass('current');
 			$girls_banner.find('#item').last().addClass('current');
 		}
-	}, 30000);
+	}, 10000);
 	
 
 	// 活動規則
@@ -36,7 +36,7 @@ jQuery(function() {
 	var $girls_area = jQuery('[id^=girl_id_]');
 
 	// 展開詳細資料/投票
-	$girls_area.find('#girl_vote').on('click', function() {
+	$girls_area.find('#girl_vote, #girl_photos').on('click', function() {
 		$element = jQuery(this);
 
 		$element.siblings('#girl_detail_info').css('top', $(window).scrollTop()+30).show();
@@ -83,7 +83,7 @@ jQuery(function() {
 	});
 
 	// 投票給她
-	$girls_area.find('#vote_she').on('click', function() {
+	$girls_area.find('[id=vote_she]').on('click', function() {
 
 		if ( ! confirm('您確定要投下您神聖的一票？\nPS:每人每系票選皆有 1 票的權力。')) { return }
 

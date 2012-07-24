@@ -186,7 +186,8 @@ if ( is_dir( $application_folder ) ) {
 }
 else {
 	if ( ! is_dir( BASEPATH.$application_folder.'/' ) ) {
-		exit( "Your application folder path does not appear to be set correctly. Please open the following file and correct this: ".SELF );
+		header("Content-Type:text/html; charset=utf-8");
+		exit( "更新中，請稍後。 <a href='https://www.facebook.com/D3clan.tw'>暗盟粉絲頁</a>" );
 	}
 
 	define( 'APPPATH', BASEPATH.$application_folder.'/' );

@@ -77,7 +77,6 @@
 		// each女孩
 		.girl_intro{
 			width               : 319px;
-			height              : 431px;
 			float               : left;
 			
 			.girl_div_inner{
@@ -88,25 +87,24 @@
 				color               : #8A622F;
 				font-size           : 14px;
 				font-weight         : bold;
-				padding             : 0 28px;
+				padding             : 0 20px;
 
 				// 女孩的照片 兩張
 				.girl_photos{
 					.g_clear();
 					text-align: center;
+					cursor: pointer;
 
 					// 女孩照片
 					.girl_photo{
 						background-color : white;
-						float            : left;
 						display          : inline-block;
 						margin           : 0 15px;
 						margin-top       : 20px;
 						margin-bottom    : 20px;
 
 						img{
-							height           : 150px;
-							width            : 100px;
+							height           : 175px;
 						}
 					}
 				}
@@ -114,12 +112,13 @@
 				// 女孩個資
 				.girl_personal{
 					.g_clear();
+					min-height: 100px;
 
 					// 個資欄位
 					.txt_row{
 						float       : left;
 						display     : inline-block;
-						width       : 110px;
+						width       : 120px;
 						margin-left : 14px;
 
 						// label
@@ -136,8 +135,10 @@
 
 					// 詳細介紹
 					.girl_intro_detail{
-						color  : @common_font_color - 50;
-						margin : 10px
+						color    : @common_font_color - 50;
+						margin   : 10px;
+						height   : 142px;
+						overflow : hidden;
 					}
 				}
 
@@ -164,7 +165,7 @@
 					cursor              : pointer;
 				}
 
-				// 女孩詳細資料
+				// 女孩詳細資料(alt+7)
 				.girl_detail_info{
 					background-image    : url("@{img}fold_01.png");
 					background-position : 50% 0;
@@ -199,13 +200,17 @@
 						.detail_photos{
 							.btn_left_click{
 								position : absolute;
-								top      : 260px;
+								top      : 300px;
 								left     : 45px;
+								z-index  : 100;
+								cursor   : pointer;
 							}
 							.btn_right_click{
 								position : absolute;
-								top      : 260px;
+								top      : 300px;
 								right    : 45px;
+								z-index  : 100;
+								cursor   : pointer;
 							}
 
 							.twinned{
@@ -216,9 +221,26 @@
 									display: block;
 								}
 
-								img{
-									width: 300px;
-									height: 400px;
+								a{
+									display    : inline-block;
+									max-width  : 600px;
+									max-height : 400px;
+
+									.label{
+										font-size: 20px;
+										color: black;
+									}
+
+									img{
+										max-width  : 600px;
+										height    : 400px;
+									}
+
+									&:hover{
+										position : relative;
+										top      : 1px;
+										left     : 1px;
+									}
 								}
 							}
 						}
@@ -252,14 +274,14 @@
 											}
 											// 內容
 											.value{
-												font-size : 24px;
+												font-size : 18px;
 											}
 										}
 
 										// 詳細介紹
 										.girl_intro_detail{
 											color  : black;
-											margin : 10px
+											margin : 10px;
 										}
 									}
 								}
@@ -271,10 +293,10 @@
 									margin-right     : 25px;
 
 									.kind_polls{
-										margin: 25px 0;
+										margin: 28px 0;
 
 										.progress{
-											width         : 350px;
+											width         : 300px;
 											display       : inline-block;
 											margin        : 0px;
 											margin-bottom : -4px;
@@ -295,12 +317,22 @@
 
 						// 自我介紹
 						.detail_intro{
-							padding: 25px 90px;
+							padding   : 10px 90px;
+							font-size : 14px;
+							line-height: 22px;
+
+							.label{
+								font-size     : 24px;
+								text-shadow   : 1px 1px 0 black;
+								line-height   : 24px;
+								margin-bottom : 5px;
+							}
 						}
 
 						// 投票
 						.vote_it{
 							text-align : center;
+							cursor     : pointer;
 						}
 					}
 

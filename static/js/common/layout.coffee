@@ -1,8 +1,14 @@
 jQuery ->
-	ad_amount = 4 - 1
-	random_hide_id = Math.round( Math.random() * ad_amount )
-	jQuery('#commercial_ad')
+	ad_amount = 5 - 1
+	
+	$ads = jQuery('#commercial_ad')
 		.find('.single')
-		.removeClass('g_hide')
-		.eq(random_hide_id)
-		.addClass('g_hide')
+		.show()
+
+	for i in [0..ad_amount-3]
+		random = Math.round( Math.random() * ad_amount - i )
+		$ads
+			.eq( random )
+			.hide()
+
+		$ads.splice( random, 1 )

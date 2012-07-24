@@ -3,19 +3,31 @@
 		<!-- 關閉按鈕 -->
 		<div class="detail_close" id="detail_close"></div>
 		<div class="g_clear"></div>
+		<!-- 投票 -->
+		<div class="vote_it">
+			<img src="/static/img/event/girls_vote_2012/vote_it.png" alt="" id="vote_she">
+		</div>
+
+		<p></p>
+
 		<!-- 照片集 -->
 		<div class="detail_photos">
-			<button class="btn btn-large btn-primary btn_left_click" id="btn_left_click">左</button>
-			<!-- 照片一次顯示兩次 -->
-			{foreach $girl['photos'] as $index => $photo_url}
-				{if $photo_url@index is even by 1}
-				<div class="twinned {if $photo_url@first}first{/if}" id="twinned">
-					<img src="{$photo_url}" alt="">
-					{if $girl['photos'][$index+1]}<img src="{$girl['photos'][$index+1]}" alt="">{/if}
-				</div>
-				{/if}
+			<img src="/static/img/event/girls_vote_2012/left.png" class="btn_left_click" alt="" id="btn_left_click">
+			<!-- 顯示照片 -->
+			{foreach $polls_name as $poll_index => $poll_name}
+				{foreach $girl['photos'][$poll_index] as $index => $photo_url}
+					{*還未開選的系別不放照片*}
+					{if $poll_index <= $active_poll}
+					<div class="twinned {if $photo_url@first && $poll_index == $active_poll}first{/if}" id="twinned">
+						<a href="{$photo_url}" target="_blank">
+							<div class="label label-warning">{$poll_name}系</div>
+							<img src="{$girl['photos'][$poll_index][$index]}" alt="">
+						</a>
+					</div>
+					{/if}
+				{/foreach}
 			{/foreach}
-			<button class="btn btn-large btn-primary btn_right_click" id="btn_right_click">右</button>
+			<img src="/static/img/event/girls_vote_2012/right.png" class="btn_right_click" alt="" id="btn_right_click">
 		</div>
 
 		<!-- 詳細資料 -->
@@ -23,14 +35,16 @@
 			<div class="inner">
 				<div class="info">{include file='./girl_personal.html'}</div>
 				<div class="vote_amount">
-					{foreach ['氣質','萌度','性感','活潑'] as $index => $val}
+					{foreach $polls_name as $index => $val}
 					<div class="kind_polls"><span>{$val}</span>
 						<div class="progress"><div class="bar" style="width: {$girl['polls'][$index]/13}%; max-width: 100%;"></div></div>
+						<span>{$girl['polls'][$index]|default:0}</span>
 					</div>
 					{/foreach}
 
-					<div class="kind_polls"><span>總分</span>
+					<div class="kind_polls"><span>總票</span>
 						<div class="progress progress-info"><div class="bar" style="width: {$girl['total_votes']/(3*2)}%; max-width: 100%;"></div></div>
+						<span>{$girl['total_votes']|default:0}</span>
 					</div>
 				</div>
 			</div>
@@ -38,7 +52,14 @@
 
 		<!-- 自我介紹 -->
 		<div class="detail_intro">
+			<h3 class="label">自我介紹</h3>
 			{$girl['intro']}
+		</div>
+
+		<!-- 遊戲心得 -->
+		<div class="detail_intro">
+			<h3 class="label">遊戲心得</h3>
+			{$girl['opinion']}
 		</div>
 
 		<!-- 影片 -->
@@ -46,8 +67,7 @@
 
 		<!-- 投票 -->
 		<div class="vote_it">
-			<button id="vote_she" class="btn btn-large btn-primary" data-vote-name="{$girl['text_fields']['nickname']}">我要投票給她</button>
-			<button id="detail_close" class="btn btn-large">取消</button>
+			<img src="/static/img/event/girls_vote_2012/vote_it.png" alt="" id="vote_she">
 		</div>
 	</div>
 	<!-- 下框 -->

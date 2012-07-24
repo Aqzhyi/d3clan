@@ -32,7 +32,7 @@ class Model_news extends CI_Model {
 					'img'   => 'http://d3clan.tw/bbs/data/attachment/forum/201207/17/1759589ds3xggerds96xgl.jpg',
 					'title' => '微星遊戲筆電《暗黑破壞神III》賽事正式開跑',
 					'descr' => '《暗黑破壞神III》的來臨，讓全球玩家為之瘋狂，全球銷量首週更超過630萬套，刷新史上所有電腦遊戲銷量紀錄。今年暑假，微星科技電競遊戲邀請『暗盟電競情報網』攜手合辦『微星盃暗黑激鬥賽』，凡具有《暗黑破壞神III》亞服帳號即可報名，冠軍獎金更高達3萬元整，並還有Intel® Core™ i5-3470處理器、CM STORM Quick Fire Pro電競鍵盤、CM Storm Sirus S 天狼星電競耳機組、A-DATA DashDrive™ Durable HD710 USB 3.0外接式硬碟…等多項電競好禮要送給暗黑高手們。',
-					'link'  => '/bbs/forum.php?mod=viewthread&tid=432',
+					'link'  => '/event/2012-msi',
 				),
 				array(
 					'img'   => 'http://i418.photobucket.com/albums/pp266/vic111567/ASROCKB75/DSC_5875.jpg',

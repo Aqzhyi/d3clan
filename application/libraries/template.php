@@ -13,20 +13,22 @@ class Template {
 		return $smarty->fetch( $template . '.html' );
 	}
 
-	public function display( $template = '', $data = array() ) {
+	public function display( $template = '', $params = array() ) {
 		// 初始化 smarty
 		$smarty = $this->create_smarty_lib();
 		// 基本配置
-		$smarty->assign( '_VIEW', $data );
+		$smarty->assign( '_VIEW', $params );
 		$smarty->assign( 'CI', $CI =& get_instance() );
 
 		// 從控制器 assign 進來的變數, 也要一個一個 assign 至 smarty 樣版裡.
-		foreach ( array_keys( $data['data'] ) as $index => $key_name ) {
-			$smarty->assign( $key_name, $data['data'][$key_name] );
+		foreach ( array_keys( $params['data'] ) as $index => $key_name ) {
+			$smarty->assign( $key_name, $params['data'][$key_name] );
 		}
 
 		// 輸出視圖
-		return $smarty->display( $template . '.html' );
+		$static_template = $smarty->fetch( $template . '.html' );
+		$CI->output->set_output( $static_template );
+		return $this;
 	}
 
 	private function create_smarty_lib() {

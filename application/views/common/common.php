@@ -34,29 +34,30 @@
 			<!-- 商業廣告 -->
 			<div class="commercial_ad g_clear" id="commercial_ad">
 				<a href="http://www.facebook.com/d3clan.tw" class="g_fb" target="_blank"></a>
+				<a target="_blank" class='single' href="http://expendables2.catchplay.com/"><img src="/static/file/common/ad/270x60-expendables2.gif" alt="浴血任務2" /></a>
 				<?php echo $this->media->embed_flash( array(
 					'width'  => '270',
 					'height' => '60',
-					'src'    => '\static\file\common\ad\270x60-ASROCK.swf',
+					'src'    => '/static/file/common/ad/270x60-ASROCK.swf',
 					'class'  => 'single',
 				) ) ?>
 				<?php echo $this->media->embed_flash( array(
 					'width'  => '270',
 					'height' => '60',
-					'src'    => '\static\file\common\ad\270x60-kinston.swf',
+					'src'    => '/static/file/common/ad/270x60-kinston.swf',
 					'class'  => 'single',
 				) ) ?>
 				<?php echo $this->media->embed_flash( array(
 					'width'  => '270',
 					'height' => '60',
-					'src'    => '\static\file\common\ad\270x60-msi.swf',
+					'src'    => '/static/file/common/ad/270x60-msi.swf',
 					'class'  => 'single',
 				) ) ?>
 				<?php echo $this->media->embed_flash( array(
 					'width'  => '270',
 					'height' => '60',
-					'src'    => '\static\file\common\ad\270x60-msi-cup-banner.swf',
-					'class'  => 'single g_hide',
+					'src'    => '/static/file/common/ad/270x60-msi-cup-banner.swf',
+					'class'  => 'single',
 				) ) ?>
 				<a href="http://sc2clan.tw/" class="sc2clan" target="_blank"></a>
 			</div>
@@ -88,7 +89,7 @@
 		<!-- 頁腳 -->
 		<footer>
 		<div class="footer">
-			執行長: 虎虎(HUhu)、營運經理: 萱萱太太(Cynthia)、助理工程師: 甜豬太太、美術設計師: 小伊(Ithil)<br />
+			執行長: 虎虎(HUhu)、營運經理: 萱萱太太(Cynthia)、助理工程師: 然苦氏太太、美術設計師: 小伊(Ithil)<br />
 			我們極度建議您使用<a href="http://www.google.com/chrome/index.html?hl=zh-TW&amp;brand=CHMA&amp;utm_campaign=zh_hk&amp;utm_source=zh-TW-ha-apac-tw-bk&amp;utm_medium=ha" target="_blank">Google Chrome 20+ 瀏覽器</a>來瀏覽本網站。
 		</div>
 		</footer>

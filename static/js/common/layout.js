@@ -2,10 +2,16 @@
 (function() {
 
   jQuery(function() {
-    var ad_amount, random_hide_id;
-    ad_amount = 4 - 1;
-    random_hide_id = Math.round(Math.random() * ad_amount);
-    return jQuery('#commercial_ad').find('.single').removeClass('g_hide').eq(random_hide_id).addClass('g_hide');
+    var $ads, ad_amount, i, random, _i, _ref, _results;
+    ad_amount = 5 - 1;
+    $ads = jQuery('#commercial_ad').find('.single').show();
+    _results = [];
+    for (i = _i = 0, _ref = ad_amount - 3; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+      random = Math.round(Math.random() * ad_amount - i);
+      $ads.eq(random).hide();
+      _results.push($ads.splice(random, 1));
+    }
+    return _results;
   });
 
 }).call(this);
