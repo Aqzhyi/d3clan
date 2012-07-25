@@ -34,6 +34,7 @@
 			<!-- 商業廣告 -->
 			<div class="commercial_ad g_clear" id="commercial_ad">
 				<a href="http://www.facebook.com/d3clan.tw" class="g_fb" target="_blank"></a>
+				<a target="_blank" class='single' href="http://www.roccat.org"><img src="/static/file/common/ad/ROCCAT-logo_270x60.jpg" alt="" /></a>
 				<?php echo $this->media->embed_flash( array(
 					'width'  => '270',
 					'height' => '60',

@@ -3,7 +3,7 @@
 
   jQuery(function() {
     var $ads, ad_amount, i, random, _i, _ref, _results;
-    ad_amount = 7 - 1;
+    ad_amount = 8 - 1;
     $ads = jQuery('#commercial_ad').find('.single').show();
     console.log(/data/, $ads);
     _results = [];

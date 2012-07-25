@@ -1,5 +1,5 @@
 jQuery ->
-	ad_amount = 7 - 1
+	ad_amount = 8 - 1
 	
 	$ads = jQuery('#commercial_ad')
 		.find('.single')
