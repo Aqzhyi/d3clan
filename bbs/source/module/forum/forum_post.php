@@ -219,6 +219,8 @@ if(($subject || $message) && empty($_GET['save'])) {
 }
 
 $urloffcheck = $usesigcheck = $smileyoffcheck = $codeoffcheck = $htmloncheck = $emailcheck = '';
+// 由URL開關「html代碼解析」的接口
+if ($_GET['htmlon']) $htmloncheck = 'checked="checked"';
 
 $seccodecheck = ($_G['setting']['seccodestatus'] & 4) && (!$_G['setting']['seccodedata']['minposts'] || getuserprofile('posts') < $_G['setting']['seccodedata']['minposts']);
 $secqaacheck = $_G['setting']['secqaa']['status'] & 2 && (!$_G['setting']['secqaa']['minposts'] || getuserprofile('posts') < $_G['setting']['secqaa']['minposts']);

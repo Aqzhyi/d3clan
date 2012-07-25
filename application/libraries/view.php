@@ -46,6 +46,8 @@ class View {
 	// 是否show過了版形
 	private $is_show = false;
 
+	public $is_ajax_request = false;
+
 	function __construct() {
 		$this->CI =& get_instance();
 		$this->CI->load->library( 'template' );
@@ -64,7 +66,7 @@ class View {
 			call_user_func_array( array( $controller, $this->_page ), $this->_page_params );
 		}
 
-		if ( $this->is_show === false and $this->CI->input->is_ajax_request() === false ) {
+		if ( $this->is_show === false and $this->CI->input->is_ajax_request() === false and $this->is_ajax_request === false ) {
 			$this->show();
 			$this->is_show = true;
 		}

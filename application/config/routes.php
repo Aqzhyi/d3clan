@@ -38,28 +38,30 @@
 |
 */
 
-$route['default_controller']           = "home/index";
-$route['404_override']                 = '';
+$route['default_controller']            = "home/index";
+$route['404_override']                  = '';
 
-$route['admin/live-channels']          = 'admin/live_channels';
-$route['admin/news-bot']               = 'admin/news_bot';
-$route['admin/news-bot/(:any)']        = 'admin/news_bot/$1';
+$route['admin/live-channels']           = 'admin/live_channels';
+$route['admin/news-bot']                = 'admin/news_bot';
+$route['admin/news-bot/(:any)']         = 'admin/news_bot/$1';
 
-$route['game/(:any)/(:any)']           = 'game/index/$1/$2';
-$route['game/(:any)/(:any)/(:any)']    = 'game/index/$1/$2/$3';
+$route['game/(:any)/(:any)']            = 'game/index/$1/$2';
+$route['game/(:any)/(:any)/(:any)']     = 'game/index/$1/$2/$3';
 
-$route['trade/assist-sell']            = 'trade/assist_sell';
+$route['trade/assist-sell']             = 'trade/assist_sell';
 
-$route['vod/(:any)/(:any)']            = 'vod/index/$1/$2';
+$route['vod/(:any)/(:any)']             = 'vod/index/$1/$2';
 
 // D-Girls選拔
 $route['event/2012-girls-vote']         = 'event/girls_vote_2012';
 $route['event/2012-girls-vote/(:any)']  = 'event/girls_vote_2012/$1';
 
 // MSI盃
-$route['event/2012-msi']         = 'event/msi_game_2012';
-$route['event/2012-msi/(:any)']  = 'event/msi_game_2012/$1';
+$route['event/2012-msi']                = 'event/msi_game_2012';
+$route['event/2012-msi/(:any)']         = 'event/msi_game_2012/$1';
 
+// API
+$route['api/([\w]*)-([\w]*)']           = 'api/$1_$2';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

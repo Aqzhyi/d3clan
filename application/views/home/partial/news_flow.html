@@ -15,8 +15,10 @@
 				<div data-kind="{$flow_kind}" class="news_flow">
 					{foreach $flow as $index => $news}
 						{$CI->discuzx->alink_to_bbs(['tid' => $news['tid'],'class'=>'news_row','open_tag' => true])}
+							<span class='thread_at'>[{date('m-d', $news['dateline'])}]</span>
 							<span class='thread_class'>[{$news['name']}]</span>
 							<span class='thread_subject'>{$news['subject']}</span>
+							<span class='thread_replies'>[{$news['replies']}]</span>
 						{$CI->discuzx->alink_to_bbs(['close_tag' => true])}
 					{/foreach}
 				</div>

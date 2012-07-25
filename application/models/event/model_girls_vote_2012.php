@@ -538,6 +538,140 @@ class Model_girls_vote_2012 extends CI_Model {
 			'intro' => '一個小小宅宅的嫩嫩涅法雷姆<br />明明是想玩帥帥的男DH卻莫名其妙變成Monk<br />靠撿破爛拯救聖修亞瑞<br />現在和夥伴們正過著穿全身破爛打寶裝襲擊野外無辜菁英並搶奪財物的生活',
 			'opinion' => "1.攻速Nerf比率也太高Q_Q,擺明砍DH的頭卻連武僧和野蠻的頭一起砍了,雖然攻速在D3的確是過於強勢的素質(連法師法施法速度都跟武器攻速有關?這什麼邏輯???)<br />但原本+25%攻速變成+12%功速這點滿詭異的,無條件被捨去了0.5%攻速嗎???<br /><br />2.Nerf後爆擊和爆傷素質裝備被眾多玩家過度重視,甚至出現認為爆擊機率也需要Nerf的聲浪,個人認為”爆擊機率”終究是機率高低的問題,在功速已經被NERF的情況下,強勢性相對也下降很多了,況且,爆擊與否終究在於人品,人品不好99%機率也未必爆擊啊!<br />希望別再砍數值了~要是連擊中都砍我就哭哭了哈哈哈哈<br /><br />3.撕魂獸的舌頭為什麼可以穿牆<br /><br />4.1.03改版後難度下降好多<br /><br />5.雖然上拉里拉咂說一堆但D3在我心中還是神作",
 		);
+		$girls['堂堂'] = array(
+			'video' => '',
+			'photos' => array(
+				0 => array(
+					'/static/img/event/girls_vote_2012/girl11/p1.jpg',
+				),
+				1 => array(
+					'/static/img/event/girls_vote_2012/girl11/b1.jpg',
+				),
+				2 => array(
+					'/static/img/event/girls_vote_2012/girl11/c1.jpg',
+				),
+				3 => array(
+					'/static/img/event/girls_vote_2012/girl11/d1.jpg',
+				),
+			),
+			'text_fields' => array(
+				'fb' => '',
+				'nickname'     => '堂堂‏',
+				'server'       => '亞洲',
+				'role_name'    => '紗娜',
+				'role_level'   => '60',
+				'class'        => '秘術師',
+				'birthday'     => '1991/07/07',
+				'city'         => '台北',
+				'play_per_day' => '6小時'
+			),
+			'intro' => '哈嚕，大家好耶！我是堂堂 : D<br />我是可線上遊戲迷呢! 玩遊戲有10年以上的經歷<br />我最近剛玩不久的D3，很喜歡交朋友聊天！透過<br />遊戲認識很多朋友呢^^<br />希望大家能投我一票摟 希望能一起玩D3吧<br />',
+			'opinion' => "這是一款男女都可以輕鬆上手的遊戲，畫面動畫優質，技能很華麗！<br />人物角色裝扮還可以隨著染料而變色，對於女生愛打扮來說在好不過了，<br />以往的戰略性遊戲激不起我玩遊戲的興趣這款遊戲，卻打動我的心呢^^<br />自己玩或是跟朋友玩都別有樂趣<br />",
+		);
+		$girls['謝依彤'] = array(
+			'video' => '',
+			'photos' => array(
+				0 => array(
+						'/static/img/event/girls_vote_2012/girl12/a1.jpg',
+						'/static/img/event/girls_vote_2012/girl12/a2.jpg',
+						'/static/img/event/girls_vote_2012/girl12/a3.jpg',
+					),
+				1 => array(
+						'/static/img/event/girls_vote_2012/girl12/b1.jpg',
+						'/static/img/event/girls_vote_2012/girl12/b2.jpg',
+						'/static/img/event/girls_vote_2012/girl12/b3.jpg',
+					),
+				2 => array(
+						'/static/img/event/girls_vote_2012/girl12/c1.jpg',
+						'/static/img/event/girls_vote_2012/girl12/c2.jpg',
+						'/static/img/event/girls_vote_2012/girl12/c3.jpg',
+					),
+				3 => array(
+						'/static/img/event/girls_vote_2012/girl12/d1.jpg',
+						'/static/img/event/girls_vote_2012/girl12/d2.jpg',
+						'/static/img/event/girls_vote_2012/girl12/d3.jpg',
+					),
+			),
+			'text_fields' => array(
+				'fb' => 'https://www.facebook.com/NwBella',
+				'nickname'     => 'Bella or 彤彤‏',
+				'server'       => '亞洲',
+				'role_name'    => 'Bellababy',
+				'role_level'   => '60',
+				'class'        => '秘術師',
+				'birthday'     => '10/11',
+				'city'         => '台北',
+				'play_per_day' => '3小時'
+			),
+			'intro' => '哈囉大家好我是Bella你也可以叫我彤彤<br />我從小就是個遊戲迷，從紅白機到PS3<br />從GAMEBOY到3DS，電腦遊戲也是從<br />仙劍奇俠傳到暗黑破壞神三無所不玩<br />之前有做過一個遊戲回顧史的APP<br />愕然發現我居然玩過200多款電腦遊戲<br />我都要嚇死了<br />真的是有空的時間我都奉獻給遊戲了<br />雖然我什麼都玩，但什麼都很不精通,都很弱<br />我喜歡玩遊戲的快樂<br />追逐頂尖的磨難就拋在腦後啦<br />開心玩遊戲就好了<br />玩遊戲也帶給了我不一樣的生活<br />成為職業電競的主播<br />讓我工作和休閒都充滿了遊戲~~好開心<br />',
+			'opinion' => "暗黑破壞神III,我可是MF寶寶<br />身穿快破三百的打寶裝<br />成為人見人愛的組隊最佳人選<br />躺屍體撿金裝,是我每天必做的活動<br />雖然我沒有玩過二代直接玩三代的<br />但一開始我就一頭栽入了D3練功的世界<br />一心只想趕快60級可以跟著大家去打寶<br />有空的時間甚至可以玩一整天<br />我沒有風騷的走位技巧,也沒有超神的裝備<br />但是我有很多好隊友… 陪著我打屠夫、打歌不林、農A3<br />非常的開心<br />",
+		);
+		$girls['潘小薰'] = array(
+			'video' => '',
+			'photos' => array(
+				0 => array(
+						'/static/img/event/girls_vote_2012/girl13/a1.jpg',
+						'/static/img/event/girls_vote_2012/girl13/a2.jpg',
+					),
+				1 => array(
+						'/static/img/event/girls_vote_2012/girl13/b1.jpg',
+						'/static/img/event/girls_vote_2012/girl13/b2.jpg',
+						'/static/img/event/girls_vote_2012/girl13/b3.jpg',
+					),
+				2 => array(
+						'/static/img/event/girls_vote_2012/girl13/c1.jpg',
+						'/static/img/event/girls_vote_2012/girl13/c2.jpg',
+					),
+				3 => array(
+						'/static/img/event/girls_vote_2012/girl13/d1.jpg',
+						'/static/img/event/girls_vote_2012/girl13/d2.jpg',
+					),
+			),
+			'text_fields' => array(
+				'fb' => 'http://www.facebook.com/babykaoru',
+				'nickname'     => '潘小薰‏',
+				'server'       => '亞服',
+				'role_name'    => '紗紗',
+				'role_level'   => '60',
+				'class'        => '巫醫',
+				'birthday'     => '10/19',
+				'city'         => '新北市',
+				'play_per_day' => '有空就在玩'
+			),
+			'intro' => '嗨!大家好~<br />我是暗黑美少女候選人，小薰。<br />相信認識我的人<br />就知道我是個不折不扣的超級宅女<br />不論什麼類型遊戲都有接觸及嘗試<br />當然我也不會放過睽違12年的大作<br />”暗黑破壞神3”啦!<br />請大家跟我一起支持這款超人氣遊戲吧:D<br />',
+			'opinion' => "暗黑破壞神3是一款眾人期盼12年的遊戲<br />而且他是一款百玩不膩的線上遊戲<br />他不像以往的網路遊戲，需要長時間待在遊戲中<br />像我工作結束再回家打D3，都不擔心會有等級被追過的問題。<br />非常適合大家在閒暇時間做的休閒活動!<br />而且操作簡單，老少咸宜呢。<br />",
+		);
+		$girls['潘恩綺'] = array(
+			'video' => '',
+			'photos' => array(
+				0 => array(
+						'/static/img/event/girls_vote_2012/girl14/a1.jpg',
+					),
+				1 => array(
+						'/static/img/event/girls_vote_2012/girl14/b1.jpg',
+					),
+				2 => array(
+						'/static/img/event/girls_vote_2012/girl14/c1.jpg',
+						'/static/img/event/girls_vote_2012/girl14/c2.jpg',
+					),
+				3 => array(
+						'/static/img/event/girls_vote_2012/girl14/d1.jpg',
+					),
+			),
+			'text_fields' => array(
+				'fb' => 'https://www.facebook.com/springsweety',
+				'nickname'     => '潘恩綺‏',
+				'server'       => '美服',
+				'role_name'    => '潘恩綺',
+				'role_level'   => '41',
+				'class'        => '秘術師',
+				'birthday'     => '06/11',
+				'city'         => 'Taipei',
+				'play_per_day' => '晚上不定時'
+			),
+			'intro' => '大家好~我是潘恩綺Spring<br />不管不管我現在才41級,快一起幫我啦>///<<br />我要當D3 女神啦~~(羞羞)哈<br />還有我的粉絲團在上面有連結<br />投我一票~<br />恩綺給你生活更美麗 ',
+			'opinion' => "一開始聽到D3上市了,就一直在想到底有沒有那麼好玩?<br />大家有需要那麼誇張嗎??<br />後來...朋友送給我了D3組,從此我就聖光阿~<br />剛開始摸索覺得好困難,一直接受復活54321...XDD<br />連作夢都會夢到\"幫助我\"這三個字!!!!<br />雖然現在才50級,還沒資格煉獄<br />但~~團結力量大!!快帶我一起練^0^/<br />",
+		);
 
 		return $girls;
 	}
