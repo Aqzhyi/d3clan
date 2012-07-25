@@ -18,7 +18,7 @@ class Hardware extends CI_Controller {
 
 	public function _remap( $method = 'index', $params = array() ) {
 		$this->view->title_routes( array(
-				'index'    => '首頁',
+				'index'    => '週邊設備',
 			) );
 		$this->view->page( $method, $params );
 		$this->view->init( $this );
