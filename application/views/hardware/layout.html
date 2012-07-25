@@ -1,0 +1,36 @@
+<div class="namespace_hardware">
+	
+	<div class="header">
+		{include file='./partial/circle_news.html'}
+		{include file='./partial/news_class.html'}
+		
+		<div class="search">
+			{$CI->discuzx->search_in_bbs( [
+				'srchfid' => ['44','45','46','47']
+			] )}
+		</div>
+	</div>
+
+	<div class="body">
+		<div class="class_news_flow">
+			<div class="header">最新滑鼠<div class="hardware_AD"></div></div>
+			{include file='./partial/news_flow.html' data=$mouse_flow}
+		</div>
+		
+		<div class="class_news_flow">
+			<div class="header">最新鍵盤<div class="hardware_AD"></div></div>
+			{include file='./partial/news_flow.html' data=$keyboard_flow}
+		</div>
+
+		<div class="class_news_flow">
+			<div class="header">最新耳機<div class="hardware_AD"></div></div>
+			{include file='./partial/news_flow.html' data=$headphone_flow}
+		</div>
+
+		<div class="class_news_flow">
+			<div class="header">硬體相關<div class="hardware_AD"></div></div>
+			{include file='./partial/news_flow.html' data=$else_flow}
+		</div>
+	</div>
+
+</div>

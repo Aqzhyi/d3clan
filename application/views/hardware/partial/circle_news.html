@@ -1,14 +1,14 @@
 <div class="circle_news" id="bb-circle_news">
 	<div class="header">
 		<div class="navi">
-		{foreach $data as $index => $entity}
+		{foreach $circle_news as $index => $entity}
 			{if $entity@first}{$class = 'current'}{else}{$class = ''}{/if}
 			<span id="menu_btn" class="item {$class}"></span>
 		{/foreach}
 		</div>
 	</div>
 	<div class="body">
-		{foreach $data as $index => $entity}
+		{foreach $circle_news as $index => $entity}
 		{if $entity@first}{$class = 'current'}{else}{$class = ''}{/if}
 		<div id="list_block" class="item {$class}">
 			<img class="img" src="{$entity['img']}" alt="">

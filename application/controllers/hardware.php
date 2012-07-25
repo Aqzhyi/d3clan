@@ -5,7 +5,23 @@ class Hardware extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model( 'Model_hardware' );
-		$this->load->library( 'template' );
+		$this->view->layout( 'hardware/layout' );
+		$this->view->js_add( array(
+				'hardware/layout',
+			) );
+		$this->view->css_add( array(
+				'hardware/layout',
+			) );
+		$this->view->cache( 10 );
+		
+	}
+
+	public function _remap( $method = 'index', $params = array() ) {
+		$this->view->title_routes( array(
+				'index'    => '首頁',
+			) );
+		$this->view->page( $method, $params );
+		$this->view->init( $this );
 	}
 
 	// 週邊設備
@@ -49,23 +65,6 @@ class Hardware extends CI_Controller {
 		$this->view->data['else_flow'] = $this->Model_hardware->get_thread( array(
 				'not_typeid' => array( 1, 2, 3, 10, 11, 12 ) // 其它
 			) );
-
-		$this->view->cache( 5 );
-		$this->view->display(
-			array(
-				'title'     => '週邊設備',
-				'view'      => 'hardware/layout',
-				'js_files'  => array(
-					// 'plugin/circle_loop/base',
-					'hardware/layout',
-				),
-				'css_files' => array(
-					// 'plugin/circle_loop/base',
-					'hardware/layout',
-				),
-			)
-		);
-
 	}
 }
 

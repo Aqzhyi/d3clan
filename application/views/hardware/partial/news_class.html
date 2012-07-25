@@ -6,7 +6,7 @@
 		<span id="menu_btn" class="item">硬體綜合</span>
 	</div>
 	<div class="body">
-		{foreach $data as $index => $list}
+		{foreach $news_class as $index => $list}
 			{if $list@first}{$class = 'current'}{else}{$class = ''}{/if}
 			<div id="list_block" class="list {$class}">
 				{foreach $list as $id => $news}
