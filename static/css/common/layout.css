@@ -118,6 +118,10 @@ p {
   float: left;
   background-color: black;
 }
+.wrapper > header > .header .commercial_ad .single img {
+  width: 270px;
+  height: 60px;
+}
 .wrapper > header > .header .commercial_ad .single.offset {
   margin-left: -1px;
   margin-right: 9px;
