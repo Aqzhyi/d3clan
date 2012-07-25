@@ -5,26 +5,22 @@
 攻略推薦
 ===
 
-* [玩家心得帖](http://d.163.com/special/list_xdjq/) to [攻略推薦->其它](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55)
+* [野蠻人心得帖](http://d.163.com/special/list_bar/) to [攻略推薦->野蠻人](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=24&htmlon=1&editormode=1)
 
-![](http://i.imgur.com/iwhuO.png)
+![](http://i.imgur.com/EJhkS.png)
 
-* [野蠻人心得帖](http://d.163.com/special/list_bar/) to [攻略推薦->野蠻人](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55)
+* [武僧心得帖](http://d.163.com/special/list_monk/) to [攻略推薦->武僧](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=26&htmlon=1&editormode=1)
 
-![](http://i.imgur.com/HDv4n.png)
+![](http://i.imgur.com/0gm5m.png)
 
-* [武僧心得帖](http://d.163.com/special/list_monk/) to [攻略推薦->武僧](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55)
+* [獵人心得帖](http://d.163.com/special/list_dh/) to [攻略推薦->獵人](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=27&htmlon=1&editormode=1)
 
-![](http://i.imgur.com/wUT37.png)
+![](http://i.imgur.com/6R7Fu.png)
 
-* [獵人心得帖](http://d.163.com/special/list_dh/) to [攻略推薦->獵人](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55)
+* [祕術師心得帖](http://d.163.com/special/list_wid/) to [攻略推薦->祕術師](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=25&htmlon=1&editormode=1)
 
-![](http://i.imgur.com/62SQ4.png)
+![](http://i.imgur.com/vASUb.png)
 
-* [祕術師心得帖](http://d.163.com/special/list_wid/) to [攻略推薦->祕術師](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55)
+* [巫醫心得帖](http://d.163.com/special/list_wd/) to [攻略推薦->巫醫](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=28&htmlon=1&editormode=1)
 
-![](http://i.imgur.com/VBDTt.png)
-
-* [巫醫心得帖](http://d.163.com/special/list_wd/) to [攻略推薦->巫醫](http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55)
-
-![](http://i.imgur.com/GMig3.png)
+![](http://i.imgur.com/RCdKX.png)
