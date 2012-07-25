@@ -10,7 +10,7 @@ jQuery(function() {
 
 	// 新聞資訊流-切換主題機制
 	$news_btns.eq(0).addClass('current');
-	$news_btns.on('click', function(event) {
+	$news_btns.on('mouseover', function(event) {
 		event.preventDefault();
 		var $element = jQuery(this);
 		var kind     = $element.data('kind');
