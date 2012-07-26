@@ -5,7 +5,23 @@ class Lives extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model( 'Model_live_channel' );
-		$this->load->library( 'template' );
+		$this->view->append_title( '直播頻道' );
+		$this->view->layout( 'lives/layout' );
+		$this->view->js_add( array(
+				'lives/index',
+			) );
+		$this->view->css_add( array(
+				'lives/index',
+			) );
+		$this->view->cache( 10 );
+	}
+
+	public function _remap( $method = 'index', $params = array() ) {
+		$this->view->title_routes( array(
+				'index'    => '列表',
+			) );
+		$this->view->page( $method, $params );
+		$this->view->init( $this );
 	}
 
 	/**
@@ -24,19 +40,6 @@ class Lives extends CI_Controller {
 				'location' => '其他',
 				'game_type' => 'DiabloIII',
 			) );
-		$this->view->cache( 5 );
-		$this->view->display(
-			array(
-				'title'    => "直播頻道列表",
-				'view'     => 'lives/index',
-				'js_files' => array(
-					'lives/index',
-				),
-				'css_files' => array(
-					'lives/index'
-				),
-			)
-		);
 	}
 
 	/**
@@ -48,6 +51,8 @@ class Lives extends CI_Controller {
 	public function channel( $id = 0 ) {
 
 		$this->load->library( 'media' );
+
+		$this->view->title( $this->view->data['channel_host']['live_name'] );
 
 		if ( empty( $id ) ) {
 			show_404();
@@ -69,21 +74,14 @@ class Lives extends CI_Controller {
 				'width'   => '100%',
 				'height'  => 414,
 			) );
-		$this->view->cache( 5 );
-		$this->view->display(
-			array(
-				'title'    => $this->view->data['channel_host']['live_name'] . '的直播頻道',
-				'view'     => 'lives/channel',
-				'js_files' => array(
-					'lives/channel',
-				),
-				'css_files' => array(
-					'lives/channel'
-				),
-			)
-		);
-
-		return $this;
+		
+		$this->view->layout( 'lives/channel' );
+		$this->view->js_add( array(
+				'lives/channel',
+			) );
+		$this->view->css_add( array(
+				'lives/channel',
+			) );
 	}
 }
 

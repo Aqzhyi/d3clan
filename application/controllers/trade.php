@@ -4,6 +4,22 @@ class Trade extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->view->layout( 'trade/layout' );
+		$this->view->js_add( array(
+				'trade/index',
+			) );
+		$this->view->css_add( array(
+				'trade/index',
+			) );
+		$this->view->cache( 10 );
+	}
+
+	public function _remap( $method = 'index', $params = array() ) {
+		$this->view->title_routes( array(
+				'index'    => '交易專區',
+			) );
+		$this->view->page( $method, $params );
+		$this->view->init( $this );
 	}
 
 	public function index() {
@@ -15,20 +31,6 @@ class Trade extends CI_Controller {
 				'limit'          => 90,
 				'exclude_typeid' => TRUE,
 			) );
-
-		$this->view->cache( 5 );
-		$this->view->display(
-			array(
-				'title'    => "交易專區",
-				'view'     => 'trade/index',
-				'js_files' => array(
-					'trade/index',
-				),
-				'css_files' => array(
-					'trade/index'
-				),
-			)
-		);
 	}
 
 	/**

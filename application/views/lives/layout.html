@@ -16,13 +16,13 @@
 			<div class="lives_kind">
 				<div class="lives_title">台灣地區</div>
 				<div class="padding">
-					<?php echo $this->template->fetch( 'lives/partial/channels', $live_channels['taiwan'] ) ?>
+					{include file='./partial/channels.html' data=$live_channels['taiwan']}
 				</div>
 			</div>
 			<div class="lives_kind">
 				<div class="lives_title">其它地區</div>
 				<div class="padding">
-					<?php echo $this->template->fetch( 'lives/partial/channels', $live_channels['else'] ) ?>
+					{include file='./partial/channels.html' data=$live_channels['else']}
 				</div>
 			</div>
 		</div>

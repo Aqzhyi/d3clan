@@ -1,0 +1,18 @@
+<div class="namespace_together">
+	<div class="well">
+		<h2>約團專區</h2>
+		<a href="/bbs/forum.php?mod=forumdisplay&amp;fid=39">立刻去約團</a>
+
+		<div class="well">
+			{foreach $news_flow as $key => $news}
+				<div>
+					<span class="label label-info">[{date('Y-m-d', $news['dateline'])}]</span>
+					{$CI->discuzx->alink_to_bbs( [
+						'tid'  => $news['tid'],
+						'text' => $news['subject']
+					] ) }
+				</div>
+			{/foreach}
+		</div>
+	</div>
+</div>
