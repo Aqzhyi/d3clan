@@ -834,6 +834,44 @@ class Model_girls_vote_2012 extends CI_Model {
 			'intro' => 'HIHI大家好唷:)<br /> 我是ChiChi一個喜歡玩game的女孩兒<br /> 平時是個活潑外向的女生<br /> 休閒就是上網、看電影、聽音樂唱唱歌<br /> 偶爾沉靜自己寫寫創作<br /> 喜歡拍照玩玩相機，出遠門踏青拍拍照留念!<br /> 和朋友一起品嚐美食是最幸福的事:D<br /> 本身很熱衷遠攻系<br /> 不管單機還是online game<br /> 法師與弓手是小妹熱愛的首選之一唷！<br /> 但先前因為半工半讀的關係<br /> 平常玩的時間少，所以到目前還沒封頂>_<<br /> 現在當工作完後整天拖著的疲累回到家<br /> 當然不忘留戀一下暗黑破壞神三~嘻！<br /> ', 
 			'opinion' => "在D3出來之前，有陣子很懷念小時候玩的D2，<br /> 又跟朋友借來玩，慢慢品嚐遊戲劇情，破完後惆悵了好陣子！<br /> 那時想著，哎唷~怎麼三代還不出來呢！(打滾)<br /> 而玩過二代無數次，在三代整體上非常容易的上手^Q^<br /> 不過三代死亡後的部分較簡單化囉<br /> 只會回到儲存點&修修裝備而已XD<br /> 回味二代還要找角度撿屍體呢哈哈！<br /> 還有卷軸部分也沒有了，三代輕便許多，不需要帶太多哩哩摳摳，<br /> 只要帶著水，穿好裝備就可以出發囉！haha<br /> 之後好不容易到了地獄，劇情看了好幾遍，<br /> 許多小地方讓人覺得很回味又有趣。<br /> 隨著難度漸漸提升，玩秘術師的我技術也要多多加強了！<br /> 還沒爬過文的我玩的差強人意，不過死亡也是種樂趣啊哈哈！^^<br /> ", 
 		);
+		$girls['patty'] = array(
+			'video' => '',
+			'photos' => array(
+				0 => array(
+					'/static/img/event/girls_vote_2012/patty/a1.jpg',
+					'/static/img/event/girls_vote_2012/patty/a2.jpg',
+					'/static/img/event/girls_vote_2012/patty/a3.jpg',
+					'/static/img/event/girls_vote_2012/patty/a4.jpg',
+				),
+				1 => array(
+					'/static/img/event/girls_vote_2012/patty/b1.jpg',
+					'/static/img/event/girls_vote_2012/patty/b2.jpg',
+					'/static/img/event/girls_vote_2012/patty/b3.jpg',
+				),
+				2 => array(
+					'/static/img/event/girls_vote_2012/patty/c1.jpg',
+					'/static/img/event/girls_vote_2012/patty/c2.jpg',
+				),
+				3 => array(
+					'/static/img/event/girls_vote_2012/patty/d1.jpg',
+					'/static/img/event/girls_vote_2012/patty/d2.jpg',
+					'/static/img/event/girls_vote_2012/patty/d3.jpg',
+				),
+			),
+			'text_fields' => array(
+				'fb'           => '',
+				'nickname'     => 'Patty',
+				'server'       => '亞服',
+				'role_name'    => 'PattyRush',
+				'role_level'   => '60',
+				'class'        => '狩魔獵人',
+				'birthday'     => '09/13',
+				'city'         => '新北市',
+				'play_per_day' => '1~2小時'
+			),
+			'intro' => 'HI大家好我是Patty~<br />目前是個苦命但是非常愛打電動的上班族<br />在某科技公司擔任程式工程師<br />玩的遊戲有SC2 跟D3 還有LOL<br />個性溫和<br />但是打遊戲輸了我會很生氣?<br />希望大家一起跟我看聖光<br />一起幫海德格',
+			'opinion' => "D3是一個很有趣的遊戲，因為等級最高才60級<br />所以不是那種拼命練功的遊戲，重點是放在跟朋友一起打寶物<br />打到好裝的那一瞬間真的是很有成就感<br />D3也有別於一般線上遊戲大家在一起的模式<br />人太多有時候真的很容易起爭執跟衝突<br />不過4人有點少朋友有時候要開好幾團= =<br />總之是一個值得玩的遊戲喔~",
+		);
 		return $girls;
 	}
 }
