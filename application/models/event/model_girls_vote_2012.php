@@ -235,7 +235,7 @@ class Model_girls_vote_2012 extends CI_Model {
 			'opinion' => "ＤIII這遊戲早在１０年前就有消息了。<br />因為在ＤII的時候我就有在玩了，一直很注意這款遊戲。<br />ＤII、ＤIII其實可以說差不多的，但也可以說進步很多，<br />大致上玩法內容差不多，有玩過上一代的，一定很快就可以上手，<br />不過ＤIII一定要先登入Battle的伺服器有時比較晚下班，<br /><br />就會碰到伺服器爆滿的情形@@ 有時都要等超久的啦>”<<br />不能像以前ＤII一樣，自己想玩隨時都能直接登進去單機遊戲。<br />如果要區分的話，我覺得ＤIII屬於online 遊戲；ＤII的話屬於單機遊戲。<br /><br />在這點我就覺得ＤIII做了很大的突破，畫面精緻了很多，<br />在技能的用法不像ＤII這麼的單調的樹狀圖，在ＤIII人物等級上升時，<br />技能就會自動學好了，要自己搭配不同的技能以及符文的搭配，<br />光是用技能有時就要花了好多時間>”<<br />睽違10年的遊戲巨作真沒讓我失望!!!!! <br />希望大家跟糖糖一起來支持這遊戲^^”",
 		);
 		$girls['小璇'] = array(
-			'video' => '',
+			'video' => 'Sq5-jydvyVI',
 			'photos' => array(
 				0 => array(
 					'/static/img/event/girls_vote_2012/girl6/a1.jpg',
@@ -359,7 +359,7 @@ class Model_girls_vote_2012 extends CI_Model {
 			'opinion' => "其實我是個沒有玩過D2的玩家，所以當初D3預購時我並沒有跟上，後來周遭好友開始洗版FB時，才決定跟朋友借體驗序號來玩，結果整個就是愛上了！！！<br />體驗序號只能玩到13等骷髏王，結果在買到正式版之前我刷了十多次，好不容易總算買到正式版，內心完全就是吶喊加上灑花的狀態啊！！<br />第一次破關很用心的體驗所有的對話加上劇情，只能說我有猜到莉亞跟狄亞布羅有關係啊XDDD<br />之後就是跟朋友組隊刷寶囉，每次組隊總是會開SKYPE語音，打到金色裝備總是令人期待又怕受傷害，我的運氣不錯，目前資產也破千萬囉，顆顆顆。<br />還有我最愛的其實是小馬關，雖然大家都說音樂很詭異，但我超愛這種風格的！！！網路謠傳有第二隱藏關卡，我也希望可以有啊！！！！<br />最後就是要說，D3真的不錯玩XDDDD<br />",
 		);
 		$girls['簡沛沛'] = array(
-			'video' => '',
+			'video' => 'WBIYDUCFngg',
 			'photos' => array(
 				0 => array(
 					'/static/img/event/girls_vote_2012/girl3/11.jpg',
@@ -501,7 +501,7 @@ class Model_girls_vote_2012 extends CI_Model {
 			'opinion' => "雖然沒玩過二代，但是也聽很多朋友說過，雖然真的會越打越上癮，<br />不過我還不敢自己一個人玩，因為我覺得很恐怖，<br />尤其我又很喜歡在半夜玩，會怕怕的但是又很想玩，<br />所以都會找朋友陪我一起玩，哈哈。",
 		);
 		$girls['Hedy'] = array(
-			'video' => '',
+			'video' => 'fLmcz_7AHL0',
 			'photos' => array(
 				0 => array(
 					'/static/img/event/girls_vote_2012/girl10/a1.jpg',
@@ -562,14 +562,14 @@ class Model_girls_vote_2012 extends CI_Model {
 				'role_level'   => '60',
 				'class'        => '秘術師',
 				'birthday'     => '1991/07/07',
-				'city'         => '台北',
+				'city'         => '台中',
 				'play_per_day' => '6小時'
 			),
 			'intro' => '哈嚕，大家好耶！我是堂堂 : D<br />我是可線上遊戲迷呢! 玩遊戲有10年以上的經歷<br />我最近剛玩不久的D3，很喜歡交朋友聊天！透過<br />遊戲認識很多朋友呢^^<br />希望大家能投我一票摟 希望能一起玩D3吧<br />',
 			'opinion' => "這是一款男女都可以輕鬆上手的遊戲，畫面動畫優質，技能很華麗！<br />人物角色裝扮還可以隨著染料而變色，對於女生愛打扮來說在好不過了，<br />以往的戰略性遊戲激不起我玩遊戲的興趣這款遊戲，卻打動我的心呢^^<br />自己玩或是跟朋友玩都別有樂趣<br />",
 		);
 		$girls['謝依彤'] = array(
-			'video' => '',
+			'video' => 'POOzLU9f_KQ',
 			'photos' => array(
 				0 => array(
 						'/static/img/event/girls_vote_2012/girl12/a1.jpg',
@@ -672,7 +672,168 @@ class Model_girls_vote_2012 extends CI_Model {
 			'intro' => '大家好~我是潘恩綺Spring<br />不管不管我現在才41級,快一起幫我啦>///<<br />我要當D3 女神啦~~(羞羞)哈<br />還有我的粉絲團在上面有連結<br />投我一票~<br />恩綺給你生活更美麗 ',
 			'opinion' => "一開始聽到D3上市了,就一直在想到底有沒有那麼好玩?<br />大家有需要那麼誇張嗎??<br />後來...朋友送給我了D3組,從此我就聖光阿~<br />剛開始摸索覺得好困難,一直接受復活54321...XDD<br />連作夢都會夢到\"幫助我\"這三個字!!!!<br />雖然現在才50級,還沒資格煉獄<br />但~~團結力量大!!快帶我一起練^0^/<br />",
 		);
-
+		$girls['初牛奶'] = array(
+			'video' => '',
+			'photos' => array(
+				0 => array(
+						'/static/img/event/girls_vote_2012/girl15/a1.jpg',
+						
+					),
+				1 => array(
+						'/static/img/event/girls_vote_2012/girl15/b1.jpg',
+						
+					),
+				2 => array(
+						'/static/img/event/girls_vote_2012/girl15/c1.jpg',
+						
+					),
+				3 => array(
+						'/static/img/event/girls_vote_2012/girl15/d1.jpg',
+						
+					),
+			),
+			'text_fields' => array(
+				'fb'           => 'https://www.facebook.com/milk11731',
+				'nickname'     => '初牛奶',
+				'server'       => '美服',
+				'role_name'    => '初牛奶',
+				'role_level'   => '48',
+				'class'        => '巫醫',
+				'birthday'     => '1989/10/14',
+				'city'         => '新北市',
+				'play_per_day' => '不一定'
+			),
+			'intro' => 'HI 囉～大家好 我是初牛奶<br /> 我平常放假時我都會玩暗黑破壞神3<br /> 雖然巫醫很容易被打死<br /> 但是我覺得巫醫比較好玩<br /> 歡迎大家可以跟我一起上線練喔︿︿<br /> ', 'opinion' => "一開始覺得好像不怎麼好玩..沒想到我弟買到了光碟<br /> 辦好了帳號後..我就無聊的去玩了一下..之後我就陷進去了..<br /> 實在是會因為自尊心的問題..覺得被怪物打死很不甘心..<br /> 所以一定先殺死他們才覺得快樂～哈哈～<br /> 也剛好工作上有些不愉快的事情..<br /> 回到家就開電腦上D3開始打怪物..<br /> 也是一種紓壓的管道<br /> ", 
+		);
+		$girls['貝爾卡諾'] = array(
+			'video' => 'jWUyY_stnD0',
+			'photos' => array(
+				0 => array(
+						'/static/img/event/girls_vote_2012/girl16/a1.jpg',
+						'/static/img/event/girls_vote_2012/girl16/a2.jpg',
+						'/static/img/event/girls_vote_2012/girl16/a3.jpg',
+						'/static/img/event/girls_vote_2012/girl16/a4.jpg',
+						'/static/img/event/girls_vote_2012/girl16/a5.jpg',
+						'/static/img/event/girls_vote_2012/girl16/a6.jpg',
+						'/static/img/event/girls_vote_2012/girl16/a7.jpg',
+					),
+				1 => array(
+						'/static/img/event/girls_vote_2012/girl16/b1.jpg',
+						'/static/img/event/girls_vote_2012/girl16/b2.jpg',
+					),
+				2 => array(
+						'/static/img/event/girls_vote_2012/girl16/c1.jpg',
+						'/static/img/event/girls_vote_2012/girl16/c2.jpg',
+						'/static/img/event/girls_vote_2012/girl16/c3.jpg',
+						'/static/img/event/girls_vote_2012/girl16/c4.jpg',
+						'/static/img/event/girls_vote_2012/girl16/c5.jpg',
+					),
+				3 => array(
+						'/static/img/event/girls_vote_2012/girl16/d1.jpg',
+						'/static/img/event/girls_vote_2012/girl16/d2.jpg',
+						'/static/img/event/girls_vote_2012/girl16/d3.jpg',
+						'/static/img/event/girls_vote_2012/girl16/d4.jpg',
+					),
+			),
+			'text_fields' => array(
+				'fb'           => 'http://www.facebook.com/?ref=home#!/babyMiyabi',
+				'nickname'     => '貝爾卡諾‏',
+				'server'       => '美洲',
+				'role_name'    => '詩寇蒂的憤怒',
+				'role_level'   => '60',
+				'class'        => '秘術師',
+				'birthday'     => '9/20',
+				'city'         => '台北',
+				'play_per_day' => '晚上9點到12點'
+			),
+			'intro' => '偶爾人來瘋會胡鬧又很聒噪<br /> 動作像個男人粗魯時常不小心就沒形象!<br /> 大剌剌的模樣是我的表現方式<br /> 有時候又喜歡安靜裝沒事,這就是我~smile~XP<br /> 票選開始時，記得頭我一票唷~啾<br /> ', 
+			'opinion' => "已經好久沒有玩網路遊戲了，在經過華納威秀D3活動的那次<br /> 開始引起我的注意，是什麼遊戲這麼多人!然後臉書上的狀態<br /> 完全被D3洗板 這麼多人瘋狂!到底是甚麼~禁不起慫恿~<br /> 就這樣開啟了我的D3世界哩 ^^<br /> 這次在創遊戲ID的時候，想起之前玩遊戲總是被騷擾，很煩很討厭。<br /> 所以創了比較有個性的ID，也符合我自己大辣辣的真實的個性XP<br /> 遊戲過程中，暗黑的精緻，著實讓人驚艷，而且不用擔心等級問題~<br /> 或是練功比別人慢，完全是讓我自由發揮各種職業的不同玩法~<br /> 一開始的普通，並不太難，呵呵~<br /> 但是到惡夢的時候站著打打打已經不太會過了>”<<br /> 到地獄難度就開始call out 要一直找朋友幫忙了<br /> 迪亞布羅還是靠朋友幫忙打過的~:P 現在煉獄難度都只敢組隊打了...<br /> D3真是不簡單~有難度...<br /> 最最最重要的就是~他的寶物數量~屬性~只要他說第2~沒人敢說第1 :P<br /> 終於知道大家為何會說，這是ㄧ款值得玩的遊戲，連我現在也迷上<br /> 已經無法脫離哩，不過裝備有點貴貴~~哭哭~~<br /> 所以有遇到我的不要嫌我喔><br />",
+		);
+		$girls['喬寶'] = array(
+			'video' => 'd0ITWFnQvUk',
+			'photos' => array(
+				0 => array(
+						'/static/img/event/girls_vote_2012/girl17/a1.jpg',
+						'/static/img/event/girls_vote_2012/girl17/a2.jpg',
+						'/static/img/event/girls_vote_2012/girl17/a3.jpg',
+						'/static/img/event/girls_vote_2012/girl17/a4.jpg',
+					),
+				1 => array(
+						'/static/img/event/girls_vote_2012/girl17/b1.jpg',
+						'/static/img/event/girls_vote_2012/girl17/b2.jpg',
+						'/static/img/event/girls_vote_2012/girl17/b3.jpg',
+						'/static/img/event/girls_vote_2012/girl17/b4.jpg',
+					),
+				2 => array(
+						'/static/img/event/girls_vote_2012/girl17/c1.jpg',
+						'/static/img/event/girls_vote_2012/girl17/c2.jpg',
+						'/static/img/event/girls_vote_2012/girl17/c3.jpg',
+					),
+				3 => array(
+						'/static/img/event/girls_vote_2012/girl17/d1.jpg',
+						'/static/img/event/girls_vote_2012/girl17/d2.jpg',
+						'/static/img/event/girls_vote_2012/girl17/d3.jpg',
+					),
+			),
+			'text_fields' => array(
+				'fb'           => 'http://www.facebook.com/katsuki.tomoyo',
+				'nickname'     => '喬寶‏',
+				'server'       => '亞洲',
+				'role_name'    => '喬寶寶',
+				'role_level'   => '60',
+				'class'        => '武僧',
+				'birthday'     => '12/15',
+				'city'         => '台中市',
+				'play_per_day' => '4~5小時'
+			),
+			'intro' => '哈囉，大家好<br /> 我是喬寶，一個熱愛玩遊戲的女生<br /> 嘗試過很多種類型的遊戲<br /> 希望有機會能跟大家成為朋友<br /> 一起在暗黑破壞神3的世界裡分享打寶的樂趣<br /> 也別忘了投我一票唷～＊<br /> ', 
+			'opinion' => "在因緣際會下，拿到了Ｄ３的體驗版帳號，玩了一個晚上，深深著迷<br /> 原本一開始是玩巫醫，吹箭、丟蜘蛛、招喚殭屍‧‧‧等等技能<br /> 都讓我覺得在這黑黑暗暗的遊戲內增添了幾許ＫＵＳＯ的感覺<br /> 跟朋友一起闖關時，大家都說，只要我一出現，整個畫面就變得好熱鬧（招喚殭屍犬、巨屍）<br /> 好像多了好多夥伴一樣ＸＤ<br /> 朋友們打到的裝備、武器也是彼此給來給去，省了不少錢呢！<br /> 後來，玩遊戲從來沒玩過近戰職業的我，也決定挑戰玩看看武僧<br /> 沒想到一玩就入迷了，就像很多網友說的，拳拳到肉的快感！<br /> 因為是近戰職業，進了煉獄，才發現，是悲劇的開始Ｑ口Ｑ<br /> 於是就開始上網爬文做了非常多的功課，努力的在煉獄第一章打寶、存錢<br /> 終於小武僧長大了，也和朋友們非常努力打死最後的迪亞布羅，當下很感動，也很有成就感<br /> 現在大部分的時間都是和朋友們一起再煉獄歡樂谷打寶<br /> 很喜歡Ｄ３精美的遊戲畫面、動畫、多變的技能配置、玩法<br /> 跟朋友們一起打寶、分享也是我玩Ｄ３最大的樂趣唷！<br /> ",
+		);
+		$girls['琦琦'] = array(
+			'video' => 'S-KWjewUYtA',
+			'photos' => array(
+				0 => array(
+						'/static/img/event/girls_vote_2012/girl18/a1.jpg',
+						'/static/img/event/girls_vote_2012/girl18/a2.jpg',
+						'/static/img/event/girls_vote_2012/girl18/a3.jpg',
+						'/static/img/event/girls_vote_2012/girl18/a4.jpg',
+						'/static/img/event/girls_vote_2012/girl18/a5.jpg',
+					),
+				1 => array(
+						'/static/img/event/girls_vote_2012/girl18/b1.jpg',
+						'/static/img/event/girls_vote_2012/girl18/b2.jpg',
+						'/static/img/event/girls_vote_2012/girl18/b3.jpg',
+						'/static/img/event/girls_vote_2012/girl18/b4.jpg',
+					),
+				2 => array(
+						'/static/img/event/girls_vote_2012/girl18/c1.jpg',
+						'/static/img/event/girls_vote_2012/girl18/c2.jpg',
+						'/static/img/event/girls_vote_2012/girl18/c3.jpg',
+						'/static/img/event/girls_vote_2012/girl18/c4.jpg',
+						'/static/img/event/girls_vote_2012/girl18/c5.jpg',
+					),
+				3 => array(
+						'/static/img/event/girls_vote_2012/girl18/d1.jpg',
+						'/static/img/event/girls_vote_2012/girl18/d2.jpg',
+						'/static/img/event/girls_vote_2012/girl18/d3.jpg',
+						'/static/img/event/girls_vote_2012/girl18/d4.jpg',
+						'/static/img/event/girls_vote_2012/girl18/d5.jpg',
+					),
+			),
+			'text_fields' => array(
+				'fb'           => 'http://www.facebook.com/chice1213',
+				'nickname'     => '琦琦‏',
+				'server'       => '亞服',
+				'role_name'    => '上弦的玥',
+				'role_level'   => '56',
+				'class'        => '秘術師',
+				'birthday'     => '1989/3/13',
+				'city'         => '台中市',
+				'play_per_day' => '3小時左右'
+			),
+			'intro' => 'HIHI大家好唷:)<br /> 我是ChiChi一個喜歡玩game的女孩兒<br /> 平時是個活潑外向的女生<br /> 休閒就是上網、看電影、聽音樂唱唱歌<br /> 偶爾沉靜自己寫寫創作<br /> 喜歡拍照玩玩相機，出遠門踏青拍拍照留念!<br /> 和朋友一起品嚐美食是最幸福的事:D<br /> 本身很熱衷遠攻系<br /> 不管單機還是online game<br /> 法師與弓手是小妹熱愛的首選之一唷！<br /> 但先前因為半工半讀的關係<br /> 平常玩的時間少，所以到目前還沒封頂>_<<br /> 現在當工作完後整天拖著的疲累回到家<br /> 當然不忘留戀一下暗黑破壞神三~嘻！<br /> ', 
+			'opinion' => "在D3出來之前，有陣子很懷念小時候玩的D2，<br /> 又跟朋友借來玩，慢慢品嚐遊戲劇情，破完後惆悵了好陣子！<br /> 那時想著，哎唷~怎麼三代還不出來呢！(打滾)<br /> 而玩過二代無數次，在三代整體上非常容易的上手^Q^<br /> 不過三代死亡後的部分較簡單化囉<br /> 只會回到儲存點&修修裝備而已XD<br /> 回味二代還要找角度撿屍體呢哈哈！<br /> 還有卷軸部分也沒有了，三代輕便許多，不需要帶太多哩哩摳摳，<br /> 只要帶著水，穿好裝備就可以出發囉！haha<br /> 之後好不容易到了地獄，劇情看了好幾遍，<br /> 許多小地方讓人覺得很回味又有趣。<br /> 隨著難度漸漸提升，玩秘術師的我技術也要多多加強了！<br /> 還沒爬過文的我玩的差強人意，不過死亡也是種樂趣啊哈哈！^^<br /> ", 
+		);
 		return $girls;
 	}
 }
