@@ -15,8 +15,8 @@
 
 	<meta property="og:site_name" content="{$CI->config->item( 'site_name' )}" />
 	<meta property="og:description" content="{$CI->config->item( 'description' )}" />
-	<meta property="og:title" content="{$_VIEW['title']}" />
-	<meta property="og:image" content="{$loaded_og_image}" />
+	<meta property="og:title" content="{$_VIEW['title']}{if $_VIEW['append_title']} - {$_VIEW['append_title']}{/if} - {$CI->config->item( 'site_name' )}" />
+	<meta property="og:image" content="{$_VIEW['og_image']}" />
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="zh_TW" />
 	<meta property="og:url" content="{$CI->view->get_canonical_url()}" />
