@@ -154,6 +154,7 @@
 			,{orig: /秘法強化/mg, to: '秘法加持'}
 			,{orig: /宝藏携带者/mg, to: '黃金哥布林'}
 			,{orig: /艾莉娜/mg, to: '艾蓮娜'}
+			,{orig: /JY/mg, to: '精英'}
 			,{orig: /iOS用戶點此觀看/mg, to: ''}
 			// 網易暗黑
 			,{orig: /凱恩之角影片站/mg, to: ' '}
@@ -270,12 +271,94 @@
 
 				libHelper.createCopyArea(title, content);
 
+				/**
+				 * 協助轉帖
+				 */
+				// 判斷本文該何去何從
+				var url = '';
+				var keywords = $('meta[name=keywords]').attr('content');
+				var typeids = {
+					'21' : 'http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=54&typeid=21&htmlon=1',
+					'22' : 'http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=54&typeid=22&htmlon=1',
+					'23' : 'http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=54&typeid=23&htmlon=1',
+					'24' : 'http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=24&htmlon=1',
+					'25' : 'http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=25&htmlon=1',
+					'26' : 'http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=26&htmlon=1',
+					'27' : 'http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=27&htmlon=1',
+					'28' : 'http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=28&htmlon=1',
+					'29' : 'http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=29&htmlon=1',
+					'30' : 'http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=56&typeid=30&htmlon=1',
+				};
+
+				// 最新消息->藍帖
+				if ( keywords.match(/(蓝贴|蓝帖|藍帖|藍貼)/g) ) {
+					url = typeids[22];
+				}
+
+				// 最新消息->新聞 (官方新聞)
+				if ( keywords.match(/官方/g) && keywords.match(/公告/g) ) {
+					url = typeids[21];
+				}
+
+				// 攻略推薦->野蠻人
+				if ( keywords.match(/攻略/g) && keywords.match(/野蛮人/g) ) {
+					url = typeids[24];
+				}
+
+				// 攻略推薦->秘術師
+				if ( keywords.match(/攻略/g) && keywords.match(/魔法师/g) ) {
+					url = typeids[25];
+				}
+
+				// 攻略推薦->武僧
+				if ( keywords.match(/攻略/g) && keywords.match(/武僧/g) ) {
+					url = typeids[26];
+				}
+
+				// 攻略推薦->狩魔獵人
+				if ( keywords.match(/攻略/g) && keywords.match(/猎魔人/g) ) {
+					url = typeids[27];
+				}
+
+				// 攻略推薦->巫醫
+				if ( keywords.match(/攻略/g) && keywords.match(/巫医/g) ) {
+					url = typeids[28];
+				}
+
+				// 推薦視頻
+				if ( keywords.match(/视频/g) ) {
+					url = typeids[30];
+				}
+
+				// 其它
+				if ( url == '' ) {
+					var custom_url = prompt("\
+						系統未成功偵測文章分類，請手動輸入「數字」以選擇 版面->分類：\n\
+						21. 最新消息->新聞\n\
+						22. 最新消息->藍帖\n\
+						23. 最新消息->圖文\n\
+						\n\
+						24. 攻略推薦->野蠻人\n\
+						25. 攻略推薦->秘術師\n\
+						26. 攻略推薦->武僧\n\
+						27. 攻略推薦->狩魔獵人\n\
+						28. 攻略推薦->巫醫\n\
+						29. 攻略推薦->其它\n\
+						\n\
+						30. 精彩視頻->視頻\n\
+						");
+					url = typeids[custom_url];
+					
+					alert(url);
+				}
+
 				// 檢查是否重複貼文
 				window.jsonp_callback = function( is_repeat ) {
+					console.log('已檢查完成');
 					// 此篇檢查標題後, 未重複, 此篇文章可轉去論壇.
 					var alink_tag = jQuery('<a>', {
 						id: 'link_area_title',
-						href: "http://d3clan.tw/bbs/forum.php?mod=post&action=newthread&fid=54&typeid=21&htmlon=1&editormode=1" + "&subject=" + encodeURIComponent( jQuery('#copy_area_title').val() ),
+						href: url + "&subject=" + encodeURIComponent( jQuery('#copy_area_title').val() ),
 						target: '_blank'
 					}).css({
 						display: 'block',
@@ -285,6 +368,7 @@
 					jQuery( '#copy_area_title' ).replaceWith( alink_tag );
 
 					if (is_repeat === true) {
+						console.error(/注意: 本文已存在於暗盟論壇!/);
 						alert( '注意: 本文已存在於暗盟論壇!' );
 					}
 				};
@@ -293,6 +377,9 @@
 				jQuery.ajax({
 					url: 'http://d3clan.tw/api/is-repeat',
 					dataType: 'jsonp',
+					beforeSend: function() {
+						console.log('正在檢查論壇是否已存在重複文章...');
+					},
 					data: {
 						post_uri: location.href,
 						post_title: title,

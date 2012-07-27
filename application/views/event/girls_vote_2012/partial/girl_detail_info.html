@@ -63,7 +63,11 @@
 		</div>
 
 		<!-- 影片 -->
-		<div class="detail_video"></div>
+		<div class="detail_video">
+			{if $girl['video']}
+				<iframe width="640" height="480" src="http://www.youtube.com/embed/{$girl['video']}" frameborder="0" allowfullscreen></iframe>
+			{/if}
+		</div>
 
 		<!-- 投票 -->
 		<div class="vote_it">

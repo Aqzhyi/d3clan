@@ -5,8 +5,8 @@ jQuery(function() {
 
 	var interval1 = setInterval(function(){
 		console.log(/banner change in 10s/);
-		if ( $girls_banner.find('#item.current').prev('#item').length ) {
-			$girls_banner.find('#item.current').removeClass('current').prev('#item').addClass('current');
+		if ( $girls_banner.find('#item.current').next('#item').length ) {
+			$girls_banner.find('#item.current').removeClass('current').next('#item').addClass('current');
 		}
 		else {
 			$girls_banner.find('#item.current').removeClass('current');

@@ -8,7 +8,7 @@ class Model_api extends CI_Model {
 
 	public function is_repeat( $setting = array() ) {
 
-		/* (array) */$setting['fid']           = ( ! is_null( $setting['fid'] ) ) ? $setting['fid'] : array( 54, 55 );
+		/* (array) */$setting['fid']           = ( ! is_null( $setting['fid'] ) ) ? $setting['fid'] : array( 54, 55, 56 );
 		/* (int) */$setting['limit']           = ( ! is_null( $setting['limit'] ) ) ? $setting['limit'] : 10;
 		/* (string) */$setting['subject']      = ( ! is_null( $setting['subject'] ) ) ? $setting['subject'] : NULL;
 
