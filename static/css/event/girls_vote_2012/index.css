@@ -72,6 +72,11 @@
   margin-right: 22px;
   cursor: pointer;
 }
+.namespace_event_2012_girls_vote .girls_page_nav {
+  display: block;
+  margin: 0 auto;
+  width: 88px;
+}
 .namespace_event_2012_girls_vote .girls_intro {
   *zoom: 1;
   display: block;

@@ -16,8 +16,11 @@ class Model_girls_vote_2012 extends CI_Model {
 	public function get_girls( $setting = array() ) {
 
 		$setting['tid'] = ( ! empty( $setting['tid'] ) ) ? $setting['tid'] : NULL;
+		$setting['page'] = ( ! is_null( $setting['page'] ) ) ? $setting['page'] : 1;
 
-		$girls = $this->_girls_detail();
+		$girls = $this->_girls_detail( array(
+				'page' => $setting['page'],
+			) );
 
 		if ( is_null( $setting['tid'] ) or ! is_array( $setting['tid'] )  ) {
 			return $girls;
@@ -150,8 +153,13 @@ class Model_girls_vote_2012 extends CI_Model {
 	 * @return [type]          [description]
 	 */
 	private function _girls_detail( $setting = array() ) {
-		// 關聯投票主題,順序為 0氣質系->1萌系->2性感系->3活潑系.
 
+		$setting['page'] = ( ! is_null( $setting['page'] ) ) ? $setting['page'] - 1 : 0;
+		$setting['limit'] = ( ! is_null( $setting['limit'] ) ) ? $setting['limit'] : 9;
+
+		$setting['offset'] = ( ! is_null( $setting['offset'] ) ) ? $setting['offset'] : $setting['page'] * $setting['limit'];
+
+		// 關聯投票主題,順序為 0氣質系->1萌系->2性感系->3活潑系.
 		$girls['土萌瑩'] = array(
 			'video' => '',
 			'photos' => array(
@@ -872,7 +880,143 @@ class Model_girls_vote_2012 extends CI_Model {
 			'intro' => 'HI大家好我是Patty~<br />目前是個苦命但是非常愛打電動的上班族<br />在某科技公司擔任程式工程師<br />玩的遊戲有SC2 跟D3 還有LOL<br />個性溫和<br />但是打遊戲輸了我會很生氣?<br />希望大家一起跟我看聖光<br />一起幫海德格',
 			'opinion' => "D3是一個很有趣的遊戲，因為等級最高才60級<br />所以不是那種拼命練功的遊戲，重點是放在跟朋友一起打寶物<br />打到好裝的那一瞬間真的是很有成就感<br />D3也有別於一般線上遊戲大家在一起的模式<br />人太多有時候真的很容易起爭執跟衝突<br />不過4人有點少朋友有時候要開好幾團= =<br />總之是一個值得玩的遊戲喔~",
 		);
-		return $girls;
+		$girls['Athena'] = array(
+			'video' => '',
+			'photos' => array(
+				0 => array(
+						'/static/img/event/girls_vote_2012/Athena/a1.jpg',
+						'/static/img/event/girls_vote_2012/Athena/a2.jpg',
+					),
+				1 => array(
+						'/static/img/event/girls_vote_2012/Athena/b1.jpg',
+						'/static/img/event/girls_vote_2012/Athena/b2.jpg',
+					),
+				2 => array(
+						'/static/img/event/girls_vote_2012/Athena/c1.jpg',
+						'/static/img/event/girls_vote_2012/Athena/c2.jpg',
+					),
+				3 => array(
+						'/static/img/event/girls_vote_2012/Athena/d1.jpg',
+						'/static/img/event/girls_vote_2012/Athena/d2.jpg',
+					),
+			),
+			'text_fields' => array(
+				'fb'           => '',
+				'nickname'     => 'Athena‏',
+				'server'       => '亞洲',
+				'role_name'    => 'AthenaRush',
+				'role_level'   => '60',
+				'class'        => '秘術師',
+				'birthday'     => '07/15',
+				'city'         => '台北市',
+				'play_per_day' => '4小時'
+			),
+			'intro' => '大家好 我是雅典娜<br /> <br /> 熱愛電玩的我之前曾是Special Force<br /> (射擊遊戲)的電競職業選手<br /> <br /> 隨著D3的推出 也讓我想起國中時停留在D2的懷念<br /> <br /> 希望跟我一樣熱愛電玩朋友 可以投我ㄧ票唷^_^<br /> ', 
+			'opinion' => "記得D2的時候,還是在國中時期<br /> <br /> 雖然是單機板 但還是可以用區網跟朋友們在網咖連線打牛關。<br /> <br /> 這次D3推出網路版 更是讓我每天晚上不眠不休的跟朋友瘋狂刷到天亮<br /> <br /> 為得就是那掉下來的綠色字體裝備!!!!!!!!!!!!!!!!!!!!<br /> <br /> 而這次的D3讓我對角色扮演更是著迷了<br /> <br /> 動化作得超棒,像在看電影一樣生動<br /> <br /> 解成就也很有趣 資源回收 跟屁蟲等等...<br /> <br /> 如果想玩D3卻不知道知道該玩什麼角色的朋友<br /> <br /> 比較建議大家玩秘術師,因為好上手以外<br /> <br /> 在施放技能的特效也會感到很酷炫~<br /> <br /> 或者可以選擇逃跑 風箏性高的狩魔獵人!<br /> <br /> 總言之 希望還沒體驗過D3的朋友<br /> <br /> 有機會真的要好好體驗一下 <br /> <br /> 因為真得很棒~<br /> ",
+		);
+		$girls['Flora'] = array(
+			'video' => 'bKXTF-UFHZo',
+			'photos' => array(
+				0 => array(
+						'/static/img/event/girls_vote_2012/Flora/a1.jpg',
+					),
+				1 => array(
+						'/static/img/event/girls_vote_2012/Flora/b1.jpg',
+					),
+				2 => array(
+						'/static/img/event/girls_vote_2012/Flora/c1.jpg',
+					),
+				3 => array(
+						'/static/img/event/girls_vote_2012/Flora/d1.jpg',
+						'/static/img/event/girls_vote_2012/Flora/d2.jpg',
+					),
+			),
+			'text_fields' => array(
+				'fb'           => '',
+				'nickname'     => 'Flora',
+				'server'       => '美服',
+				'role_name'    => 'Bloom',
+				'role_level'   => '60',
+				'class'        => '秘術師',
+				'birthday'     => '1990/12/29',
+				'city'         => '新北市',
+				'play_per_day' => '5小時'
+			),
+			'intro' => '各位在聖修亞瑞大陸奮戰的玩家~大家好，我是Flora，我很喜歡美式風格的遊戲，所以從D2我就開始玩這款遊戲啦！平常的休閒活動除了跟狗狗玩、養魚偷菜種香菇之外，最喜歡就是玩暗黑破壞神喔^口^/<br />我的tag是Flora#3921歡迎大家和我一起玩喔~(雖然都60等了沒人帶玩起來還是很吃力><)',
+			'opinion' => "暗黑破壞神III,我可是MF寶寶<br /> 身穿快破三百的打寶裝<br /> 成為人見人愛的組隊最佳人選<br /> 躺屍體撿金裝,是我每天必做的活動<br /> 雖然我沒有玩過二代直接玩三代的<br /> 但一開始我就一頭栽入了D3練功的世界<br /> 一心只想趕快60級可以跟著大家去打寶<br /> 有空的時間甚至可以玩一整天<br /> 我沒有風騷的走位技巧,也沒有超神的裝備<br /> 但是我有很多好隊友… 陪著我打屠夫、打歌不林、農A3<br /> 非常的開心<br />",
+		);
+		$girls['小熊'] = array(
+			'video' => 'NgMDwUtGmeI',
+			'photos' => array(
+				0 => array(
+						'/static/img/event/girls_vote_2012/Melinda_Hsiung/a1.jpg',
+						'/static/img/event/girls_vote_2012/Melinda_Hsiung/a2.jpg',
+						'/static/img/event/girls_vote_2012/Melinda_Hsiung/a3.jpg',
+					),
+				1 => array(
+						'/static/img/event/girls_vote_2012/Melinda_Hsiung/b1.jpg',
+						'/static/img/event/girls_vote_2012/Melinda_Hsiung/b2.jpg',
+						'/static/img/event/girls_vote_2012/Melinda_Hsiung/b3.jpg',
+					),
+				2 => array(
+						'/static/img/event/girls_vote_2012/Melinda_Hsiung/c1.jpg',
+						'/static/img/event/girls_vote_2012/Melinda_Hsiung/c2.jpg',
+						'/static/img/event/girls_vote_2012/Melinda_Hsiung/c3.jpg',
+					),
+				3 => array(
+						'/static/img/event/girls_vote_2012/Melinda_Hsiung/d1.jpg',
+						'/static/img/event/girls_vote_2012/Melinda_Hsiung/d2.jpg',
+						'/static/img/event/girls_vote_2012/Melinda_Hsiung/d3.jpg',
+					),
+			),
+			'text_fields' => array(
+				'fb'           => 'http://www.facebook.com/wowmbaby',
+				'nickname'     => '小熊‏',
+				'server'       => '美服',
+				'role_name'    => '魅靈兒',
+				'role_level'   => '60',
+				'class'        => '巫醫',
+				'birthday'     => '05/04',
+				'city'         => '新北市',
+				'play_per_day' => '22:00-01:00'
+			),
+			'intro' => 'YO 大家好我是小熊<br /> 我相當熱愛玩各種線上遊戲及戰略遊戲<br /> 有相當多年玩遊戲的經驗<br /> 也玩過多款暴雪的其他遊戲<br /> 像是魔獸爭霸、星海、魔獸世界。<br /> 暗黑III目前進度玩到煉獄第二章<br /> 可以加我好友一起玩喔！<br /> <br /> 平常除了玩遊戲之外我也喜歡看電影、看書、運動、戶外遊玩吃吃喝喝<br /> 如果大家有好吃或好玩的地點也可以推薦給我唷！<br /> <br />',
+			'opinion' => "雖然我沒玩過暗黑I、II，但我是暴雪迷，暗黑III一出就迫不及待去買來玩了，會選擇玩巫醫是因為我很喜歡巫醫的外型！我覺得很帥，雖然有些人覺得很醜XD 可能是我以前玩魔獸世界有玩過不死族術士吧，所以看到巫醫就覺得特別親切(笑) 一開始玩覺得還滿簡單的，等級也衝很快，可是到後面越來越難，無法再自己一個人玩了，只好向朋友求助XD我覺得巫醫的技能都很有趣，學生物的應該會很愛，蜘蛛青蛙通通來，還可以把怪變豬真是很趣味，不過我最愛的還是用熊熊衝撞，因為我是小熊啊，所以要愛用熊熊技能(笑) 我覺得暗黑III最吸引我的地方就是任務與故事劇情的設計，讓玩家可以跟著任務一起了解暗黑破壞神的故事劇情，更能融入各主角之間的愛恨糾葛(?)而且動畫做的真是太棒了，很有看電影的FU，是一大視覺享受，還有還有，莉亞好正>////< 另外，有一個願望是希望暗黑破壞神不要太久才改版啦，不要讓玩家等那麼辛苦！雖然好的遊戲值得等待XD ",
+		);
+		$girls['雞排妹Ili'] = array(
+			'video' => '',
+			'photos' => array(
+				0 => array(
+						'/static/img/event/girls_vote_2012/Ili/a1.jpg',
+					),
+				1 => array(
+						'/static/img/event/girls_vote_2012/Ili/b1.jpg',
+					),
+				2 => array(
+						'/static/img/event/girls_vote_2012/Ili/c1.jpg',
+						'/static/img/event/girls_vote_2012/Ili/c2.jpg',
+					),
+				3 => array(
+						'/static/img/event/girls_vote_2012/Ili/d1.jpg',
+						'/static/img/event/girls_vote_2012/Ili/d2.jpg',
+					),
+			),
+			'text_fields' => array(
+				'fb'           => 'https://www.facebook.com/Ili19930831',
+				'nickname'     => '雞排妹Ili‏',
+				'server'       => '美洲',
+				'role_name'    => 'ili',
+				'role_level'   => '60',
+				'class'        => '武增',
+				'birthday'     => '1993/08/31',
+				'city'         => '台北',
+				'play_per_day' => '拍攝寫真集之前,每天玩6小時左右,拍完寫真集之後,因有許多後續的工作,就比較沒空玩'
+			),
+			'intro' => '雞排妹/Ili/鄭佳甄<br /> 身高體重:157/43<br /> 三圍:30E/22/33<br /> <br /> 最近在幹嘛?:出寫真集(十八歲的禮物),八月預購上市,還有雙面人型抱枕喔!<br /> <br /> 個性的優點：善良，喜歡關心周遭的家人及朋友，不愛計較<br /> <br /> 個性的缺點：任性，餓的時候及太熱的時候會開始不耐煩及發脾氣<br /> <br /> 飲食：　最喜歡吃得飽飽然後睡覺～這是我感到幸福的其中一件事，喜歡吃肉、蛤仔湯、粥、起司、糖葫蘆、還有很多。不喜歡吃甜食（巧克力、蛋糕、糖果），怕香菜、紅蘿蔔、魚湯，早餐一定是兩份才會飽，消夜看心情。<br /> <br /> 喜歡的異性：　不要帥，最好有點胖有肚子，愛屋及烏，照顧家人，尊重我的工作，務正業，能負責任，聰明，還要包容我。（條件會不會開太多了哈哈哈）<br /> <br /> 日常生活：　私底下呢，跟大嬸一樣，喜歡穿著寬鬆的衣服跟拖鞋，上工前才肯換上高跟鞋與衣服。不喜歡化妝，幾乎都是素顏戴眼鏡。<br /> <br /> 寵物：　去年１２月領養了一隻流浪貓腫腫，怕腫腫寂寞，今年三月又領養了一隻流浪貓咪醬，寵物的存在對我很重要，有人說交男朋友不會寂寞，不過跟寵物比較起來，寵物會一輩子跟著我。<br /> <br /> 年紀：　ｉｌｉ非常享受青春，由於工作的關係，生活很累卻多彩多姿，每張照片散發著青春，我好愛現在的自己，不想要１９歲，不想變老，珍惜且揮灑青春。<br />',
+			'opinion' => "剛上市時，根本買不到，還是託香港的朋友在香港買遊戲包，再給我序號<br /> 其實Ｄ３的等級不會很難生等，如果有朋友一起玩，等級會跑得很快！<br /> 但不能跟太高等的人一起玩，打怪會沒成就感。<br /> <br /> 我記得玩不到２４小時的時間就會有４０等。<br /> 最喜歡的是遊戲畫面，包含地圖、背景、怪物、噴血嘔吐之類的，都很精緻<br /> 雖然無法拉近，但已能滿足視覺。<br /> <br /> 故事情節跟章節動畫也不錯，但是隨著等級提升，會一直看到重複的情節<br /> 就有點膩．拍賣場很有趣，偶爾會遇到有人少打一個零之類的好康。<br /> <br /> ６０等之後是有點懶，ｉｌｉ應該去認真打裝備，<br /> 才不會在煉獄連凱恩都沒看到人就掛了。<br />",
+		);
+
+		return array_slice($girls, $setting['offset'], $setting['limit']);
 	}
 }
 //
