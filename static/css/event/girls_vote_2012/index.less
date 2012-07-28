@@ -36,6 +36,15 @@
 		}
 	}
 
+	// 投票須知
+	.girls_vote_info{
+		background-color : black;
+		color            : white;
+		font-size        : 16px;
+		font-weight      : bold;
+		padding          : 10px;
+	}
+
 	// 女孩投票日期進度
 	.girls_vote_progress{
 		.g_clear();
@@ -107,8 +116,8 @@
 						background-color : white;
 						display          : inline-block;
 						margin           : 0 15px;
-						margin-top       : 20px;
-						margin-bottom    : 20px;
+						margin-top       : 10px;
+						margin-bottom    : 10px;
 
 						img{
 							height           : 175px;
@@ -119,7 +128,7 @@
 				// 女孩個資
 				.girl_personal{
 					.g_clear();
-					min-height: 100px;
+					min-height: 75px;
 
 					// 個資欄位
 					.txt_row{
@@ -142,10 +151,11 @@
 
 					// 詳細介紹
 					.girl_intro_detail{
-						color    : @common_font_color - 50;
-						margin   : 10px;
-						height   : 142px;
-						overflow : hidden;
+						color         : @common_font_color - 50;
+						margin        : 10px;
+						margin-bottom : 3px;
+						height        : 142px;
+						overflow      : hidden;
 					}
 				}
 
