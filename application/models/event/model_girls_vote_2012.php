@@ -155,7 +155,7 @@ class Model_girls_vote_2012 extends CI_Model {
 	private function _girls_detail( $setting = array() ) {
 
 		$setting['page'] = ( ! is_null( $setting['page'] ) ) ? $setting['page'] - 1 : 0;
-		$setting['limit'] = ( ! is_null( $setting['limit'] ) ) ? $setting['limit'] : 9;
+		$setting['limit'] = ( ! is_null( $setting['limit'] ) ) ? $setting['limit'] : 15;
 
 		$setting['offset'] = ( ! is_null( $setting['offset'] ) ) ? $setting['offset'] : $setting['page'] * $setting['limit'];
 
@@ -915,7 +915,7 @@ class Model_girls_vote_2012 extends CI_Model {
 			'opinion' => "記得D2的時候,還是在國中時期<br /> <br /> 雖然是單機板 但還是可以用區網跟朋友們在網咖連線打牛關。<br /> <br /> 這次D3推出網路版 更是讓我每天晚上不眠不休的跟朋友瘋狂刷到天亮<br /> <br /> 為得就是那掉下來的綠色字體裝備!!!!!!!!!!!!!!!!!!!!<br /> <br /> 而這次的D3讓我對角色扮演更是著迷了<br /> <br /> 動化作得超棒,像在看電影一樣生動<br /> <br /> 解成就也很有趣 資源回收 跟屁蟲等等...<br /> <br /> 如果想玩D3卻不知道知道該玩什麼角色的朋友<br /> <br /> 比較建議大家玩秘術師,因為好上手以外<br /> <br /> 在施放技能的特效也會感到很酷炫~<br /> <br /> 或者可以選擇逃跑 風箏性高的狩魔獵人!<br /> <br /> 總言之 希望還沒體驗過D3的朋友<br /> <br /> 有機會真的要好好體驗一下 <br /> <br /> 因為真得很棒~<br /> ",
 		);
 		$girls['Flora'] = array(
-			'video' => 'bKXTF-UFHZo',
+			'video' => '',
 			'photos' => array(
 				0 => array(
 						'/static/img/event/girls_vote_2012/Flora/a1.jpg',
@@ -932,18 +932,18 @@ class Model_girls_vote_2012 extends CI_Model {
 					),
 			),
 			'text_fields' => array(
-				'fb'           => '',
-				'nickname'     => 'Flora',
+				'fb'           => 'https://www.facebook.com/flora.ju',
+				'nickname'     => 'Flora‏',
 				'server'       => '美服',
-				'role_name'    => 'Bloom',
+				'role_name'    => '狩魔妹妹',
 				'role_level'   => '60',
-				'class'        => '秘術師',
+				'class'        => '狩魔獵人',
 				'birthday'     => '1990/12/29',
-				'city'         => '新北市',
-				'play_per_day' => '5小時'
+				'city'         => '新北市土城區',
+				'play_per_day' => '五小時'
 			),
-			'intro' => '各位在聖修亞瑞大陸奮戰的玩家~大家好，我是Flora，我很喜歡美式風格的遊戲，所以從D2我就開始玩這款遊戲啦！平常的休閒活動除了跟狗狗玩、養魚偷菜種香菇之外，最喜歡就是玩暗黑破壞神喔^口^/<br />我的tag是Flora#3921歡迎大家和我一起玩喔~(雖然都60等了沒人帶玩起來還是很吃力><)',
-			'opinion' => "暗黑破壞神III,我可是MF寶寶<br /> 身穿快破三百的打寶裝<br /> 成為人見人愛的組隊最佳人選<br /> 躺屍體撿金裝,是我每天必做的活動<br /> 雖然我沒有玩過二代直接玩三代的<br /> 但一開始我就一頭栽入了D3練功的世界<br /> 一心只想趕快60級可以跟著大家去打寶<br /> 有空的時間甚至可以玩一整天<br /> 我沒有風騷的走位技巧,也沒有超神的裝備<br /> 但是我有很多好隊友… 陪著我打屠夫、打歌不林、農A3<br /> 非常的開心<br />",
+			'intro' => '各位在聖修亞瑞大陸奮戰的玩家~<br /> 大家好，我是Flora，我很喜歡美式風格的遊戲<br /> 所以從D2我就開始玩這款遊戲啦！<br /> 平常的休閒活動除了跟狗狗玩、養魚偷菜種<br /> 香菇之外，最喜歡就是玩暗黑破壞神喔^口^/<br /> 我的tag是Flora#3921歡迎大家和我一起玩喔~<br /> (雖然都60等了沒人帶玩起來還是很吃力><)<br /> ', 
+			'opinion' => "心得嘛…只能說痛苦太多，收穫太少(誤，呵呵!<br /> D3從第一章到第四章~從普通到煉獄，真的都沒冷場！<br /> 劇情的架構有比上一代好很多，畫面也是做得很精緻!!<br /> 不過最吸引我的還是他營造的刺激感，各種變態的技能組合，全地圖被追殺>口</，<br /> 聖光阿~你有看到我的修裝費嗎?<br /> 目前是主要攻略巫醫跟DH，前陣子終於拓荒到了彼列面前，結果打到狂暴<囧><br /> 後來在暗盟的網站研究別人的配裝跟技能，也在上面看了很多高手錄製的影片，終於最後僥倖打過~嗚呼^o^/<br /> 歡迎有玩巫醫跟DH的朋友跟我交換心得喔~~<br /> D3真的很棒很好玩，玩不膩!!! ",
 		);
 		$girls['小熊'] = array(
 			'video' => 'NgMDwUtGmeI',

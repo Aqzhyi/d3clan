@@ -194,6 +194,7 @@
   margin-left: -341.5px;
   min-height: 50%;
   padding-top: 56px;
+  z-index: 3;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_detail_info .inner_border {
   background-image: url("/static/img/event/girls_vote_2012/fold_02.png");
