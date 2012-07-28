@@ -1015,7 +1015,47 @@ class Model_girls_vote_2012 extends CI_Model {
 			'intro' => '雞排妹/Ili/鄭佳甄<br /> 身高體重:157/43<br /> 三圍:30E/22/33<br /> <br /> 最近在幹嘛?:出寫真集(十八歲的禮物),八月預購上市,還有雙面人型抱枕喔!<br /> <br /> 個性的優點：善良，喜歡關心周遭的家人及朋友，不愛計較<br /> <br /> 個性的缺點：任性，餓的時候及太熱的時候會開始不耐煩及發脾氣<br /> <br /> 飲食：　最喜歡吃得飽飽然後睡覺～這是我感到幸福的其中一件事，喜歡吃肉、蛤仔湯、粥、起司、糖葫蘆、還有很多。不喜歡吃甜食（巧克力、蛋糕、糖果），怕香菜、紅蘿蔔、魚湯，早餐一定是兩份才會飽，消夜看心情。<br /> <br /> 喜歡的異性：　不要帥，最好有點胖有肚子，愛屋及烏，照顧家人，尊重我的工作，務正業，能負責任，聰明，還要包容我。（條件會不會開太多了哈哈哈）<br /> <br /> 日常生活：　私底下呢，跟大嬸一樣，喜歡穿著寬鬆的衣服跟拖鞋，上工前才肯換上高跟鞋與衣服。不喜歡化妝，幾乎都是素顏戴眼鏡。<br /> <br /> 寵物：　去年１２月領養了一隻流浪貓腫腫，怕腫腫寂寞，今年三月又領養了一隻流浪貓咪醬，寵物的存在對我很重要，有人說交男朋友不會寂寞，不過跟寵物比較起來，寵物會一輩子跟著我。<br /> <br /> 年紀：　ｉｌｉ非常享受青春，由於工作的關係，生活很累卻多彩多姿，每張照片散發著青春，我好愛現在的自己，不想要１９歲，不想變老，珍惜且揮灑青春。<br />',
 			'opinion' => "剛上市時，根本買不到，還是託香港的朋友在香港買遊戲包，再給我序號<br /> 其實Ｄ３的等級不會很難生等，如果有朋友一起玩，等級會跑得很快！<br /> 但不能跟太高等的人一起玩，打怪會沒成就感。<br /> <br /> 我記得玩不到２４小時的時間就會有４０等。<br /> 最喜歡的是遊戲畫面，包含地圖、背景、怪物、噴血嘔吐之類的，都很精緻<br /> 雖然無法拉近，但已能滿足視覺。<br /> <br /> 故事情節跟章節動畫也不錯，但是隨著等級提升，會一直看到重複的情節<br /> 就有點膩．拍賣場很有趣，偶爾會遇到有人少打一個零之類的好康。<br /> <br /> ６０等之後是有點懶，ｉｌｉ應該去認真打裝備，<br /> 才不會在煉獄連凱恩都沒看到人就掛了。<br />",
 		);
-
+		$girls['寶姬'] = array(
+			'video' => '',
+			'photos' => array(
+				0 => array(
+						'/static/img/event/girls_vote_2012/yuwwu/a1.jpg',
+						'/static/img/event/girls_vote_2012/yuwwu/a2.jpg',
+						'/static/img/event/girls_vote_2012/yuwwu/a3.jpg',
+						'/static/img/event/girls_vote_2012/yuwwu/a4.jpg',
+					),
+				1 => array(
+						'/static/img/event/girls_vote_2012/yuwwu/b1.jpg',
+						'/static/img/event/girls_vote_2012/yuwwu/b2.jpg',
+						'/static/img/event/girls_vote_2012/yuwwu/b3.jpg',
+						'/static/img/event/girls_vote_2012/yuwwu/b4.jpg',
+					),
+				2 => array(
+						'/static/img/event/girls_vote_2012/yuwwu/c1.jpg',
+						'/static/img/event/girls_vote_2012/yuwwu/c2.jpg',
+						'/static/img/event/girls_vote_2012/yuwwu/c3.jpg',
+					),
+				3 => array(
+						'/static/img/event/girls_vote_2012/yuwwu/d1.jpg',
+						'/static/img/event/girls_vote_2012/yuwwu/d2.jpg',
+						'/static/img/event/girls_vote_2012/yuwwu/d3.jpg',
+						'/static/img/event/girls_vote_2012/yuwwu/d4.jpg',
+					),
+			),
+			'text_fields' => array(
+				'fb'           => 'https://www.facebook.com/yu.w.wu.3',
+				'nickname'     => '寶姬‏',
+				'server'       => '亞服',
+				'role_name'    => '寶姬',
+				'role_level'   => '52',
+				'class'        => '武僧',
+				'birthday'     => '1986/01/03',
+				'city'         => '新北市',
+				'play_per_day' => '放假才會上線'
+			),
+			'intro' => '哈!大家好噢!<br /> 很高興可以參予這次的活動。<br /> 我是一個標準的阿宅，每天不是在看<br /> 小說漫畫就是在玩遊戲。<br /> 為了D3還追了2天2夜的物流車-/-|||。<br /> 晤…反正就是瘋到一個極致((掩面。<br /> 人生介紹完了…我悲催了－”””－<br />',
+			'opinion' => "其實一開始玩的主因，是因為我朋友都在玩，所以算是被朋友拉著跑的。ＸＤ<br /> 沒辦法，個人比較偏好線上遊戲，互動比較多<br /> 也可以認識很多新朋友，所以沒玩過暗黑2。<br /> FB上一長串都是D3的消息，整個風靡到不行。<br /> 就因為這股風氣，不知道哪來的衝動。<br /> 我追了兩天兩夜的物流車，跟近百間的店家打交道…。<br /> 最後一個好心的全家店員可能看我像個瘋婆子，<br /> 加之又繞到他的店家三四次使他同情心大發(其實是不耐煩…)<br /> 就幫我直接打電話問其他店家調貨，我才終於得到救贖!(一整個大愛阿!!!)<br /> 原本很期待它的畫面，結果悲劇的發現我電腦全開會跑不動…（（啜泣<br /> <br /> 雖然有一點小遺憾，但是還是玩的很開心J<br /> <br /> 每次上線就在跟朋友過本本、或是玩不同的職業角色、亂喇賽<br /> 不然就假裝很威的帶新手朋友。哈:)我就是喜歡這樣子!!!!!!!<br /> <br />",
+		);
 		return array_slice($girls, $setting['offset'], $setting['limit']);
 	}
 }
