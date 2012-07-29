@@ -1,0 +1,27 @@
+<div class="namespace_game g_clear">
+	<!-- 選單結構 -->
+	<div id="data_list" class="data_list">
+		<!-- 搜尋 -->
+		<input id="data_list_search" class="data_list_search g_search" type="text" placeholder="搜尋...">
+		<!-- 選單 -->
+		{foreach $menu_list as $index => $list_item}
+			<div class="data_title">
+				<!-- 大分類顯示名稱 -->
+				<span class="title">{$list_item['folder_name']}</span>
+				<div class="data_hide">
+					<!-- 細項(們) -->
+					{include file='./partial/menu-items.html' list_item=$list_item['links']}
+				</div>
+			</div>
+		{/foreach}
+	</div>
+
+	<!-- 主內容 -->
+	<div class="content">
+		<!-- 主題內容 -->
+		<div class="each_page_content">
+			{$fetched_page_content}
+		</div>
+	</div>
+</div>
+<!--  -->

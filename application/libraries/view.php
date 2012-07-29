@@ -145,6 +145,18 @@ class View {
 		return $this;
 	}
 
+	public function js_link_add( $paths = array() ) {
+		// 增加js連結至視圖供瀏覽器載入.
+		if ( is_array( $paths ) ) {
+			$this->_linked_js_files = array_merge( $this->_linked_js_files, $paths );
+		}
+		elseif ( is_string( $paths ) ) {
+			$this->_linked_js_files[] = $paths;
+		}
+	
+		return $this;
+	}
+
 	public function layout( $setting = '' ) {
 		$this->_layout = $setting;
 

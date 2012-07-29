@@ -8,7 +8,12 @@ class Template {
 
 	public function fetch( $template = '', $data = array() ) {
 		$smarty = $this->create_smarty_lib();
-		$smarty->assign( 'data', $data );
+
+		// 一個一個 將data 變量 assign 至 smarty 樣版裡.
+		foreach ( array_keys( $data ) as $index => $key_name ) {
+			$smarty->assign( $key_name, $data[$key_name] );
+		}
+
 		$smarty->assign( 'CI', $CI =& get_instance() );
 		return $smarty->fetch( $template . '.html' );
 	}

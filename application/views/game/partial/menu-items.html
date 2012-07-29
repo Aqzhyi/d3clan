@@ -1,0 +1,10 @@
+{foreach $list_item as $uri => $link}
+	{if is_array($link)}
+		{if empty( $link['filter'] )}{$link['filter'] = "t"}{/if}
+		{if empty( $uri )}{break}{/if}
+		{if empty( $link['title'] )}{$link['title'] = $link['text']}{/if}
+		<a data-filter='{$link['filter']}' href='/game/{$uri}/{$link['title']}' class='data_link'>{$link['text']}</a>
+	{else}
+		<div class='data_group'>{$link}</div>
+	{/if}
+{/foreach}
