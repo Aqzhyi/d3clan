@@ -4,7 +4,6 @@ jQuery(function() {
 	var $girls_banner = jQuery('#girls_banner');
 
 	var interval1 = setInterval(function(){
-		console.log(/banner change in 10s/);
 		if ( $girls_banner.find('#item.current').next('#item').length ) {
 			$girls_banner.find('#item.current').removeClass('current').next('#item').addClass('current');
 		}
@@ -97,7 +96,9 @@ jQuery(function() {
 			data       : {
 				name: vote_name
 			},
-			beforeSend : function(jqXHR, settings){},
+			beforeSend : function(jqXHR, settings){
+				alert('處理中，請稍後...');
+			},
 			success    : function(data, textStatus, jqXHR) {
 				if (data.success) {
 					alert(data.success_msg);

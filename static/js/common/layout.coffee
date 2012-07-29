@@ -5,8 +5,6 @@ jQuery ->
 		.find('.single')
 		.show()
 
-	console.log /data/, $ads
-
 	for i in [0..ad_amount-3]
 		random = Math.round( Math.random() * ad_amount - i )
 		$ads

@@ -5,7 +5,8 @@
 		<div class="g_clear"></div>
 		<!-- 投票 -->
 		<div class="vote_it">
-			<img src="/static/img/event/girls_vote_2012/vote_it.png" alt="" id="vote_she">
+			<img src="/static/img/event/girls_vote_2012/vote_it.png" alt="" id="vote_she" data-vote-name="{$girl_nickname}">
+			{if ! $CI->user->is_login()}<a target="_blank" href="http://d3clan.tw/bbs/member.php?mod=logging&action=login" class="btn btn-danger">點我註冊登入<br />或透過FB登入</a>{/if}
 		</div>
 
 		<p></p>
@@ -71,7 +72,8 @@
 
 		<!-- 投票 -->
 		<div class="vote_it">
-			<img src="/static/img/event/girls_vote_2012/vote_it.png" alt="" id="vote_she">
+			<img src="/static/img/event/girls_vote_2012/vote_it.png" alt="" id="vote_she" data-vote-name="{$girl_nickname}">
+			{if ! $CI->user->is_login()}<a target="_blank" href="http://d3clan.tw/bbs/member.php?mod=logging&action=login" class="btn btn-danger">點我註冊登入<br />或透過FB登入</a>{/if}
 		</div>
 	</div>
 	<!-- 下框 -->
