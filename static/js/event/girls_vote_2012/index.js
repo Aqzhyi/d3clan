@@ -97,17 +97,19 @@ jQuery(function() {
 				name: vote_name
 			},
 			beforeSend : function(jqXHR, settings){
-				alert('處理中，請稍後...');
+				jQuery('.ui-dialog').remove();
+				jQuery('<div>處理中，請稍後...</div>').dialog();
 			},
 			success    : function(data, textStatus, jqXHR) {
+				jQuery('.ui-dialog').remove();
 				if (data.success) {
-					alert(data.success_msg);
+					jQuery('<div>'+data.success_msg+'</div>').dialog();
 				}
 				else if (data.success !== true){
-					alert(data.error_msg);
+					jQuery('<div>'+data.error_msg+'</div>').dialog();
 				}
 				else {
-					alert('後端程式發生不明錯誤')
+					jQuery('<div>後端程式發生不明錯誤</div>').dialog();
 				}
 			},
 			complete   : function(jqXHR, textStatus) {}
