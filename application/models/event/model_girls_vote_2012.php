@@ -15,12 +15,14 @@ class Model_girls_vote_2012 extends CI_Model {
 	 */
 	public function get_girls( $setting = array() ) {
 
-		$setting['tid'] = ( ! empty( $setting['tid'] ) ) ? $setting['tid'] : NULL;
-		$setting['page'] = ( ! is_null( $setting['page'] ) ) ? $setting['page'] : 1;
+		$setting['tid']    = ( ! empty( $setting['tid'] ) ) ? $setting['tid'] : NULL;
+		$setting['sort'] = ( ! is_null( $setting['sort'] ) ) ? $setting['sort'] : 'default';
+		$setting['page']   = ( ! is_null( $setting['page'] ) ) ? $setting['page'] - 1 : 0;
+		$setting['limit']  = ( ! is_null( $setting['limit'] ) ) ? $setting['limit'] : 15;
+		
+		$setting['offset'] = ( ! is_null( $setting['offset'] ) ) ? $setting['offset'] : $setting['page'] * $setting['limit'];
 
-		$girls = $this->_girls_detail( array(
-				'page' => $setting['page'],
-			) );
+		$girls = $this->_girls_detail();
 
 		if ( is_null( $setting['tid'] ) or ! is_array( $setting['tid'] )  ) {
 			return $girls;
@@ -30,10 +32,21 @@ class Model_girls_vote_2012 extends CI_Model {
 			$girls = $this->_merge_girl_poll( array(
 					'tid'   => $tid,
 					'girls' => $girls,
+					'page'  => $setting['page'],
 				) );
 		}
 
-		return $girls;
+		if ( $setting['sort'] === 'desc' ) {
+			// 排序, 票數最高的排前面.
+			foreach ( $girls as $girl_name => $girl_info ) {
+				$total_votes[] = $girl_info['total_votes'];
+			}
+
+			// 透過 $total_votes desc 排序 $girls.
+			array_multisort( $total_votes, SORT_DESC, $girls );
+		}
+
+		return array_slice( $girls, $setting['offset'], $setting['limit'] );
 	}
 
 	/**
@@ -164,11 +177,6 @@ class Model_girls_vote_2012 extends CI_Model {
 	 * @return [type]          [description]
 	 */
 	private function _girls_detail( $setting = array() ) {
-
-		$setting['page'] = ( ! is_null( $setting['page'] ) ) ? $setting['page'] - 1 : 0;
-		$setting['limit'] = ( ! is_null( $setting['limit'] ) ) ? $setting['limit'] : 15;
-
-		$setting['offset'] = ( ! is_null( $setting['offset'] ) ) ? $setting['offset'] : $setting['page'] * $setting['limit'];
 
 		// 關聯投票主題,順序為 0氣質系->1萌系->2性感系->3活潑系.
 		$girls['阿土'] = array(
@@ -1076,7 +1084,7 @@ class Model_girls_vote_2012 extends CI_Model {
 			'intro' => '哈!大家好噢!<br /> 很高興可以參予這次的活動。<br /> 我是一個標準的阿宅，每天不是在看<br /> 小說漫畫就是在玩遊戲。<br /> 為了D3還追了2天2夜的物流車-/-|||。<br /> 晤…反正就是瘋到一個極致((掩面。<br /> 人生介紹完了…我悲催了－”””－<br />',
 			'opinion' => "其實一開始玩的主因，是因為我朋友都在玩，所以算是被朋友拉著跑的。ＸＤ<br /> 沒辦法，個人比較偏好線上遊戲，互動比較多<br /> 也可以認識很多新朋友，所以沒玩過暗黑2。<br /> FB上一長串都是D3的消息，整個風靡到不行。<br /> 就因為這股風氣，不知道哪來的衝動。<br /> 我追了兩天兩夜的物流車，跟近百間的店家打交道…。<br /> 最後一個好心的全家店員可能看我像個瘋婆子，<br /> 加之又繞到他的店家三四次使他同情心大發(其實是不耐煩…)<br /> 就幫我直接打電話問其他店家調貨，我才終於得到救贖!(一整個大愛阿!!!)<br /> 原本很期待它的畫面，結果悲劇的發現我電腦全開會跑不動…（（啜泣<br /> <br /> 雖然有一點小遺憾，但是還是玩的很開心J<br /> <br /> 每次上線就在跟朋友過本本、或是玩不同的職業角色、亂喇賽<br /> 不然就假裝很威的帶新手朋友。哈:)我就是喜歡這樣子!!!!!!!<br /> <br />",
 		);
-		return array_slice( $girls, $setting['offset'], $setting['limit'] );
+		return $girls;
 	}
 }
 //

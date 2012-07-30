@@ -39,15 +39,21 @@
 		</div>
 	</div>
 
+	<div class="girl_sort">
+		<a href="/event/2012-girls-vote/page/1/desc" class="">
+			<img src="/static/img/event/girls_vote_2012/total_get_desc.jpg" alt="">
+		</a>
+	</div>
+
 	<div class="girls_page_nav">
-		<a href="/event/2012-girls-vote" class="btn btn-large btn-primary">1</a>
-		<a href="/event/2012-girls-vote/page/2" class="btn btn-large btn-primary">2</a>
+		<a href="/event/2012-girls-vote/page/1/{$CI->uri->segment(5)}" class="btn btn-large btn-primary">1</a>
+		<a href="/event/2012-girls-vote/page/2/{$CI->uri->segment(5)}" class="btn btn-large btn-primary">2</a>
 	</div>
 
 	<div class="girls_intro">{include file='./partial/girls.html'}</div>
 
 	<div class="girls_page_nav">
-		<a href="/event/2012-girls-vote" class="btn btn-large btn-primary">1</a>
-		<a href="/event/2012-girls-vote/page/2" class="btn btn-large btn-primary">2</a>
+		<a href="/event/2012-girls-vote/page/1/{$CI->uri->segment(5)}" class="btn btn-large btn-primary">1</a>
+		<a href="/event/2012-girls-vote/page/2/{$CI->uri->segment(5)}" class="btn btn-large btn-primary">2</a>
 	</div>
 </div>

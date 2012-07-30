@@ -62,16 +62,18 @@ class Girls_vote_2012 extends CI_Controller {
 	}
 
 	public function index( $params = array() ) {
+
 		// 女孩們的詳細資料檔案
 		$this->page( 1 );
 	}
 
-	public function page( $page = 1 ) {
+	public function page( $page = 1, $sort = 'default' ) {
 		// 女孩們的詳細資料檔案
 		$this->view->data['page'] = $page;
 		$this->view->data['girls'] = $this->Model_girls_vote_2012->get_girls( array(
-				'tid' => $this->_list_tid,
-				'page' => $page
+				'tid'  => $this->_list_tid,
+				'page' => $page,
+				'sort' => $sort
 			) );
 	}
 
