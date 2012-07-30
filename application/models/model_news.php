@@ -22,10 +22,10 @@ class Model_news extends CI_Model {
 				'link'  => '/bbs/forum.php?mod=viewthread&tid=429',
 			),
 			array(
-				'img'   => '/static/img/event/girls_vote_2012/dgirl-home.jpg',
+				'img'   => '/static/img/common/circle/dgirl.jpg',
 				'title' => '台灣暗盟電競情報網「暗黑美少女D-Girl年度選拔賽賽」開跑',
 				'descr' => '【2012年7月17日台北訊】由台灣暗盟電競情報網舉辦，台灣暴雪協辦，Intel主要贊助，知名品牌Kingston、ASRock、ROCCAT、曜越科技、微星電競筆電、BenQ聯合贊助的「暗黑美少女D-Girl年度選拔賽聯賽」，即將於7月底正式開跑！本次競賽最終總獎金高達新台幣十萬元，熱絡的活動勢必引爆整個暑假！',
-				'link'  => '/bbs/forum.php?mod=viewthread&tid=430',
+				'link'  => '/bbs/forum.php?mod=viewthread&tid=532&page=1&extra=#pid558',
 			),
 			array(
 				'img'   => 'http://d3clan.tw/bbs/data/attachment/forum/201207/17/1759589ds3xggerds96xgl.jpg',
