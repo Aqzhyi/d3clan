@@ -332,7 +332,7 @@ class Model_girls_vote_2012 extends CI_Model {
 				'nickname'     => '小翔翔‏',
 				'server'       => '美服',
 				'role_name'    => '聖落櫻飛',
-				'role_level'   => '56',
+				'role_level'   => '60',
 				'class'        => '祕術師',
 				'birthday'     => '77/2/26',
 				'city'         => '台北市',
@@ -999,17 +999,26 @@ class Model_girls_vote_2012 extends CI_Model {
 			'photos' => array(
 				0 => array(
 					'/static/img/event/girls_vote_2012/Ili/a1.jpg',
+					'/static/img/event/girls_vote_2012/Ili/a2.jpg',
+					'/static/img/event/girls_vote_2012/Ili/a3.jpg',
 				),
 				1 => array(
 					'/static/img/event/girls_vote_2012/Ili/b1.jpg',
+					'/static/img/event/girls_vote_2012/Ili/b2.jpg',
 				),
 				2 => array(
 					'/static/img/event/girls_vote_2012/Ili/c1.jpg',
 					'/static/img/event/girls_vote_2012/Ili/c2.jpg',
+					'/static/img/event/girls_vote_2012/Ili/c3.jpg',
+					'/static/img/event/girls_vote_2012/Ili/c4.jpg',
+					'/static/img/event/girls_vote_2012/Ili/c5.jpg',
+					'/static/img/event/girls_vote_2012/Ili/c6.jpg',
+					'/static/img/event/girls_vote_2012/Ili/c7.jpg',
 				),
 				3 => array(
 					'/static/img/event/girls_vote_2012/Ili/d1.jpg',
 					'/static/img/event/girls_vote_2012/Ili/d2.jpg',
+					'/static/img/event/girls_vote_2012/Ili/d3.jpg',
 				),
 			),
 			'text_fields' => array(
