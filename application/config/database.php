@@ -82,5 +82,19 @@ $db['StarCraftII']['swap_pre'] = '';
 $db['StarCraftII']['autoinit'] = TRUE;
 $db['StarCraftII']['stricton'] = FALSE;
 
+// sqlite3
+$db['ad_banners']['hostname'] = 'sqlite:' . APPPATH . 'db/ad_banners.sqlite';
+$db['ad_banners']['username'] = '';
+$db['ad_banners']['password'] = '';
+$db['ad_banners']['database'] = '';
+$db['ad_banners']['dbdriver'] = 'pdo';
+$db['ad_banners']['dbprefix'] = '';
+$db['ad_banners']['pconnect'] = FALSE;
+$db['ad_banners']['db_debug'] = TRUE;
+$db['ad_banners']['cache_on'] = FALSE;
+$db['ad_banners']['cachedir'] = '';
+$db['ad_banners']['char_set'] = 'utf8';
+$db['ad_banners']['dbcollat'] = 'utf8_general_ci';
+
 /* End of file database.php */
 /* Location: ./application/config/database.php */
