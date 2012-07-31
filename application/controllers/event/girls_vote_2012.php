@@ -4,7 +4,7 @@ class Girls_vote_2012 extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->view->append_title( 'D-Girls 美少女選拔' );
+		$this->view->title_append( 'D-Girls 美少女選拔' );
 		$this->view->layout( 'event/girls_vote_2012/layout' );
 		$this->view->js_add( 'event/girls_vote_2012/index' );
 		$this->view->js_add( 'plugin/jQuery/jquery-ui-1.8.21.no.effects.min' );

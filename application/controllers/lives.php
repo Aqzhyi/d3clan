@@ -5,7 +5,7 @@ class Lives extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model( 'Model_live_channel' );
-		$this->view->append_title( '直播頻道' );
+		$this->view->title_append( '直播頻道' );
 		$this->view->layout( 'lives/layout' );
 		$this->view->js_add( array(
 				'lives/index',

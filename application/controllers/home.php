@@ -8,7 +8,7 @@ class Home extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->view->append_title( '' );
+		$this->view->title_append( '' );
 		$this->view->layout( 'home/index' );
 		$this->view->js_add( array(
 				'home/index',
