@@ -3,8 +3,8 @@
 
   jQuery(function() {
     var $ads, ad_amount, i, random, _i, _ref, _results;
-    ad_amount = 8 - 1;
     $ads = jQuery('#commercial_ad').find('.single').show();
+    ad_amount = $ads.length - 1;
     _results = [];
     for (i = _i = 0, _ref = ad_amount - 3; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
       random = Math.round(Math.random() * ad_amount - i);
