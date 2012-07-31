@@ -4,6 +4,22 @@ class Vod extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->view->layout( 'vod/layout' );
+		$this->view->js_add( array(
+				'vod/index',
+			) );
+		$this->view->css_add( array(
+				'vod/index',
+			) );
+		$this->view->cache( 10 );
+	}
+
+	public function _remap( $method = 'index', $params = array() ) {
+		$this->view->title_routes( array(
+				'index'    => '隨選視訊影片',
+			) );
+		$this->view->page( $method, $params );
+		$this->view->init( $this );
 	}
 
 	public function index( $type = NULL, $roll = NULL ) {
@@ -34,22 +50,6 @@ class Vod extends CI_Controller {
 		// 其他推薦
 		$this->view->data["videos_right_list"]  = array_slice( $_vod_list, 0, 4 );
 		$this->view->data["videos_bottom_list"] = array_slice( $_vod_list, 4, 1000 );
-
-		// 輸出
-		$this->view->cache( 15 );
-		$this->view->display(
-			array(
-				'title'    => "隨選視訊影片",
-				'view'     => 'vod/index',
-				'js_files' => array(
-					'vod/index',
-				),
-				'css_files' => array(
-					'vod/index'
-				),
-			)
-		);
-
 	}
 }
 
