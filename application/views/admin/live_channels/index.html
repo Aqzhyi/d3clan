@@ -1,0 +1,69 @@
+<div class="alert alert-info">
+	<h4 class="alert-heading">資料表共用</h4>
+	<p>本直播頻道與星盟，是共用資料表的(相通的)。</p>
+	<h4 class="alert-heading">不會顯示星海頻道</h4>
+	<p>於暗盟網站顯示的直播頻道，將不會顯示 [遊戲類別] 為 "StarCraftII" 的頻道；而只會顯示 "DiabloIII" 的頻道</p>
+</div>
+
+<div class="well">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>顯示名稱</th>
+				<th>使用平台</th>
+				<th>帳號(or UID)</th>
+				<th>地區</th>
+				<th>遊戲類別</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="add_channel" data-action="admin/post_live_channel">
+				<td>
+					<input name="live_name" type="text" placeholder="人族救星*阿吉" />
+				</td>
+				<td>
+					<select name="type" id="">
+						<option value="justin">justin</option>
+						<option value="own3D">own3D</option>
+					</select>
+				</td>
+				<td>
+					<input type="text" name="live_account" placeholder="witness1129" />
+				</td>
+				<td>
+					<select name="location" id="">
+						<option value="臺灣">臺灣</option>
+						<option value="其他">其他</option>
+					</select>
+				</td>
+				<td>
+					<select name="game_type" id="">
+						<option value="DiabloIII">暗黑破壞神III</option>
+						<option value="StarCraftII">星海爭霸II</option>
+					</select>
+				</td>
+				<td>
+					<button id="add" class="btn btn-paimary">新增</button>
+				</td>
+			</tr>
+
+			{foreach $live_channels as $key => $channel}
+			<tr id="row_{$channel['sn']}">
+				<td>{$channel['live_name']}</td>
+				<td>{$channel['type']}</td>
+				<td>{$channel['live_account']}</td>
+				<td>{$channel['location']}</td>
+				<td>{$channel['game_type']}</td>
+				<td class="g_txt_c">
+					<button class="btn btn-mini btn-primary disabled">
+						<s>編輯</s>
+					</button>
+					<button id="delete_{$channel['sn']}" class="btn btn-mini btn-danger">刪除</button>
+				</td>
+			</tr>
+			{/foreach}
+
+			</tbody>
+	</table>
+</div>
