@@ -4,40 +4,55 @@ class Model_ad extends CI_Model {
 
 	function __construct() {
 		parent::__construct();
-		$this->load->database( 'ad_banners' );
-		// $this->ad = $this->load->database( 'ad_banners', TRUE );
+		$this->ad = $this->load->database( 'Business', TRUE );
 	}
+
 
 	public function get_ad( $setting = array() ) {
 
-		$setting['case'] = ( ! is_null( $setting['case'] ) ) ? $setting['case'] : 'common_top3_270x60';
+		$setting['case'] = ( ! is_null( $setting['case'] ) ) ? $setting['case'] : '270x60';
 		
 		switch ( $setting['case'] ) {
-			case 'common_top3_270x60':
-				$ad_entities = $this->_get_common_top3_270x60();
+			case '270x60':
+				$ad_entities = $this->_get_270x60();
 				break;
 		}
 
 		return $ad_entities;
 	}
 
-	private function _get_common_top3_270x60( $setting = array() ) {
+
+	public function add( $setting = array() ) {
 		
-		$this->db->query( "
-				CREATE TABLE IF NOT EXISTS `ad_banners`(
-					`id` SMALLINT(5)NOT NULL AUTO_INCREMENT,
-					`case` VARCHAR(20)NULL,
-					`type` VARCHAR(20)NULL DEFAULT 'flash',
-					`path` VARCHAR(255)NULL,
-					`link` VARCHAR(255)NULL,
-					`active` TINYINT(1)NULL,
-					PRIMARY KEY(`id`)
-				);
-			" );
+		$setting['data']['path'] = ( ! empty( $setting['data']['path'] ) ) ? $setting['data']['path'] : NULL;
 
-		$this->db->from( 'ad_banners' );
+		if ( is_null( $setting['data']['path'] ) ) return $this->callback->error_msg( '廣告路徑不得為空啊!' )->toJSON();
 
-		return $this->db->get()->result_array();
+		$this->ad->insert( 'common_ad_banners', $setting['data'] );
+
+		return $this->callback->success_msg( '新增完成.' )->toJSON();
+	}
+
+
+	public function delete( $setting = array() ) {
+		
+		$setting['id'] = ( ! empty( $setting['id'] ) ) ? $setting['id'] : NULL;
+
+		if ( is_null( $setting['id'] ) ) return $this->callback->error_msg( '刪除發生錯誤，找不到id.' )->toJSON();
+
+		$this->ad->delete( 'common_ad_banners', $setting );
+
+		return $this->callback->success_msg( '刪除完成.' )->toJSON();
+	}
+
+
+	private function _get_270x60( $setting = array() ) {
+		
+		$this->ad->from( 'common_ad_banners' );
+
+		return $this->ad->get()->result_array();
 	}
 
 }
+
+// 

@@ -5,7 +5,6 @@ class Admin extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->helper( 'form' );
-		$this->load->library( 'Json' );
 		$this->view->layout( 'admin/layout' );
 		$this->view->css_add( 'admin/diy' );
 		$this->view->cache( 0 );
@@ -19,6 +18,7 @@ class Admin extends CI_Controller {
 		$this->view->title_routes( array(
 				'index'         => '通用後台管理頁面',
 				'live_channels' => '直播頻道管理',
+				'ad_banners'    => '270x60廣告',
 			) );
 		$this->view->page( $method, $params );
 		$this->view->init( $this );
@@ -30,6 +30,57 @@ class Admin extends CI_Controller {
 
 		$this->view->js_add( 'admin/index' );
 		$this->view->css_add( 'admin/index' );
+	}
+
+	public function ad_banners( $setting = array() ) {
+
+		if ( ! $this->user->auth( 22 ) ) show_404();
+
+		$this->load->library( 'ads' );
+		
+		$this->view->data['ads'] = $this->ads->get( array(
+				'case' => '270x60'
+			) );
+
+		$this->view->js_add( 'admin/ad_banners' );
+		$this->view->css_add( 'admin/ad_banners' );
+
+	}
+
+	public function ajax( $setting = array(), $params = array(), $params2 = array() ) {
+
+		if ( $this->input->is_ajax_request() ) {
+			$this->_ajax_process( $setting, $params, $params2 );
+		}
+		else {
+			show_404();
+		}
+	}
+
+	private function _ajax_process( $class = '類別', $params = array(), $params2 = array() ) {
+
+		switch ( $class ) {
+		case 'ad-banners':
+
+			$this->load->model( 'Model_ad' );
+
+			switch ( $_SERVER['REQUEST_METHOD'] ) {
+				case 'DELETE':
+					
+					echo $this->Model_ad->delete( array(
+							'id' => $params,
+						) );
+					break;
+
+				case 'POST':
+
+					echo $this->Model_ad->add( array(
+							'data' => $this->input->post(),
+						) );
+					break;
+			}
+			break;
+		}
 	}
 
 	public function live_channels() {

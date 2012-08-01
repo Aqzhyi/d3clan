@@ -82,19 +82,22 @@ $db['StarCraftII']['swap_pre'] = '';
 $db['StarCraftII']['autoinit'] = TRUE;
 $db['StarCraftII']['stricton'] = FALSE;
 
-// sqlite3
-$db['ad_banners']['hostname'] = 'sqlite:' . APPPATH . 'db/ad_banners.sqlite';
-$db['ad_banners']['username'] = '';
-$db['ad_banners']['password'] = '';
-$db['ad_banners']['database'] = '';
-$db['ad_banners']['dbdriver'] = 'pdo';
-$db['ad_banners']['dbprefix'] = '';
-$db['ad_banners']['pconnect'] = FALSE;
-$db['ad_banners']['db_debug'] = TRUE;
-$db['ad_banners']['cache_on'] = FALSE;
-$db['ad_banners']['cachedir'] = '';
-$db['ad_banners']['char_set'] = 'utf8';
-$db['ad_banners']['dbcollat'] = 'utf8_general_ci';
+// 業務
+$db['Business']['hostname'] = 'localhost';
+$db['Business']['username'] = 'sc2clan';
+$db['Business']['password'] = 'ilovesc2!';
+$db['Business']['database'] = 'sc2clan_business';
+$db['Business']['dbdriver'] = 'mysql';
+$db['Business']['dbprefix'] = '';
+$db['Business']['pconnect'] = FALSE;
+$db['Business']['db_debug'] = TRUE;
+$db['Business']['cache_on'] = FALSE;
+$db['Business']['cachedir'] = APPPATH . 'cache/Business_db_cache';
+$db['Business']['char_set'] = 'utf8';
+$db['Business']['dbcollat'] = 'utf8_general_ci';
+$db['Business']['swap_pre'] = '';
+$db['Business']['autoinit'] = TRUE;
+$db['Business']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

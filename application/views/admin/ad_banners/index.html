@@ -1,4 +1,4 @@
-<table class="table table-bordered">
+<table id="ad_banners" class="table table-bordered">
 	<thead>
 	<tr>
 		<th>啟用</th>
@@ -7,17 +7,23 @@
 		<th>形態</th>
 		<th>路徑</th>
 		<th>連結</th>
+		<th>功能</th>
 	</tr>
 	</thead>
 	<tbody>
+		{foreach $ads as $index => $ad}
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>{if $ad['active']}已啟用{/if}</td>
+			<td>{$ad['id']}</td>
+			<td>{$ad['case']}</td>
+			<td>{$ad['type']}</td>
+			<td>{$ad['path']}</td>
+			<td>{$ad['link']}</td>
+			<td>
+				<button id="delete" class="btn btn-danger" data-id="{$ad['id']}">刪除</button>
+			</td>
 		</tr>
+		{/foreach}
 	</tbody>
 	<tfoot>
 		<tr>
@@ -43,6 +49,9 @@
 			</td>
 			<td>
 				<input type="text" name="link">
+			</td>
+			<td>
+				<button id="add" class="btn btn-primary">新增</button>
 			</td>
 		</tr>
 	</tfoot>

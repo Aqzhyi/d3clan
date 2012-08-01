@@ -1,0 +1,5 @@
+.namespace_admin_diy table td,
+.namespace_admin_diy table th {
+  word-break: break-all;
+  min-width: 50px;
+}
