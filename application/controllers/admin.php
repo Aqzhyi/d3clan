@@ -6,7 +6,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->helper( 'form' );
 		$this->view->layout( 'admin/layout' );
-		$this->view->css_add( 'admin/diy' );
+		$this->view->css_add( 'admin/common' );
 		$this->view->cache( 0 );
 
 		// if ( ! $this->user->auth( 21 ) ) show_404(); // 直播頻道管理大師
@@ -19,11 +19,13 @@ class Admin extends CI_Controller {
 				'index'         => '通用後台管理頁面',
 				'live_channels' => '直播頻道管理',
 				'ad_banners'    => '270x60廣告',
+				'home_circle'   => '首頁四輪播',
 			) );
 		$this->view->page( $method, $params );
 		$this->view->init( $this );
 	}
 
+	// 通用後台管理頁面
 	public function index() {
 
 		if ( ! $this->user->auth( 22 ) ) show_404();
@@ -32,6 +34,7 @@ class Admin extends CI_Controller {
 		$this->view->css_add( 'admin/index' );
 	}
 
+	// 270x60廣告
 	public function ad_banners( $setting = array() ) {
 
 		if ( ! $this->user->auth( 22 ) ) show_404();
@@ -44,7 +47,15 @@ class Admin extends CI_Controller {
 
 		$this->view->js_add( 'admin/ad_banners' );
 		$this->view->css_add( 'admin/ad_banners' );
+	}
 
+	// 首頁四輪播
+	public function home_circle( $setting = array() ) {
+
+		$this->load->model( 'Model_news' );
+		$this->view->data['home_4_circle'] = $this->Model_news->get_circle_loop();
+		$this->view->js_add( 'admin/home_circle' );
+		$this->view->css_add( 'admin/home_circle' );
 	}
 
 	public function ajax( $setting = array(), $params = array(), $params2 = array() ) {
@@ -80,9 +91,35 @@ class Admin extends CI_Controller {
 					break;
 			}
 			break;
+		case 'home-circle':
+
+			$this->load->model( 'Model_ad' );
+
+			switch ( $_SERVER['REQUEST_METHOD'] ) {
+				case 'DELETE':
+					
+					echo $this->Model_ad->delete( array(
+							'id' => $params,
+						) );
+					break;
+
+				case 'POST':
+
+					$post = array_merge( array(
+							'case' => 'home_4_circle',
+							'type' => 'img',
+						), $this->input->post() );
+
+					echo $this->Model_ad->add( array(
+							'data' => $post,
+						) );
+					break;
+			}
+			break;
 		}
 	}
 
+	// 直播頻道管理
 	public function live_channels() {
 		$this->load->model( 'Model_live_channel' );
 		$this->view->data['live_channels'] = $this->Model_live_channel->get_d3_channels( array(

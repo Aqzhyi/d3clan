@@ -3,6 +3,7 @@
   padding: 10px;
 }
 .diy input,
-.diy select {
+.diy select,
+.diy textarea {
   width: 94%;
 }

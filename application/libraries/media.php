@@ -22,10 +22,11 @@ class Media {
 		$setting['width']  = ( ! is_null( $setting['width'] ) ) ? $setting['width'] : '100%';
 		$setting['height'] = ( ! is_null( $setting['height'] ) ) ? $setting['height'] : '100%';
 		$setting['class']  = ( ! is_null( $setting['class'] ) ) ? $setting['class'] : '';
+		$setting['style'] = ( ! is_null( $setting['style'] ) ) ? $setting['style'] : '';
 		$setting['src']    = ( ! is_null( $setting['src'] ) ) ? $setting['src'] : NULL;
 
 		$output = "
-<object class='{$setting['class']}' data='{$setting['src']}' width='{$setting['width']}' height='{$setting['height']}' type='application/x-shockwave-flash'>
+<object style='{$setting['style']}' class='{$setting['class']}' data='{$setting['src']}' width='{$setting['width']}' height='{$setting['height']}' type='application/x-shockwave-flash'>
 	<param name='movie' value='{$setting['src']}' />
 	<param name='allowscriptaccess' value='always' />
 	<param name='allowfullscreen' value='true' />

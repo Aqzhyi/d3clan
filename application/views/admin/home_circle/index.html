@@ -1,0 +1,54 @@
+<table id="home_4_circle" class="table table-bordered">
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>類別</th>
+			<th>形態</th>
+			<th>路徑</th>
+			<th>連結</th>
+			<th>標題</th>
+			<th>描述</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		{foreach $home_4_circle as $index => $entity}
+		<tr>
+			<td>{$entity['id']}</td>
+			<td>{$entity['case']}</td>
+			<td>{$entity['type']}</td>
+			<td>{$entity['path']}</td>
+			<td>
+				<a target="_blank" href="{$entity['link']}">{$entity['link']}</a>
+			</td>
+			<td>{$entity['title']}</td>
+			<td>{$entity['descr']}</td>
+			<td>
+				<button data-delete-btn data-id="{$entity['id']}" class="btn btn-danger">刪除</button>
+			</td>
+		</tr>
+		{/foreach}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>auto</td>
+			<td>home_4_circle</td>
+			<td>img</td>
+			<td>
+				<input type="text" name="path" value="" placeholder="圖片路徑...">
+			</td>
+			<td>
+				<input type="text" name="link" value="" placeholder="跳轉連結...">
+			</td>
+			<td>
+				<input type="text" name="title" value="" placeholder="標題...">
+			</td>
+			<td>
+				<textarea name="descr" id="" rows="10" placeholder="描述..."></textarea>
+			</td>
+			<td>
+				<button id="add" class="btn btn-primary">新增</button>
+			</td>
+		</tr>
+	</tfoot>
+</table>

@@ -4,7 +4,7 @@
 		{foreach $circle_loop as $index => $item}
 			{if $item@first}{$class='current'}{else}{$class=''}{/if}
 			<div id="switcher" data-index="{$index}" class="switcher {$current}">
-				<img src="{$item['img']}" alt="輪播新聞" />
+				<img src="{$item['path']}" alt="輪播新聞" />
 			</div>
 		{/foreach}
 	</div>
@@ -14,7 +14,7 @@
 		{foreach $circle_loop as $index => $item}
 			{if $item@first}{$class=''}{else}{$class='g_hide'}{/if}
 			<div id="windows" data-index="{$index}" class="window {$class}">
-				<a><img src="{$item['img']}" alt="輪播新聞" /></a>
+				<a><img src="{$item['path']}" alt="輪播新聞" /></a>
 				<div class="textarea">
 					<div class="title">
 						<a href="{$item['link']}">{$item['title']}</a>

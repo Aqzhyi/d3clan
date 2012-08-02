@@ -48,6 +48,7 @@ class Model_ad extends CI_Model {
 
 	private function _get_270x60( $setting = array() ) {
 		
+		$this->ad->where( 'case', '270x60' );
 		$this->ad->from( 'common_ad_banners' );
 
 		return $this->ad->get()->result_array();

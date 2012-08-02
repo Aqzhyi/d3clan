@@ -29,6 +29,7 @@ h6 {
   background-position: 50% 0;
   background-repeat: no-repeat;
   font-family: "\5fae\8edf\6b63\9ed1\9ad4";
+  word-break: break-all;
 }
 body {
   background-image: url('/static/img/common/layout/Big_bg2.jpg');

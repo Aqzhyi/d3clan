@@ -238,7 +238,8 @@ if ( is_dir( $application_folder ) ) {
 else {
 	if ( ! is_dir( BASEPATH.$application_folder.'/' ) ) {
 		header("Content-Type:text/html; charset=utf-8");
-		exit( "更新中，請稍後。 <a href='https://www.facebook.com/D3clan.tw'>暗盟粉絲頁</a>" );
+		exit( "更新中，請稍後。 <a href='http://www.facebook.com/D3clan.tw'>暗盟粉絲頁</a>" );
+		exit( "更新中，請稍後。 <a href='http://www.facebook.com/SC2CLAN.TW'>星盟粉絲頁</a>" );
 	}
 
 	define( 'APPPATH', BASEPATH.$application_folder.'/' );
