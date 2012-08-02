@@ -21,7 +21,7 @@ class View {
 	private $_title = '';
 
 	// 二級標題
-	private $_append_title = '';
+	private $_title_append = '';
 
 	// 版型路徑
 	private $_layout = '';
@@ -105,17 +105,17 @@ class View {
 		}
 		
 		// 輸出 view 給瀏覽器
-		$this->CI->template->display( 'common/layout', array(
-				'data'            => $this->data,
-				'json'            => json_encode( $this->json ),
-				'layout'          => $this->_layout,
-				'page'            => $this->_page,
-				'js_files'        => $this->_js_files,
-				'linked_js_files' => $this->_linked_js_files,
-				'css_files'       => $this->_css_files,
-				'title'           => $this->_title,
-				'append_title'    => $this->_append_title,
-				'og_image'        => $this->_og_image,
+		$this->CI->template->display( $this->CI->config->item( 'application_layout_path' ), array(
+				'data'               => $this->data,
+				'json'               => json_encode( $this->json ),
+				'application_layout' => $this->_layout,
+				'page'               => $this->_page,
+				'js_files'           => $this->_js_files,
+				'linked_js_files'    => $this->_linked_js_files,
+				'css_files'          => $this->_css_files,
+				'title'              => $this->_title,
+				'title_append'       => $this->_title_append,
+				'og_image'           => $this->_og_image,
 			) );
 	
 		return $this;
@@ -189,13 +189,13 @@ class View {
 
 	/**
 	 * title的二級層
-	 * title的格式為：「title('') - append_title('') - config['site_name']」
+	 * title的格式為：「title('') - title_append('') - config['site_name']」
 	 * 
 	 * @param  string $setting [description]
 	 * @return [type]          [description]
 	 */
 	public function title_append( $setting = '' ) {
-		$this->_append_title = $setting;
+		$this->_title_append = $setting;
 
 		return $this;
 	}

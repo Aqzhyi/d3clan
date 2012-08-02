@@ -3,20 +3,20 @@
 <head xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-	<title>{$_VIEW['title']}{if $_VIEW['append_title']} - {$_VIEW['append_title']}{/if} - {$CI->config->item( 'site_name' )}</title>
+	<title>{$TEMPLATE['title']}{if $TEMPLATE['title_append']} - {$TEMPLATE['title_append']}{/if} - {$CI->config->item( 'site_name' )}</title>
 
 	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 	<meta name="description" content="{$CI->config->item( 'description' )}"/>
 	<meta name="keywords" content="{$CI->config->item( 'keywords' )}"/>
 
-	<link rel="stylesheet" href="/e/m/{foreach $_VIEW['css_files'] as $index => $css_file}{if $css_file@last}{$comma = ''}{else}{$comma = ','}{/if}{$CI->config->item( 'css_static_path' )}{$css_file}.css{$comma}{/foreach}">
+	<link rel="stylesheet" href="/e/m/{foreach $TEMPLATE['css_files'] as $index => $css_file}{if $css_file@last}{$comma = ''}{else}{$comma = ','}{/if}{$CI->config->item( 'css_static_path' )}{$css_file}.css{$comma}{/foreach}">
 	<link rel="shortcut icon" href="/static/img/common/icon/official_d3.ico" type="image/x-icon"/>
 	<link rel="canonical" href="{$CI->view->get_canonical_url()}" />
 
 	<meta property="og:site_name" content="{$CI->config->item( 'site_name' )}" />
 	<meta property="og:description" content="{$CI->config->item( 'description' )}" />
-	<meta property="og:title" content="{$_VIEW['title']}{if $_VIEW['append_title']} - {$_VIEW['append_title']}{/if} - {$CI->config->item( 'site_name' )}" />
-	<meta property="og:image" content="{$_VIEW['og_image']}" />
+	<meta property="og:title" content="{$TEMPLATE['title']}{if $TEMPLATE['title_append']} - {$TEMPLATE['title_append']}{/if} - {$CI->config->item( 'site_name' )}" />
+	<meta property="og:image" content="{$TEMPLATE['og_image']}" />
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="zh_TW" />
 	<meta property="og:url" content="{$CI->view->get_canonical_url()}" />
@@ -75,7 +75,7 @@
 
 		<!-- 動態網頁 -->
 		<div role="main" class="diy">
-			{include file = "../`$_VIEW['layout']`.html"}
+			{include file = "../`$TEMPLATE['application_layout']`.html"}
 		</div>
 
 		<!-- 頁腳 -->
@@ -88,11 +88,11 @@
 		</div>
 		</footer>
 
-		<div id="metadata-root" data-metadata='{$_VIEW['json']}'></div>
+		<div id="metadata-root" data-metadata='{$TEMPLATE['json']}'></div>
 	</div>
-	<script src="/e/m/{foreach $_VIEW['js_files'] as $index => $js_file}{if $js_file@last}{$comma = ''}{else}{$comma = ','}{/if}{$CI->config->item( 'js_static_path' )}{$js_file}.js{$comma}{/foreach}"></script>
+	<script src="/e/m/{foreach $TEMPLATE['js_files'] as $index => $js_file}{if $js_file@last}{$comma = ''}{else}{$comma = ','}{/if}{$CI->config->item( 'js_static_path' )}{$js_file}.js{$comma}{/foreach}"></script>
 
-	{foreach $_VIEW['linked_js_files'] as $url}
+	{foreach $TEMPLATE['linked_js_files'] as $url}
 		<script src="{$url}"></script>
 	{/foreach}
 

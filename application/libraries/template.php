@@ -5,7 +5,6 @@ class Template {
 	public function __construct() {
 
 	}
-
 	public function fetch( $template = '', $data = array() ) {
 		$smarty = $this->create_smarty_lib();
 
@@ -22,7 +21,7 @@ class Template {
 		// 初始化 smarty
 		$smarty = $this->create_smarty_lib();
 		// 基本配置
-		$smarty->assign( '_VIEW', $params );
+		$smarty->assign( 'TEMPLATE', $params );
 		$smarty->assign( 'CI', $CI =& get_instance() );
 
 		// 從控制器 assign 進來的變數, 也要一個一個 assign 至 smarty 樣版裡.
