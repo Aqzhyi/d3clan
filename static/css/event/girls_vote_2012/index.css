@@ -39,6 +39,8 @@
 }
 .namespace_event_2012_girls_vote .girls_banner .item {
   display: none;
+  width: 100%;
+  height: 400px;
 }
 .namespace_event_2012_girls_vote .girls_banner .item.current {
   display: block;
