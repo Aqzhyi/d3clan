@@ -10,14 +10,19 @@ class Admin extends CI_Controller {
 		$this->view->cache( 0 );
 
 		// if ( ! $this->user->auth( 21 ) ) show_404(); // 直播頻道管理大師
-		// if ( ! $this->user->auth( 22 ) ) show_404(); // 網站首頁管理大師
+		// if ( ! $this->user->auth( 22 ) ) show_404(); // 網站首頁管理大師 // 必備
 		// if ( ! $this->user->auth( 23 ) ) show_404(); // OCR封閉測試
+		// if ( ! $this->user->auth( 24 ) ) show_404(); // 週邊設備管理大師
 	}
 
 	public function _remap( $method = 'index', $params = array() ) {
+
+		if ( ! $this->user->auth( 22 ) ) show_404();
+
 		$this->view->title_routes( array(
 				'index'         => '通用後台管理頁面',
 				'live_channels' => '直播頻道管理',
+				'hardware'      => '週邊設備管理',
 				'ad_banners'    => '270x60廣告',
 				'home_circle'   => '首頁四輪播',
 			) );
@@ -28,16 +33,12 @@ class Admin extends CI_Controller {
 	// 通用後台管理頁面
 	public function index() {
 
-		if ( ! $this->user->auth( 22 ) ) show_404();
-
 		$this->view->js_add( 'admin/index' );
 		$this->view->css_add( 'admin/index' );
 	}
 
 	// 270x60廣告
 	public function ad_banners( $setting = array() ) {
-
-		if ( ! $this->user->auth( 22 ) ) show_404();
 
 		$this->load->library( 'ads' );
 		
@@ -47,6 +48,13 @@ class Admin extends CI_Controller {
 
 		$this->view->js_add( 'admin/ad_banners' );
 		$this->view->css_add( 'admin/ad_banners' );
+	}
+
+	// 週邊設備管理
+	public function hardware( $setting = array() ) {
+
+		if ( ! $this->user->auth( 24 ) ) show_404();
+	
 	}
 
 	// 首頁四輪播
