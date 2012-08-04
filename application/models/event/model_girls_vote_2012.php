@@ -15,10 +15,11 @@ class Model_girls_vote_2012 extends CI_Model {
 	 */
 	public function get_girls( $setting = array() ) {
 
-		$setting['tid']    = ( ! empty( $setting['tid'] ) ) ? $setting['tid'] : NULL;
-		$setting['sort'] = ( ! is_null( $setting['sort'] ) ) ? $setting['sort'] : 'default';
-		$setting['page']   = ( ! is_null( $setting['page'] ) ) ? $setting['page'] - 1 : 0;
-		$setting['limit']  = ( ! is_null( $setting['limit'] ) ) ? $setting['limit'] : 15;
+		$setting['tid']         = ( ! empty( $setting['tid'] ) ) ? $setting['tid'] : NULL;
+		$setting['sort']        = ( ! is_null( $setting['sort'] ) ) ? $setting['sort'] : 'default';
+		$setting['page']        = ( ! is_null( $setting['page'] ) ) ? $setting['page'] - 1 : 0;
+		$setting['limit']       = ( ! is_null( $setting['limit'] ) ) ? $setting['limit'] : 15;
+		$setting['active_poll'] = ( ! is_null( $setting['active_poll'] ) ) ? $setting['active_poll'] : 0;
 		
 		$setting['offset'] = ( ! is_null( $setting['offset'] ) ) ? $setting['offset'] : $setting['page'] * $setting['limit'];
 
@@ -39,11 +40,12 @@ class Model_girls_vote_2012 extends CI_Model {
 		if ( $setting['sort'] === 'desc' ) {
 			// 排序, 票數最高的排前面.
 			foreach ( $girls as $girl_name => $girl_info ) {
-				$total_votes[] = $girl_info['total_votes'];
+				$votes[] = $girl_info['polls'][$setting['active_poll']];
+				// $votes[] = $girl_info['votes'];
 			}
 
-			// 透過 $total_votes desc 排序 $girls.
-			array_multisort( $total_votes, SORT_DESC, $girls );
+			// 透過 $votes desc 排序 $girls.
+			array_multisort( $votes, SORT_DESC, $girls );
 		}
 
 		return array_slice( $girls, $setting['offset'], $setting['limit'] );
