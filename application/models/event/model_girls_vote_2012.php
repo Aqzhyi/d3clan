@@ -900,7 +900,7 @@ class Model_girls_vote_2012 extends CI_Model {
 			'opinion' => "D3是一個很有趣的遊戲，因為等級最高才60級<br />所以不是那種拼命練功的遊戲，重點是放在跟朋友一起打寶物<br />打到好裝的那一瞬間真的是很有成就感<br />D3也有別於一般線上遊戲大家在一起的模式<br />人太多有時候真的很容易起爭執跟衝突<br />不過4人有點少朋友有時候要開好幾團= =<br />總之是一個值得玩的遊戲喔~",
 		);
 		$girls['Athena'] = array(
-			'video' => '',
+			'video' => 'p982Vrjaj14',
 			'photos' => array(
 				0 => array(
 					'/static/img/event/girls_vote_2012/Athena/a1.jpg',
@@ -1013,6 +1013,7 @@ class Model_girls_vote_2012 extends CI_Model {
 				1 => array(
 					'/static/img/event/girls_vote_2012/Ili/b1.jpg',
 					'/static/img/event/girls_vote_2012/Ili/b2.jpg',
+					'/static/img/event/girls_vote_2012/Ili/b3.jpg',
 				),
 				2 => array(
 					'/static/img/event/girls_vote_2012/Ili/c1.jpg',
