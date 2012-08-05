@@ -678,13 +678,19 @@ class Model_girls_vote_2012 extends CI_Model {
 				),
 				1 => array(
 					'/static/img/event/girls_vote_2012/girl14/b1.jpg',
+					'/static/img/event/girls_vote_2012/girl14/b2.jpg',
+					'/static/img/event/girls_vote_2012/girl14/b3.jpg',
+					'/static/img/event/girls_vote_2012/girl14/b4.jpg',
 				),
 				2 => array(
 					'/static/img/event/girls_vote_2012/girl14/c1.jpg',
 					'/static/img/event/girls_vote_2012/girl14/c2.jpg',
+					'/static/img/event/girls_vote_2012/girl14/c3.jpg',
+					'/static/img/event/girls_vote_2012/girl14/c4.jpg',
 				),
 				3 => array(
 					'/static/img/event/girls_vote_2012/girl14/d1.jpg',
+					'/static/img/event/girls_vote_2012/girl14/d2.jpg',
 				),
 			),
 			'text_fields' => array(
