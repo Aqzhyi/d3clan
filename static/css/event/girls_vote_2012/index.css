@@ -146,6 +146,7 @@
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_photos .girl_photo img {
   height: 175px;
+  max-width: 245px;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_personal {
   *zoom: 1;

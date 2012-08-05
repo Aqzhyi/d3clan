@@ -606,8 +606,8 @@ class Model_girls_vote_2012 extends CI_Model {
 					'/static/img/event/girls_vote_2012/girl12/a3.jpg',
 				),
 				1 => array(
-					'/static/img/event/girls_vote_2012/girl12/b1.jpg',
 					'/static/img/event/girls_vote_2012/girl12/b2.jpg',
+					'/static/img/event/girls_vote_2012/girl12/b1.jpg',
 					'/static/img/event/girls_vote_2012/girl12/b3.jpg',
 				),
 				2 => array(
@@ -826,9 +826,9 @@ class Model_girls_vote_2012 extends CI_Model {
 					'/static/img/event/girls_vote_2012/girl18/a2.jpg',
 					'/static/img/event/girls_vote_2012/girl18/a3.jpg',
 					'/static/img/event/girls_vote_2012/girl18/a4.jpg',
-					'/static/img/event/girls_vote_2012/girl18/a5.jpg',
 				),
 				1 => array(
+					'/static/img/event/girls_vote_2012/girl18/b5.jpg',
 					'/static/img/event/girls_vote_2012/girl18/b1.jpg',
 					'/static/img/event/girls_vote_2012/girl18/b2.jpg',
 					'/static/img/event/girls_vote_2012/girl18/b3.jpg',
