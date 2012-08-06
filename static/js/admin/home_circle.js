@@ -41,7 +41,7 @@ jQuery(function(){
 
 		jQuery.ajax({
 			context    : this,
-			url        : '/admin/ajax/home-circle/' + id,
+			url        : '/admin/ajax/home-circle/id/' + id,
 			type       : 'delete',
 			dataType   : 'json',
 			beforeSend : function(jqXHR, settings) {  },

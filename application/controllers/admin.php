@@ -37,7 +37,7 @@ class Admin extends CI_Controller {
 		$this->view->css_add( 'admin/index' );
 	}
 
-	// 270x60廣告
+	// 270x60廣告管理
 	public function ad_banners( $setting = array() ) {
 
 		$this->load->library( 'ads' );
@@ -54,77 +54,6 @@ class Admin extends CI_Controller {
 	public function hardware( $setting = array() ) {
 
 		if ( ! $this->user->auth( 24 ) ) show_404();
-	
-	}
-
-	// 首頁四輪播
-	public function home_circle( $setting = array() ) {
-
-		$this->load->model( 'Model_news' );
-		$this->view->data['home_4_circle'] = $this->Model_news->get_circle_loop();
-		$this->view->js_add( 'admin/home_circle' );
-		$this->view->css_add( 'admin/home_circle' );
-	}
-
-	public function ajax( $setting = array(), $params = array(), $params2 = array() ) {
-
-		if ( $this->input->is_ajax_request() ) {
-			$this->_ajax_process( $setting, $params, $params2 );
-		}
-		else {
-			show_404();
-		}
-	}
-
-	private function _ajax_process( $class = '類別', $params = array(), $params2 = array() ) {
-
-		switch ( $class ) {
-		case 'ad-banners':
-
-			$this->load->model( 'Model_ad' );
-
-			switch ( $_SERVER['REQUEST_METHOD'] ) {
-				case 'DELETE':
-					
-					echo $this->Model_ad->delete( array(
-							'id' => $params,
-						) );
-					break;
-
-				case 'POST':
-
-					echo $this->Model_ad->add( array(
-							'data' => $this->input->post(),
-						) );
-					break;
-			}
-			break;
-		case 'home-circle':
-
-			$this->load->model( 'Model_ad' );
-
-			switch ( $_SERVER['REQUEST_METHOD'] ) {
-				case 'DELETE':
-					
-					echo $this->Model_ad->delete( array(
-							'id' => $params,
-						) );
-					break;
-
-				case 'POST':
-
-					$post = array_merge( array(
-							'case' => 'home_4_circle',
-							'type' => 'img',
-						), $this->input->post() );
-
-					echo $this->Model_ad->add( array(
-							'data' => $post,
-						) );
-					break;
-			}
-			break;
-		}
 	}
 
 	// 直播頻道管理
@@ -134,66 +63,92 @@ class Admin extends CI_Controller {
 				'limit' => 200,
 				'game_type' => 'DiabloIII',
 			) );
-		$this->view->js_add( 'admin/live-channels' );
-		$this->view->css_add( 'admin/live-channels' );
+		$this->view->js_add( 'admin/live_channels' );
+		$this->view->css_add( 'admin/live_channels' );
 	}
 
-	/**
-	 * 直播頻道CRUD
-	 *
-	 * @param [type]  $id [description]
-	 * @return [type]     [description]
-	 */
-	public function channel( $id ) {
+	// 首頁四輪播管理
+	public function home_circle( $setting = array() ) {
+
+		$this->load->model( 'Model_news' );
+		$this->view->data['home_4_circle'] = $this->Model_news->get_circle_loop();
+		$this->view->js_add( 'admin/home_circle' );
+		$this->view->css_add( 'admin/home_circle' );
+	}
+
+	// ---------------------------------------------------------
+	// AJAX集
+	public function ajax() {
+		
+		$this->load->library( 'ajax' );
+		$this->ajax->uri_routes( array(
+				'ad-banners'   => 'ajax_ad_banners',
+				'home-circle'  => 'ajax_home_circle',
+				'live-channel' => 'ajax_live_channel'
+			) );
+
+		$this->ajax->init( $this );
+	}
+
+	public function ajax_ad_banners( $setting = array() ) {
+
+		$this->load->model( 'Model_ad' );
+
+		switch ( $_SERVER['REQUEST_METHOD'] ) {
+		case 'DELETE':
+			echo $this->Model_ad->delete( $this->ajax->uris );
+			break;
+
+		case 'POST':
+			echo $this->Model_ad->add( array(
+					'data' => $this->input->post(),
+				) );
+			break;
+		}
+	}
+
+	public function ajax_home_circle( $setting = array() ) {
+
+		$this->load->model( 'Model_ad' );
+
+		switch ( $_SERVER['REQUEST_METHOD'] ) {
+		case 'DELETE':
+			echo $this->Model_ad->delete( $this->ajax->uris );
+			break;
+
+		case 'POST':
+			$post = array_merge( array(
+					'case' => 'home_4_circle',
+					'type' => 'img',
+				), $this->input->post() );
+
+			echo $this->Model_ad->add( array(
+					'data' => $post,
+				) );
+			break;
+		}
+	}
+
+	public function ajax_live_channel( $setting = array() ) {
 
 		if ( ! $this->user->auth( 21 ) ) {
 			show_404();
 		}
 
 		switch ( $_SERVER['REQUEST_METHOD'] ) {
-		case 'POST':
-			if ( $this->input->is_ajax_request() ) {
-				$this->_post_live_channel();
-			}
-			break;
 		case 'DELETE':
-			if ( $this->input->is_ajax_request() ) {
-				$this->_delete_live_channel( $id );
-			}
+			$this->load->model( 'Model_live_channel' );
+
+			$this->Model_live_channel->delete( $this->ajax->uris );
 			break;
-		default:
-			echo "method: {$_SERVER['REQUEST_METHOD']}";
+
+		case 'POST':
+
+			$this->load->model( 'Model_live_channel' );
+
+			$this->Model_live_channel->post_channel( $this->input->post() );
 			break;
 		}
-	}
-
-	/**
-	 * 新增一個直播頻道
-	 *
-	 * @param array   $setting [description]
-	 * @return [type]          [description]
-	 */
-	private function _post_live_channel() {
-		$this->load->model( 'Model_live_channel' );
-
-		$this->Model_live_channel->post_channel( $this->input->post() );
-
-		return $this;
-	}
-
-	/**
-	 * 刪除指定ID的直播頻道
-	 *
-	 * @param integer $id [description]
-	 * @return [type]      [description]
-	 */
-	private function _delete_live_channel( $id = 0 ) {
-
-		$this->load->model( 'Model_live_channel' );
-
-		$this->Model_live_channel->delete( array(
-				'id' => $id,
-			) );
 	}
 }
 

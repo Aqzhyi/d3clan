@@ -32,7 +32,7 @@ jQuery(function(){
 
 		jQuery.ajax({
 			context    : this,
-			url        : '/admin/ajax/ad-banners/'+id,
+			url        : '/admin/ajax/ad-banners/id/'+id,
 			type       : 'delete',
 			dataType   : 'json',
 			beforeSend : function(jqXHR, settings) {  },

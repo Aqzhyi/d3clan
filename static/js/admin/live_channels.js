@@ -7,7 +7,7 @@ jQuery(function() {
 		event.preventDefault();
 
 		jQuery.ajax({
-			url: '/admin/channel/post',
+			url: '/admin/ajax/live-channel',
 			type: 'POST',
 			data: jQuery('#add_channel :input').serializeArray(),
 			complete: function(xhr, textStatus) {
@@ -29,7 +29,7 @@ jQuery(function() {
 		var id = this.id.match(/_(\d*)$/)[1];
 
 		jQuery.ajax({
-			url: '/admin/channel/'+id,
+			url: '/admin/ajax/live-channel/id/'+id,
 			type: 'DELETE',
 			complete: function(xhr, textStatus) {
 			},
