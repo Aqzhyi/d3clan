@@ -9,7 +9,7 @@ jQuery(function() {
 		}
 		else {
 			$girls_banner.find('#item.current').removeClass('current');
-			$girls_banner.find('#item').last().addClass('current');
+			$girls_banner.find('#item').first().addClass('current');
 		}
 	}, 10000);
 	
