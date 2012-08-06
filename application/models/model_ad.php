@@ -11,14 +11,13 @@ class Model_ad extends CI_Model {
 	public function get_ad( $setting = array() ) {
 
 		$setting['case'] = ( ! is_null( $setting['case'] ) ) ? $setting['case'] : '270x60';
+		$setting['limit'] = ( ! is_null( $setting['limit'] ) ) ? $setting['limit'] : 6;
 		
-		switch ( $setting['case'] ) {
-			case '270x60':
-				$ad_entities = $this->_get_270x60();
-				break;
-		}
+		$this->ad->where( 'case', $setting['case'] );
+		$this->ad->limit( $setting['limit'], 0 );
+		$this->ad->from( 'common_ad_banners' );
 
-		return $ad_entities;
+		return $this->ad->get()->result_array();
 	}
 
 
@@ -44,16 +43,6 @@ class Model_ad extends CI_Model {
 
 		return $this->callback->success_msg( '刪除完成.' )->toJSON();
 	}
-
-
-	private function _get_270x60( $setting = array() ) {
-		
-		$this->ad->where( 'case', '270x60' );
-		$this->ad->from( 'common_ad_banners' );
-
-		return $this->ad->get()->result_array();
-	}
-
 }
 
 // 
