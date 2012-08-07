@@ -27,6 +27,9 @@
 			,{orig: /點擊/mg, to: '點選'}
 			,{orig: /視頻/mg, to: '影片'}
 			,{orig: /菜單/mg, to: '選單'}
+			,{orig: /攢錢/mg, to: '賺錢'}
+			,{orig: /攢了/mg, to: '賺了'}
+			,{orig: /質朴/mg, to: '簡單'}
 			,{orig: /采集/mg, to: '採集'}
 			,{orig: /補丁/mg, to: '更新'}
 			,{orig: /采訪/mg, to: '採訪'}
@@ -65,7 +68,7 @@
 			,{orig: /RMB/mg, to: '人民幣'}
 			,{orig: /美元/mg, to: '美金'}
 			,{orig: /美刀/mg, to: '美金'}
-			,{orig: /([\d]*)刀/mg, to: '$1美金'}
+			,{orig: /([\d]+)刀/mg, to: '$1美金'}
 			,{orig: /干這行/mg, to: '幹這行'}
 			,{orig: /70後/mg, to: '六年級生'}
 			,{orig: /80後/mg, to: '七年級生'}
@@ -145,8 +148,11 @@
 		termList.Diablo = [
 			{orig: /公共遊戲/mg, to: '公開遊戲'}
 			,{orig: /二(餅|柄)/mg, to: '武僧'}
+			,{orig: /魔法師/mg, to: '秘術師'}
 			,{orig: /獵魔人/mg, to: '狩魔獵人'}
 			,{orig: /蠻子/mg, to: '野蠻人'}
+			,{orig: /戰網通行證/mg, to: '戰網帳號'}
+			,{orig: /跑酷/mg, to: '炫風'}
 			,{orig: /涅法雷姆之力/mg, to: '涅法雷姆之勇'}
 			,{orig: /涅法雷姆勇氣/mg, to: '涅法雷姆之勇'}
 			,{orig: /奈法蘭[的之]?勇氣?/mg, to: '涅法雷姆之勇'}
