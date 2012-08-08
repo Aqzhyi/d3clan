@@ -23,6 +23,8 @@ jQuery(function() {
 
 	// 刪除直播頻道
 	jQuery('[id^=delete_]').on('click', function(event) {
+		
+		if ( ! confirm( "確認要刪除嗎？" ) ) return false;
 		event.preventDefault();
 
 		var $element = jQuery(this);

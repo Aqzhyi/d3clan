@@ -35,6 +35,8 @@ jQuery(function(){
 	 */
 	jQuery('#home_4_circle').find('[data-delete-btn]').on('click', function() {
 
+		if ( ! confirm( "確認要刪除嗎？" ) ) return false;
+
 		var $self = jQuery(this);
 
 		var id = $self.data('id');
