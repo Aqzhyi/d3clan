@@ -52,19 +52,22 @@ class Hardware extends CI_Controller {
 				'descr' => 'INTEL 1155腳位目前市面上可以購買到的晶片組，種類繁多除了之前的六系列現在還有小七系列，分別為B75、H77、Z75、Z77，其中B75也就是這次的文章主角是最讓大家訝異的，因為以往INTEL商用晶片組幾乎是沒在一般零售市場出現，不過其實去Intel官網看到此晶片定位在『為小型企業打造』，所以應該是新的模式專為一般小型企業辦公室電腦使用的晶片，這次ASRock的B75與其他家最大的不同在於B75原生只有一組SATA III 6G，而ASRock透過轉接晶片(經由PCI*1線路)多了兩組SATA III 6G，截至今天為止台灣目前可買到超過1組SATA 6G的B75板子也只有ASRock。',
 			),
 		);
+		
+		$this->load->library( 'ads' );
 
-		$this->view->data['mouse_flow'] = $this->Model_hardware->get_thread( array(
-				'typeid' => array( 1, 11 ) // 滑鼠
-			) );
-		$this->view->data['keyboard_flow'] = $this->Model_hardware->get_thread( array(
-				'typeid' => array( 2, 10 ) // 鍵盤
-			) );
-		$this->view->data['headphone_flow'] = $this->Model_hardware->get_thread( array(
-				'typeid' => array( 3, 12 ) // 耳機
-			) );
-		$this->view->data['else_flow'] = $this->Model_hardware->get_thread( array(
-				'not_typeid' => array( 1, 2, 3, 10, 11, 12 ) // 其它
-			) );
+		$this->view->data['flows'] = array(
+				'hardware_mouse'     => $this->ads->get( array( 'case' => 'hardware_mouse', 'limit' => 6 ) ),
+				'hardware_keyboard'  => $this->ads->get( array( 'case' => 'hardware_keyboard', 'limit' => 6 ) ),
+				'hardware_headphone' => $this->ads->get( array( 'case' => 'hardware_headphone', 'limit' => 6 ) ),
+				'hardware_else'      => $this->ads->get( array( 'case' => 'hardware_else', 'limit' => 6 ) ),
+			);
+
+		$this->view->data['flows_title'] = array(
+				'hardware_mouse'     => '最新滑鼠',
+				'hardware_keyboard'  => '最新鍵盤',
+				'hardware_headphone' => '最新耳機',
+				'hardware_else'      => '其它最新',
+			);
 	}
 }
 

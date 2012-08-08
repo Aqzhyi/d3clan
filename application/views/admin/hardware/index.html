@@ -1,1 +1,62 @@
-123hardware
+<table id="flows" class="table table-bordered">
+	<tr>
+		<th>id</th>
+		<th>case</th>
+		<th>type</th>
+		<th>path</th>
+		<th>link</th>
+		<th>title</th>
+		<th>descr</th>
+		<th>功能</th>
+	</tr>
+	{foreach $flows as $key => $flow}
+		{foreach $flow as $index => $data}
+		<tr>
+			<td>{$data['id']}</td>
+			<td>
+				<select name="case" id="">
+				{html_options options=[
+					'hardware_mouse'     => '滑鼠',
+					'hardware_keyboard'  => '鍵盤',
+					'hardware_headphone' => '耳機',
+					'hardware_else'      => '其它'
+				] selected=$data['case']}
+				</select>
+			</td>
+			<td>{$data['type']}</td>
+			<td>{$data['path']}</td>
+			<td>
+				<a target="_blank" href="{$data['link']}">{$data['link']}</a>
+			</td>
+			<td>{$data['title']}</td>
+			<td>{$data['descr']}</td>
+			<td>
+				<button data-delete-btn data-id="{$data['id']}" class="btn btn-danger">刪除</button>
+			</td>
+		</tr>
+		{/foreach}
+	{/foreach}
+	<tr>
+		<td>auto</td>
+		<td>
+			<select name="case" id="">
+			{html_options options=[
+				'hardware_mouse'     => '滑鼠',
+				'hardware_keyboard'  => '鍵盤',
+				'hardware_headphone' => '耳機',
+				'hardware_else'      => '其它'
+			] selected="滑鼠"}
+			</select>
+		</td>
+		<td>img</td>
+		<td><input type="text" name="path" placeholder="縮圖路徑..."></td>
+		<td><input type="text" name="link" placeholder="跳轉連結..."></td>
+		<td><input type="text" name="title" placeholder="標題..."></td>
+		<td>
+			<textarea name="descr" id="" rows="10" placeholder="描述..."></textarea>
+		</td>
+		<td>
+			<button id="add" class="btn btn-primary">新增</button>
+		</td>
+	</tr>
+</table>

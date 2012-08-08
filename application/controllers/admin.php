@@ -54,6 +54,18 @@ class Admin extends CI_Controller {
 	public function hardware( $setting = array() ) {
 
 		if ( ! $this->user->auth( 24 ) ) show_404();
+
+		$this->load->library( 'ads' );
+		
+		$this->view->data['flows'] = array(
+				'hardware_mouse'     => $this->ads->get( array( 'case' => 'hardware_mouse' ) ),
+				'hardware_keyboard'  => $this->ads->get( array( 'case' => 'hardware_keyboard' ) ),
+				'hardware_headphone' => $this->ads->get( array( 'case' => 'hardware_headphone' ) ),
+				'hardware_else'      => $this->ads->get( array( 'case' => 'hardware_else' ) ),
+			);
+
+		$this->view->js_add( 'admin/hardware' );
+		$this->view->css_add( 'admin/hardware' );
 	}
 
 	// 直播頻道管理
@@ -84,10 +96,32 @@ class Admin extends CI_Controller {
 		$this->ajax->uri_routes( array(
 				'ad-banners'   => 'ajax_ad_banners',
 				'home-circle'  => 'ajax_home_circle',
-				'live-channel' => 'ajax_live_channel'
+				'live-channel' => 'ajax_live_channel',
+				'hardware'     => 'ajax_hardware',
 			) );
 
 		$this->ajax->init( $this );
+	}
+
+	public function ajax_hardware( $setting = array() ) {
+		
+		$this->load->model( 'Model_ad' );
+
+		switch ( $_SERVER['REQUEST_METHOD'] ) {
+		case 'DELETE':
+			echo $this->Model_ad->delete( $this->ajax->uris );
+			break;
+
+		case 'POST':
+			$post = array_merge( array(
+					'type' => 'img',
+				), $this->input->post() );
+
+			echo $this->Model_ad->add( array(
+					'data' => $this->input->post(),
+				) );
+			break;
+		}
 	}
 
 	public function ajax_ad_banners( $setting = array() ) {
