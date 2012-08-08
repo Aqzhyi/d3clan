@@ -606,6 +606,7 @@ class Model_girls_vote_2012 extends CI_Model {
 					'/static/img/event/girls_vote_2012/girl12/a3.jpg',
 				),
 				1 => array(
+					'/static/img/event/girls_vote_2012/girl12/b4.jpg',
 					'/static/img/event/girls_vote_2012/girl12/b2.jpg',
 					'/static/img/event/girls_vote_2012/girl12/b1.jpg',
 					'/static/img/event/girls_vote_2012/girl12/b3.jpg',
