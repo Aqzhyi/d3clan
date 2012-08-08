@@ -53,13 +53,13 @@ class Hardware extends CI_Controller {
 			),
 		);
 		
-		$this->load->library( 'ads' );
+		$this->load->model( 'Model_ad' );
 
 		$this->view->data['flows'] = array(
-				'hardware_mouse'     => $this->ads->get( array( 'case' => 'hardware_mouse', 'limit' => 6 ) ),
-				'hardware_keyboard'  => $this->ads->get( array( 'case' => 'hardware_keyboard', 'limit' => 6 ) ),
-				'hardware_headphone' => $this->ads->get( array( 'case' => 'hardware_headphone', 'limit' => 6 ) ),
-				'hardware_else'      => $this->ads->get( array( 'case' => 'hardware_else', 'limit' => 6 ) ),
+				'hardware_mouse'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse', 'limit' => 6 ) ),
+				'hardware_keyboard'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard', 'limit' => 6 ) ),
+				'hardware_headphone' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone', 'limit' => 6 ) ),
+				'hardware_else'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else', 'limit' => 6 ) ),
 			);
 
 		$this->view->data['flows_title'] = array(

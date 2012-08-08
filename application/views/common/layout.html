@@ -39,14 +39,14 @@
 			<!-- 商業廣告 -->
 			<div class="commercial_ad g_clear" id="commercial_ad">
 				<a href="http://www.facebook.com/d3clan.tw" class="g_fb" target="_blank"></a>
-				{foreach $CI->ads->get( ['case' => '270x60', 'limit', 1000] ) as $index => $ad}
-					{if $ad['type'] == 'img'}
-						<a style="display: none;" target="_blank" class='single' href="{$ad['link']}"><img src="{$ad['path']}" alt="" /></a>
-					{elseif $ad['type'] == 'flash'}
+				{foreach $CI->common->get_270x60_banners() as $index => $banner}
+					{if $banner['type'] == 'img'}
+						<a style="display: none;" target="_blank" class='single' href="{$banner['link']}"><img src="{$banner['path']}" alt="" /></a>
+					{elseif $banner['type'] == 'flash'}
 						{$CI->media->embed_flash( [
 							'width'  => '270',
 							'height' => '60',
-							'src'    => $ad['path'],
+							'src'    => $banner['path'],
 							'class'  => 'single',
 							'style'  => 'display: none;'
 						] )}

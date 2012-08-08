@@ -2,6 +2,9 @@
 
 /**
  * ajax類
+ * 與 view lib 等同重要, view lib 是用來協調各版形的輸出,
+ * 而 ajax lib 則是協調各 js 與 db 的溝通及路由.
+ * 
  */
 class Ajax {
 

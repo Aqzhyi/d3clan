@@ -40,9 +40,9 @@ class Admin extends CI_Controller {
 	// 270x60廣告管理
 	public function ad_banners( $setting = array() ) {
 
-		$this->load->library( 'ads' );
+		$this->load->model( 'Model_ad' );
 		
-		$this->view->data['ads'] = $this->ads->get( array(
+		$this->view->data['ads'] = $this->Model_ad->get_ad( array(
 				'case' => '270x60',
 				'limit' => 1000,
 			) );
@@ -56,13 +56,13 @@ class Admin extends CI_Controller {
 
 		if ( ! $this->user->auth( 24 ) ) show_404();
 
-		$this->load->library( 'ads' );
+		$this->load->model( 'Model_ad' );
 		
 		$this->view->data['flows'] = array(
-				'hardware_mouse'     => $this->ads->get( array( 'case' => 'hardware_mouse' ) ),
-				'hardware_keyboard'  => $this->ads->get( array( 'case' => 'hardware_keyboard' ) ),
-				'hardware_headphone' => $this->ads->get( array( 'case' => 'hardware_headphone' ) ),
-				'hardware_else'      => $this->ads->get( array( 'case' => 'hardware_else' ) ),
+				'hardware_mouse'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse' ) ),
+				'hardware_keyboard'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard' ) ),
+				'hardware_headphone' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone' ) ),
+				'hardware_else'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else' ) ),
 			);
 
 		$this->view->js_add( 'admin/hardware' );
