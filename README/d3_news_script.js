@@ -198,7 +198,44 @@
 		// 網易凱恩之角
 		// =============
 		code.d163 = function() {
-			TongWen.convertToTrad(function() {
+
+			var muilt_page = false;
+
+			// 如果有第2頁以上...把其他頁面抓進來合併...
+			if ( jQuery('.page').length>0 ) {
+
+				muilt_page = true;
+
+				jQuery('.page a').each(function(){
+					var $self = jQuery(this);
+					if ($self.html().match(/\d+/)) {
+						jQuery.ajax({
+							context    : this,
+							url        : $self.attr('href'),
+							type       : 'get',
+							success    : function(data, textStatus, jqXHR) {
+								var $else_page = jQuery(data);
+								var $this_page = jQuery('.endContent');
+
+								$else_page.find('.page').remove();
+
+								$this_page.find('.page').remove();
+
+								$this_page.append( $else_page.find('.endContent').html() );
+
+								$this_page.find('.info').remove();
+
+								window.$this_page = $this_page;
+
+								muilt_page = false;
+							}
+						});
+					}
+				});
+			}
+
+			// 轉文腳本核心
+			var main_program = function() {
 				window.$root        = jQuery('.endContent');
 				window.$script_code = jQuery('<script>');
 				window.$page        = jQuery('.endPageNum').detach();
@@ -260,6 +297,10 @@
 					border : '5px solid yellow'
 				});
 
+				// ------------------------------------------
+				// ------------------------------------------
+				// ------------------------------------------
+
 				var title   = jQuery('h1#h1title').html();
 				var content = $root.html();
 				
@@ -300,70 +341,53 @@
 				};
 
 				// 最新消息->藍帖
-				if ( keywords.match(/(蓝贴|蓝帖|藍帖|藍貼)/g) ) {
-					url = typeids[22];
-				}
+				if ( keywords.match(/(蓝贴|蓝帖|藍帖|藍貼)/g) ) {url = typeids[22]; }
 
 				// 最新消息->新聞 (官方新聞)
-				if ( keywords.match(/官方/g) && keywords.match(/公告/g) ) {
-					url = typeids[21];
-				}
+				if ( keywords.match(/官方/g) && keywords.match(/公告/g) ) {url = typeids[21]; }
 
 				// 攻略推薦->野蠻人
-				if ( keywords.match(/攻略/g) && keywords.match(/野蛮人/g) ) {
-					url = typeids[24];
-				}
+				if ( keywords.match(/攻略/g) && keywords.match(/野蛮人/g) ) {url = typeids[24]; }
 
 				// 攻略推薦->秘術師
-				if ( keywords.match(/攻略/g) && keywords.match(/魔法师/g) ) {
-					url = typeids[25];
-				}
+				if ( keywords.match(/攻略/g) && keywords.match(/魔法师/g) ) {url = typeids[25]; }
 
 				// 攻略推薦->武僧
-				if ( keywords.match(/攻略/g) && keywords.match(/武僧/g) ) {
-					url = typeids[26];
-				}
+				if ( keywords.match(/攻略/g) && keywords.match(/武僧/g) ) {url = typeids[26]; }
 
 				// 攻略推薦->狩魔獵人
-				if ( keywords.match(/攻略/g) && keywords.match(/猎魔人/g) ) {
-					url = typeids[27];
-				}
+				if ( keywords.match(/攻略/g) && keywords.match(/猎魔人/g) ) {url = typeids[27]; }
 
 				// 攻略推薦->巫醫
-				if ( keywords.match(/攻略/g) && keywords.match(/巫医/g) ) {
-					url = typeids[28];
-				}
+				if ( keywords.match(/攻略/g) && keywords.match(/巫医/g) ) {url = typeids[28]; }
 
 				// 推薦視頻
-				if ( keywords.match(/视频/g) ) {
-					url = typeids[30];
-				}
-
-				// 其它
-				if ( url == '' ) {
-					var custom_url = prompt("\
-						系統未成功偵測文章分類，請手動輸入「數字」以選擇 版面->分類：\n\
-						21. 最新消息->新聞\n\
-						22. 最新消息->藍帖\n\
-						23. 最新消息->圖文\n\
-						\n\
-						24. 攻略推薦->野蠻人\n\
-						25. 攻略推薦->秘術師\n\
-						26. 攻略推薦->武僧\n\
-						27. 攻略推薦->狩魔獵人\n\
-						28. 攻略推薦->巫醫\n\
-						29. 攻略推薦->其它\n\
-						\n\
-						30. 精彩視頻->視頻\n\
-						");
-					url = typeids[custom_url];
-					
-					alert(url);
-				}
+				if ( keywords.match(/视频/g) ) {url = typeids[30]; }
 
 				// 檢查是否重複貼文
 				window.jsonp_callback = function( is_repeat ) {
 					console.log('已檢查完成');
+
+					// 未知的url, 請求人工判別..
+					if ( url == '' ) {
+						var custom_url = prompt("\
+							系統未成功偵測文章分類，請手動輸入「數字」以選擇 版面->分類：\n\
+							21. 最新消息->新聞\n\
+							22. 最新消息->藍帖\n\
+							23. 最新消息->圖文\n\
+							\n\
+							24. 攻略推薦->野蠻人\n\
+							25. 攻略推薦->秘術師\n\
+							26. 攻略推薦->武僧\n\
+							27. 攻略推薦->狩魔獵人\n\
+							28. 攻略推薦->巫醫\n\
+							29. 攻略推薦->其它\n\
+							\n\
+							30. 精彩視頻->視頻\n\
+							");
+						url = typeids[custom_url];
+					}
+
 					// 此篇檢查標題後, 未重複, 此篇文章可轉去論壇.
 					var alink_tag = jQuery('<a>', {
 						id: 'link_area_title',
@@ -395,7 +419,15 @@
 						callback: 'jsonp_callback'
 					}
 				});
-			});
+			};
+
+			var interval1 = setInterval(function(){
+				if ( muilt_page === false ) {
+					TongWen.convertToTrad( main_program );
+					clearInterval(interval1);
+				}
+			}, 300);
+
 		};
 
 		// 主程式
