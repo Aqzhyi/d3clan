@@ -43,7 +43,8 @@ class Admin extends CI_Controller {
 		$this->load->library( 'ads' );
 		
 		$this->view->data['ads'] = $this->ads->get( array(
-				'case' => '270x60'
+				'case' => '270x60',
+				'limit' => 1000,
 			) );
 
 		$this->view->js_add( 'admin/ad_banners' );

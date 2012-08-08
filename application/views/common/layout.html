@@ -39,7 +39,7 @@
 			<!-- 商業廣告 -->
 			<div class="commercial_ad g_clear" id="commercial_ad">
 				<a href="http://www.facebook.com/d3clan.tw" class="g_fb" target="_blank"></a>
-				{foreach $CI->ads->get( ['case' => '270x60'] ) as $index => $ad}
+				{foreach $CI->ads->get( ['case' => '270x60', 'limit', 1000] ) as $index => $ad}
 					{if $ad['type'] == 'img'}
 						<a style="display: none;" target="_blank" class='single' href="{$ad['link']}"><img src="{$ad['path']}" alt="" /></a>
 					{elseif $ad['type'] == 'flash'}
