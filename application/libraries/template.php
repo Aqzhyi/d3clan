@@ -1,13 +1,21 @@
 <?php if ( ! defined( 'BASEPATH' ) ) exit( 'No direct script access allowed' );
 
+/**
+ * 使 CI 支持 Smarty 第三方樣版引擎.
+ */
 class Template {
 
-	public function __construct() {
+	public function __construct() {}
 
-	}
-
+	/**
+	 * 同等 $smarty->fetch();
+	 * 
+	 * @param  string $template [description]
+	 * @param  array  $data     [description]
+	 * @return [type]           [description]
+	 */
 	public function fetch( $template = '', $data = array() ) {
-		$smarty = $this->create_smarty_lib();
+		$smarty = $this->_create_smarty_lib();
 
 		// 一個一個 將data 變量 assign 至 smarty 樣版裡.
 		foreach ( array_keys( $data ) as $index => $key_name ) {
@@ -15,14 +23,22 @@ class Template {
 		}
 
 		$smarty->assign( 'CI', $CI =& get_instance() );
+
 		return $smarty->fetch( $template . '.html' );
 	}
 
+	/**
+	 * 同等 $smarty->display();
+	 * 
+	 * @param  string $template [description]
+	 * @param  array  $params   [description]
+	 * @return [type]           [description]
+	 */
 	public function display( $template = '', $params = array() ) {
 		// 初始化 smarty
-		$smarty = $this->create_smarty_lib();
+		$smarty = $this->_create_smarty_lib();
 		// 基本配置
-		$smarty->assign( '_VIEW', $params );
+		$smarty->assign( 'TEMPLATE', $params );
 		$smarty->assign( 'CI', $CI =& get_instance() );
 
 		// 從控制器 assign 進來的變數, 也要一個一個 assign 至 smarty 樣版裡.
@@ -33,10 +49,16 @@ class Template {
 		// 輸出視圖
 		$static_template = $smarty->fetch( $template . '.html' );
 		$CI->output->set_output( $static_template );
+
 		return $this;
 	}
 
-	private function create_smarty_lib() {
+	/**
+	 * 實例化 Smarty
+	 * 
+	 * @return [type] [description]
+	 */
+	private function _create_smarty_lib() {
 		require_once APPPATH . 'third_party/Smarty-3.1.11/libs/Smarty.class.php';
 
 		$smarty = new Smarty();

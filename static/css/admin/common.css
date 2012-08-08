@@ -1,0 +1,9 @@
+.diy {
+  background-color: #202328;
+  padding: 10px;
+}
+.diy input,
+.diy select,
+.diy textarea {
+  width: 94%;
+}

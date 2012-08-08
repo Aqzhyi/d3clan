@@ -39,6 +39,8 @@
 }
 .namespace_event_2012_girls_vote .girls_banner .item {
   display: none;
+  width: 100%;
+  height: 400px;
 }
 .namespace_event_2012_girls_vote .girls_banner .item.current {
   display: block;
@@ -79,10 +81,15 @@
   margin-right: 22px;
   cursor: pointer;
 }
+.namespace_event_2012_girls_vote .girl_sort {
+  float: left;
+  cursor: pointer;
+}
 .namespace_event_2012_girls_vote .girls_page_nav {
   display: block;
   margin: 0 auto;
   width: 88px;
+  height: 50px;
 }
 .namespace_event_2012_girls_vote .girls_intro {
   *zoom: 1;
@@ -139,6 +146,7 @@
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_photos .girl_photo img {
   height: 175px;
+  max-width: 245px;
 }
 .namespace_event_2012_girls_vote .girls_intro .girl_intro .girl_div_inner .girl_personal {
   *zoom: 1;

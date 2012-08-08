@@ -12,25 +12,22 @@
 	</div>
 
 	<div class="body">
-		<div class="class_news_flow">
-			<div class="header">最新滑鼠<div class="hardware_AD"></div></div>
-			{include file='./partial/news_flow.html' data=$mouse_flow}
-		</div>
-		
-		<div class="class_news_flow">
-			<div class="header">最新鍵盤<div class="hardware_AD"></div></div>
-			{include file='./partial/news_flow.html' data=$keyboard_flow}
-		</div>
-
-		<div class="class_news_flow">
-			<div class="header">最新耳機<div class="hardware_AD"></div></div>
-			{include file='./partial/news_flow.html' data=$headphone_flow}
-		</div>
-
-		<div class="class_news_flow">
-			<div class="header">硬體相關<div class="hardware_AD"></div></div>
-			{include file='./partial/news_flow.html' data=$else_flow}
-		</div>
+		{foreach $flows as $key => $flow}
+			<div class="class_news_flow">
+				<div class="header">{$flows_title[$key]}<div class="hardware_AD"></div></div>
+				<div class="body">
+				{foreach $flow as $index => $data}
+					<div class="item">
+						<div class="img"><img class="thumb" src="{$data['path']}" alt="" /></div>
+						<div class="text">
+							<div class="title"><a target="_blank" href="{$data['link']}">{$data['title']}</a></div>
+							<div class="thumb">{$data['descr']}</div>
+						</div>
+					</div>
+				{/foreach}
+				</div>
+			</div>
+		{/foreach}
 	</div>
 
 </div>

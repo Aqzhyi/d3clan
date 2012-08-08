@@ -41,9 +41,7 @@
 $route['default_controller']            = "home/index";
 $route['404_override']                  = '';
 
-$route['admin/live-channels']           = 'admin/live_channels';
-$route['admin/news-bot']                = 'admin/news_bot';
-$route['admin/news-bot/(:any)']         = 'admin/news_bot/$1';
+$route['admin/([\w]*)-([\w]*)']         = 'admin/$1_$2';
 
 $route['game/(:any)/(:any)']            = 'game/index/$1/$2';
 $route['game/(:any)/(:any)/(:any)']     = 'game/index/$1/$2/$3';

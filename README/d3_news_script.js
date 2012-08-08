@@ -27,6 +27,9 @@
 			,{orig: /點擊/mg, to: '點選'}
 			,{orig: /視頻/mg, to: '影片'}
 			,{orig: /菜單/mg, to: '選單'}
+			,{orig: /攢錢/mg, to: '賺錢'}
+			,{orig: /攢了/mg, to: '賺了'}
+			,{orig: /質朴/mg, to: '簡單'}
 			,{orig: /采集/mg, to: '採集'}
 			,{orig: /補丁/mg, to: '更新'}
 			,{orig: /采訪/mg, to: '採訪'}
@@ -65,6 +68,7 @@
 			,{orig: /RMB/mg, to: '人民幣'}
 			,{orig: /美元/mg, to: '美金'}
 			,{orig: /美刀/mg, to: '美金'}
+			,{orig: /([\d]+)刀/mg, to: '$1美金'}
 			,{orig: /干這行/mg, to: '幹這行'}
 			,{orig: /70後/mg, to: '六年級生'}
 			,{orig: /80後/mg, to: '七年級生'}
@@ -144,7 +148,11 @@
 		termList.Diablo = [
 			{orig: /公共遊戲/mg, to: '公開遊戲'}
 			,{orig: /二(餅|柄)/mg, to: '武僧'}
+			,{orig: /魔法師/mg, to: '秘術師'}
 			,{orig: /獵魔人/mg, to: '狩魔獵人'}
+			,{orig: /蠻子/mg, to: '野蠻人'}
+			,{orig: /戰網通行證/mg, to: '戰網帳號'}
+			,{orig: /跑酷/mg, to: '炫風'}
 			,{orig: /涅法雷姆之力/mg, to: '涅法雷姆之勇'}
 			,{orig: /涅法雷姆勇氣/mg, to: '涅法雷姆之勇'}
 			,{orig: /奈法蘭[的之]?勇氣?/mg, to: '涅法雷姆之勇'}
@@ -154,6 +162,7 @@
 			,{orig: /秘法強化/mg, to: '秘法加持'}
 			,{orig: /宝藏携带者/mg, to: '黃金哥布林'}
 			,{orig: /艾莉娜/mg, to: '艾蓮娜'}
+			,{orig: /戰網安全令牌/mg, to: '戰網驗證器'}
 			,{orig: /JY/mg, to: '精英'}
 			,{orig: /iOS用戶點此觀看/mg, to: ''}
 			// 網易暗黑
@@ -189,7 +198,44 @@
 		// 網易凱恩之角
 		// =============
 		code.d163 = function() {
-			TongWen.convertToTrad(function() {
+
+			var muilt_page = false;
+
+			// 如果有第2頁以上...把其他頁面抓進來合併...
+			if ( jQuery('.page').length>0 ) {
+
+				muilt_page = true;
+
+				jQuery('.page a').each(function(){
+					var $self = jQuery(this);
+					if ($self.html().match(/\d+/)) {
+						jQuery.ajax({
+							context    : this,
+							url        : $self.attr('href'),
+							type       : 'get',
+							success    : function(data, textStatus, jqXHR) {
+								var $else_page = jQuery(data);
+								var $this_page = jQuery('.endContent');
+
+								$else_page.find('.page').remove();
+
+								$this_page.find('.page').remove();
+
+								$this_page.append( $else_page.find('.endContent').html() );
+
+								$this_page.find('.info').remove();
+
+								window.$this_page = $this_page;
+
+								muilt_page = false;
+							}
+						});
+					}
+				});
+			}
+
+			// 轉文腳本核心
+			var main_program = function() {
 				window.$root        = jQuery('.endContent');
 				window.$script_code = jQuery('<script>');
 				window.$page        = jQuery('.endPageNum').detach();
@@ -251,6 +297,10 @@
 					border : '5px solid yellow'
 				});
 
+				// ------------------------------------------
+				// ------------------------------------------
+				// ------------------------------------------
+
 				var title   = jQuery('h1#h1title').html();
 				var content = $root.html();
 				
@@ -291,70 +341,53 @@
 				};
 
 				// 最新消息->藍帖
-				if ( keywords.match(/(蓝贴|蓝帖|藍帖|藍貼)/g) ) {
-					url = typeids[22];
-				}
+				if ( keywords.match(/(蓝贴|蓝帖|藍帖|藍貼)/g) ) {url = typeids[22]; }
 
 				// 最新消息->新聞 (官方新聞)
-				if ( keywords.match(/官方/g) && keywords.match(/公告/g) ) {
-					url = typeids[21];
-				}
+				if ( keywords.match(/官方/g) && keywords.match(/公告/g) ) {url = typeids[21]; }
 
 				// 攻略推薦->野蠻人
-				if ( keywords.match(/攻略/g) && keywords.match(/野蛮人/g) ) {
-					url = typeids[24];
-				}
+				if ( keywords.match(/攻略/g) && keywords.match(/野蛮人/g) ) {url = typeids[24]; }
 
 				// 攻略推薦->秘術師
-				if ( keywords.match(/攻略/g) && keywords.match(/魔法师/g) ) {
-					url = typeids[25];
-				}
+				if ( keywords.match(/攻略/g) && keywords.match(/魔法师/g) ) {url = typeids[25]; }
 
 				// 攻略推薦->武僧
-				if ( keywords.match(/攻略/g) && keywords.match(/武僧/g) ) {
-					url = typeids[26];
-				}
+				if ( keywords.match(/攻略/g) && keywords.match(/武僧/g) ) {url = typeids[26]; }
 
 				// 攻略推薦->狩魔獵人
-				if ( keywords.match(/攻略/g) && keywords.match(/猎魔人/g) ) {
-					url = typeids[27];
-				}
+				if ( keywords.match(/攻略/g) && keywords.match(/猎魔人/g) ) {url = typeids[27]; }
 
 				// 攻略推薦->巫醫
-				if ( keywords.match(/攻略/g) && keywords.match(/巫医/g) ) {
-					url = typeids[28];
-				}
+				if ( keywords.match(/攻略/g) && keywords.match(/巫医/g) ) {url = typeids[28]; }
 
 				// 推薦視頻
-				if ( keywords.match(/视频/g) ) {
-					url = typeids[30];
-				}
-
-				// 其它
-				if ( url == '' ) {
-					var custom_url = prompt("\
-						系統未成功偵測文章分類，請手動輸入「數字」以選擇 版面->分類：\n\
-						21. 最新消息->新聞\n\
-						22. 最新消息->藍帖\n\
-						23. 最新消息->圖文\n\
-						\n\
-						24. 攻略推薦->野蠻人\n\
-						25. 攻略推薦->秘術師\n\
-						26. 攻略推薦->武僧\n\
-						27. 攻略推薦->狩魔獵人\n\
-						28. 攻略推薦->巫醫\n\
-						29. 攻略推薦->其它\n\
-						\n\
-						30. 精彩視頻->視頻\n\
-						");
-					url = typeids[custom_url];
-					
-					alert(url);
-				}
+				if ( keywords.match(/视频/g) ) {url = typeids[30]; }
 
 				// 檢查是否重複貼文
 				window.jsonp_callback = function( is_repeat ) {
 					console.log('已檢查完成');
+
+					// 未知的url, 請求人工判別..
+					if ( url == '' ) {
+						var custom_url = prompt("\
+							系統未成功偵測文章分類，請手動輸入「數字」以選擇 版面->分類：\n\
+							21. 最新消息->新聞\n\
+							22. 最新消息->藍帖\n\
+							23. 最新消息->圖文\n\
+							\n\
+							24. 攻略推薦->野蠻人\n\
+							25. 攻略推薦->秘術師\n\
+							26. 攻略推薦->武僧\n\
+							27. 攻略推薦->狩魔獵人\n\
+							28. 攻略推薦->巫醫\n\
+							29. 攻略推薦->其它\n\
+							\n\
+							30. 精彩視頻->視頻\n\
+							");
+						url = typeids[custom_url];
+					}
+
 					// 此篇檢查標題後, 未重複, 此篇文章可轉去論壇.
 					var alink_tag = jQuery('<a>', {
 						id: 'link_area_title',
@@ -386,7 +419,15 @@
 						callback: 'jsonp_callback'
 					}
 				});
-			});
+			};
+
+			var interval1 = setInterval(function(){
+				if ( muilt_page === false ) {
+					TongWen.convertToTrad( main_program );
+					clearInterval(interval1);
+				}
+			}, 300);
+
 		};
 
 		// 主程式

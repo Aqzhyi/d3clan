@@ -6,7 +6,7 @@ class Game extends CI_Controller {
 		parent::__construct();
 		$this->load->library( 'simple_html_dom' );
 
-		$this->view->append_title( '遊戲資料' );
+		$this->view->title_append( '遊戲資料' );
 		$this->view->layout( 'game/layout' );
 		$this->view->js_add( array(
 			'game/index',

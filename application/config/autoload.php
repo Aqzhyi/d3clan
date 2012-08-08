@@ -52,7 +52,15 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array( 'database', 'callback', 'discuzx', 'user', 'view', 'media' );
+$autoload['libraries'] = array(
+	'database', // 連接DB
+	'callback', // 回應AJAX的回調函數
+	'discuzx', // 連接論壇
+	'user', // 用戶
+	'view', // 樣版引擎
+	'common', // 全域綜合工具
+	'media', // 媒體
+);
 
 
 /*
@@ -64,7 +72,7 @@ $autoload['libraries'] = array( 'database', 'callback', 'discuzx', 'user', 'view
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url');
+$autoload['helper'] = array( 'url' );
 
 
 /*

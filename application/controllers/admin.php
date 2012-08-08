@@ -1,212 +1,189 @@
 <?php if ( ! defined( 'BASEPATH' ) ) exit( 'No direct script access allowed' );
 
-class admin extends CI_Controller {
+class Admin extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
 		$this->load->helper( 'form' );
+		$this->view->layout( 'admin/layout' );
+		$this->view->css_add( 'admin/common' );
 		$this->view->cache( 0 );
+
+		// if ( ! $this->user->auth( 21 ) ) show_404(); // 直播頻道管理大師
+		// if ( ! $this->user->auth( 22 ) ) show_404(); // 網站首頁管理大師 // 必備
+		// if ( ! $this->user->auth( 23 ) ) show_404(); // OCR封閉測試
+		// if ( ! $this->user->auth( 24 ) ) show_404(); // 週邊設備管理大師
 	}
 
+	public function _remap( $method = 'index', $params = array() ) {
+
+		if ( ! $this->user->auth( 22 ) ) show_404();
+
+		$this->view->title_routes( array(
+				'index'         => '通用後台管理頁面',
+				'live_channels' => '直播頻道管理',
+				'hardware'      => '週邊設備管理',
+				'ad_banners'    => '270x60廣告',
+				'home_circle'   => '首頁四輪播',
+			) );
+		$this->view->page( $method, $params );
+		$this->view->init( $this );
+	}
+
+	// 通用後台管理頁面
 	public function index() {
-		if ( ! $this->user->auth( 22 ) ) {
-			show_404();
-		}
 
-		$this->view->display(
-			array(
-				'title'    => "通用後台管理頁面",
-				'view'     => 'admin/index',
-				'js_files' => array(
-					'admin/index',
-				),
-				'css_files' => array(
-					'admin/diy',
-					'admin/index',
-				),
-			)
-		);
+		$this->view->js_add( 'admin/index' );
+		$this->view->css_add( 'admin/index' );
 	}
 
+	// 270x60廣告管理
+	public function ad_banners( $setting = array() ) {
+
+		$this->load->model( 'Model_ad' );
+		
+		$this->view->data['ads'] = $this->Model_ad->get_ad( array(
+				'case' => '270x60',
+				'limit' => 1000,
+			) );
+
+		$this->view->js_add( 'admin/ad_banners' );
+		$this->view->css_add( 'admin/ad_banners' );
+	}
+
+	// 週邊設備管理
+	public function hardware( $setting = array() ) {
+
+		if ( ! $this->user->auth( 24 ) ) show_404();
+
+		$this->load->model( 'Model_ad' );
+		
+		$this->view->data['flows'] = array(
+				'hardware_mouse'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse' ) ),
+				'hardware_keyboard'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard' ) ),
+				'hardware_headphone' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone' ) ),
+				'hardware_else'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else' ) ),
+			);
+
+		$this->view->js_add( 'admin/hardware' );
+		$this->view->css_add( 'admin/hardware' );
+	}
+
+	// 直播頻道管理
 	public function live_channels() {
 		$this->load->model( 'Model_live_channel' );
 		$this->view->data['live_channels'] = $this->Model_live_channel->get_d3_channels( array(
 				'limit' => 200,
 				'game_type' => 'DiabloIII',
 			) );
-		$this->view->display(
-			array(
-				'title'    => "直播頻道管理",
-				'view'     => 'admin/live-channels',
-				'js_files' => array(
-					'admin/live-channels',
-				),
-				'css_files' => array(
-					'admin/diy',
-					'admin/live-channels'
-				),
-			)
-		);
+		$this->view->js_add( 'admin/live_channels' );
+		$this->view->css_add( 'admin/live_channels' );
 	}
 
-	public function news_bot( $type = '', $data = array() ) {
-		switch ( $type ) {
-		case 'latest-vod':
-			$this->_fetch_latest_vod();
-			break;
-		default:
-			if ( is_array( $type ) ) {
-				$data = $type;
-			}
+	// 首頁四輪播管理
+	public function home_circle( $setting = array() ) {
 
-			foreach ( $data as $key => $value ) {
-				$this->view->data[$key] = $value;
-			}
-
-			$this->view->display(
-				array(
-					'title'    => "網易新聞爬蟲",
-					'view'     => 'admin/news-bot',
-					'js_files' => array(
-						'admin/news-bot',
-					),
-					'css_files' => array(
-						'admin/diy',
-						'admin/news-bot'
-					),
-				)
-			);
-			break;
-		}
+		$this->load->model( 'Model_news' );
+		$this->view->data['home_4_circle'] = $this->Model_news->get_circle_loop();
+		$this->view->js_add( 'admin/home_circle' );
+		$this->view->css_add( 'admin/home_circle' );
 	}
 
-	/**
-	 * 擷取最新視頻
-	 * 拿最近新增進論壇的60筆，比對網易最新的15筆。
-	 *
-	 * @param array   $setting [description]
-	 * @return [type]          [description]
-	 */
-	private function _fetch_latest_vod( $setting = array() ) {
-		$this->load->library( 'simple_html_dom' );
-		$this->load->model( 'Model_vod' );
-		// require_once FCPATH . 'extention/big2gb/big2gb.php';
-		$html = file_get_html( "http://d.163.com/special/new_shipin/" );
-		// $code = new big2gb;
-
-		// 載入已轉過的vod
-		$exisit_vod = $this->Model_vod->get_vod( array(
-				'limit' => 60,
-				'offset' => 0,
+	// ---------------------------------------------------------
+	// AJAX集
+	public function ajax() {
+		
+		$this->load->library( 'ajax' );
+		$this->ajax->uri_routes( array(
+				'ad-banners'   => 'ajax_ad_banners',
+				'home-circle'  => 'ajax_home_circle',
+				'live-channel' => 'ajax_live_channel',
+				'hardware'     => 'ajax_hardware',
 			) );
 
-		$fetch_rows = array();
-
-		// 列出網易最新vod
-		foreach ( $html->find( '.lst-img-title li' ) as $index => $li ) {
-			if ( $index > 14 ) break;
-			$vod = $fetch_rows[$index];
-
-			preg_match( '@\/([\d]{2})\/([\d]{4})\/([\d]{2})\/@m', $li->find( 'a.pic', 0 )->href, $date );
-
-			$vod['date']  = "20$date[1]$date[2], $date[3]時";
-			// $vod['title'] = $code->chg_utfcode( iconv( "GB2312", "utf-8", $li->find( 'h5 a', 0 )->title ) );
-			$vod['title'] = iconv( "GB2312", "utf-8", $li->find( 'h5 a', 0 )->title );
-			$vod['title'] = str_replace( '暗黑破壞神3 ', '', $vod['title'] );
-			// $vod['text']  = $code->chg_utfcode( iconv( "GB2312", "utf-8", $li->find( 'h5 a', 0 )->innertext ) );
-			$vod['text']  = iconv( "GB2312", "utf-8", $li->find( 'h5 a', 0 )->innertext );
-			$vod['href']  = $li->find( 'h5 a', 0 )->href;
-
-			// 判斷網易的vod是否已存在於暗盟論壇
-			foreach ( $exisit_vod as $key => $entity ) {
-				$fetched = str_get_html( $entity['message'] );
-				// 轉文章時，於JS塞入的暗code
-				if ( $fetched->find( 'a#fetched', 0 )->href == $vod['href'] ) {
-					$vod['fetched']  = TRUE;
-					$vod['bbs_link'] = $this->discuzx->alink_to_bbs( array(
-							'text' => '已存在',
-							'tid'  => $entity['tid'],
-						) );
-				}
-				$fetched->clear();
-				unset( $fetched );
-			}
-
-			$fetch_rows[$index] = $vod;
-		}
-
-		$this->view->data['fetch_rows'] = $fetch_rows;
-		$this->view->display(
-			array(
-				'title'    => "網易新聞爬蟲 - 最近視頻",
-				'view'     => 'admin/news-bot/latest-vod',
-				'js_files' => array(
-					'admin/news-bot',
-				),
-				'css_files' => array(
-					'admin/diy',
-					'admin/news-bot'
-				),
-			)
-		);
+		$this->ajax->init( $this );
 	}
 
-	/**
-	 * 直播頻道CRUD
-	 *
-	 * @param [type]  $id [description]
-	 * @return [type]     [description]
-	 */
-	public function channel( $id ) {
+	public function ajax_hardware( $setting = array() ) {
+		
+		$this->load->model( 'Model_ad' );
+
+		switch ( $_SERVER['REQUEST_METHOD'] ) {
+		case 'DELETE':
+			echo $this->Model_ad->delete( $this->ajax->uris );
+			break;
+
+		case 'POST':
+			$post = array_merge( array(
+					'type' => 'img',
+				), $this->input->post() );
+
+			echo $this->Model_ad->add( array(
+					'data' => $this->input->post(),
+				) );
+			break;
+		}
+	}
+
+	public function ajax_ad_banners( $setting = array() ) {
+
+		$this->load->model( 'Model_ad' );
+
+		switch ( $_SERVER['REQUEST_METHOD'] ) {
+		case 'DELETE':
+			echo $this->Model_ad->delete( $this->ajax->uris );
+			break;
+
+		case 'POST':
+			echo $this->Model_ad->add( array(
+					'data' => $this->input->post(),
+				) );
+			break;
+		}
+	}
+
+	public function ajax_home_circle( $setting = array() ) {
+
+		$this->load->model( 'Model_ad' );
+
+		switch ( $_SERVER['REQUEST_METHOD'] ) {
+		case 'DELETE':
+			echo $this->Model_ad->delete( $this->ajax->uris );
+			break;
+
+		case 'POST':
+			$post = array_merge( array(
+					'case' => 'home_4_circle',
+					'type' => 'img',
+				), $this->input->post() );
+
+			echo $this->Model_ad->add( array(
+					'data' => $post,
+				) );
+			break;
+		}
+	}
+
+	public function ajax_live_channel( $setting = array() ) {
 
 		if ( ! $this->user->auth( 21 ) ) {
 			show_404();
 		}
 
 		switch ( $_SERVER['REQUEST_METHOD'] ) {
-		case 'POST':
-			if ( $this->input->is_ajax_request() ) {
-				$this->_post_live_channel();
-			}
-			break;
 		case 'DELETE':
-			if ( $this->input->is_ajax_request() ) {
-				$this->_delete_live_channel( $id );
-			}
+			$this->load->model( 'Model_live_channel' );
+
+			$this->Model_live_channel->delete( $this->ajax->uris );
 			break;
-		default:
-			echo "method: {$_SERVER['REQUEST_METHOD']}";
+
+		case 'POST':
+
+			$this->load->model( 'Model_live_channel' );
+
+			$this->Model_live_channel->post_channel( $this->input->post() );
 			break;
 		}
-	}
-
-	/**
-	 * 新增一個直播頻道
-	 *
-	 * @param array   $setting [description]
-	 * @return [type]          [description]
-	 */
-	private function _post_live_channel() {
-		$this->load->model( 'Model_live_channel' );
-
-		$this->Model_live_channel->post_channel( $this->input->post() );
-
-		return $this;
-	}
-
-	/**
-	 * 刪除指定ID的直播頻道
-	 *
-	 * @param integer $id [description]
-	 * @return [type]      [description]
-	 */
-	private function _delete_live_channel( $id = 0 ) {
-
-		$this->load->model( 'Model_live_channel' );
-
-		$this->Model_live_channel->delete( array(
-				'id' => $id,
-			) );
 	}
 }
 

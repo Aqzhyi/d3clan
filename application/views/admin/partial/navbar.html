@@ -1,0 +1,20 @@
+<!-- 導航列 -->
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<span class="brand">通用後台</span>
+			<!-- 導航鈕 -->
+			<ul class="nav">
+				<li><a href="/admin">管理中心</a></li>
+				<li><a href="/admin/ad-banners">270x60廣告橫幅</a></li>
+				<li><a href="/admin/home-circle">首頁-四輪播</a></li>
+				{if $CI->user->auth( 24 )}
+				<li><a href="/admin/hardware">週邊設備</a></li>
+				{/if}
+				{if $CI->user->auth( 21 )}
+				<li><a href="/admin/live-channels">直播頻道</a></li>
+				{/if}
+			</ul>
+		</div>
+	</div>
+</div>

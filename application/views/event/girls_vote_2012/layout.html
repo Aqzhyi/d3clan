@@ -4,19 +4,21 @@
 
 	<div class="girls_banner" id="girls_banner">
 		<div id="item" class="item current"><img src="/static/img/event/girls_vote_2012/dgirl-b.jpg" alt=""></div>
-		<div id="item" class="item"><a target="_blank" href="http://www.roccat.org/savu"><img src="/static/file/event/girls_vote_2012/ROCCAT-SAVU_958x400.jpg" alt=""></a></div>
 		<div id="item" class="item">{$CI->media->embed_flash( [
 			'height' => '400',
 			'src' => '/static/file/event/girls_vote_2012/960x400-intel.swf'
 		] )}</div>
+		<div id="item" class="item"><a href="http://www.intel.com.tw/content/www/tw/zh/processors/core/core-i7-processor.html"><img src="/static/file/event/girls_vote_2012/intel2.jpg" alt=""></a></div>
+		<div id="item" class="item"><img src="/static/file/event/girls_vote_2012/960x400-msi.jpg" alt=""></div>
+		<div id="item" class="item"><a target="_blank" href="http://www.roccat.org/savu"><img src="/static/file/event/girls_vote_2012/ROCCAT-SAVU_958x400.jpg" alt=""></a></div>
 		<div id="item" class="item">{$CI->media->embed_flash( [
 			'height' => '400',
-			'src' => '/static/file/event/girls_vote_2012/960x400-asrock-1.swf'
+			'src' => '/static/file/event/girls_vote_2012/960x400-asrock.swf'
 		] )}</div>
 		<div id="item" class="item"><a href="http://www.thermaltake.com.tw/" target="_blank"><img src="/static/img/event/girls_vote_2012/960x400-tt-banner.jpg" alt=""></a></div>
 		<div id="item" class="item">{$CI->media->embed_flash( [
 			'height' => '400',
-			'src' => '/static/file/event/girls_vote_2012/960x400-asrock-2.swf'
+			'src' => '/static/file/event/girls_vote_2012/120725_958x400.swf'
 		] )}</div>
 	</div>
 
@@ -25,12 +27,14 @@
 	</div>
 		
 	<div class="girls_vote_info">
-		投票須知： <br />
+		第二階段萌系投票活動：<br />
 		<br />
-		1、D-Girl票選活動將在第一階段抽出2名投票者贈送ASRock Z68 Pro3 Gen3 主機板，得獎後以Email通知，請正確填寫Email以免喪失權益，其他階段活動贈品將在下一階段公佈。 <br />
-		2、於活動期間，每階段，每個暗盟論壇帳號可投一票，投票後無法更改。 <br />
-		3、如投票者有下列情形，主辦單位得取消其投票票數與抽獎資格。　　<br />
-		投票者利用電腦、網路之漏洞進行攻擊投票程式、登入認證、侵入資料庫、改封包，及其同IP大量灌票等行為。<br />
+		在第二階段，只要在8/8號晚上8:08分回復文章，按照以下格式回覆將有機會得到獎項：<br />
+		文章連結：<a href="http://d3clan.tw/bbs/forum.php?mod=viewthread&tid=593">http://d3clan.tw/bbs/forum.php?mod=viewthread&tid=593</a> <br />
+		<br />
+		8/8號晚上8:08分第一位回帖者：ROCCAT KONE[+]  電竸雷射滑鼠  X1<br />
+		8/8號晚上8:08分第二位回帖者：KingSton DataTraveler SE9 16GB 隨身碟 X1<br />
+		第二階段在本文張回帖者： 第二階段結束後抽出一名贈送：ROCCAT ISKU 電竸專業鍵盤 X1<br />
 	</div>
 
 	<div class="girls_vote_progress">
@@ -39,15 +43,21 @@
 		</div>
 	</div>
 
+	<div class="girl_sort">
+		<a href="/event/2012-girls-vote/page/1/desc" class="">
+			<img src="/static/img/event/girls_vote_2012/total_get_desc.jpg" alt="">
+		</a>
+	</div>
+
 	<div class="girls_page_nav">
-		<a href="/event/2012-girls-vote" class="btn btn-large btn-primary">1</a>
-		<a href="/event/2012-girls-vote/page/2" class="btn btn-large btn-primary">2</a>
+		<a href="/event/2012-girls-vote/page/1/{$CI->uri->segment(5)}" class="btn btn-large btn-primary">1</a>
+		<a href="/event/2012-girls-vote/page/2/{$CI->uri->segment(5)}" class="btn btn-large btn-primary">2</a>
 	</div>
 
 	<div class="girls_intro">{include file='./partial/girls.html'}</div>
 
 	<div class="girls_page_nav">
-		<a href="/event/2012-girls-vote" class="btn btn-large btn-primary">1</a>
-		<a href="/event/2012-girls-vote/page/2" class="btn btn-large btn-primary">2</a>
+		<a href="/event/2012-girls-vote/page/1/{$CI->uri->segment(5)}" class="btn btn-large btn-primary">1</a>
+		<a href="/event/2012-girls-vote/page/2/{$CI->uri->segment(5)}" class="btn btn-large btn-primary">2</a>
 	</div>
 </div>

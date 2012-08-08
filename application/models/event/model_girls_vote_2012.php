@@ -15,12 +15,15 @@ class Model_girls_vote_2012 extends CI_Model {
 	 */
 	public function get_girls( $setting = array() ) {
 
-		$setting['tid'] = ( ! empty( $setting['tid'] ) ) ? $setting['tid'] : NULL;
-		$setting['page'] = ( ! is_null( $setting['page'] ) ) ? $setting['page'] : 1;
+		$setting['tid']         = ( ! empty( $setting['tid'] ) ) ? $setting['tid'] : NULL;
+		$setting['sort']        = ( ! is_null( $setting['sort'] ) ) ? $setting['sort'] : 'default';
+		$setting['page']        = ( ! is_null( $setting['page'] ) ) ? $setting['page'] - 1 : 0;
+		$setting['limit']       = ( ! is_null( $setting['limit'] ) ) ? $setting['limit'] : 15;
+		$setting['active_poll'] = ( ! is_null( $setting['active_poll'] ) ) ? $setting['active_poll'] : 0;
+		
+		$setting['offset'] = ( ! is_null( $setting['offset'] ) ) ? $setting['offset'] : $setting['page'] * $setting['limit'];
 
-		$girls = $this->_girls_detail( array(
-				'page' => $setting['page'],
-			) );
+		$girls = $this->_girls_detail();
 
 		if ( is_null( $setting['tid'] ) or ! is_array( $setting['tid'] )  ) {
 			return $girls;
@@ -30,10 +33,22 @@ class Model_girls_vote_2012 extends CI_Model {
 			$girls = $this->_merge_girl_poll( array(
 					'tid'   => $tid,
 					'girls' => $girls,
+					'page'  => $setting['page'],
 				) );
 		}
 
-		return $girls;
+		if ( $setting['sort'] === 'desc' ) {
+			// 排序, 票數最高的排前面.
+			foreach ( $girls as $girl_name => $girl_info ) {
+				$votes[] = $girl_info['polls'][$setting['active_poll']];
+				// $votes[] = $girl_info['votes'];
+			}
+
+			// 透過 $votes desc 排序 $girls.
+			array_multisort( $votes, SORT_DESC, $girls );
+		}
+
+		return array_slice( $girls, $setting['offset'], $setting['limit'] );
 	}
 
 	/**
@@ -52,7 +67,7 @@ class Model_girls_vote_2012 extends CI_Model {
 		$setting['name']       = ( ! is_null( $setting['name'] ) ) ? $setting['name'] : NULL;
 		$setting['active_tid'] = ( ! is_null( $setting['active_tid'] ) ) ? $setting['active_tid'] : NULL;
 
-		if ( $this->user->get_id() == 0 ) $this->callback->error_msg( "請先註冊成為《暗盟》會員並登入論壇！方可投票！\n\n本站亦採用 Facebook 登入，好快好方便！" );
+		if ( $this->user->is_login() == 0 ) $this->callback->error_msg( "請先註冊成為《暗盟》會員並登入論壇！方可投票！\n\n本站亦採用 Facebook 登入，好快好方便！" );
 		if ( $this->callback->is_error() ) return $this->callback->toJSON();
 
 		if ( is_null( $setting['name'] ) ) $this->callback->error_msg( '缺少女孩暱稱' );
@@ -62,16 +77,28 @@ class Model_girls_vote_2012 extends CI_Model {
 
 		// 檢查是否投過票
 		$this->db->where( 'tid', $setting['active_tid'] );
-		$sql = $this->db->get( 'd3bbs_forum_polloption' );
+		$this->db->where( 'uid', $this->user->get_id() );
+		$sql = $this->db->get( 'd3bbs_forum_pollvoter' );
 
-		$result_array = $sql->result_array();
+		if ( count( $sql->result_array() ) ) {
+			return $this->callback->error_msg( '您已投票過了' )->toJSON();
+		}
+		else {
+			// 二次檢查是否投過票
+			$this->db->where( 'tid', $setting['active_tid'] );
+			$sql = $this->db->get( 'd3bbs_forum_polloption' );
 
-		foreach ( $result_array as $key => $result ) {
-			$voterids = explode( '	', $result['voterids'] );
-			if ( in_array( $this->user->get_id(), $voterids ) ) {
-				return $this->callback->error_msg( '您已投票過了' )->toJSON();;
+			$result_array = $sql->result_array();
+
+			foreach ( $result_array as $key => $result ) {
+				$voterids = explode( '	', $result['voterids'] );
+				if ( in_array( $this->user->get_id(), $voterids ) ) {
+					return $this->callback->error_msg( '您已投票過了' )->toJSON();
+				}
 			}
 		}
+
+		
 
 		// 獲取 polloptionid
 		$this->db->where( 'tid', $setting['active_tid'] );
@@ -134,16 +161,15 @@ class Model_girls_vote_2012 extends CI_Model {
 
 		// 融合女孩們詳細資料與論壇票選
 		foreach ( $setting['girls'] as $key => $value ) {
-			if ( ! is_array( $girls[$key] ) or ! is_array( $setting['girls'][$key] ) ) continue;
 
-			$girls[$key]                = array_merge( $girls[$key], $setting['girls'][$key] );
-			$girls[$key]['total_votes'] += $girls[$key]['votes'];
-			$girls[$key]['polls'][]     = $girls[$key]['votes'];
+			$merged_girls[$key]                = array_merge( $girls[$key], $setting['girls'][$key] );
+			$merged_girls[$key]['total_votes'] += $merged_girls[$key]['votes'];
+			$merged_girls[$key]['polls'][]     = $merged_girls[$key]['votes'];
 
-			unset( $girls[$key]['votes'] );
+			unset( $merged_girls[$key]['votes'] );
 		}
 
-		return $girls;
+		return $merged_girls;
 	}
 
 	/**
@@ -154,13 +180,8 @@ class Model_girls_vote_2012 extends CI_Model {
 	 */
 	private function _girls_detail( $setting = array() ) {
 
-		$setting['page'] = ( ! is_null( $setting['page'] ) ) ? $setting['page'] - 1 : 0;
-		$setting['limit'] = ( ! is_null( $setting['limit'] ) ) ? $setting['limit'] : 15;
-
-		$setting['offset'] = ( ! is_null( $setting['offset'] ) ) ? $setting['offset'] : $setting['page'] * $setting['limit'];
-
 		// 關聯投票主題,順序為 0氣質系->1萌系->2性感系->3活潑系.
-		$girls['土萌瑩'] = array(
+		$girls['阿土'] = array(
 			'video' => '',
 			'photos' => array(
 				0 => array(
@@ -190,7 +211,7 @@ class Model_girls_vote_2012 extends CI_Model {
 			),
 			'text_fields' => array(
 				'fb'           => 'https://www.facebook.com/Simyia1024',
-				'nickname'     => '土萌瑩',
+				'nickname'     => '阿土',
 				'server'       => '亞服',
 				'role_name'    => '土萌瑩',
 				'role_level'   => '42',
@@ -321,7 +342,7 @@ class Model_girls_vote_2012 extends CI_Model {
 				'nickname'     => '小翔翔‏',
 				'server'       => '美服',
 				'role_name'    => '聖落櫻飛',
-				'role_level'   => '56',
+				'role_level'   => '60',
 				'class'        => '祕術師',
 				'birthday'     => '77/2/26',
 				'city'         => '台北市',
@@ -330,7 +351,7 @@ class Model_girls_vote_2012 extends CI_Model {
 			'intro' => '哈囉<br />你好我是紫櫻<br />在暗黑破壞神鐘我使在美服伺服器中<br />我是玩祕術師的職業角色名稱是 聖落櫻飛<br />大家快點來跟我一起玩吧！！',
 			'opinion' => "一開始剛玩的時候其實我不太懂怎麼操作.因為我是自己一個人玩<br />後來慢慢的自己研究 從不知道快速鍵到知道美個快速鍵是什麼 <br />後來覺得其實還蠻容易上手的 然後25等候我開始公開遊戲根大家一起玩<br />其實我覺得大家一起來比較開心 而且打怪的數度也變得比較快 雖然怪會隨著人數多寡而變強變弱<br />可是我覺得一起玩還蠻開心根有趣的 升等的時間也比較快喔！！",
 		);
-		$girls['心儀'] = array(
+		$girls['王心豬'] = array(
 			'video' => '',
 			'photos' => array(
 				0 => array(
@@ -462,7 +483,7 @@ class Model_girls_vote_2012 extends CI_Model {
 			),
 			'text_fields' => array(
 				'fb'           => 'http://www.facebook.com/nila0518',
-				'nickname'     => '姜雨珊‏',
+				'nickname'     => '賴億珊',
 				'server'       => '亞服',
 				'role_name'    => '娜塔莎',
 				'role_level'   => '60',
@@ -576,29 +597,30 @@ class Model_girls_vote_2012 extends CI_Model {
 			'intro' => '哈嚕，大家好耶！我是堂堂 : D<br />我是可線上遊戲迷呢! 玩遊戲有10年以上的經歷<br />我最近剛玩不久的D3，很喜歡交朋友聊天！透過<br />遊戲認識很多朋友呢^^<br />希望大家能投我一票摟 希望能一起玩D3吧<br />',
 			'opinion' => "這是一款男女都可以輕鬆上手的遊戲，畫面動畫優質，技能很華麗！<br />人物角色裝扮還可以隨著染料而變色，對於女生愛打扮來說在好不過了，<br />以往的戰略性遊戲激不起我玩遊戲的興趣這款遊戲，卻打動我的心呢^^<br />自己玩或是跟朋友玩都別有樂趣<br />",
 		);
-		$girls['謝依彤'] = array(
+		$girls['Bella'] = array(
 			'video' => 'POOzLU9f_KQ',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/girl12/a1.jpg',
-						'/static/img/event/girls_vote_2012/girl12/a2.jpg',
-						'/static/img/event/girls_vote_2012/girl12/a3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl12/a1.jpg',
+					'/static/img/event/girls_vote_2012/girl12/a2.jpg',
+					'/static/img/event/girls_vote_2012/girl12/a3.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/girl12/b1.jpg',
-						'/static/img/event/girls_vote_2012/girl12/b2.jpg',
-						'/static/img/event/girls_vote_2012/girl12/b3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl12/b4.jpg',
+					'/static/img/event/girls_vote_2012/girl12/b2.jpg',
+					'/static/img/event/girls_vote_2012/girl12/b1.jpg',
+					'/static/img/event/girls_vote_2012/girl12/b3.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/girl12/c1.jpg',
-						'/static/img/event/girls_vote_2012/girl12/c2.jpg',
-						'/static/img/event/girls_vote_2012/girl12/c3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl12/c1.jpg',
+					'/static/img/event/girls_vote_2012/girl12/c2.jpg',
+					'/static/img/event/girls_vote_2012/girl12/c3.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/girl12/d1.jpg',
-						'/static/img/event/girls_vote_2012/girl12/d2.jpg',
-						'/static/img/event/girls_vote_2012/girl12/d3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl12/d1.jpg',
+					'/static/img/event/girls_vote_2012/girl12/d2.jpg',
+					'/static/img/event/girls_vote_2012/girl12/d3.jpg',
+				),
 			),
 			'text_fields' => array(
 				'fb' => 'https://www.facebook.com/NwBella',
@@ -618,22 +640,22 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/girl13/a1.jpg',
-						'/static/img/event/girls_vote_2012/girl13/a2.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl13/a1.jpg',
+					'/static/img/event/girls_vote_2012/girl13/a2.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/girl13/b1.jpg',
-						'/static/img/event/girls_vote_2012/girl13/b2.jpg',
-						'/static/img/event/girls_vote_2012/girl13/b3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl13/b1.jpg',
+					'/static/img/event/girls_vote_2012/girl13/b2.jpg',
+					'/static/img/event/girls_vote_2012/girl13/b3.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/girl13/c1.jpg',
-						'/static/img/event/girls_vote_2012/girl13/c2.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl13/c1.jpg',
+					'/static/img/event/girls_vote_2012/girl13/c2.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/girl13/d1.jpg',
-						'/static/img/event/girls_vote_2012/girl13/d2.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl13/d1.jpg',
+					'/static/img/event/girls_vote_2012/girl13/d2.jpg',
+				),
 			),
 			'text_fields' => array(
 				'fb' => 'http://www.facebook.com/babykaoru',
@@ -653,18 +675,24 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/girl14/a1.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl14/a1.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/girl14/b1.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl14/b1.jpg',
+					'/static/img/event/girls_vote_2012/girl14/b2.jpg',
+					'/static/img/event/girls_vote_2012/girl14/b3.jpg',
+					'/static/img/event/girls_vote_2012/girl14/b4.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/girl14/c1.jpg',
-						'/static/img/event/girls_vote_2012/girl14/c2.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl14/c1.jpg',
+					'/static/img/event/girls_vote_2012/girl14/c2.jpg',
+					'/static/img/event/girls_vote_2012/girl14/c3.jpg',
+					'/static/img/event/girls_vote_2012/girl14/c4.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/girl14/d1.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl14/d1.jpg',
+					'/static/img/event/girls_vote_2012/girl14/d2.jpg',
+				),
 			),
 			'text_fields' => array(
 				'fb' => 'https://www.facebook.com/springsweety',
@@ -684,21 +712,21 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/girl15/a1.jpg',
-						
-					),
+					'/static/img/event/girls_vote_2012/girl15/a1.jpg',
+
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/girl15/b1.jpg',
-						
-					),
+					'/static/img/event/girls_vote_2012/girl15/b1.jpg',
+
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/girl15/c1.jpg',
-						
-					),
+					'/static/img/event/girls_vote_2012/girl15/c1.jpg',
+
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/girl15/d1.jpg',
-						
-					),
+					'/static/img/event/girls_vote_2012/girl15/d1.jpg',
+
+				),
 			),
 			'text_fields' => array(
 				'fb'           => 'https://www.facebook.com/milk11731',
@@ -711,37 +739,37 @@ class Model_girls_vote_2012 extends CI_Model {
 				'city'         => '新北市',
 				'play_per_day' => '不一定'
 			),
-			'intro' => 'HI 囉～大家好 我是初牛奶<br /> 我平常放假時我都會玩暗黑破壞神3<br /> 雖然巫醫很容易被打死<br /> 但是我覺得巫醫比較好玩<br /> 歡迎大家可以跟我一起上線練喔︿︿<br /> ', 'opinion' => "一開始覺得好像不怎麼好玩..沒想到我弟買到了光碟<br /> 辦好了帳號後..我就無聊的去玩了一下..之後我就陷進去了..<br /> 實在是會因為自尊心的問題..覺得被怪物打死很不甘心..<br /> 所以一定先殺死他們才覺得快樂～哈哈～<br /> 也剛好工作上有些不愉快的事情..<br /> 回到家就開電腦上D3開始打怪物..<br /> 也是一種紓壓的管道<br /> ", 
+			'intro' => 'HI 囉～大家好 我是初牛奶<br /> 我平常放假時我都會玩暗黑破壞神3<br /> 雖然巫醫很容易被打死<br /> 但是我覺得巫醫比較好玩<br /> 歡迎大家可以跟我一起上線練喔︿︿<br /> ', 'opinion' => "一開始覺得好像不怎麼好玩..沒想到我弟買到了光碟<br /> 辦好了帳號後..我就無聊的去玩了一下..之後我就陷進去了..<br /> 實在是會因為自尊心的問題..覺得被怪物打死很不甘心..<br /> 所以一定先殺死他們才覺得快樂～哈哈～<br /> 也剛好工作上有些不愉快的事情..<br /> 回到家就開電腦上D3開始打怪物..<br /> 也是一種紓壓的管道<br /> ",
 		);
 		$girls['貝爾卡諾'] = array(
 			'video' => 'jWUyY_stnD0',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/girl16/a1.jpg',
-						'/static/img/event/girls_vote_2012/girl16/a2.jpg',
-						'/static/img/event/girls_vote_2012/girl16/a3.jpg',
-						'/static/img/event/girls_vote_2012/girl16/a4.jpg',
-						'/static/img/event/girls_vote_2012/girl16/a5.jpg',
-						'/static/img/event/girls_vote_2012/girl16/a6.jpg',
-						'/static/img/event/girls_vote_2012/girl16/a7.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl16/a1.jpg',
+					'/static/img/event/girls_vote_2012/girl16/a2.jpg',
+					'/static/img/event/girls_vote_2012/girl16/a3.jpg',
+					'/static/img/event/girls_vote_2012/girl16/a4.jpg',
+					'/static/img/event/girls_vote_2012/girl16/a5.jpg',
+					'/static/img/event/girls_vote_2012/girl16/a6.jpg',
+					'/static/img/event/girls_vote_2012/girl16/a7.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/girl16/b1.jpg',
-						'/static/img/event/girls_vote_2012/girl16/b2.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl16/b1.jpg',
+					'/static/img/event/girls_vote_2012/girl16/b2.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/girl16/c1.jpg',
-						'/static/img/event/girls_vote_2012/girl16/c2.jpg',
-						'/static/img/event/girls_vote_2012/girl16/c3.jpg',
-						'/static/img/event/girls_vote_2012/girl16/c4.jpg',
-						'/static/img/event/girls_vote_2012/girl16/c5.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl16/c1.jpg',
+					'/static/img/event/girls_vote_2012/girl16/c2.jpg',
+					'/static/img/event/girls_vote_2012/girl16/c3.jpg',
+					'/static/img/event/girls_vote_2012/girl16/c4.jpg',
+					'/static/img/event/girls_vote_2012/girl16/c5.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/girl16/d1.jpg',
-						'/static/img/event/girls_vote_2012/girl16/d2.jpg',
-						'/static/img/event/girls_vote_2012/girl16/d3.jpg',
-						'/static/img/event/girls_vote_2012/girl16/d4.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl16/d1.jpg',
+					'/static/img/event/girls_vote_2012/girl16/d2.jpg',
+					'/static/img/event/girls_vote_2012/girl16/d3.jpg',
+					'/static/img/event/girls_vote_2012/girl16/d4.jpg',
+				),
 			),
 			'text_fields' => array(
 				'fb'           => 'http://www.facebook.com/?ref=home#!/babyMiyabi',
@@ -754,34 +782,34 @@ class Model_girls_vote_2012 extends CI_Model {
 				'city'         => '台北',
 				'play_per_day' => '晚上9點到12點'
 			),
-			'intro' => '偶爾人來瘋會胡鬧又很聒噪<br /> 動作像個男人粗魯時常不小心就沒形象!<br /> 大剌剌的模樣是我的表現方式<br /> 有時候又喜歡安靜裝沒事,這就是我~smile~XP<br /> 票選開始時，記得頭我一票唷~啾<br /> ', 
+			'intro' => '偶爾人來瘋會胡鬧又很聒噪<br /> 動作像個男人粗魯時常不小心就沒形象!<br /> 大剌剌的模樣是我的表現方式<br /> 有時候又喜歡安靜裝沒事,這就是我~smile~XP<br /> 票選開始時，記得頭我一票唷~啾<br /> ',
 			'opinion' => "已經好久沒有玩網路遊戲了，在經過華納威秀D3活動的那次<br /> 開始引起我的注意，是什麼遊戲這麼多人!然後臉書上的狀態<br /> 完全被D3洗板 這麼多人瘋狂!到底是甚麼~禁不起慫恿~<br /> 就這樣開啟了我的D3世界哩 ^^<br /> 這次在創遊戲ID的時候，想起之前玩遊戲總是被騷擾，很煩很討厭。<br /> 所以創了比較有個性的ID，也符合我自己大辣辣的真實的個性XP<br /> 遊戲過程中，暗黑的精緻，著實讓人驚艷，而且不用擔心等級問題~<br /> 或是練功比別人慢，完全是讓我自由發揮各種職業的不同玩法~<br /> 一開始的普通，並不太難，呵呵~<br /> 但是到惡夢的時候站著打打打已經不太會過了>”<<br /> 到地獄難度就開始call out 要一直找朋友幫忙了<br /> 迪亞布羅還是靠朋友幫忙打過的~:P 現在煉獄難度都只敢組隊打了...<br /> D3真是不簡單~有難度...<br /> 最最最重要的就是~他的寶物數量~屬性~只要他說第2~沒人敢說第1 :P<br /> 終於知道大家為何會說，這是ㄧ款值得玩的遊戲，連我現在也迷上<br /> 已經無法脫離哩，不過裝備有點貴貴~~哭哭~~<br /> 所以有遇到我的不要嫌我喔><br />",
 		);
 		$girls['喬寶'] = array(
 			'video' => 'd0ITWFnQvUk',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/girl17/a1.jpg',
-						'/static/img/event/girls_vote_2012/girl17/a2.jpg',
-						'/static/img/event/girls_vote_2012/girl17/a3.jpg',
-						'/static/img/event/girls_vote_2012/girl17/a4.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl17/a1.jpg',
+					'/static/img/event/girls_vote_2012/girl17/a2.jpg',
+					'/static/img/event/girls_vote_2012/girl17/a3.jpg',
+					'/static/img/event/girls_vote_2012/girl17/a4.JPG',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/girl17/b1.jpg',
-						'/static/img/event/girls_vote_2012/girl17/b2.jpg',
-						'/static/img/event/girls_vote_2012/girl17/b3.jpg',
-						'/static/img/event/girls_vote_2012/girl17/b4.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl17/b1.jpg',
+					'/static/img/event/girls_vote_2012/girl17/b2.JPG',
+					'/static/img/event/girls_vote_2012/girl17/b3.jpg',
+					'/static/img/event/girls_vote_2012/girl17/b4.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/girl17/c1.jpg',
-						'/static/img/event/girls_vote_2012/girl17/c2.jpg',
-						'/static/img/event/girls_vote_2012/girl17/c3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl17/c1.jpg',
+					'/static/img/event/girls_vote_2012/girl17/c2.JPG',
+					'/static/img/event/girls_vote_2012/girl17/c3.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/girl17/d1.jpg',
-						'/static/img/event/girls_vote_2012/girl17/d2.jpg',
-						'/static/img/event/girls_vote_2012/girl17/d3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl17/d1.jpg',
+					'/static/img/event/girls_vote_2012/girl17/d2.jpg',
+					'/static/img/event/girls_vote_2012/girl17/d3.jpg',
+				),
 			),
 			'text_fields' => array(
 				'fb'           => 'http://www.facebook.com/katsuki.tomoyo',
@@ -794,39 +822,39 @@ class Model_girls_vote_2012 extends CI_Model {
 				'city'         => '台中市',
 				'play_per_day' => '4~5小時'
 			),
-			'intro' => '哈囉，大家好<br /> 我是喬寶，一個熱愛玩遊戲的女生<br /> 嘗試過很多種類型的遊戲<br /> 希望有機會能跟大家成為朋友<br /> 一起在暗黑破壞神3的世界裡分享打寶的樂趣<br /> 也別忘了投我一票唷～＊<br /> ', 
+			'intro' => '哈囉，大家好<br /> 我是喬寶，一個熱愛玩遊戲的女生<br /> 嘗試過很多種類型的遊戲<br /> 希望有機會能跟大家成為朋友<br /> 一起在暗黑破壞神3的世界裡分享打寶的樂趣<br /> 也別忘了投我一票唷～＊<br /> ',
 			'opinion' => "在因緣際會下，拿到了Ｄ３的體驗版帳號，玩了一個晚上，深深著迷<br /> 原本一開始是玩巫醫，吹箭、丟蜘蛛、招喚殭屍‧‧‧等等技能<br /> 都讓我覺得在這黑黑暗暗的遊戲內增添了幾許ＫＵＳＯ的感覺<br /> 跟朋友一起闖關時，大家都說，只要我一出現，整個畫面就變得好熱鬧（招喚殭屍犬、巨屍）<br /> 好像多了好多夥伴一樣ＸＤ<br /> 朋友們打到的裝備、武器也是彼此給來給去，省了不少錢呢！<br /> 後來，玩遊戲從來沒玩過近戰職業的我，也決定挑戰玩看看武僧<br /> 沒想到一玩就入迷了，就像很多網友說的，拳拳到肉的快感！<br /> 因為是近戰職業，進了煉獄，才發現，是悲劇的開始Ｑ口Ｑ<br /> 於是就開始上網爬文做了非常多的功課，努力的在煉獄第一章打寶、存錢<br /> 終於小武僧長大了，也和朋友們非常努力打死最後的迪亞布羅，當下很感動，也很有成就感<br /> 現在大部分的時間都是和朋友們一起再煉獄歡樂谷打寶<br /> 很喜歡Ｄ３精美的遊戲畫面、動畫、多變的技能配置、玩法<br /> 跟朋友們一起打寶、分享也是我玩Ｄ３最大的樂趣唷！<br /> ",
 		);
 		$girls['琦琦'] = array(
 			'video' => 'S-KWjewUYtA',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/girl18/a1.jpg',
-						'/static/img/event/girls_vote_2012/girl18/a2.jpg',
-						'/static/img/event/girls_vote_2012/girl18/a3.jpg',
-						'/static/img/event/girls_vote_2012/girl18/a4.jpg',
-						'/static/img/event/girls_vote_2012/girl18/a5.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl18/a1.jpg',
+					'/static/img/event/girls_vote_2012/girl18/a2.jpg',
+					'/static/img/event/girls_vote_2012/girl18/a3.jpg',
+					'/static/img/event/girls_vote_2012/girl18/a4.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/girl18/b1.jpg',
-						'/static/img/event/girls_vote_2012/girl18/b2.jpg',
-						'/static/img/event/girls_vote_2012/girl18/b3.jpg',
-						'/static/img/event/girls_vote_2012/girl18/b4.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl18/b5.jpg',
+					'/static/img/event/girls_vote_2012/girl18/b1.jpg',
+					'/static/img/event/girls_vote_2012/girl18/b2.jpg',
+					'/static/img/event/girls_vote_2012/girl18/b3.jpg',
+					'/static/img/event/girls_vote_2012/girl18/b4.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/girl18/c1.jpg',
-						'/static/img/event/girls_vote_2012/girl18/c2.jpg',
-						'/static/img/event/girls_vote_2012/girl18/c3.jpg',
-						'/static/img/event/girls_vote_2012/girl18/c4.jpg',
-						'/static/img/event/girls_vote_2012/girl18/c5.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl18/c1.jpg',
+					'/static/img/event/girls_vote_2012/girl18/c2.jpg',
+					'/static/img/event/girls_vote_2012/girl18/c3.jpg',
+					'/static/img/event/girls_vote_2012/girl18/c4.jpg',
+					'/static/img/event/girls_vote_2012/girl18/c5.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/girl18/d1.jpg',
-						'/static/img/event/girls_vote_2012/girl18/d2.jpg',
-						'/static/img/event/girls_vote_2012/girl18/d3.jpg',
-						'/static/img/event/girls_vote_2012/girl18/d4.jpg',
-						'/static/img/event/girls_vote_2012/girl18/d5.jpg',
-					),
+					'/static/img/event/girls_vote_2012/girl18/d1.jpg',
+					'/static/img/event/girls_vote_2012/girl18/d2.jpg',
+					'/static/img/event/girls_vote_2012/girl18/d3.jpg',
+					'/static/img/event/girls_vote_2012/girl18/d4.jpg',
+					'/static/img/event/girls_vote_2012/girl18/d5.jpg',
+				),
 			),
 			'text_fields' => array(
 				'fb'           => 'http://www.facebook.com/chice1213',
@@ -839,10 +867,10 @@ class Model_girls_vote_2012 extends CI_Model {
 				'city'         => '台中市',
 				'play_per_day' => '3小時左右'
 			),
-			'intro' => 'HIHI大家好唷:)<br /> 我是ChiChi一個喜歡玩game的女孩兒<br /> 平時是個活潑外向的女生<br /> 休閒就是上網、看電影、聽音樂唱唱歌<br /> 偶爾沉靜自己寫寫創作<br /> 喜歡拍照玩玩相機，出遠門踏青拍拍照留念!<br /> 和朋友一起品嚐美食是最幸福的事:D<br /> 本身很熱衷遠攻系<br /> 不管單機還是online game<br /> 法師與弓手是小妹熱愛的首選之一唷！<br /> 但先前因為半工半讀的關係<br /> 平常玩的時間少，所以到目前還沒封頂>_<<br /> 現在當工作完後整天拖著的疲累回到家<br /> 當然不忘留戀一下暗黑破壞神三~嘻！<br /> ', 
-			'opinion' => "在D3出來之前，有陣子很懷念小時候玩的D2，<br /> 又跟朋友借來玩，慢慢品嚐遊戲劇情，破完後惆悵了好陣子！<br /> 那時想著，哎唷~怎麼三代還不出來呢！(打滾)<br /> 而玩過二代無數次，在三代整體上非常容易的上手^Q^<br /> 不過三代死亡後的部分較簡單化囉<br /> 只會回到儲存點&修修裝備而已XD<br /> 回味二代還要找角度撿屍體呢哈哈！<br /> 還有卷軸部分也沒有了，三代輕便許多，不需要帶太多哩哩摳摳，<br /> 只要帶著水，穿好裝備就可以出發囉！haha<br /> 之後好不容易到了地獄，劇情看了好幾遍，<br /> 許多小地方讓人覺得很回味又有趣。<br /> 隨著難度漸漸提升，玩秘術師的我技術也要多多加強了！<br /> 還沒爬過文的我玩的差強人意，不過死亡也是種樂趣啊哈哈！^^<br /> ", 
+			'intro' => 'HIHI大家好唷:)<br /> 我是ChiChi一個喜歡玩game的女孩兒<br /> 平時是個活潑外向的女生<br /> 休閒就是上網、看電影、聽音樂唱唱歌<br /> 偶爾沉靜自己寫寫創作<br /> 喜歡拍照玩玩相機，出遠門踏青拍拍照留念!<br /> 和朋友一起品嚐美食是最幸福的事:D<br /> 本身很熱衷遠攻系<br /> 不管單機還是online game<br /> 法師與弓手是小妹熱愛的首選之一唷！<br /> 但先前因為半工半讀的關係<br /> 平常玩的時間少，所以到目前還沒封頂>_<<br /> 現在當工作完後整天拖著的疲累回到家<br /> 當然不忘留戀一下暗黑破壞神三~嘻！<br /> ',
+			'opinion' => "在D3出來之前，有陣子很懷念小時候玩的D2，<br /> 又跟朋友借來玩，慢慢品嚐遊戲劇情，破完後惆悵了好陣子！<br /> 那時想著，哎唷~怎麼三代還不出來呢！(打滾)<br /> 而玩過二代無數次，在三代整體上非常容易的上手^Q^<br /> 不過三代死亡後的部分較簡單化囉<br /> 只會回到儲存點&修修裝備而已XD<br /> 回味二代還要找角度撿屍體呢哈哈！<br /> 還有卷軸部分也沒有了，三代輕便許多，不需要帶太多哩哩摳摳，<br /> 只要帶著水，穿好裝備就可以出發囉！haha<br /> 之後好不容易到了地獄，劇情看了好幾遍，<br /> 許多小地方讓人覺得很回味又有趣。<br /> 隨著難度漸漸提升，玩秘術師的我技術也要多多加強了！<br /> 還沒爬過文的我玩的差強人意，不過死亡也是種樂趣啊哈哈！^^<br /> ",
 		);
-		$girls['patty'] = array(
+		$girls['Patty'] = array(
 			'video' => '',
 			'photos' => array(
 				0 => array(
@@ -881,27 +909,27 @@ class Model_girls_vote_2012 extends CI_Model {
 			'opinion' => "D3是一個很有趣的遊戲，因為等級最高才60級<br />所以不是那種拼命練功的遊戲，重點是放在跟朋友一起打寶物<br />打到好裝的那一瞬間真的是很有成就感<br />D3也有別於一般線上遊戲大家在一起的模式<br />人太多有時候真的很容易起爭執跟衝突<br />不過4人有點少朋友有時候要開好幾團= =<br />總之是一個值得玩的遊戲喔~",
 		);
 		$girls['Athena'] = array(
-			'video' => '',
+			'video' => 'p982Vrjaj14',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/Athena/a1.jpg',
-						'/static/img/event/girls_vote_2012/Athena/a2.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Athena/a1.jpg',
+					'/static/img/event/girls_vote_2012/Athena/a2.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/Athena/b1.jpg',
-						'/static/img/event/girls_vote_2012/Athena/b2.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Athena/b1.jpg',
+					'/static/img/event/girls_vote_2012/Athena/b2.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/Athena/c1.jpg',
-						'/static/img/event/girls_vote_2012/Athena/c2.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Athena/c1.jpg',
+					'/static/img/event/girls_vote_2012/Athena/c2.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/Athena/d1.jpg',
-						'/static/img/event/girls_vote_2012/Athena/d2.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Athena/d1.jpg',
+					'/static/img/event/girls_vote_2012/Athena/d2.jpg',
+				),
 			),
 			'text_fields' => array(
-				'fb'           => '',
+				'fb'           => 'https://www.facebook.com/pages/Athena-%E9%9B%85%E5%85%B8%E5%A8%9C/187985017905140',
 				'nickname'     => 'Athena‏',
 				'server'       => '亞洲',
 				'role_name'    => 'AthenaRush',
@@ -911,25 +939,25 @@ class Model_girls_vote_2012 extends CI_Model {
 				'city'         => '台北市',
 				'play_per_day' => '4小時'
 			),
-			'intro' => '大家好 我是雅典娜<br /> <br /> 熱愛電玩的我之前曾是Special Force<br /> (射擊遊戲)的電競職業選手<br /> <br /> 隨著D3的推出 也讓我想起國中時停留在D2的懷念<br /> <br /> 希望跟我一樣熱愛電玩朋友 可以投我ㄧ票唷^_^<br /> ', 
+			'intro' => '大家好 我是雅典娜<br /> <br /> 熱愛電玩的我之前曾是Special Force<br /> (射擊遊戲)的電競職業選手<br /> <br /> 隨著D3的推出 也讓我想起國中時停留在D2的懷念<br /> <br /> 希望跟我一樣熱愛電玩朋友 可以投我ㄧ票唷^_^<br /> ',
 			'opinion' => "記得D2的時候,還是在國中時期<br /> <br /> 雖然是單機板 但還是可以用區網跟朋友們在網咖連線打牛關。<br /> <br /> 這次D3推出網路版 更是讓我每天晚上不眠不休的跟朋友瘋狂刷到天亮<br /> <br /> 為得就是那掉下來的綠色字體裝備!!!!!!!!!!!!!!!!!!!!<br /> <br /> 而這次的D3讓我對角色扮演更是著迷了<br /> <br /> 動化作得超棒,像在看電影一樣生動<br /> <br /> 解成就也很有趣 資源回收 跟屁蟲等等...<br /> <br /> 如果想玩D3卻不知道知道該玩什麼角色的朋友<br /> <br /> 比較建議大家玩秘術師,因為好上手以外<br /> <br /> 在施放技能的特效也會感到很酷炫~<br /> <br /> 或者可以選擇逃跑 風箏性高的狩魔獵人!<br /> <br /> 總言之 希望還沒體驗過D3的朋友<br /> <br /> 有機會真的要好好體驗一下 <br /> <br /> 因為真得很棒~<br /> ",
 		);
 		$girls['Flora'] = array(
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/Flora/a1.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Flora/a1.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/Flora/b1.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Flora/b1.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/Flora/c1.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Flora/c1.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/Flora/d1.jpg',
-						'/static/img/event/girls_vote_2012/Flora/d2.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Flora/d1.jpg',
+					'/static/img/event/girls_vote_2012/Flora/d2.jpg',
+				),
 			),
 			'text_fields' => array(
 				'fb'           => 'https://www.facebook.com/flora.ju',
@@ -942,32 +970,32 @@ class Model_girls_vote_2012 extends CI_Model {
 				'city'         => '新北市',
 				'play_per_day' => '五小時'
 			),
-			'intro' => '各位在聖修亞瑞大陸奮戰的玩家~<br /> 大家好，我是Flora，我很喜歡美式風格的遊戲<br /> 所以從D2我就開始玩這款遊戲啦！<br /> 平常的休閒活動除了跟狗狗玩、養魚偷菜種<br /> 香菇之外，最喜歡就是玩暗黑破壞神喔^口^/<br /> 我的tag是Flora#3921歡迎大家和我一起玩喔~<br /> (雖然都60等了沒人帶玩起來還是很吃力><)<br /> ', 
+			'intro' => '各位在聖修亞瑞大陸奮戰的玩家~<br /> 大家好，我是Flora，我很喜歡美式風格的遊戲<br /> 所以從D2我就開始玩這款遊戲啦！<br /> 平常的休閒活動除了跟狗狗玩、養魚偷菜種<br /> 香菇之外，最喜歡就是玩暗黑破壞神喔^口^/<br /> 我的tag是Flora#3921歡迎大家和我一起玩喔~<br /> (雖然都60等了沒人帶玩起來還是很吃力><)<br /> ',
 			'opinion' => "心得嘛…只能說痛苦太多，收穫太少(誤，呵呵!<br /> D3從第一章到第四章~從普通到煉獄，真的都沒冷場！<br /> 劇情的架構有比上一代好很多，畫面也是做得很精緻!!<br /> 不過最吸引我的還是他營造的刺激感，各種變態的技能組合，全地圖被追殺>口</，<br /> 聖光阿~你有看到我的修裝費嗎?<br /> 目前是主要攻略巫醫跟DH，前陣子終於拓荒到了彼列面前，結果打到狂暴<囧><br /> 後來在暗盟的網站研究別人的配裝跟技能，也在上面看了很多高手錄製的影片，終於最後僥倖打過~嗚呼^o^/<br /> 歡迎有玩巫醫跟DH的朋友跟我交換心得喔~~<br /> D3真的很棒很好玩，玩不膩!!! ",
 		);
 		$girls['小熊'] = array(
 			'video' => 'NgMDwUtGmeI',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/Melinda_Hsiung/a1.jpg',
-						'/static/img/event/girls_vote_2012/Melinda_Hsiung/a2.jpg',
-						'/static/img/event/girls_vote_2012/Melinda_Hsiung/a3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/a1.jpg',
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/a2.jpg',
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/a3.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/Melinda_Hsiung/b1.jpg',
-						'/static/img/event/girls_vote_2012/Melinda_Hsiung/b2.jpg',
-						'/static/img/event/girls_vote_2012/Melinda_Hsiung/b3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/b1.jpg',
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/b2.jpg',
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/b3.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/Melinda_Hsiung/c1.jpg',
-						'/static/img/event/girls_vote_2012/Melinda_Hsiung/c2.jpg',
-						'/static/img/event/girls_vote_2012/Melinda_Hsiung/c3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/c1.jpg',
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/c2.jpg',
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/c3.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/Melinda_Hsiung/d1.jpg',
-						'/static/img/event/girls_vote_2012/Melinda_Hsiung/d2.jpg',
-						'/static/img/event/girls_vote_2012/Melinda_Hsiung/d3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/d1.jpg',
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/d2.jpg',
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/d3.jpg',
+				),
 			),
 			'text_fields' => array(
 				'fb'           => 'http://www.facebook.com/wowmbaby',
@@ -987,60 +1015,70 @@ class Model_girls_vote_2012 extends CI_Model {
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/Ili/a1.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Ili/a1.jpg',
+					'/static/img/event/girls_vote_2012/Ili/a2.jpg',
+					'/static/img/event/girls_vote_2012/Ili/a3.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/Ili/b1.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Ili/b1.jpg',
+					'/static/img/event/girls_vote_2012/Ili/b2.jpg',
+					'/static/img/event/girls_vote_2012/Ili/b3.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/Ili/c1.jpg',
-						'/static/img/event/girls_vote_2012/Ili/c2.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Ili/c1.jpg',
+					'/static/img/event/girls_vote_2012/Ili/c2.jpg',
+					'/static/img/event/girls_vote_2012/Ili/c3.jpg',
+					'/static/img/event/girls_vote_2012/Ili/c4.jpg',
+					'/static/img/event/girls_vote_2012/Ili/c5.jpg',
+					'/static/img/event/girls_vote_2012/Ili/c6.jpg',
+					'/static/img/event/girls_vote_2012/Ili/c7.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/Ili/d1.jpg',
-						'/static/img/event/girls_vote_2012/Ili/d2.jpg',
-					),
+					'/static/img/event/girls_vote_2012/Ili/d1.jpg',
+					'/static/img/event/girls_vote_2012/Ili/d2.jpg',
+					'/static/img/event/girls_vote_2012/Ili/d3.jpg',
+				),
 			),
 			'text_fields' => array(
-				'fb'           => 'https://www.facebook.com/Ili19930831',
+				'fb'           => 'http://www.facebook.com/Ili0831',
 				'nickname'     => '雞排妹Ili‏',
 				'server'       => '美洲',
 				'role_name'    => 'ili',
 				'role_level'   => '60',
-				'class'        => '武增',
+				'class'        => '武僧',
 				'birthday'     => '1993/08/31',
 				'city'         => '台北',
 				'play_per_day' => '拍攝寫真集之前,每天玩6小時左右,拍完寫真集之後,因有許多後續的工作,就比較沒空玩'
 			),
-			'intro' => '雞排妹/Ili/鄭佳甄<br /> 身高體重:157/43<br /> 三圍:30E/22/33<br /> <br /> 最近在幹嘛?:出寫真集(十八歲的禮物),八月預購上市,還有雙面人型抱枕喔!<br /> <br /> 個性的優點：善良，喜歡關心周遭的家人及朋友，不愛計較<br /> <br /> 個性的缺點：任性，餓的時候及太熱的時候會開始不耐煩及發脾氣<br /> <br /> 飲食：　最喜歡吃得飽飽然後睡覺～這是我感到幸福的其中一件事，喜歡吃肉、蛤仔湯、粥、起司、糖葫蘆、還有很多。不喜歡吃甜食（巧克力、蛋糕、糖果），怕香菜、紅蘿蔔、魚湯，早餐一定是兩份才會飽，消夜看心情。<br /> <br /> 喜歡的異性：　不要帥，最好有點胖有肚子，愛屋及烏，照顧家人，尊重我的工作，務正業，能負責任，聰明，還要包容我。（條件會不會開太多了哈哈哈）<br /> <br /> 日常生活：　私底下呢，跟大嬸一樣，喜歡穿著寬鬆的衣服跟拖鞋，上工前才肯換上高跟鞋與衣服。不喜歡化妝，幾乎都是素顏戴眼鏡。<br /> <br /> 寵物：　去年１２月領養了一隻流浪貓腫腫，怕腫腫寂寞，今年三月又領養了一隻流浪貓咪醬，寵物的存在對我很重要，有人說交男朋友不會寂寞，不過跟寵物比較起來，寵物會一輩子跟著我。<br /> <br /> 年紀：　ｉｌｉ非常享受青春，由於工作的關係，生活很累卻多彩多姿，每張照片散發著青春，我好愛現在的自己，不想要１９歲，不想變老，珍惜且揮灑青春。<br />',
+			'intro' => '雞排妹/Ili/鄭佳甄<br /> 身高體重:157/43<br /> 三圍:30E/22/33<br /> <br /> 最近在幹嘛?:出寫真集(十八歲的禮物),八月預購上市,還有人型抱枕喔!<br /> <br /> 個性的優點：善良，喜歡關心周遭的家人及朋友，不愛計較<br /> <br /> 個性的缺點：任性，餓的時候及太熱的時候會開始不耐煩及發脾氣<br /> <br /> 飲食：　最喜歡吃得飽飽然後睡覺～這是我感到幸福的其中一件事，喜歡吃肉、蛤仔湯、粥、起司、糖葫蘆、還有很多。不喜歡吃甜食（巧克力、蛋糕、糖果），怕香菜、紅蘿蔔、魚湯，早餐一定是兩份才會飽，消夜看心情。<br /> <br /> 喜歡的異性：　不要帥，最好有點胖有肚子，愛屋及烏，照顧家人，尊重我的工作，務正業，能負責任，聰明，還要包容我。（條件會不會開太多了哈哈哈）<br /> <br /> 日常生活：　私底下呢，跟大嬸一樣，喜歡穿著寬鬆的衣服跟拖鞋，上工前才肯換上高跟鞋與衣服。不喜歡化妝，幾乎都是素顏戴眼鏡。<br /> <br /> 寵物：　去年１２月領養了一隻流浪貓腫腫，怕腫腫寂寞，今年三月又領養了一隻流浪貓咪醬，寵物的存在對我很重要，有人說交男朋友不會寂寞，不過跟寵物比較起來，寵物會一輩子跟著我。<br /> <br /> 年紀：　ｉｌｉ非常享受青春，由於工作的關係，生活很累卻多彩多姿，每張照片散發著青春，我好愛現在的自己，不想要１９歲，不想變老，珍惜且揮灑青春。<br />',
 			'opinion' => "剛上市時，根本買不到，還是託香港的朋友在香港買遊戲包，再給我序號<br /> 其實Ｄ３的等級不會很難生等，如果有朋友一起玩，等級會跑得很快！<br /> 但不能跟太高等的人一起玩，打怪會沒成就感。<br /> <br /> 我記得玩不到２４小時的時間就會有４０等。<br /> 最喜歡的是遊戲畫面，包含地圖、背景、怪物、噴血嘔吐之類的，都很精緻<br /> 雖然無法拉近，但已能滿足視覺。<br /> <br /> 故事情節跟章節動畫也不錯，但是隨著等級提升，會一直看到重複的情節<br /> 就有點膩．拍賣場很有趣，偶爾會遇到有人少打一個零之類的好康。<br /> <br /> ６０等之後是有點懶，ｉｌｉ應該去認真打裝備，<br /> 才不會在煉獄連凱恩都沒看到人就掛了。<br />",
 		);
 		$girls['寶姬'] = array(
 			'video' => '',
 			'photos' => array(
 				0 => array(
-						'/static/img/event/girls_vote_2012/yuwwu/a1.jpg',
-						'/static/img/event/girls_vote_2012/yuwwu/a2.jpg',
-						'/static/img/event/girls_vote_2012/yuwwu/a3.jpg',
-						'/static/img/event/girls_vote_2012/yuwwu/a4.jpg',
-					),
+					'/static/img/event/girls_vote_2012/yuwwu/a1.jpg',
+					'/static/img/event/girls_vote_2012/yuwwu/a2.jpg',
+					'/static/img/event/girls_vote_2012/yuwwu/a3.jpg',
+					'/static/img/event/girls_vote_2012/yuwwu/a4.jpg',
+				),
 				1 => array(
-						'/static/img/event/girls_vote_2012/yuwwu/b1.jpg',
-						'/static/img/event/girls_vote_2012/yuwwu/b2.jpg',
-						'/static/img/event/girls_vote_2012/yuwwu/b3.jpg',
-						'/static/img/event/girls_vote_2012/yuwwu/b4.jpg',
-					),
+					'/static/img/event/girls_vote_2012/yuwwu/b1.jpg',
+					'/static/img/event/girls_vote_2012/yuwwu/b2.jpg',
+					'/static/img/event/girls_vote_2012/yuwwu/b3.jpg',
+					'/static/img/event/girls_vote_2012/yuwwu/b4.jpg',
+				),
 				2 => array(
-						'/static/img/event/girls_vote_2012/yuwwu/c1.jpg',
-						'/static/img/event/girls_vote_2012/yuwwu/c2.jpg',
-						'/static/img/event/girls_vote_2012/yuwwu/c3.jpg',
-					),
+					'/static/img/event/girls_vote_2012/yuwwu/c1.jpg',
+					'/static/img/event/girls_vote_2012/yuwwu/c2.jpg',
+					'/static/img/event/girls_vote_2012/yuwwu/c3.jpg',
+				),
 				3 => array(
-						'/static/img/event/girls_vote_2012/yuwwu/d1.jpg',
-						'/static/img/event/girls_vote_2012/yuwwu/d2.jpg',
-						'/static/img/event/girls_vote_2012/yuwwu/d3.jpg',
-						'/static/img/event/girls_vote_2012/yuwwu/d4.jpg',
-					),
+					'/static/img/event/girls_vote_2012/yuwwu/d1.jpg',
+					'/static/img/event/girls_vote_2012/yuwwu/d2.jpg',
+					'/static/img/event/girls_vote_2012/yuwwu/d3.jpg',
+					'/static/img/event/girls_vote_2012/yuwwu/d4.jpg',
+				),
 			),
 			'text_fields' => array(
 				'fb'           => 'https://www.facebook.com/yu.w.wu.3',
@@ -1056,7 +1094,7 @@ class Model_girls_vote_2012 extends CI_Model {
 			'intro' => '哈!大家好噢!<br /> 很高興可以參予這次的活動。<br /> 我是一個標準的阿宅，每天不是在看<br /> 小說漫畫就是在玩遊戲。<br /> 為了D3還追了2天2夜的物流車-/-|||。<br /> 晤…反正就是瘋到一個極致((掩面。<br /> 人生介紹完了…我悲催了－”””－<br />',
 			'opinion' => "其實一開始玩的主因，是因為我朋友都在玩，所以算是被朋友拉著跑的。ＸＤ<br /> 沒辦法，個人比較偏好線上遊戲，互動比較多<br /> 也可以認識很多新朋友，所以沒玩過暗黑2。<br /> FB上一長串都是D3的消息，整個風靡到不行。<br /> 就因為這股風氣，不知道哪來的衝動。<br /> 我追了兩天兩夜的物流車，跟近百間的店家打交道…。<br /> 最後一個好心的全家店員可能看我像個瘋婆子，<br /> 加之又繞到他的店家三四次使他同情心大發(其實是不耐煩…)<br /> 就幫我直接打電話問其他店家調貨，我才終於得到救贖!(一整個大愛阿!!!)<br /> 原本很期待它的畫面，結果悲劇的發現我電腦全開會跑不動…（（啜泣<br /> <br /> 雖然有一點小遺憾，但是還是玩的很開心J<br /> <br /> 每次上線就在跟朋友過本本、或是玩不同的職業角色、亂喇賽<br /> 不然就假裝很威的帶新手朋友。哈:)我就是喜歡這樣子!!!!!!!<br /> <br />",
 		);
-		return array_slice($girls, $setting['offset'], $setting['limit']);
+		return $girls;
 	}
 }
 //

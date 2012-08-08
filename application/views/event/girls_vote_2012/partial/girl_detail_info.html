@@ -5,7 +5,8 @@
 		<div class="g_clear"></div>
 		<!-- 投票 -->
 		<div class="vote_it">
-			<img src="/static/img/event/girls_vote_2012/vote_it.png" alt="" id="vote_she">
+			<img src="/static/img/event/girls_vote_2012/vote_it.png" alt="" id="vote_she" data-vote-name="{$girl_nickname}">
+			{if ! $CI->user->is_login()}<a target="_blank" href="http://d3clan.tw/bbs/member.php?mod=logging&action=login" class="btn btn-danger">點我註冊登入<br />或透過FB登入</a>{/if}
 		</div>
 
 		<p></p>
@@ -37,13 +38,13 @@
 				<div class="vote_amount">
 					{foreach $polls_name as $index => $val}
 					<div class="kind_polls"><span>{$val}</span>
-						<div class="progress"><div class="bar" style="width: {$girl['polls'][$index]/13}%; max-width: 100%;"></div></div>
+						<div class="progress"><div class="bar" style="width: {if $girl['polls'][$index]<1}0{else}{50+$girl['polls'][$index]/13}{/if}%; max-width: 100%;"></div></div>
 						<span>{$girl['polls'][$index]|default:0}</span>
 					</div>
 					{/foreach}
 
 					<div class="kind_polls"><span>總票</span>
-						<div class="progress progress-info"><div class="bar" style="width: {$girl['total_votes']/(3*2)}%; max-width: 100%;"></div></div>
+						<div class="progress progress-info"><div class="bar" style="width: {$girl['total_votes']/6}%; max-width: 100%;"></div></div>
 						<span>{$girl['total_votes']|default:0}</span>
 					</div>
 				</div>
@@ -71,7 +72,8 @@
 
 		<!-- 投票 -->
 		<div class="vote_it">
-			<img src="/static/img/event/girls_vote_2012/vote_it.png" alt="" id="vote_she">
+			<img src="/static/img/event/girls_vote_2012/vote_it.png" alt="" id="vote_she" data-vote-name="{$girl_nickname}">
+			{if ! $CI->user->is_login()}<a target="_blank" href="http://d3clan.tw/bbs/member.php?mod=logging&action=login" class="btn btn-danger">點我註冊登入<br />或透過FB登入</a>{/if}
 		</div>
 	</div>
 	<!-- 下框 -->

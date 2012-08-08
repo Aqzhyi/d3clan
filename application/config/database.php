@@ -82,5 +82,22 @@ $db['StarCraftII']['swap_pre'] = '';
 $db['StarCraftII']['autoinit'] = TRUE;
 $db['StarCraftII']['stricton'] = FALSE;
 
+// 業務
+$db['Business']['hostname'] = 'localhost';
+$db['Business']['username'] = 'sc2clan';
+$db['Business']['password'] = 'ilovesc2!';
+$db['Business']['database'] = 'sc2clan_business';
+$db['Business']['dbdriver'] = 'mysql';
+$db['Business']['dbprefix'] = '';
+$db['Business']['pconnect'] = FALSE;
+$db['Business']['db_debug'] = TRUE;
+$db['Business']['cache_on'] = FALSE;
+$db['Business']['cachedir'] = APPPATH . 'cache/Business_db_cache';
+$db['Business']['char_set'] = 'utf8';
+$db['Business']['dbcollat'] = 'utf8_general_ci';
+$db['Business']['swap_pre'] = '';
+$db['Business']['autoinit'] = TRUE;
+$db['Business']['stricton'] = FALSE;
+
 /* End of file database.php */
 /* Location: ./application/config/database.php */

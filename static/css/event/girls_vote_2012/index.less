@@ -20,7 +20,9 @@
 		background-color : #150068;
 
 		.item{
-			display: none;
+			display : none;
+			width   : 100%;
+			height  : 400px;
 
 			&.current{
 				display: block;
@@ -69,11 +71,18 @@
 		}
 	}
 
+	// 排序
+	.girl_sort{
+		float  : left;
+		cursor : pointer;
+	}
+
 	// girls_page_nav
 	.girls_page_nav{
 		display : block;
 		margin  : 0 auto;
 		width   : 88px;
+		height  : 50px;
 	}
 
 	// 女孩們
@@ -120,7 +129,8 @@
 						margin-bottom    : 10px;
 
 						img{
-							height           : 175px;
+							height    : 175px;
+							max-width : 245px;
 						}
 					}
 				}

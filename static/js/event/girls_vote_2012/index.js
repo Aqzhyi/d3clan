@@ -4,13 +4,12 @@ jQuery(function() {
 	var $girls_banner = jQuery('#girls_banner');
 
 	var interval1 = setInterval(function(){
-		console.log(/banner change in 10s/);
 		if ( $girls_banner.find('#item.current').next('#item').length ) {
 			$girls_banner.find('#item.current').removeClass('current').next('#item').addClass('current');
 		}
 		else {
 			$girls_banner.find('#item.current').removeClass('current');
-			$girls_banner.find('#item').last().addClass('current');
+			$girls_banner.find('#item').first().addClass('current');
 		}
 	}, 10000);
 	
@@ -97,16 +96,20 @@ jQuery(function() {
 			data       : {
 				name: vote_name
 			},
-			beforeSend : function(jqXHR, settings){},
+			beforeSend : function(jqXHR, settings){
+				jQuery('.ui-dialog').remove();
+				jQuery('<div>處理中，請稍後...</div>').dialog();
+			},
 			success    : function(data, textStatus, jqXHR) {
+				jQuery('.ui-dialog').remove();
 				if (data.success) {
-					alert(data.success_msg);
+					jQuery('<div>'+data.success_msg+'</div>').dialog();
 				}
 				else if (data.success !== true){
-					alert(data.error_msg);
+					jQuery('<div>'+data.error_msg+'</div>').dialog();
 				}
 				else {
-					alert('後端程式發生不明錯誤')
+					jQuery('<div>後端程式發生不明錯誤</div>').dialog();
 				}
 			},
 			complete   : function(jqXHR, textStatus) {}

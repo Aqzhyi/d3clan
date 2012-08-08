@@ -3,20 +3,20 @@
 <head xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-	<title>{$_VIEW['title']}{if $_VIEW['append_title']} - {$_VIEW['append_title']}{/if} - {$CI->config->item( 'site_name' )}</title>
+	<title>{$TEMPLATE['title']}{if $TEMPLATE['title_append']} - {$TEMPLATE['title_append']}{/if} - {$CI->config->item( 'site_name' )}</title>
 
 	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 	<meta name="description" content="{$CI->config->item( 'description' )}"/>
 	<meta name="keywords" content="{$CI->config->item( 'keywords' )}"/>
 
-	<link rel="stylesheet" href="/e/m/{foreach $_VIEW['css_files'] as $index => $css_file}{if $css_file@last}{$comma = ''}{else}{$comma = ','}{/if}{$CI->config->item( 'css_static_path' )}{$css_file}.css{$comma}{/foreach}">
+	<link rel="stylesheet" href="/e/m/{foreach $TEMPLATE['css_files'] as $index => $css_file}{if $css_file@last}{$comma = ''}{else}{$comma = ','}{/if}{$CI->config->item( 'css_static_path' )}{$css_file}.css{$comma}{/foreach}">
 	<link rel="shortcut icon" href="/static/img/common/icon/official_d3.ico" type="image/x-icon"/>
 	<link rel="canonical" href="{$CI->view->get_canonical_url()}" />
 
 	<meta property="og:site_name" content="{$CI->config->item( 'site_name' )}" />
 	<meta property="og:description" content="{$CI->config->item( 'description' )}" />
-	<meta property="og:title" content="{$_VIEW['title']}{if $_VIEW['append_title']} - {$_VIEW['append_title']}{/if} - {$CI->config->item( 'site_name' )}" />
-	<meta property="og:image" content="{$_VIEW['og_image']}" />
+	<meta property="og:title" content="{$TEMPLATE['title']}{if $TEMPLATE['title_append']} - {$TEMPLATE['title_append']}{/if} - {$CI->config->item( 'site_name' )}" />
+	<meta property="og:image" content="{$TEMPLATE['og_image']}" />
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="zh_TW" />
 	<meta property="og:url" content="{$CI->view->get_canonical_url()}" />
@@ -39,39 +39,19 @@
 			<!-- 商業廣告 -->
 			<div class="commercial_ad g_clear" id="commercial_ad">
 				<a href="http://www.facebook.com/d3clan.tw" class="g_fb" target="_blank"></a>
-				<a target="_blank" class='single' href="http://www.roccat.org"><img src="/static/file/common/ad/ROCCAT-logo_270x60.jpg" alt="" /></a>
-				{$CI->media->embed_flash( [
-					'width'  => '270',
-					'height' => '60',
-					'src'    => '/static/file/common/ad/banner_HD710_270x60_tw.swf',
-					'class'  => 'single'
-				] )}
-				<a target="_blank" class='single' href="http://www.intel.com.tw/content/www/tw/zh/processors/core/core-i7-processor.html"><img src="/static/file/common/ad/image001.jpg" alt="" /></a>
-				<a target="_blank" class='single' href="http://expendables2.catchplay.com/"><img src="/static/file/common/ad/270x60-expendables2.gif" alt="浴血任務2" /></a>
-				{$CI->media->embed_flash( [
-					'width'  => '270',
-					'height' => '60',
-					'src'    => '/static/file/common/ad/270x60-ASROCK.swf',
-					'class'  => 'single'
-				] )}
-				{$CI->media->embed_flash( [
-					'width'  => '270',
-					'height' => '60',
-					'src'    => '/static/file/common/ad/270x60-kinston.swf',
-					'class'  => 'single'
-				] )}
-				{$CI->media->embed_flash( [
-					'width'  => '270',
-					'height' => '60',
-					'src'    => '/static/file/common/ad/270x60-msi.swf',
-					'class'  => 'single'
-				] )}
-				{$CI->media->embed_flash( [
-					'width'  => '270',
-					'height' => '60',
-					'src'    => '/static/file/common/ad/270x60-msi-cup-banner.swf',
-					'class'  => 'single'
-				] )}
+				{foreach $CI->common->get_270x60_banners() as $index => $banner}
+					{if $banner['type'] == 'img'}
+						<a style="display: none;" target="_blank" class='single' href="{$banner['link']}"><img src="{$banner['path']}" alt="" /></a>
+					{elseif $banner['type'] == 'flash'}
+						{$CI->media->embed_flash( [
+							'width'  => '270',
+							'height' => '60',
+							'src'    => $banner['path'],
+							'class'  => 'single',
+							'style'  => 'display: none;'
+						] )}
+					{/if}
+				{/foreach}
 				<a href="http://sc2clan.tw/" class="sc2clan" target="_blank"></a>
 			</div>
 
@@ -83,7 +63,7 @@
 				<a class="single" href="/hardware"><i class="icon hardware"></i><span class="nav_label">週邊設備</span></a>
 				<a class="single" href="/lives"><i class="icon lives"></i><span class="nav_label">Live頻道</span></a>
 				<a class="single" href="/event/2012-girls-vote"><i class="icon event-2012-msi"></i><span class="nav_label">D-Girl選拔</span></a>
-				<a class="single" href="/event/2012-msi"><i class="icon event-2012-girls-vote"></i><span class="nav_label">微星盃</span></a>
+				<a class="single" href="/event/2012-msi"><i class="icon event-2012-girls-vote"></i><span class="nav_label">暗盟盃</span></a>
 				<a class="single" href="/together"><i class="icon together"></i><span class="nav_label">約團活動</span></a>
 				<a class="single" href="/trade"><i class="icon trade"></i><span class="nav_label">交易專區</span></a>
 				<a class="single" href="/about"><i class="icon about"></i><span class="nav_label">關於暗盟</span></a>
@@ -96,22 +76,24 @@
 
 		<!-- 動態網頁 -->
 		<div role="main" class="diy">
-			{include file = "../`$_VIEW['layout']`.html"}
+			{include file = "../`$TEMPLATE['application_layout']`.html"}
 		</div>
 
 		<!-- 頁腳 -->
 		<footer>
 		<div class="footer">
-			執行長: 虎虎(HUhu)、營運經理: 萱萱太太(Cynthia)、助理工程師: 然苦氏太太、美術設計師: 小伊(Ithil)<br />
-			我們極度建議您使用<a href="http://www.google.com/chrome/index.html?hl=zh-TW&amp;brand=CHMA&amp;utm_campaign=zh_hk&amp;utm_source=zh-TW-ha-apac-tw-bk&amp;utm_medium=ha" target="_blank">Google Chrome 20+ 瀏覽器</a>來瀏覽本網站。
+			執行長: 虎虎(HUhu)、營運經理: 萱萱太太(Cynthia)<br />
+			專案經理: 虎虎(HUhu)、萱萱太太(Cynthia)、好哥哥(HRU)<br />
+			助理工程師: 然苦氏太太(甜豬)、美術設計師: 小伊(Ithil)<br />
+			我們極度建議使用<a href="http://www.google.com/chrome/index.html?hl=zh-TW&amp;brand=CHMA&amp;utm_campaign=zh_hk&amp;utm_source=zh-TW-ha-apac-tw-bk&amp;utm_medium=ha" target="_blank">Google Chrome 20+ 瀏覽器</a>來瀏覽本網站。
 		</div>
 		</footer>
 
-		<div id="metadata-root" data-metadata='{$_VIEW['json']}'></div>
+		<div id="metadata-root" data-metadata='{$TEMPLATE['json']}'></div>
 	</div>
-	<script src="/e/m/{foreach $_VIEW['js_files'] as $index => $js_file}{if $js_file@last}{$comma = ''}{else}{$comma = ','}{/if}{$CI->config->item( 'js_static_path' )}{$js_file}.js{$comma}{/foreach}"></script>
+	<script src="/e/m/{foreach $TEMPLATE['js_files'] as $index => $js_file}{if $js_file@last}{$comma = ''}{else}{$comma = ','}{/if}{$CI->config->item( 'js_static_path' )}{$js_file}.js{$comma}{/foreach}"></script>
 
-	{foreach $_VIEW['linked_js_files'] as $url}
+	{foreach $TEMPLATE['linked_js_files'] as $url}
 		<script src="{$url}"></script>
 	{/foreach}
 
