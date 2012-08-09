@@ -86,7 +86,7 @@ class Girls_vote_2012 extends CI_Controller {
 
 		$setting = $this->input->post();
 
-		echo $this->Model_girls_vote_2012->vote( array(
+		$this->Model_girls_vote_2012->vote( array(
 				'name'       => $setting['name'],
 				'active_tid' => $this->_active_tid,
 			) );

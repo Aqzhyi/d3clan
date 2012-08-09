@@ -40,11 +40,11 @@ class Model_ad extends CI_Model {
 
 		$setting['data']['path'] = ( ! empty( $setting['data']['path'] ) ) ? $setting['data']['path'] : NULL;
 
-		if ( is_null( $setting['data']['path'] ) ) return $this->callback->error_msg( '廣告路徑不得為空啊!' )->toJSON();
+		$this->callback->response_if_condition( is_null( $setting['data']['path'] ), '廣告路徑不得為空啊!' );
 
 		$this->db_ad->insert( 'common_ad_banners', $setting['data'] );
 
-		return $this->callback->success_msg( '新增完成.' )->toJSON();
+		$this->callback->success_msg( '新增完成.' )->response();
 	}
 
 	/**
@@ -57,11 +57,11 @@ class Model_ad extends CI_Model {
 
 		$setting['id'] = ( ! empty( $setting['id'] ) ) ? $setting['id'] : NULL;
 
-		if ( is_null( $setting['id'] ) ) return $this->callback->error_msg( '刪除發生錯誤，找不到id.' )->toJSON();
+		$this->callback->response_if_condition( is_null( $setting['id'] ), '刪除發生錯誤，找不到id.' );
 
 		$this->db_ad->delete( 'common_ad_banners', $setting );
 
-		return $this->callback->success_msg( '刪除完成.' )->toJSON();
+		$this->callback->success_msg( '刪除完成.' )->response();
 	}
 }
 

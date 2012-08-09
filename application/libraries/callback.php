@@ -15,10 +15,20 @@ class Callback {
 	 */
 	private $data_array = array();
 
-
 	function __construct() {
 
 		$this->reset();
+	}
+
+	/**
+	 * 響應
+	 * 
+	 * @return [type] [description]
+	 */
+	public function response() {
+		
+		echo json_encode( $this->data_array );
+		exit;
 	}
 
 	/**
@@ -45,6 +55,55 @@ class Callback {
 		return FALSE;
 	}
 
+	/**
+	 * 如果"條件"錯誤, 則立刻記錄"錯誤記錄"
+	 * 
+	 * @param  [type] $condition [description]
+	 * @param  string $error_msg [description]
+	 * @return [type]            [description]
+	 */
+	public function if_condition( $condition = NULL, $error_msg = '' ) {
+		
+		if ( $condition === true ) {
+			$this->error_msg( $error_msg );
+		}
+
+		return $this;
+	}
+
+	/**
+	 * 如果"條件"錯誤, 則立刻響應錯誤訊息.
+	 * 
+	 * @param  [type] $condition    [description]
+	 * @param  string $error_msg [description]
+	 * @return [type]            [description]
+	 */
+	public function response_if_condition( $condition = NULL, $error_msg = '' ) {
+		
+		if ( $condition === true ) {
+			$this->error_msg( $error_msg );
+			echo $this->toJSON();
+			exit;
+		}
+
+		return $this;
+	}
+
+	/**
+	 * 如果"錯誤記錄"中有任何錯誤, 則立刻響應錯誤訊息.
+	 * 
+	 * @return [type] [description]
+	 */
+	public function response_if_error() {
+		
+		if ( $this->is_error() ) {
+			echo $this->toJSON();
+			exit;
+		}
+
+		return $this;
+	}
+	
 	/**
 	 * 塞入成功判斷
 	 *

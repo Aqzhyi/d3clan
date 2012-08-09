@@ -4,8 +4,6 @@ class Model_girls_vote_2012 extends CI_Model {
 
 	public function __construct() {
 		parent::__construct();
-		// $d3 = ->load->database( 'DiabloIII', TRUE );
-		// $sc2 = ->load->database( 'StarCraftII', TRUE );
 	}
 
 	/**
@@ -60,20 +58,15 @@ class Model_girls_vote_2012 extends CI_Model {
 	public function vote( $setting = array() ) {
 
 		// 檢查基礎變量
-		if ( ! $this->user->is_login() ) {
-			$this->callback->error_msg( '尚未登入' );
-		}
+		$setting['name']       = ( ! is_null( $setting['name'] ) ) ? $setting['name'] : null;
+		$setting['active_tid'] = ( ! is_null( $setting['active_tid'] ) ) ? $setting['active_tid'] : null;
 
-		$setting['name']       = ( ! is_null( $setting['name'] ) ) ? $setting['name'] : NULL;
-		$setting['active_tid'] = ( ! is_null( $setting['active_tid'] ) ) ? $setting['active_tid'] : NULL;
-
-		if ( $this->user->is_login() == 0 ) $this->callback->error_msg( "請先註冊成為《暗盟》會員並登入論壇！方可投票！\n\n本站亦採用 Facebook 登入，好快好方便！" );
-		if ( $this->callback->is_error() ) return $this->callback->toJSON();
-
-		if ( is_null( $setting['name'] ) ) $this->callback->error_msg( '缺少女孩暱稱' );
-		if ( ! $setting['active_tid'] ) $this->callback->error_msg( '投票於07/30(一) 凌晨 00:00開始，謝謝您的支持。' );
-		if ( $setting['active_tid'] === -1 ) $this->callback->error_msg( '投票已經結束!' );
-		if ( $this->callback->is_error() ) return $this->callback->toJSON();
+		$this->callback->response_if_condition( ! $this->user->is_login(), "請先註冊成為《暗盟》會員並登入論壇！方可投票！\n\n本站亦採用 Facebook 登入，好快好方便！" );
+		$this->callback->if_condition( is_null( $setting['name'] ), '缺少女孩暱稱' );
+		$this->callback->if_condition( empty( $setting['active_tid'] ), '缺少投票主題' );
+		$this->callback->if_condition( $setting['active_tid'] === 0, '投票於07/30(一) 凌晨 00:00開始，謝謝您的支持。' );
+		$this->callback->if_condition( $setting['active_tid'] === -1, '投票已經結束!' );
+		$this->callback->response_if_error();
 
 		// 檢查是否投過票
 		$this->db->where( 'tid', $setting['active_tid'] );
@@ -81,7 +74,7 @@ class Model_girls_vote_2012 extends CI_Model {
 		$sql = $this->db->get( 'd3bbs_forum_pollvoter' );
 
 		if ( count( $sql->result_array() ) ) {
-			return $this->callback->error_msg( '您已投票過了' )->toJSON();
+			$this->callback->error_msg( '您已投票過了' )->response();
 		}
 		else {
 			// 二次檢查是否投過票
@@ -92,13 +85,9 @@ class Model_girls_vote_2012 extends CI_Model {
 
 			foreach ( $result_array as $key => $result ) {
 				$voterids = explode( '	', $result['voterids'] );
-				if ( in_array( $this->user->get_id(), $voterids ) ) {
-					return $this->callback->error_msg( '您已投票過了' )->toJSON();
-				}
+				$this->callback->response_if_condition( in_array( $this->user->get_id(), $voterids ), '您已投票過了' );
 			}
 		}
-
-		
 
 		// 獲取 polloptionid
 		$this->db->where( 'tid', $setting['active_tid'] );
@@ -110,12 +99,12 @@ class Model_girls_vote_2012 extends CI_Model {
 		$voterids[] = $this->user->get_id();
 		$voterids = implode( '	', $voterids );
 		$this->db->set( 'voterids', $voterids );
-		$this->db->set( 'votes', 'votes+1', FALSE );
+		$this->db->set( 'votes', 'votes+1', false );
 		$this->db->where( 'tid', $setting['active_tid'] );
 		$this->db->where( 'polloption', $setting['name'] );
 		$this->db->update( 'd3bbs_forum_polloption' );
 		// ---
-		$this->db->set( 'voters', 'voters+1', FALSE );
+		$this->db->set( 'voters', 'voters+1', false );
 		$this->db->where( 'tid', $setting['active_tid'] );
 		$this->db->update( 'd3bbs_forum_poll' );
 		// ---
@@ -127,7 +116,7 @@ class Model_girls_vote_2012 extends CI_Model {
 		$this->db->insert( 'd3bbs_forum_pollvoter' );
 		// ---
 
-		return $this->callback->success_msg( '您已投票成功!' )->toJSON();
+		$this->callback->success_msg( '您已投票成功!' )->response();
 	}
 
 	/**
