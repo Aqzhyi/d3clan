@@ -68,6 +68,13 @@ class Hardware extends CI_Controller {
 				'hardware_headphone' => '最新耳機',
 				'hardware_else'      => '其它最新',
 			);
+
+		$this->view->data['ads'] = array(
+				'hardware_mouse_ads'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse_ads', 'limit' => 2 ) ),
+				'hardware_keyboard_ads'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard_ads', 'limit' => 2 ) ),
+				'hardware_headphone_ads' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone_ads', 'limit' => 2 ) ),
+				'hardware_else_ads'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else_ads', 'limit' => 2 ) ),
+			);
 	}
 }
 

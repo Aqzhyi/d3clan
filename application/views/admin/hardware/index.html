@@ -1,3 +1,8 @@
+<!-- 焦點新聞 -->
+<div class="alert alert-info">
+	<h4>焦點新聞</h4>
+	<p>每個分類顯示六則.</p>
+</div>
 <table id="flows" class="table table-bordered">
 	<tr>
 		<th>id</th>
@@ -55,6 +60,68 @@
 		<td>
 			<textarea name="descr" id="" rows="10" placeholder="描述..."></textarea>
 		</td>
+		<td>
+			<button id="add" class="btn btn-primary">新增</button>
+		</td>
+	</tr>
+</table>
+
+
+<!-- 廣告 -->
+<div class="alert alert-info">
+	<h4>廣告</h4>
+	<p>每個分類顯示兩則廣告.</p>
+	<p>尺寸為 227x52</p>
+</div>
+<table id="ads" class="table table-bordered">
+	<tr>
+		<th>id</th>
+		<th>case</th>
+		<th>type</th>
+		<th>path</th>
+		<th>link</th>
+		<th>功能</th>
+	</tr>
+	{foreach $ads as $key => $ad}
+		{foreach $ad as $index => $data}
+		<tr>
+			<td>{$data['id']}</td>
+			<td>
+				<select name="case" id="">
+				{html_options options=[
+					'hardware_mouse_ads'     => '滑鼠',
+					'hardware_keyboard_ads'  => '鍵盤',
+					'hardware_headphone_ads' => '耳機',
+					'hardware_else_ads'      => '其它'
+				] selected=$data['case']}
+				</select>
+			</td>
+			<td>{$data['type']}</td>
+			<td>{$data['path']}</td>
+			<td>
+				<a target="_blank" href="{$data['link']}">{$data['link']}</a>
+			</td>
+			<td>
+				<button data-delete-btn data-id="{$data['id']}" class="btn btn-danger">刪除</button>
+			</td>
+		</tr>
+		{/foreach}
+	{/foreach}
+	<tr>
+		<td>auto</td>
+		<td>
+			<select name="case" id="">
+			{html_options options=[
+				'hardware_mouse_ads'     => '滑鼠',
+				'hardware_keyboard_ads'  => '鍵盤',
+				'hardware_headphone_ads' => '耳機',
+				'hardware_else_ads'      => '其它'
+			] selected="滑鼠"}
+			</select>
+		</td>
+		<td>img</td>
+		<td><input type="text" name="path" placeholder="縮圖路徑..."></td>
+		<td><input type="text" name="link" placeholder="跳轉連結..."></td>
 		<td>
 			<button id="add" class="btn btn-primary">新增</button>
 		</td>

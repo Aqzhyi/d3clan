@@ -1,7 +1,7 @@
 jQuery(function(){
 
 	// 新增
-	jQuery('#flows').find('#add').on('click', function() {
+	jQuery('#flows,#ads').find('#add').on('click', function() {
 
 		var $self = jQuery(this);
 
@@ -27,7 +27,7 @@ jQuery(function(){
 	});
 
 	// 刪除
-	jQuery('#flows').find('[data-delete-btn]').on('click', function() {
+	jQuery('#flows,#ads').find('[data-delete-btn]').on('click', function() {
 
 		var $self = jQuery(this);
 

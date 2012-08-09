@@ -14,7 +14,18 @@
 	<div class="body">
 		{foreach $flows as $key => $flow}
 			<div class="class_news_flow">
-				<div class="header">{$flows_title[$key]}<div class="hardware_AD"></div></div>
+				<div class="header">
+					{$flows_title[$key]}
+					<div class="hardware_AD">
+						{foreach $ads["`$key`_ads"] as $index => $data}
+							{if $data['type'] === 'img'}
+								<a class="single" target="_blank" href="{$data['link']}"><img src="{$data['path']}" alt=""></a>
+							{elseif $data['type'] === 'flash'}
+								
+							{/if}
+						{/foreach}
+					</div>
+				</div>
 				<div class="body">
 				{foreach $flow as $index => $data}
 					<div class="item">

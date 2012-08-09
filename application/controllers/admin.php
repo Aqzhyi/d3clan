@@ -65,6 +65,13 @@ class Admin extends CI_Controller {
 				'hardware_else'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else' ) ),
 			);
 
+		$this->view->data['ads'] = array(
+				'hardware_mouse_ads'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse_ads' ) ),
+				'hardware_keyboard_ads'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard_ads' ) ),
+				'hardware_headphone_ads' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone_ads' ) ),
+				'hardware_else_ads'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else_ads' ) ),
+			);
+
 		$this->view->js_add( 'admin/hardware' );
 		$this->view->css_add( 'admin/hardware' );
 	}
@@ -119,7 +126,7 @@ class Admin extends CI_Controller {
 				), $this->input->post() );
 
 			echo $this->Model_ad->add( array(
-					'data' => $this->input->post(),
+					'data' => $post,
 				) );
 			break;
 		}
