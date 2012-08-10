@@ -28,6 +28,7 @@
 			,{orig: /視頻/mg, to: '影片'}
 			,{orig: /菜單/mg, to: '選單'}
 			,{orig: /攢錢/mg, to: '賺錢'}
+			,{orig: /郵箱地址/mg, to: '電子郵件'}
 			,{orig: /攢了/mg, to: '賺了'}
 			,{orig: /質朴/mg, to: '簡單'}
 			,{orig: /采集/mg, to: '採集'}
@@ -163,7 +164,8 @@
 			,{orig: /秘法強化/mg, to: '秘法加持'}
 			,{orig: /宝藏携带者/mg, to: '黃金哥布林'}
 			,{orig: /艾莉娜/mg, to: '艾蓮娜'}
-			,{orig: /戰網安全令牌/mg, to: '戰網驗證器'}
+			,{orig: /手機安全令牌?/mg, to: '手機驗證器'}
+			,{orig: /戰網安全令牌?/mg, to: '戰網驗證器'}
 			,{orig: /JY/mg, to: '精英'}
 			,{orig: /iOS用戶點此觀看/mg, to: ''}
 			// 網易暗黑
