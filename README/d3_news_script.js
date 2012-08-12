@@ -314,6 +314,7 @@
 				content = libTrans.transform(content, termList.Diablo);
 
 				title   = title.replace(/\[(?:影片|視頻)\]/, '');
+				title   = title.replace(/['"]/g, '＂');
 
 				if ( $root.find('#d3clan_mark').length == 0 ) {
 					content = content + "<p id='d3clan_mark'>本文轉自<a id='fetched' target='_blank' href='"+document.location.href+"'>網易遊戲凱恩之角</a>，並由「暗盟《暗黑破壞神III》電競情報站」進行正體中文化及在地化詞語轉換。</p>";
