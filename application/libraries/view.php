@@ -103,10 +103,8 @@ class View {
 		if ( $this->_title === '' && is_string( $this->_page ) && $this->_page !== '' ) {
 			$this->_title = $this->_title_routes[ $this->_page ];
 		}
-		
-		// 輸出 view 給瀏覽器
-		$this->CI->template->display( $this->CI->config->item( 'application_layout_path' ), array(
-				'data'               => $this->data,
+		$this->CI->template->assign( 'CI', $this->CI );
+		$this->CI->template->assign( 'TEMPLATE', array(
 				'json'               => json_encode( $this->json ),
 				'application_layout' => $this->_layout,
 				'page'               => $this->_page,
@@ -117,6 +115,9 @@ class View {
 				'title_append'       => $this->_title_append,
 				'og_image'           => $this->_og_image,
 			) );
+
+		// 輸出 view 給瀏覽器
+		$this->CI->template->parse( $this->CI->config->item( 'application_layout_path' ), $this->data );
 	
 		return $this;
 	}

@@ -32,7 +32,7 @@ class Game extends CI_Controller {
 	public function index( $path = "intro", $page = "history" ) {
 
 		// 從各子頁 h2 元素取得網頁標題
-		$this->view->data["fetched_page_content"] = $this->template->fetch( "game/$path/$page", $this->view->data );
+		$this->view->data["fetched_page_content"] = $this->template->parse( "game/$path/$page", $this->view->data, true );
 		$DOM    = str_get_html( $this->view->data["fetched_page_content"] );
 		$h2_str = $DOM->find( 'h2', 0 )->innertext;
 		$title  = ( empty( $h2_str ) ) ? "遊戲資料" : $h2_str;
