@@ -981,6 +981,7 @@ class Model_girls_vote_2012 extends CI_Model {
 					'/static/img/event/girls_vote_2012/Melinda_Hsiung/c1.jpg',
 					'/static/img/event/girls_vote_2012/Melinda_Hsiung/c2.jpg',
 					'/static/img/event/girls_vote_2012/Melinda_Hsiung/c3.jpg',
+					'/static/img/event/girls_vote_2012/Melinda_Hsiung/c4.jpg',
 				),
 				3 => array(
 					'/static/img/event/girls_vote_2012/Melinda_Hsiung/d1.jpg',
