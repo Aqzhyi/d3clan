@@ -25,6 +25,7 @@
 			,{orig: /錄像/mg, to: '錄影'}
 			,{orig: /網絡/mg, to: '網路'}
 			,{orig: /點擊/mg, to: '點選'}
+			,{orig: /屌絲/mg, to: '<a target="_blank" href="http://zh.wikipedia.org/zh-tw/%E5%B1%8C%E4%B8%9D" title="名詞解釋">屌絲</a>'}
 			,{orig: /視頻/mg, to: '影片'}
 			,{orig: /菜單/mg, to: '選單'}
 			,{orig: /攢錢/mg, to: '賺錢'}
@@ -109,6 +110,10 @@
 			,{orig: /台灣地區/mg, to: '台灣'}
 			,{orig: /中國台灣/mg, to: '台灣'}
 			,{orig: /我國/mg, to: '中國'}
+			/*遊戲*/
+			,{orig: /開荒號/mg, to: '開荒角色'}
+			,{orig: /小號/mg, to: '分身'}
+			,{orig: /大號/mg, to: '本尊'}
 		];
 
 		termList.StarCraft = [
