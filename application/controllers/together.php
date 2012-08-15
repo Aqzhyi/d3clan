@@ -24,7 +24,7 @@ class Together extends CI_Controller {
 
 	// 週邊設備
 	public function index() {
-		$this->load->model( 'Model_news' );
+		$this->load->model( 'core/Model_news' );
 		$this->view->data['news_flow'] = $this->Model_news->get_flow( array(
 				'fid'            => array( 39 ),
 				'limit'          => 90,

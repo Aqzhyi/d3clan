@@ -24,8 +24,8 @@ class Vod extends CI_Controller {
 
 	public function index( $type = NULL, $roll = NULL ) {
 
-		$this->load->library( 'media' );
-		$this->load->library( 'storage' );
+		$this->load->library( 'core/media' );
+		$this->load->library( 'core/storage' );
 		$this->load->model( 'Model_vod' );
 
 		// 取論壇精彩vod推薦

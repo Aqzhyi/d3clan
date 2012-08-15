@@ -4,7 +4,7 @@ class Common {
 
 	function __construct() {
 		$this->CI =& get_instance();
-		$this->CI->load->model( 'model_ad' );
+		$this->CI->load->model( 'core/model_ad' );
 	}
 
 	/**

@@ -10,7 +10,7 @@ class Model_hardware extends CI_Model {
 
 	public function get_thread( $setting = array() ) {
 		$this->load->library( 'bbcode' );
-		$this->load->library( 'simple_html_dom' );
+		$this->load->library( 'core/simple_html_dom' );
 		$this->load->helper( 'string' );
 
 		$setting['typeid']     = ( ! is_null( $setting['typeid'] ) ) ? $setting['typeid'] : NULL;

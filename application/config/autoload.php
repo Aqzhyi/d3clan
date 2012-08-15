@@ -54,12 +54,13 @@ $autoload['packages'] = array();
 
 $autoload['libraries'] = array(
 	'database', // 連接DB
-	'callback', // 回應AJAX的回調函數
-	'discuzx', // 連接論壇
-	'user', // 用戶
-	'view', // 樣版引擎
+	'core/callback', // 回應AJAX的回調函數
+	'core/discuzx', // 連接論壇
+	'core/user', // 用戶
+	'core/template', // 樣版引擎
+	'core/view', // 樣版引擎
+	'core/media', // 媒體
 	'common', // 全域綜合工具
-	'media', // 媒體
 );
 
 

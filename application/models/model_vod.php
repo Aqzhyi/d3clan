@@ -14,7 +14,7 @@ class Model_vod extends CI_Model {
 		$setting['offset'] = ( ! empty( $setting['offset'] ) ) ? $setting['offset'] : 0;
 
 		// 為了抓取 youku優酷略縮圖
-		$this->load->library( 'simple_html_dom' );
+		$this->load->library( 'core/simple_html_dom' );
 
 		// query builder
 		$this->db->where( 'first', 1 );

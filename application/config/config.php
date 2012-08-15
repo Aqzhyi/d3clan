@@ -1,4 +1,11 @@
 <?php  if ( ! defined( 'BASEPATH' ) ) exit( 'No direct script access allowed' );
+
+/**
+ * 系統核心的所在路徑
+ */
+$config['core_libraries_path'] = '../core/libraries/';
+$config['core_models_path'] = '../core/models/';
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

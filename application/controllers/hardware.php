@@ -27,7 +27,7 @@ class Hardware extends CI_Controller {
 	// 週邊設備
 	public function index() {
 
-		$this->load->model( 'Model_news' );
+		$this->load->model( 'core/Model_news' );
 
 		$this->view->data['news_class'] = array(
 				0 => $this->Model_news->get_flow( array(
@@ -53,7 +53,7 @@ class Hardware extends CI_Controller {
 			),
 		);
 		
-		$this->load->model( 'Model_ad' );
+		$this->load->model( 'core/Model_ad' );
 
 		$this->view->data['flows'] = array(
 				'hardware_mouse'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse', 'limit' => 6 ) ),

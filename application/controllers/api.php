@@ -21,7 +21,7 @@ class Api extends CI_Controller {
 	}
 
 	public function is_repeat( $params = array() ) {
-		$this->load->model( 'Model_api' );
+		$this->load->model( 'core/Model_api' );
 
 		$post_uri   = $_GET['post_uri'];
 		$post_title = $_GET['post_title'];

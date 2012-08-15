@@ -31,9 +31,9 @@ class Home extends CI_Controller {
 
 	public function index() {
 		$this->load->model( 'Model_vod' );
-		$this->load->model( 'Model_news' );
+		$this->load->model( 'core/Model_news' );
 		$this->load->model( 'Model_live_channel' );
-		$this->load->library( 'storage' );
+		$this->load->library( 'core/storage' );
 
 		// 隨選視訊條目
 		$this->view->data["videos"] = $this->storage->get( array(

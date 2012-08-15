@@ -55,7 +55,7 @@ class site_output_hook {
 	 */
 	public function images_auto_set( $setting=array() ) {
 		$CI =& get_instance();
-		$CI->load->library( 'simple_html_dom' ); // require_once APPPATH . 'libraries/simple_html_dom.php';
+		$CI->load->library( 'core/simple_html_dom' ); // require_once APPPATH . 'libraries/simple_html_dom.php';
 		$buffer = $CI->output->get_output();
 
 		if ( ! empty($buffer)) {

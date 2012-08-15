@@ -24,7 +24,7 @@ class Trade extends CI_Controller {
 
 	public function index() {
 
-		$this->load->model( 'Model_news' );
+		$this->load->model( 'core/Model_news' );
 
 		$this->view->data['news_flow'] = $this->Model_news->get_flow( array(
 				'fid'            => array( 40 ),

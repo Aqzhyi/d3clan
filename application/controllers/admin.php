@@ -40,7 +40,7 @@ class Admin extends CI_Controller {
 	// 270x60廣告管理
 	public function ad_banners( $setting = array() ) {
 
-		$this->load->model( 'Model_ad' );
+		$this->load->model( 'core/Model_ad' );
 		
 		$this->view->data['ads'] = $this->Model_ad->get_ad( array(
 				'case' => '270x60',
@@ -56,7 +56,7 @@ class Admin extends CI_Controller {
 
 		if ( ! $this->user->auth( 24 ) ) show_404();
 
-		$this->load->model( 'Model_ad' );
+		$this->load->model( 'core/Model_ad' );
 		
 		$this->view->data['flows'] = array(
 				'hardware_mouse'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse' ) ),
@@ -90,7 +90,7 @@ class Admin extends CI_Controller {
 	// 首頁四輪播管理
 	public function home_circle( $setting = array() ) {
 
-		$this->load->model( 'Model_news' );
+		$this->load->model( 'core/Model_news' );
 		$this->view->data['home_4_circle'] = $this->Model_news->get_circle_loop();
 		$this->view->js_add( 'admin/home_circle' );
 		$this->view->css_add( 'admin/home_circle' );
@@ -113,7 +113,7 @@ class Admin extends CI_Controller {
 
 	public function ajax_hardware( $setting = array() ) {
 		
-		$this->load->model( 'Model_ad' );
+		$this->load->model( 'core/Model_ad' );
 
 		switch ( $_SERVER['REQUEST_METHOD'] ) {
 		case 'DELETE':
@@ -134,7 +134,7 @@ class Admin extends CI_Controller {
 
 	public function ajax_ad_banners( $setting = array() ) {
 
-		$this->load->model( 'Model_ad' );
+		$this->load->model( 'core/Model_ad' );
 
 		switch ( $_SERVER['REQUEST_METHOD'] ) {
 		case 'DELETE':
@@ -151,7 +151,7 @@ class Admin extends CI_Controller {
 
 	public function ajax_home_circle( $setting = array() ) {
 
-		$this->load->model( 'Model_ad' );
+		$this->load->model( 'core/Model_ad' );
 
 		switch ( $_SERVER['REQUEST_METHOD'] ) {
 		case 'DELETE':
