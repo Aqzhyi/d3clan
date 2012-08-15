@@ -21,8 +21,8 @@ class Model_hardware extends CI_Model {
 		if ( is_null( $setting['typeid'] ) AND is_null( $setting['not_typeid'] ) ) { return array(); }
 
 		$this->db->select( '*' );
-		$this->db->from( 'd3bbs_forum_post as p' );
-		$this->db->join( 'd3bbs_forum_thread as t', 't.tid = p.tid' );
+		$this->db->from( 'forum_post as p' );
+		$this->db->join( 'forum_thread as t', 't.tid = p.tid' );
 		$this->db->where( 'p.first', 1 );
 		if ( ! is_null( $setting['typeid'] ) ) $this->db->where_in( 't.typeid', $setting['typeid'] );
 		if ( ! is_null( $setting['not_typeid'] ) ) $this->db->where_not_in( 't.typeid', $setting['not_typeid'] );

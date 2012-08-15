@@ -71,7 +71,7 @@ class Model_girls_vote_2012 extends CI_Model {
 		// 檢查是否投過票
 		$this->db->where( 'tid', $setting['active_tid'] );
 		$this->db->where( 'uid', $this->user->get_id() );
-		$sql = $this->db->get( 'd3bbs_forum_pollvoter' );
+		$sql = $this->db->get( 'forum_pollvoter' );
 
 		if ( count( $sql->result_array() ) ) {
 			$this->callback->error_msg( '您已投票過了' )->response();
@@ -79,7 +79,7 @@ class Model_girls_vote_2012 extends CI_Model {
 		else {
 			// 二次檢查是否投過票
 			$this->db->where( 'tid', $setting['active_tid'] );
-			$sql = $this->db->get( 'd3bbs_forum_polloption' );
+			$sql = $this->db->get( 'forum_polloption' );
 
 			$result_array = $sql->result_array();
 
@@ -92,7 +92,7 @@ class Model_girls_vote_2012 extends CI_Model {
 		// 獲取 polloptionid
 		$this->db->where( 'tid', $setting['active_tid'] );
 		$this->db->where( 'polloption', $setting['name'] );
-		$sql = $this->db->get( 'd3bbs_forum_polloption' );
+		$sql = $this->db->get( 'forum_polloption' );
 		$first_row = $sql->first_row( 'array' );
 
 		// 真正進行投票儲存
@@ -102,18 +102,18 @@ class Model_girls_vote_2012 extends CI_Model {
 		$this->db->set( 'votes', 'votes+1', false );
 		$this->db->where( 'tid', $setting['active_tid'] );
 		$this->db->where( 'polloption', $setting['name'] );
-		$this->db->update( 'd3bbs_forum_polloption' );
+		$this->db->update( 'forum_polloption' );
 		// ---
 		$this->db->set( 'voters', 'voters+1', false );
 		$this->db->where( 'tid', $setting['active_tid'] );
-		$this->db->update( 'd3bbs_forum_poll' );
+		$this->db->update( 'forum_poll' );
 		// ---
 		$this->db->set( 'tid', $setting['active_tid'] );
 		$this->db->set( 'uid', $this->user->get_id() );
 		$this->db->set( 'username', $this->user->get_username() );
 		$this->db->set( 'options', $first_row['polloptionid'] );
 		$this->db->set( 'dateline', time() );
-		$this->db->insert( 'd3bbs_forum_pollvoter' );
+		$this->db->insert( 'forum_pollvoter' );
 		// ---
 
 		$this->callback->success_msg( '您已投票成功!' )->response();
@@ -136,7 +136,7 @@ class Model_girls_vote_2012 extends CI_Model {
 
 		$this->db->where( 'tid', $setting['tid'] );
 		$this->db->order_by( 'polloptionid', 'asc' );
-		$sql = $this->db->get( 'd3bbs_forum_polloption' );
+		$sql = $this->db->get( 'forum_polloption' );
 
 		$result = $sql->result_array();
 

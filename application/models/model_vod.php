@@ -21,8 +21,8 @@ class Model_vod extends CI_Model {
 		$this->db->where( 'fid', 56 );
 		$this->db->limit( $setting['limit'], $setting['offset'] );
 		$this->db->order_by( 'dateline', 'desc' );
-		// $sql = "SELECT * FROM `d3bbs_forum_post` AS post WHERE `first` = 1 AND `fid` = 56 ORDER BY `dateline` DESC LIMIT 10;";
-		$sql = $this->db->get( 'd3bbs_forum_post' );
+		// $sql = "SELECT * FROM `forum_post` AS post WHERE `first` = 1 AND `fid` = 56 ORDER BY `dateline` DESC LIMIT 10;";
+		$sql = $this->db->get( 'forum_post' );
 		$result = $sql->result_array();
 
 		// 檢測首篇影片為哪種平台的影片, 抓取略縮圖, 以及其唯一識別碼.

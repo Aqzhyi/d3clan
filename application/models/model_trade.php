@@ -30,7 +30,7 @@ class Model_trade extends CI_Model {
 		$tableid  = rand( 1, 9 );
 
 		// 建立主題
-		$this->db->insert( 'd3bbs_forum_thread', array(
+		$this->db->insert( 'forum_thread', array(
 				'fid'        => $fid,
 				'author'     => $username,
 				'authorid'   => $uid,
@@ -46,7 +46,7 @@ class Model_trade extends CI_Model {
 		$tid = $this->db->insert_id();
 
 		// 獲取 pid
-		$sql = $this->db->query( "SELECT MAX(pid) AS 'pid' FROM `d3bbs_forum_post_tableid` LIMIT 1;" );
+		$sql = $this->db->query( "SELECT MAX(pid) AS 'pid' FROM `forum_post_tableid` LIMIT 1;" );
 		$row = $sql->first_row( 'array' );
 		$pid = (int) $row['pid'] +1;
 
@@ -63,7 +63,7 @@ class Model_trade extends CI_Model {
 		}
 
 		// 建立帖子
-		$this->db->insert( 'd3bbs_forum_post', array(
+		$this->db->insert( 'forum_post', array(
 				'pid'        => $pid,
 				'fid'        => $fid,
 				'tid'        => $tid,
@@ -79,12 +79,12 @@ class Model_trade extends CI_Model {
 			) );
 
 		// 為帖子建立post分表協調表(必備)
-		$this->db->insert( 'd3bbs_forum_post_tableid', array(
+		$this->db->insert( 'forum_post_tableid', array(
 				'pid' => $pid,
 			) );
 
 		// 建立附件
-		$this->db->insert( 'd3bbs_forum_attachment', array(
+		$this->db->insert( 'forum_attachment', array(
 				'tid'     => $tid,
 				'pid'     => $pid,
 				'uid'     => $uid,
@@ -95,7 +95,7 @@ class Model_trade extends CI_Model {
 		$aid = $this->db->insert_id();
 
 		// 建立附件關聯
-		$this->db->insert( "d3bbs_forum_attachment_$tableid", array(
+		$this->db->insert( "forum_attachment_$tableid", array(
 				'aid'        => $aid,
 				'tid'        => $tid,
 				'pid'        => $pid,
@@ -114,14 +114,14 @@ class Model_trade extends CI_Model {
 
 	/**
 	 * 創建商品時需按以下順序插入資料表 [建立 出售商品]
-	 *  * d3bbs_forum_thread
-	 *  * d3bbs_forum_post
-	 *  * d3bbs_forum_post_tableid
-	 *  * d3bbs_forum_post  // post需至少兩次, cuz商品等於post.
-	 *  * d3bbs_forum_post_tableid
-	 *  * d3bbs_forum_attachment
-	 *  * d3bbs_forum_attachment_{rand(1, 9)}
-	 *  * d3bbs_forum_trade
+	 *  * forum_thread
+	 *  * forum_post
+	 *  * forum_post_tableid
+	 *  * forum_post  // post需至少兩次, cuz商品等於post.
+	 *  * forum_post_tableid
+	 *  * forum_attachment
+	 *  * forum_attachment_{rand(1, 9)}
+	 *  * forum_trade
 	 *
 	 * @param  array  $file_info [description]
 	 * @param  array  $item      [description]
@@ -142,7 +142,7 @@ class Model_trade extends CI_Model {
 		$tableid  = rand( 1, 9 );
 		// 順序
 
-		$this->db->insert( 'd3bbs_forum_thread', array(
+		$this->db->insert( 'forum_thread', array(
 				'fid'        => $fid,
 				'author'     => $username,
 				'authorid'   => $uid,
@@ -155,12 +155,12 @@ class Model_trade extends CI_Model {
 
 		$tid = $this->db->insert_id();
 
-		$sql = $this->db->query( "SELECT MAX(pid) AS 'pid' FROM `d3bbs_forum_post_tableid` LIMIT 1;" );
+		$sql = $this->db->query( "SELECT MAX(pid) AS 'pid' FROM `forum_post_tableid` LIMIT 1;" );
 		$row = $sql->first_row( 'array' );
 
 		$pid = (int) $row['pid'] +1;
 
-		$this->db->insert( 'd3bbs_forum_post', array(
+		$this->db->insert( 'forum_post', array(
 				'pid'      => $pid,
 				'fid'      => $fid,
 				'tid'      => $tid,
@@ -173,7 +173,7 @@ class Model_trade extends CI_Model {
 				'position' => 1,
 			) );
 
-		$this->db->insert( 'd3bbs_forum_post_tableid', array(
+		$this->db->insert( 'forum_post_tableid', array(
 				'pid' => $pid,
 			) );
 
@@ -184,7 +184,7 @@ class Model_trade extends CI_Model {
 			$message .= "$line_txt\n";
 		}
 
-		$this->db->insert( 'd3bbs_forum_post', array(
+		$this->db->insert( 'forum_post', array(
 				'pid'      => $pid,
 				'fid'      => $fid,
 				'tid'      => $tid,
@@ -198,11 +198,11 @@ class Model_trade extends CI_Model {
 				'position' => 2,
 			) );
 
-		$this->db->insert( 'd3bbs_forum_post_tableid', array(
+		$this->db->insert( 'forum_post_tableid', array(
 				'pid' => $pid,
 			) );
 
-		$this->db->insert( 'd3bbs_forum_attachment', array(
+		$this->db->insert( 'forum_attachment', array(
 				'tid'     => $tid,
 				'pid'     => $pid,
 				'uid'     => $uid,
@@ -211,7 +211,7 @@ class Model_trade extends CI_Model {
 
 		$aid = $this->db->insert_id();
 
-		$this->db->insert( "d3bbs_forum_attachment_$tableid", array(
+		$this->db->insert( "forum_attachment_$tableid", array(
 				'aid'        => $aid,
 				'tid'        => $tid,
 				'pid'        => $pid,
@@ -225,7 +225,7 @@ class Model_trade extends CI_Model {
 				'thumb'      => 1,
 			) );
 
-		$this->db->insert( 'd3bbs_forum_trade', array(
+		$this->db->insert( 'forum_trade', array(
 				'pid'        => $pid,
 				'tid'        => $tid,
 				'seller'     => $username,
