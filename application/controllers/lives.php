@@ -50,7 +50,7 @@ class Lives extends CI_Controller {
 	 */
 	public function channel( $id = 0 ) {
 
-		$this->load->library( 'media' );
+		$this->load->library( 'core/media' );
 
 		$this->view->title( $this->view->data['channel_host']['live_name'] );
 
