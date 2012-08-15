@@ -49,7 +49,9 @@ class View {
 	public $is_ajax_request = false;
 
 	function __construct() {
+
 		$this->CI =& get_instance();
+		$this->CI->config->load( 'site' ); // 載入網站基本配置
 		$this->CI->load->library( 'template' );
 		$this->_js_files  = $this->CI->config->item( 'js_common_files' );
 		$this->_css_files = $this->CI->config->item( 'css_common_files' );
