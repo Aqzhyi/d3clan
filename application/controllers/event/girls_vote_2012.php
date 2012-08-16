@@ -13,7 +13,7 @@ class Girls_vote_2012 extends CI_Controller {
 
 		$this->load->model( 'event/Model_girls_vote_2012' );
 		// 關聯投票主題,順序為 氣質系->萌系->性感系->活潑系.
-		$this->_list_tid = array( 528, 593, 651 );
+		$this->_list_tid = array( 528, 593, 651, 710 );
 		$this->view->data['polls_name'] = array( '氣質','萌度','性感','活潑' );
 
 		// 處理女孩們票選種類日期的active屬性、acitve主題與acitve投票系別
