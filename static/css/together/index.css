@@ -1,6 +1,11 @@
 /**
  * ?®å?é¡žåˆ¥
  */
+.g_line_01 {
+  background-image: url("/static/img/common/layout/line_01.png");
+  background-position: 0 50%;
+  height: 19px;
+}
 .g_line_02 {
   background-image: url("/static/img/common/layout/line_02.png");
   background-position: 0 50%;

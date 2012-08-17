@@ -45,13 +45,10 @@
 					}
 				}
 			}
-			>.footer{
-				.g_line_02();
-			}
 		}
 
 		>.news_class{
-			width: 430px;
+			width: 428px;
 			float: right;
 
 			>.header{
@@ -103,6 +100,12 @@
 		>.search{
 			.g_search_form();
 			text-align: center;
+
+			// 覆蓋 .g_search_form();
+			input.search_keyword{
+				background-image : url("/static/img/hardware/search2.png");
+				width            : 382px;
+			}
 		}
 	}
 
@@ -112,13 +115,17 @@
 			.g_clear;
 			margin-bottom: 50px;
 
+			>.line{
+				.g_line_01();
+				margin-bottom: -10px;
+			}
+
 			>.header{
 				.g_hr();
 				font-size    : 30px;
 				color        : red;
 
 				.hardware_AD{
-					background-image: url("@{img}hardware_AD.png");
 					float  : right;
 					height : 52px;
 					width  : 455px;
