@@ -20,6 +20,7 @@
 			,{orig: /-?-?S\.163\.COM(編制|制作|編譯)/mg, to: ''}
 			,{orig: /--詳細報導/mg, to: ''}
 			,{orig: /這篇博客/mg, to: '這篇文章'}
+			,{orig: /%/mg, to: '％'}
 			,{orig: /網吧/mg, to: '網咖'}
 			,{orig: /社區/mg, to: '社群'}
 			,{orig: /錄像/mg, to: '錄影'}
