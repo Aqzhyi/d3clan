@@ -38,7 +38,8 @@ class Model_girls_vote_2012 extends CI_Model {
 		if ( $setting['sort'] === 'desc' ) {
 			// 排序, 票數最高的排前面.
 			foreach ( $girls as $girl_name => $girl_info ) {
-				$votes[] = $girl_info['polls'][$setting['active_poll']];
+				$votes[] = $girl_info['total_votes'];
+				// $votes[] = $girl_info['polls'][$setting['active_poll']];
 				// $votes[] = $girl_info['votes'];
 			}
 

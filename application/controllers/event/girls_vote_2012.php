@@ -48,7 +48,7 @@ class Girls_vote_2012 extends CI_Controller {
 			$this->_active_tid = -1;
 		}
 
-		$this->view->cache( 0 );
+		$this->view->cache( 10 );
 	}
 
 	public function _remap( $sub_page = 'index', $page_params = array() ) {
