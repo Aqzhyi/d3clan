@@ -56,10 +56,10 @@ class Hardware extends CI_Controller {
 		$this->load->model( 'core/Model_ad' );
 
 		$this->view->data['flows'] = array(
-				'hardware_mouse'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse', 'limit' => 6 ) ),
-				'hardware_keyboard'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard', 'limit' => 6 ) ),
-				'hardware_headphone' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone', 'limit' => 6 ) ),
-				'hardware_else'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else', 'limit' => 6 ) ),
+				'hardware_mouse'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse', 'limit' => 6, 'enable_d3clan' => true, ) ),
+				'hardware_keyboard'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard', 'limit' => 6, 'enable_d3clan' => true, ) ),
+				'hardware_headphone' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone', 'limit' => 6, 'enable_d3clan' => true, ) ),
+				'hardware_else'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else', 'limit' => 6, 'enable_d3clan' => true, ) ),
 			);
 
 		$this->view->data['flows_title'] = array(
@@ -70,10 +70,10 @@ class Hardware extends CI_Controller {
 			);
 
 		$this->view->data['ads'] = array(
-				'hardware_mouse_ads'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse_ads', 'limit' => 2 ) ),
-				'hardware_keyboard_ads'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard_ads', 'limit' => 2 ) ),
-				'hardware_headphone_ads' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone_ads', 'limit' => 2 ) ),
-				'hardware_else_ads'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else_ads', 'limit' => 2 ) ),
+				'hardware_mouse_ads'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse_ads', 'limit' => 2, 'enable_d3clan' => true, ) ),
+				'hardware_keyboard_ads'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard_ads', 'limit' => 2, 'enable_d3clan' => true, ) ),
+				'hardware_headphone_ads' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone_ads', 'limit' => 2, 'enable_d3clan' => true, ) ),
+				'hardware_else_ads'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else_ads', 'limit' => 2, 'enable_d3clan' => true, ) ),
 			);
 	}
 }

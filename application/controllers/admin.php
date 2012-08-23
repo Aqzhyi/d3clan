@@ -43,8 +43,9 @@ class Admin extends CI_Controller {
 		$this->load->model( 'core/Model_ad' );
 		
 		$this->view->data['ads'] = $this->Model_ad->get_ad( array(
-				'case' => '270x60',
-				'limit' => 1000,
+				'enable_d3clan' => true,
+				'case'          => '270x60',
+				'limit'         => 1000,
 			) );
 
 		$this->view->js_add( 'admin/ad_banners' );
@@ -59,17 +60,17 @@ class Admin extends CI_Controller {
 		$this->load->model( 'core/Model_ad' );
 		
 		$this->view->data['flows'] = array(
-				'hardware_mouse'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse' ) ),
-				'hardware_keyboard'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard' ) ),
-				'hardware_headphone' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone' ) ),
-				'hardware_else'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else' ) ),
+				'hardware_mouse'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse', 'enable_d3clan' => true, ) ),
+				'hardware_keyboard'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard', 'enable_d3clan' => true, ) ),
+				'hardware_headphone' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone', 'enable_d3clan' => true, ) ),
+				'hardware_else'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else', 'enable_d3clan' => true, ) ),
 			);
 
 		$this->view->data['ads'] = array(
-				'hardware_mouse_ads'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse_ads' ) ),
-				'hardware_keyboard_ads'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard_ads' ) ),
-				'hardware_headphone_ads' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone_ads' ) ),
-				'hardware_else_ads'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else_ads' ) ),
+				'hardware_mouse_ads'     => $this->Model_ad->get_ad( array( 'case' => 'hardware_mouse_ads', 'enable_d3clan' => true, ) ),
+				'hardware_keyboard_ads'  => $this->Model_ad->get_ad( array( 'case' => 'hardware_keyboard_ads', 'enable_d3clan' => true, ) ),
+				'hardware_headphone_ads' => $this->Model_ad->get_ad( array( 'case' => 'hardware_headphone_ads', 'enable_d3clan' => true, ) ),
+				'hardware_else_ads'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else_ads', 'enable_d3clan' => true, ) ),
 			);
 
 		$this->view->js_add( 'admin/hardware' );

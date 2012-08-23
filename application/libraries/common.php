@@ -16,9 +16,10 @@ class Common {
 	public function get_270x60_banners() {
 
 		return $this->CI->model_ad->get_ad( array(
-				'case' => '270x60',
-				'limit' => 10000,
-				'order' => 0,
+				'enable_d3clan' => true,
+				'case'          => '270x60',
+				'limit'         => 10000,
+				'order'         => 0,
 			) );
 	}
 }
