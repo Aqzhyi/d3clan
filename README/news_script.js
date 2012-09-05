@@ -381,7 +381,11 @@
 			var typeids = {
 				'1'  : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=49&typeid=1&htmlon=1', // 新聞>最新>[新聞]
 				'2'  : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=49&typeid=2&htmlon=1', // 新聞>最新>[官方]
-				'4'  : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=4&htmlon=1', // 新聞>TESL>[新聞]
+				'65' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=49&typeid=65&htmlon=1', // 新聞>最新>[GSL]
+				'68' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=49&typeid=68&htmlon=1', // 新聞>最新>[WCS]
+				'66' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=66&htmlon=1', // 新聞>TESL>[MLG]
+				'69' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=69&htmlon=1', // 新聞>TESL>[WCG]
+				'67' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=67&htmlon=1', // 新聞>TESL>[NASL]
 				'5'  : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=5&htmlon=1', // 新聞>TESL>[橘子]
 				'6'  : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=6&htmlon=1', // 新聞>TESL>[華義]
 				'7'  : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=7&htmlon=1', // 新聞>TESL>[鋼鐵]
@@ -407,17 +411,21 @@
 				if ( url == '' ) {
 					var custom_url = prompt("\
 						系統未成功偵測文章分類，請手動輸入「數字」以選擇 版面->分類：\n\
-						'1'  => 新聞>最新>[新聞]\n\
-						'2'  => 新聞>最新>[官方]\n\
-						'4'  => 新聞>TESL>[新聞]\n\
-						'5'  => 新聞>TESL>[橘子]\n\
-						'6'  => 新聞>TESL>[華義]\n\
-						'7'  => 新聞>TESL>[鋼鐵]\n\
-						'8'  => 新聞>TESL>[太陽]\n\
-						'10' => 新聞>GSL>[新聞]\n\
-						'11' => 新聞>人物>[台灣採訪]\n\
-						'12' => 新聞>人物>[其它採訪]\n\
-						'13' => 新聞>VOD>[VOD]\n\
+						'1'  : 新聞>最新>[新聞]\n\
+						'2'  : 新聞>最新>[官方]\n\
+						'65' : 新聞>最新>[GSL]\n\
+						'68' : 新聞>最新>[WCS]\n\
+						'66' : 新聞>TESL>[MLG]\n\
+						'69' : 新聞>TESL>[WCG]\n\
+						'67' : 新聞>TESL>[NASL]\n\
+						'5'  : 新聞>TESL>[橘子]\n\
+						'6'  : 新聞>TESL>[華義]\n\
+						'7'  : 新聞>TESL>[鋼鐵]\n\
+						'8'  : 新聞>TESL>[太陽]\n\
+						'10' : 新聞>GSL>[新聞]\n\
+						'11' : 新聞>人物>[台灣採訪]\n\
+						'12' : 新聞>人物>[其它採訪]\n\
+						'13' : 新聞>VOD>[VOD]\n\
 					");
 					url = typeids[custom_url];
 				}
