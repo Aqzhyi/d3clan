@@ -4,7 +4,7 @@ class Lives extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model( 'Model_live_channel' );
+		$this->load->model( 'core/model_live_channels' );
 		$this->view->title_append( '直播頻道' );
 		$this->view->layout( 'lives/layout' );
 		$this->view->js_add( array(
@@ -30,14 +30,14 @@ class Lives extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	public function index() {
-		$this->view->data['live_channels']['taiwan'] = $this->Model_live_channel->get_d3_channels( array(
-				'order_by' => 'status asc, live_name desc, viewer_count desc',
-				'location' => '臺灣',
+		$this->view->data['live_channels']['taiwan'] = $this->model_live_channels->get( array(
+				'order_by'  => 'status asc, detect_by desc, viewer_amount desc',
+				'location'  => '臺灣',
 				'game_type' => 'DiabloIII',
 			) );
-		$this->view->data['live_channels']['else'] = $this->Model_live_channel->get_d3_channels( array(
-				'order_by' => 'status asc, live_name desc, viewer_count desc',
-				'location' => '其他',
+		$this->view->data['live_channels']['else'] = $this->model_live_channels->get( array(
+				'order_by'  => 'status asc, detect_by desc, viewer_amount desc',
+				'location'  => '其他',
 				'game_type' => 'DiabloIII',
 			) );
 	}
@@ -52,13 +52,13 @@ class Lives extends CI_Controller {
 
 		$this->load->library( 'core/media' );
 
-		$this->view->title( $this->view->data['channel_host']['live_name'] );
+		$this->view->title( $this->view->data['channel_host']['detect_by'] );
 
 		if ( empty( $id ) ) {
 			show_404();
 		}
 
-		$this->view->data['channel_host'] = $this->Model_live_channel->get_d3_channels( array(
+		$this->view->data['channel_host'] = $this->model_live_channels->get_d3_channels( array(
 				'first_row' => TRUE,
 				'id'        => $id,
 			) );

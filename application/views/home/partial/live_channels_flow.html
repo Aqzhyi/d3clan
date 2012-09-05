@@ -3,7 +3,7 @@
 	<div class="body">
 		{foreach $live_channels as $index => $channel}
 			{if $channel['status'] == '上線'}{$is_online = 'online'}{else}{$is_online = ''}{/if}
-			<a class="live_row {$is_online}" href="/lives/channel/{$channel['sn']}">{$channel['live_name']} <span class="online_viewer">({$channel['viewer_count']})</span></a>
+			<a class="live_row {$is_online}" href="/lives/channel/{$channel['id']}">{$channel['display_name']} <span class="online_viewer">({$channel['viewer_amount']})</span></a>
 		{/foreach}
 	</div>
 </div>

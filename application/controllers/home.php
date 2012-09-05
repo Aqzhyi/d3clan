@@ -32,7 +32,7 @@ class Home extends CI_Controller {
 	public function index() {
 		$this->load->model( 'Model_vod' );
 		$this->load->model( 'core/Model_news' );
-		$this->load->model( 'Model_live_channel' );
+		$this->load->model( 'core/model_live_channels' );
 		$this->load->library( 'core/storage' );
 
 		// 隨選視訊條目
@@ -83,8 +83,9 @@ class Home extends CI_Controller {
 		);
 
 		// 直播列表
-		$this->view->data['live_channels'] = $this->Model_live_channel->get_d3_channels( array(
+		$this->view->data['live_channels'] = $this->model_live_channels->get( array(
 				'limit'     => 12,
+				'order_by'  => 'viewer_amount desc',
 				'game_type' => 'DiabloIII',
 			) );
 

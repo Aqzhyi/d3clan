@@ -5,7 +5,7 @@
 	{else}
 		<span>{$channel['status']}</span>
 	{/if}
-	<a href="/lives/channel/{$channel['sn']}" class="name" target="_blank">{$channel['live_name']}</a>
-	<span class="viewcount">({$channel['viewer_count']})</span>
+	<a href="/lives/channel/{$channel['id']}" class="name" target="_blank">{$channel['display_name']}</a>
+	<span class="viewcount">({$channel['viewer_amount']})</span>
 </div>
 {/foreach}

@@ -79,8 +79,8 @@ class Admin extends CI_Controller {
 
 	// 直播頻道管理
 	public function live_channels() {
-		$this->load->model( 'Model_live_channel' );
-		$this->view->data['live_channels'] = $this->Model_live_channel->get_d3_channels( array(
+		$this->load->model( 'core/model_live_channels' );
+		$this->view->data['live_channels'] = $this->model_live_channels->get_d3_channels( array(
 				'limit' => 200,
 				'game_type' => 'DiabloIII',
 			) );
@@ -178,18 +178,20 @@ class Admin extends CI_Controller {
 			show_404();
 		}
 
+		print_r( "尚未實作" ); exit;
+
 		switch ( $_SERVER['REQUEST_METHOD'] ) {
 		case 'DELETE':
-			$this->load->model( 'Model_live_channel' );
+			$this->load->model( 'core/model_live_channels' );
 
-			$this->Model_live_channel->delete( $this->ajax->uris );
+			$this->model_live_channels->delete( $this->ajax->uris );
 			break;
 
 		case 'POST':
 
-			$this->load->model( 'Model_live_channel' );
+			$this->load->model( 'core/model_live_channels' );
 
-			$this->Model_live_channel->post_channel( $this->input->post() );
+			$this->model_live_channels->post_channel( $this->input->post() );
 			break;
 		}
 	}
