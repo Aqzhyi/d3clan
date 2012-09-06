@@ -279,7 +279,7 @@
 
 				$root.find('img[alt=Video]').remove();
 				$root.find('img[alt=访谈]').remove();
-				$root.find('td[width="50%"][align=right]').remove();
+				$root.find('td[width="50%"][align=right]').empty();
 				$root.find('.info').remove();
 				$root.find('.summary').remove();
 				$root.find('.endPageNum').remove();
