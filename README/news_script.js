@@ -408,7 +408,7 @@
 				console.log('已檢查完成');
 
 				// 未知的url, 請求人工判別..
-				if ( url == '' ) {
+				if ( url == '' || typeof url == 'undefined' ) {
 					var custom_url = prompt("\
 						系統未成功偵測文章分類，請手動輸入「數字」以選擇 版面->分類：\n\
 						'1'  : 新聞>最新>[新聞]\n\
