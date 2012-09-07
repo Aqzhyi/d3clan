@@ -17,7 +17,6 @@
 		,{orig: /-?-?S\.163\.COM(編制|制作|編譯)/mg, to: ''}
 		,{orig: /--詳細報導/mg, to: ''}
 		,{orig: /這篇博客/mg, to: '這篇文章'}
-		,{orig: /%/mg, to: '％'}
 		,{orig: /網吧/mg, to: '網咖'}
 		,{orig: /社區/mg, to: '社群'}
 		,{orig: /錄像/mg, to: '錄影'}
@@ -362,6 +361,7 @@
 
 			title   = title.replace(/\[(?:影片|視頻)\]/, '');
 			title   = title.replace(/['"]/g, '＂');
+			title   = title.replace(/%/g, '％');
 
 			if ( $root.find('#sc2clan_mark').length == 0 ) {
 				content = content + "<p><br /></p><p id='sc2clan_mark'>本文轉自<a id='fetched' target='_blank' href='"+document.location.href+"'>網易遊戲星際爭霸2</a>，並由「星盟《星海爭霸II》電競情報站」進行正體中文化及在地化名詞轉換。</p>";
@@ -587,6 +587,7 @@
 
 			title   = title.replace(/\[(?:影片|視頻)\]/, '');
 			title   = title.replace(/['"]/g, '＂');
+			title   = title.replace(/%/g, '％');
 
 			if ( $root.find('#d3clan_mark').length == 0 ) {
 				content = content + "<p id='d3clan_mark'>本文轉自<a id='fetched' target='_blank' href='"+document.location.href+"'>網易遊戲凱恩之角</a>，並由「暗盟《暗黑破壞神III》電競情報站」進行正體中文化及在地化詞語轉換。</p>";
