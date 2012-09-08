@@ -181,7 +181,36 @@
 
 	//# TeSL新聞
 	code.TESL = function() {
-		alert('尚未支援');
+		var domain = 'http://www.esports.com.tw/';
+		var $root = jQuery('.textEditor');
+
+		// 替圖片加上絕對路徑
+		$root.find('img').each(function(index, element) {
+			var $self = jQuery(element);
+
+			if ( $self.attr('src').match(/^\//) ) {
+				$self.attr('src', domain + $self.attr('src'));
+			}
+		});
+
+		if ( jQuery('#copyarea').length > 0 ) {
+			jQuery('#copyarea').val( $root.html() );
+		}
+		else {
+			var $new_content = jQuery('<textarea>', {
+				id: 'copyarea',
+				html: $root.html(),
+				css: {
+					background: 'black',
+					padding: '5px',
+					color: 'yellow',
+					width: '98%',
+					height: '300px'
+				}
+			});
+
+			$root.before( $new_content );
+		}
 	};
 
 	//# bz官網新聞
