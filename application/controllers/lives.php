@@ -58,19 +58,19 @@ class Lives extends CI_Controller {
 			show_404();
 		}
 
-		$this->view->data['channel_host'] = $this->model_live_channels->get_d3_channels( array(
+		$this->view->data['channel_host'] = $this->model_live_channels->get( array(
 				'first_row' => TRUE,
 				'id'        => $id,
 			) );
 		$this->view->data['channel_host']['player_embed_code'] = $this->media->embed_vod( array(
-				'type'    => $this->view->data['channel_host']['type'],
-				'channel' => $this->view->data['channel_host']['live_account'],
+				'type'    => $this->view->data['channel_host']['media_by'],
+				'channel' => $this->view->data['channel_host']['detect_by'],
 				'width'   => '100%',
 				'height'  => 422,
 			) );
 		$this->view->data['channel_host']['chatroom_embed_code'] = $this->media->embed_chatroom( array(
-				'type'    => $this->view->data['channel_host']['type'],
-				'channel' => $this->view->data['channel_host']['live_account'],
+				'type'    => $this->view->data['channel_host']['media_by'],
+				'channel' => $this->view->data['channel_host']['detect_by'],
 				'width'   => '100%',
 				'height'  => 414,
 			) );
