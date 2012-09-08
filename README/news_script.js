@@ -193,13 +193,14 @@
 			}
 		});
 
+		// 插入copy area
 		if ( jQuery('#copyarea').length > 0 ) {
 			jQuery('#copyarea').val( $root.html() );
 		}
 		else {
 			var $new_content = jQuery('<textarea>', {
 				id: 'copyarea',
-				html: $root.html(),
+				val: $root.html(),
 				css: {
 					background: 'black',
 					padding: '5px',
@@ -215,15 +216,33 @@
 
 	//# bz官網新聞
 	code.twBattleNetSC = function() {
-		libMedia.youtube(jQuery('.detail'), 'html');
+		libMedia.youtube( jQuery('.detail'), 'html');
 
-		var text_content = '';
-		text_content = text_content + jQuery('.header-image').html();
-		text_content = text_content + jQuery('.detail').html();
+		jQuery('.community-share').remove();
+		jQuery('.keyword-list').remove();
+		jQuery('.byline').remove();
 
-		var output = '來源: [url=' + document.location.href + ']Blizzard[/url]' + '\r\n\r\n' + '[html]\r\n' + text_content + '\r\n\r\n[/html]\r\n';
+		var output = '來源: <a target="_blank" href="'+document.location.href+'">Blizzard台灣官方網站</a><br /><br />' + jQuery('#blog').html();
 
-		console.log(output);
+		// 插入copy area
+		if ( jQuery('#copyarea').length > 0 ) {
+			jQuery('#copyarea').val( output );
+		}
+		else {
+			var $new_content = jQuery('<textarea>', {
+				id: 'copyarea',
+				val: output,
+				css: {
+					background: 'black',
+					padding: '5px',
+					color: '#009CFF',
+					width: '98%',
+					height: '300px'
+				}
+			});
+
+			jQuery('#blog').before( $new_content );
+		}
 	};
 
 	//# 網易星際
