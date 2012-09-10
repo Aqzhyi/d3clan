@@ -222,7 +222,17 @@
 		jQuery('.keyword-list').remove();
 		jQuery('.byline').remove();
 
-		var output = '來源: <a target="_blank" href="'+document.location.href+'">Blizzard台灣官方網站</a><br /><br />' + jQuery('#blog').html();
+		var outerHTML = jQuery('<div>').css({
+				'background-color': '#000D20',
+				'color': '#6EA6CA',
+				'padding': '5px'
+			}).html(
+				jQuery('#blog').get(0).outerHTML
+			).find('a').css({
+				'color': '#00D683'
+			}).end().get(0).outerHTML;
+
+		var output = '來源: <a target="_blank" href="'+document.location.href+'">Blizzard台灣官方網站</a><br /><br />' + outerHTML;
 
 		// 插入copy area
 		if ( jQuery('#copyarea').length > 0 ) {
