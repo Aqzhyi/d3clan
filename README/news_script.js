@@ -437,21 +437,21 @@
 			var url = '';
 			var keywords = Q('meta[name=Keywords]').attr('content');
 			var typeids = {
-				'1'  : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=49&typeid=1&htmlon=1', // 新聞>最新>[新聞]
-				'2'  : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=49&typeid=2&htmlon=1', // 新聞>最新>[官方]
-				'65' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=49&typeid=65&htmlon=1', // 新聞>最新>[GSL]
-				'68' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=49&typeid=68&htmlon=1', // 新聞>最新>[WCS]
-				'66' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=66&htmlon=1', // 新聞>TESL>[MLG]
-				'69' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=69&htmlon=1', // 新聞>TESL>[WCG]
-				'67' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=67&htmlon=1', // 新聞>TESL>[NASL]
-				'5'  : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=5&htmlon=1', // 新聞>TESL>[橘子]
-				'6'  : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=6&htmlon=1', // 新聞>TESL>[華義]
-				'7'  : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=7&htmlon=1', // 新聞>TESL>[鋼鐵]
-				'8'  : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=8&htmlon=1', // 新聞>TESL>[太陽]
-				'10' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=57&typeid=10&htmlon=1', // 新聞>GSL>[新聞]
-				'11' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=58&typeid=11&htmlon=1', // 新聞>人物>[台灣採訪]
-				'12' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=58&typeid=12&htmlon=1', // 新聞>人物>[其它採訪]
-				'13' : 'http://new.sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=59&typeid=13&htmlon=1', // 新聞>VOD>[VOD]
+				'1'  : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=49&typeid=1&htmlon=1', // 新聞>最新>[新聞]
+				'2'  : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=49&typeid=2&htmlon=1', // 新聞>最新>[官方]
+				'65' : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=49&typeid=65&htmlon=1', // 新聞>最新>[GSL]
+				'68' : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=49&typeid=68&htmlon=1', // 新聞>最新>[WCS]
+				'66' : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=66&htmlon=1', // 新聞>TESL>[MLG]
+				'69' : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=69&htmlon=1', // 新聞>TESL>[WCG]
+				'67' : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=67&htmlon=1', // 新聞>TESL>[NASL]
+				'5'  : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=5&htmlon=1', // 新聞>TESL>[橘子]
+				'6'  : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=6&htmlon=1', // 新聞>TESL>[華義]
+				'7'  : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=7&htmlon=1', // 新聞>TESL>[鋼鐵]
+				'8'  : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=55&typeid=8&htmlon=1', // 新聞>TESL>[太陽]
+				'10' : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=57&typeid=10&htmlon=1', // 新聞>GSL>[新聞]
+				'11' : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=58&typeid=11&htmlon=1', // 新聞>人物>[台灣採訪]
+				'12' : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=58&typeid=12&htmlon=1', // 新聞>人物>[其它採訪]
+				'13' : 'http://sc2clan.tw/bbs/forum.php?mod=post&action=newthread&fid=59&typeid=13&htmlon=1', // 新聞>VOD>[VOD]
 			};
 
 			// 越優先者排越下面.
@@ -509,7 +509,7 @@
 
 			// 檢查是否重複貼文
 			Q.ajax({
-				url        : 'http://new.sc2clan.tw/api/is_repeat',
+				url        : 'http://sc2clan.tw/api/is_repeat',
 				dataType   : 'jsonp',
 				beforeSend : function() {
 					console.log('正在檢查論壇是否已存在重複文章...');
