@@ -388,21 +388,21 @@
 				$root.find('embed[src*=netease]').each(function() {
 					var $element = jQuery(this);
 					code = $element.attr('src');
-					$element.replaceWith('[/html]\r\n\r\n[tv163]' + code + '[/tv163]\r\n\r\n[html]');
+					$element.replaceWith('\r\n\r\n[tv163]' + code + '[/tv163]\r\n\r\n');
 				});
 
 				$root.find('embed[src*=youku]').each(function() {
 					var $element = jQuery(this);
 					var code = $element.attr('src').match(/youku\.com\/.*\/sid\/(.*)\//im);
 					code = code ? code[1] : '';
-					$element.replaceWith('[/html]\r\n\r\n[youku]' + code + '[/youku]\r\n\r\n[html]');
+					$element.replaceWith('\r\n\r\n[youku]' + code + '[/youku]\r\n\r\n');
 				});
 
 				$root.find('embed[src*=pptv]').each(function() {
 					var $element = jQuery(this);
 					var code = $element.attr('src').match(/pptv\.com\/v\/(.*)\.swf/);
 					code = code ? code[1] : '';
-					$element.replaceWith('[/html]\r\n\r\n[pptv]' + code + '[/pptv]\r\n\r\n[html]');
+					$element.replaceWith('\r\n\r\n[pptv]' + code + '[/pptv]\r\n\r\n');
 				});
 
 			// ------------------------------------------
@@ -788,7 +788,7 @@
 				var $element = jQuery(this);
 				var hash = $element.attr('src').match(/\/embed\/(.*)\?\w?/im);
 				hash = hash ? hash[1] : '';
-				$element.replaceWith('[/html]\r\n\r\n[youtube]' + hash + '[/youtube]\r\n\r\n[html]');
+				$element.replaceWith('\r\n\r\n[youtube]' + hash + '[/youtube]\r\n\r\n');
 			});
 
 			return true;
