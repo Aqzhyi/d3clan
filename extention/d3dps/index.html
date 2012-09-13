@@ -1,0 +1,683 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+	<title>DPS計算機</title>
+
+	<style type="text/css">
+		html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		em, img, strong, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; }
+		ol, ul { list-style: none; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		:focus { outline: 0; }
+		button::-moz-focus-inner { padding: 0; border: 0; }
+
+		html, body { height: 100%; font: normal 12px/1.3 "Lucida Sans Unicode", Arial, Helvetica, sans-serif; }
+		a { outline: none; text-decoration: none; }
+		p { margin: 0.5em 0 }
+		textarea { overflow: auto; }
+		.clear { clear: both; display: block; margin: 0; padding: 0; }
+		/*menu*/
+		.box {width:auto; height:auto;font-size:12px; font-family:Verdana, Arial, Helvetica, sans-serif}
+		.tagMenu {height:28px; line-height:28px; background:#efefef; position:relative; border-bottom:1px solid #999}
+		.tagMenu h2 {font-size:12px; padding-left:10px;}
+		.tagMenu ul {position:absolute; left:100px; bottom:-1px; height:26px;}
+		ul.menu li {float:left; margin-bottom:1px; line-height:16px; height:14px; margin:5px 0 0 -1px; border-left:1px solid #999; text-align:center; padding:0 12px; cursor:pointer}
+		ul.menu li.current {border:1px solid #999; border-bottom:none; background:#fff; height:25px; line-height:26px; margin:0}
+		.content { padding:0px}
+
+
+		.hero-tabs { height:115px; overflow:hidden }
+		.hero-tabs li { width:97px; height:124px; float:left; display:block }
+		.hero-tabs .hero-tab { display:block; width:83px; height:117px; padding:7px 7px 0; background:url(http://tw.battle.net/d3/static/images/profile/hero/hero-nav-frames.png) 0 -124px no-repeat }
+		.hero-tabs .hero-tab.loading:after { content:" "; display:block; width:83px; height:66px; background:rgba(0, 0, 0, .2) url(http://tw.battle.net/d3/static/images/loaders/default.gif) 50% 50% no-repeat; position:relative; top:-67px; left:0 }
+		.hero-tabs .hero-tab.empty-hero { background-position: 2px -378px }
+		.ie6 .hero-tab { background-image:url(http://tw.battle.net/d3/static/images/profile/hero/hero-nav-frames.gif) }
+		.hero-tabs a:hover { background-position: 0 -248px }
+		.hero-tabs a:hover .hero-portrait { opacity:0.8 }
+		.hero-tabs a.active,
+		.hero-tabs a.active:hover { background-position:0 0 }
+		.hero-tabs a.active .hero-portrait,
+		.hero-tabs a.hardcore-active .hero-portrait { opacity:1 }
+		.hero-tabs a.hardcore { background-position:-103px -124px }
+		.hero-tabs a.hardcore:hover { background-position:-103px -248px }
+		.hero-tabs a.hardcore-active,
+		.hero-tabs a.hardcore-active:hover { background-position:-103px 0 }
+		.hero-tabs .hero-portrait { display:block; width:83px; height:1px; padding-top:65px; overflow:hidden; background:url(http://tw.battle.net/d3/static/images/profile/hero/hero-nav-portraits.jpg) no-repeat; opacity:0.4; }
+		.hero-tabs .barbarian-male .hero-portrait { background-position:0 0 }
+		.hero-tabs .barbarian-female .hero-portrait { background-position:-83px 0 }
+		.hero-tabs .demon-hunter-male .hero-portrait { background-position:0 -66px }
+		.hero-tabs .demon-hunter-female .hero-portrait { background-position:-83px -66px }
+		.hero-tabs .monk-male .hero-portrait { background-position:0 -132px }
+		.hero-tabs .monk-female .hero-portrait { background-position:-83px -132px }
+		.hero-tabs .witch-doctor-male .hero-portrait { background-position:0 -198px }
+		.hero-tabs .witch-doctor-female .hero-portrait { background-position:-83px -198px }
+		.hero-tabs .wizard-male .hero-portrait { background-position:0 -264px }
+		.hero-tabs .wizard-female .hero-portrait { background-position:-83px -264px }
+		.hero-tabs .level { display:block; padding-left:5px; width:16px; height:25px; line-height:25px; float:left; color:#a99877; font-size:12px; }
+		.hero-tabs .name { display:block; float:left; width:60px; height:25px; line-height:25px; font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+		.hero-tabs .active .name,
+		.hero-tabs .hardcore-active .name { color:#F3E6D0; font-weight:bold }
+		.zh-tw .hero-tabs .active .name,
+		.zh-tw .hero-tabs .hardcore-active .name { font-weight:normal }
+		.hero-tabs .hardcore .level,
+		.hero-tabs .hardcore-active .level { color:#e60101 }
+		.hero-tabs a:hover .level,
+		.hero-tabs a.hardcore:hover .level { color: #FFF}
+
+		/* difficulty-table */
+		.difficulty-table { padding:10px }
+		.difficulty-table .tip { border:0 }
+		.difficulty-table .name-column { padding-left:10px }
+
+		.difficulty-table p { padding-left:5px; margin-top:10px }
+		.difficulty-table table { border: 1px solid #28241D; border-bottom:0; cursor:default }
+
+		.difficulty-table thead th { white-space:normal; border-bottom: 1px solid #28241D; font-weight:normal; padding:7px 5px; font-size:11px }
+		.zh-tw .difficulty-table thead th,
+		.ko-kr .difficulty-table thead th { font-size:13px }
+
+		.difficulty-table tbody tr:hover { background-color: #FBC84F }
+		.difficulty-table tbody tr.row2:hover { background-color: #FBC84F }
+		.difficulty-table tbody th { border-bottom: 1px solid #28241D; white-space:nowrap; padding:7px 10px; font-weight:normal;background-color: #4BACC6; }
+		.difficulty-table tbody tr.sum { background-color: #4BACC6;border: 1px solid #28241D; }
+		.difficulty-table tbody td { padding:7px 5px }
+
+		/* table */
+		.table tr thread th { white-space: nowrap; }
+		.table tbody td,
+		.table tfoot td { solid #28241d; }
+		.table tbody tr.row2 { background-color: #D0E3EA; }
+		.table tbody tr.no-results td { padding: 50px; text-align: center; font-style: italic; }
+		.table tfoot tr { background-color: #090807; }
+
+		.profile-overview { width:auto;padding: 23px 26px; margin: 35px 42px 50px;background-color: #12110F; }
+		.profile-overview .page-section { margin:  0; background:none }
+		.profile-overview .page-section .section-header { padding:0 }
+		.profile-overview .page-section .section-body { padding: 0 }
+		.profile-overview .page-section .category { border-bottom:2px solid #312a1e; padding-bottom:7px }
+		.category,
+		.category a { color: #F3E6D0; }
+
+		.profile-overview .attributes { float: left; width: 234px; margin-right:78px; font-size:12px }
+		.profile-overview .attributes .tip { border:0 ;}
+		.profile-overview .attributes .attributes-core { border-bottom:1px solid #272218; padding:7px 0 8px; cursor:default }
+		.profile-overview .attributes .attributes-core.secondary { padding:12px 0 12px }
+		.ie6 .profile-overview .attributes .attributes-core { zoom:1 }
+		.profile-overview .attributes .attributes-core span { display:block; float:left; height:26px; line-height:26px }
+		.profile-overview .attributes .attributes-core .label { width:180px; color:#a99877 }
+		.profile-overview .attributes .attributes-core .value { width:54px; color:#f3e6d0; text-align:right }
+		.profile-overview .attributes .resources { height:50px; padding-top:14px; font-size:11px }
+		.profile-overview .attributes .resources .resource { display:block; height:50px; float:right }
+		.profile-overview .attributes .resources .label-wrapper { display:table-cell; height:50px; vertical-align:middle }
+		.profile-overview .attributes .resources .label { width:62px; float:left; padding-left:5px; color:#a99877; font-size:11px; text-transform:uppercase; line-height:14px; }
+		.profile-overview .attributes .resources .value { width:50px; float:left; text-shadow:1px 1px 2px #000; text-align:center; color:#f3e6d0; line-height:14px }
+		.profile-overview .attributes .resources .resource-icon { display:table-cell; width:50px; height:50px; vertical-align:middle; background:url(http://tw.battle.net/d3/static/images/profile/hero/resources.png) }
+		.ie6 .profile-overview .attributes .resources .resource-icon { background-image:url(http://tw.battle.net/d3/static/images/profile/hero/resources.png) }
+		.profile-overview .attributes .resources .resource-icon.resource-fury { background-position:-50px 0 }
+		.profile-overview .attributes .resources .resource-icon.resource-mana { background-position:0 -50px }
+		.profile-overview .attributes .resources .resource-icon.resource-spirit { background-position:-50px -50px }
+		.profile-overview .attributes .resources .resource-icon.resource-arcanum { background-position:-100px -50px }
+		.profile-overview .attributes .resources .resource-icon.resource-hatred-discipline { background-position:-100px -100px }
+
+		.profile-overview .skills { float: left; width: 500px; position: relative; }
+		.profile-overview .skills .tip { border:0 }
+		.profile-overview .skills .d3-icon-skill,
+		.profile-overview .skills .d3-icon-trait { vertical-align: middle; margin-right: 3px; }
+		.profile-overview .skills .d3-icon-skill { box-shadow: 0 0 5px rgba(0,0,0,0.5); }
+		.profile-overview .skills .skill-name { display: inline-block; vertical-align: middle; color: #f3e6d0; margin-top:-2px; margin-left:5px }
+		.profile-overview .skills .skill-name .rune-name { display: block; color: #796d55; font-size:11px; margin-top:-1px }
+		.profile-overview .skills a:hover .skill-name { color: #fff; }
+		.profile-overview .skills a { display: block; font-size: 12px; }
+		.profile-overview .skills a.profile-link { font-size:11px; }
+		.profile-lower .section-body a.profile-link .icon-frame-text {margin-right:0px;}
+
+		.profile-overview .skills .passive-skills { padding:0 0 0 10px ;border-bottom:1px solid #252018;}
+		.profile-overview .skills .passive-skills-choice {height:48px;color:#A99877;}
+		.profile-overview .skills .passive-skills li { float:left; width:33% }
+		.profile-overview .skills .passive-skills a { height:41px;  }
+		.profile-overview .skills .passive-skills .skill-name { width:110px; margin-top:-1px; line-height:16px; }
+		.profile-overview .skills .passive-skills .passive-icon { background:url(http://tw.battle.net/d3/static/images/profile/hero/passive-skills.png) 0 -41px no-repeat; display:inline-block; width:31px; height:31px; padding:5px; vertical-align:middle }
+		.profile-overview .skills .passive-skills a:hover .passive-icon { background-position:-41px -41px }
+		.profile-overview .skills .passive-skills .empty-passive,
+		.profile-overview .skills .passive-skills a:hover .empty-passive { display:block; background-position: -82px -41px }
+		.profile-overview .skills .passive-skills .frame { }
+		.profile-overview .skills .passive-skills .locked-passive-10 { background-position:0 0 }
+		.profile-overview .skills .passive-skills .locked-passive-20 { background-position:-41px 0 }
+		.profile-overview .skills .passive-skills .locked-passive-30 { background-position:-82px 0 }
+
+		.profile-overview .skills .active-skills { height:163px; padding:16px 0 17px; border-bottom:1px solid #252018; margin-bottom:17px }
+		.profile-overview .skills .active-skills li { float: left; width:200px; padding:2px 0 0 12px; margin: 0 0 10px 0; position: relative; }
+		.profile-overview .skills .active-skills .empty-skill { width:42px; height:42px; display:block; display:inline-block; background:url(http://tw.battle.net/d3/static/images/profile/hero/skill-overlays.png) -47px 0 }
+		.ie6 .profile-overview .skills .active-skills .empty-skill { background-image: url("http://tw.battle.net/d3/static/images/profile/hero/skill-overlays.gif") }
+		.profile-overview .skills .active-skills .empty-skill.unlocked { background-position:-131px -42px }
+		.profile-overview .skills .active-skills .empty-skill.locked-2 { background-position:-47px 0 }
+		.profile-overview .skills .active-skills .empty-skill.locked-4 { background-position:-89px 0 }
+		.profile-overview .skills .active-skills .empty-skill.locked-9 { background-position:-131px 0 }
+		.profile-overview .skills .active-skills .empty-skill.locked-14 { background-position:-47px -42px }
+		.profile-overview .skills .active-skills .empty-skill.locked-19 { background-position:-89px -42px }
+		.profile-overview .skills .active-skills .slot { display:block; width:22px; height:22px; background: url("http://tw.battle.net/d3/static/images/profile/hero/skill-overlays.png") 0 0; position: absolute; top:-1px; left:-1px; }
+		.ie6 .profile-overview .skills .active-skills .slot { background-image: url("http://tw.battle.net/d3/static/images/profile/hero/skill-overlays.gif") }
+		.profile-overview .skills .active-skills .slot.slot-primary { background-position:0 -1px }
+		.profile-overview .skills .active-skills .slot.slot-secondary { background-position: -21px -1px }
+		.profile-overview .skills .active-skills .slot.slot-1 { background-position:0 -23px; }
+		.profile-overview .skills .active-skills .slot.slot-2 { background-position:-23px -23px }
+		.profile-overview .skills .active-skills .slot.slot-3 { background-position:0 -46px }
+		.profile-overview .skills .active-skills .slot.slot-4 { background-position:-23px -46px }
+
+
+		/* skills */
+		.d3-icon-skill { }
+		.d3-icon-skill .frame { display: block; background: no-repeat; }
+		.d3-icon-skill-21,
+		.d3-icon-skill-21 .frame { width: 21px; height: 21px; }
+		.d3-icon-skill-42,
+		.d3-icon-skill-42 .frame { width: 42px; height: 42px; }
+		.d3-icon-skill-64,
+		.d3-icon-skill-64 .frame { width: 64px; height: 64px; }
+		.d3-icon-skill-21 .frame { background-image: url("http://tw.battle.net/d3/static/images/icons/frames/skill-21.png"); }
+		.d3-icon-skill-42 .frame { background-image: url("http://tw.battle.net/d3/static/images/icons/frames/skill-42.png"); }
+		.d3-icon-skill-64 .frame { background-image: url("http://tw.battle.net/d3/static/images/icons/frames/skill-64.png"); }
+		.d3-icon-skill.selected .frame { background-position: top right; }
+
+		a:hover .d3-icon-skill .frame,
+		.hover .d3-icon-skill .frame { background-position: left bottom; }
+		a:hover .d3-icon-skill.selected .frame,
+		.hover .d3-icon-skill.selected .frame { background-position: right bottom; }
+
+		a.disabled:hover .d3-icon-skill .frame,
+		.disabled.hover .d3-icon-skill .frame { background-position: left top !important; }
+		a.disabled:hover .d3-icon-skill.selected .frame,
+		.disabled.hover .d3-icon-skill.selected .frame { background-position: right top !important; }
+
+		/* tooltips */
+		.ui-tooltip { background: #1d180e; padding: 1px; border: 1px solid #322a20; opacity: 0.9; max-width: 355px; border-radius: 2px; box-shadow: 0 0 10px #000; }
+		.ui-tooltip .tooltip-content { background: black; color: #CFB991; font-size: 12px; }
+		.ui-tooltip-d3 { opacity: 1; }
+		.ui-tooltip-d3 .tooltip-content { padding: 0; }
+		.ui-tooltip .subheader { font-size: 18px; color: #F3E6D0; font-weight: normal; margin-bottom: 4px; } /* title */
+		/* tooltip */
+		.ui-tooltip { position: absolute; z-index: 9005; width: auto; height: auto; }
+		.ui-tooltip .tooltip-content { width: auto; height: auto; }
+		.ui-tooltip table { border-collapse: collapse; border-spacing: 0; }
+		.ui-tooltip td { margin: 0; padding: 0 }
+		.tooltip-frame { background: transparent; border: none; display: none; height: 0; position: absolute; z-index: 999; width: auto; height: auto; max-width: 300px; }
+
+		.ui-tooltip .attributes-core { border-bottom:1px solid #272218; padding:7px 7px 8px 7px; cursor:default;*width:180px }
+		.ui-tooltip .attributes-core { zoom:1 }
+		.ui-tooltip .attributes-core span { display:block;*display:inline; float:left; *float:none;height:26px; line-height:26px }
+		.ui-tooltip .attributes-core .label { width:100px; color:#a99877;}
+		.ui-tooltip .attributes-core .value { width:54px; color:#f3e6d0; text-align:right }
+	</style>
+
+	<script src="http://code.jquery.com/jquery-1.8.1.js"></script>
+	<script>
+		var host_type = 'tw';
+		var hero_code;
+		$(document).ready(function(){
+			$("ul.menu li:first-child").addClass("current");
+			$("div.content").find("div.layout:not(:first-child)").hide();
+			$("div.content div.layout").attr("id", function(){return idNumber("No")+ $("div.content div.layout").index(this)});
+			$("ul.menu li:lt(2)").click(function(){
+					var c = $("ul.menu li");
+					var index = c.index(this);
+					var p = idNumber("No");
+					 show(c,index,p);
+			 });
+			 
+			 function show(controlMenu,num,prefix){
+					 var content= prefix + num;
+					 $('#'+content).siblings().hide();
+					 $('#'+content).show();
+					 controlMenu.eq(num).addClass("current").siblings().removeClass("current");
+			 };
+
+			 function idNumber(prefix){
+					 var idNum = prefix;
+					 return idNum;
+			 };
+			 
+			 $("#hero_code").keydown(function(e){ 
+					var curKey = e.which; 
+					if(curKey == 13){ 
+						get_hero_data();
+					} 
+				}); 
+
+		});
+
+		function　get_hero_data(){
+			host_type = $("[name=host_type]:checked").val();
+			if(host_type != 'tw' && host_type != 'eu' && host_type != 'us') 
+				host_type = 'tw';
+			hero_code = $("#hero_code").val().replace("#","-");
+			D3Tool.get_heros(D3Tool.handle_heros);
+		}
+	</script>
+	<link rel="stylesheet" type="text/css" media="all" href="http://tw.battle.net/d3/static/css/tooltips.css?v51" />
+	<script src='http://tw.battle.net/d3/static/local-common/js/core.js'></script>
+	<script src='./tooltip.js'></script>
+	<script src='./d3tool.js'></script>
+</head>
+<body>
+	<div style="padding:10px">
+		請輸入BattleTag：
+		<input type='text' id='hero_code' value='甜豬太太#1129'/>
+		<input type="radio"  name="host_type" value="tw" checked/>
+		tw
+		<input type="radio"  name="host_type" value="us" />
+		us
+		<input type="radio"  name="host_type" value="eu" />
+		eu
+		<input type='button' value='獲取資料' onclick='get_hero_data()'/>
+	</div>
+	<div id='heros' class="top-heroes"></div>
+
+	<div class="box">
+		<div class="tagMenu">
+			<h2>英雄屬性</h2>
+			<ul class="menu">
+				<li>詳細屬性</li>
+				<li>屬性技能總覽</li>
+				<li style="margin:0">
+					<input type=button value="計算DPS" style="padding:0" onclick="D3Tool.re_calc_dps()" data-tooltips="#recalc_dps" data-tooltip-options='{"ajax":false}'></li>
+			</ul>
+		</div>
+		<div class="content">
+			<div class="layout" style="padding:10px 10px 10px 10px">
+				<span id="last-updated" style="display:none;color:red"></span>
+			</br>
+
+			<div id='damage_item' class="table difficulty-table">
+				帶傷害屬性裝備
+				<table id="damage_table" style="padding: 10px 26px;margin: 10px 42px 10px;" >
+					<tr>
+						<thread>
+							<th class="name-column">部位</th>
+							<th>ilvl</th>
+							<th>最小傷害</th>
+							<th>最大傷害</th>
+							<th>額外最小傷害</th>
+							<th>力量</th>
+							<th>敏捷</th>
+							<th>智力</th>
+							<th>體能</th>
+							<th>暴率%</th>
+							<th>暴傷%</th>
+							<th>攻速%</th>
+						</thread>
+					</tr>
+				</table>
+			</div>
+			<div id='items' class="table difficulty-table">
+				所有裝備
+				<table id="items_table" style="padding: 10px 26px;margin: 10px 42px 10px;">
+					<tr>
+						<thread>
+							<th class="name-column">部位</th>
+							<th>ilvl</th>
+							<th>力量</th>
+							<th>敏捷</th>
+							<th>智力</th>
+							<th>體能</th>
+							<th>生命%</th>
+							<th>擊回</th>
+							<th>吸血%</th>
+							<th>暴率%</th>
+							<th>暴傷%</th>
+							<th>攻速%</th>
+							<th>MF%</th>
+							<th>GF%</th>
+							<th>秒回</th>
+							<th>護甲</th>
+							<th>全抗</th>
+							<th>物抗</th>
+							<th>冰抗</th>
+							<th>火抗</th>
+							<th>電抗</th>
+							<th>毒抗</th>
+							<th>法抗</th>
+						</thread>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+		<div class="layout profile-overview" id="overview">
+
+			<div class="page-section attributes">
+				<div class="section-header ">
+					<h3 class="category ">屬性</h3>
+				</div>
+				<div class="section-body">
+
+					<ul class="attributes-core">
+
+						<li id="attr-strength-hero" class="tip">
+							<span class="label">力量</span>
+							<span class="value">0</span>
+						</li>
+						<li id="attr-dexterity-hero" class="tip">
+							<span class="label">敏捷</span>
+							<span class="value">0</span>
+						</li>
+						<li id="attr-intelligence-hero" class="tip">
+							<span class="label">智力</span>
+							<span class="value">0</span>
+						</li>
+						<li id="attr-vitality-hero" class="tip">
+							<span class="label">體能</span>
+							<span class="value">0</span>
+						</li>
+						<li class="clear"></li>
+					</ul>
+					<ul class="attributes-core secondary">
+						<li id="attr-attackSpeed-hero" class="tip">
+							<span class="label">攻擊速度</span>
+							<span class="value">0</span>
+						</li>
+
+						<li id="attr-critChance-hero"class="tip" >
+							<span class="label">暴擊幾率</span>
+							<span class="value">0</span>
+						</li>
+						<li id="attr-critDamage-hero"class="tip" >
+							<span class="label">暴擊傷害</span>
+							<span class="value">0</span>
+						</li>
+						<li class="clear"></li>
+					</ul>
+
+					<ul class="attributes-core secondary">
+						<li id="attr-armor-hero" class="tip">
+							<span class="label">護甲值</span>
+							<span class="value">0</span>
+						</li>
+
+						<li id="attr-dps-hero"class="tip" >
+							<span class="label">傷害</span>
+							<span class="value">0</span>
+						</li>
+						<li class="clear"></li>
+					</ul>
+
+					<ul class="resources">
+						<li id="attr-primary-resource" class="resource tip">
+							<span class="resource-icon">
+								<span class="value">0</span>
+							</span>
+							<span class="label-wrapper">
+								<span class="label">怒氣</span>
+							</span>
+						</li>
+
+						<li id="attr-life-hero" class="resource tip">
+							<span class="resource-icon resource-life">
+								<span class="value">0k</span>
+							</span>
+							<span class="label-wrapper">
+								<span class="label">生命值</span>
+							</span>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+			<div class="page-section attributes">
+				<div class="section-header ">
+					<h3 class="category ">抗性</h3>
+				</div>
+				<div class="section-body">
+					<ul class="attributes-core">
+						<li id="attr-physical-resist"class="tip">
+							<span class="label">物抗</span>
+							<span class="value">0</span>
+						</li>
+						<li id="attr-cold-resist"class="tip">
+							<span class="label">冰抗</span>
+							<span class="value">0</span>
+						</li>
+						<li id="attr-fire-resist"class="tip">
+							<span class="label">火抗</span>
+							<span class="value">0</span>
+						</li>
+						<li id="attr-lightning-resist"class="tip">
+							<span class="label">電抗</span>
+							<span class="value">0</span>
+						</li>
+						<li id="attr-poison-resist"class="tip">
+							<span class="label">毒抗</span>
+							<span class="value">0</span>
+						</li>
+						<li id="attr-arcane-resist"class="tip">
+							<span class="label">法抗</span>
+							<span class="value">0</span>
+						</li>
+						<li class="clear"></li>
+					</ul>
+
+					<ul class="attributes-core secondary">
+						<li id="attr-lifeSteal-hero"  class="tip">
+							<span class="label">生命偷取</span>
+							<span class="value">0</span>
+						</li>
+						<li id="attr-lifeOnHit-hero"  class="tip">
+							<span class="label">擊中回復</span>
+							<span class="value">0</span>
+						</li>
+						<li class="clear"></li>
+					</ul>
+					<ul class="attributes-core secondary">
+						<li id="attr-goldFind-hero"  class="tip">
+							<span class="label">GF</span>
+							<span class="value">0</span>
+						</li>
+						<li id="attr-magicFind-hero"  class="tip">
+							<span class="label">MF</span>
+							<span class="value">0</span>
+						</li>
+
+						<li class="clear"></li>
+					</ul>
+
+				</div>
+			</div>
+			<div class="page-section skills">
+				<div class="section-header ">
+					<h3 class="category ">技能</h3>
+				</div>
+				<div class="section-body">
+					<a href="http://db.d.163.com/tw/calculator/barbarian.html" class="profile-link">
+						查看技能模擬器
+						<span class="icon-frame icon-frame-text">
+							<span class="icon-16 icon-16-rarrow"></span>
+						</span>
+					</a>
+					<div class="skills-wrapper">
+						<ul class="active-skills clear-after">
+							<li>
+								<a id="active-skill-tooltip-0-link" href="#" data-tooltip="#active-skill-tooltip-0">
+									<span class="d3-icon d3-icon-skill d3-icon-skill-42 ">
+										<span class="frame"></span>
+									</span>
+									<span class="skill-name">
+										<span class="skill"></span>
+										<span class="rune-name"></span>
+									</span>
+								</a>
+								<span class="slot slot-primary"></span>
+							</li>
+							<li>
+								<a id="active-skill-tooltip-1-link" href="#" data-tooltip="#active-skill-tooltip-1">
+									<span class="d3-icon d3-icon-skill d3-icon-skill-42 ">
+										<span class="frame"></span>
+									</span>
+									<span class="skill-name">
+										<span class="skill"></span>
+										<span class="rune-name"></span>
+									</span>
+								</a>
+								<span class="slot slot-secondary"></span>
+							</li>
+							<li>
+								<a id="active-skill-tooltip-2-link" href="#" data-tooltip="#active-skill-tooltip-2">
+									<span class="d3-icon d3-icon-skill d3-icon-skill-42 ">
+										<span class="frame"></span>
+									</span>
+									<span class="skill-name">
+										<span class="skill"></span>
+										<span class="rune-name"></span>
+									</span>
+								</a>
+								<span class="slot slot-1"></span>
+							</li>
+							<li>
+								<a id="active-skill-tooltip-3-link" href="#" data-tooltip="#active-skill-tooltip-3">
+									<span class="d3-icon d3-icon-skill d3-icon-skill-42 ">
+										<span class="frame"></span>
+									</span>
+									<span class="skill-name">
+										<span class="skill"></span>
+										<span class="rune-name"></span>
+									</span>
+								</a>
+								<span class="slot slot-2"></span>
+							</li>
+							<li>
+								<a id="active-skill-tooltip-4-link" href="#" data-tooltip="#active-skill-tooltip-4">
+									<span class="d3-icon d3-icon-skill d3-icon-skill-42 ">
+										<span class="frame"></span>
+									</span>
+									<span class="skill-name">
+										<span class="skill"></span>
+										<span class="rune-name"></span>
+									</span>
+								</a>
+								<span class="slot slot-3"></span>
+							</li>
+							<li>
+								<a id="active-skill-tooltip-5-link" href="#" data-tooltip="#active-skill-tooltip-5">
+									<span class="d3-icon d3-icon-skill d3-icon-skill-42 ">
+										<span class="frame"></span>
+									</span>
+									<span class="skill-name">
+										<span class="skill"></span>
+										<span class="rune-name"></span>
+									</span>
+								</a>
+								<span class="slot slot-4"></span>
+
+							</li>
+						</ul>
+						<span class="clear">
+							<!-- -->
+						</span>
+
+						<ul class="passive-skills clear-after" style="height:48px">
+							<li>
+								<a id="passive-skill-tooltip-0-link" href="#" data-tooltip="#passive-skill-tooltip-0">
+									<span class="passive-icon">
+										<img src="" style="width:32px; height:32px"></span>
+									<span class="skill-name"></span>
+								</a>
+							</li>
+							<li>
+								<a id="passive-skill-tooltip-1-link" href="#" data-tooltip="#passive-skill-tooltip-1">
+									<span class="passive-icon">
+										<img src="" style="width:32px; height:32px"></span>
+									<span class="skill-name"></span>
+								</a>
+							</li>
+							<li>
+								<a id="passive-skill-tooltip-2-link" href="#" data-tooltip="#passive-skill-tooltip-2">
+									<span class="passive-icon">
+										<img src="" style="width:32px; height:32px"></span>
+									<span class="skill-name"></span>
+								</a>
+							</li>
+						</ul>
+						<span class="clear">
+							<!-- -->
+						</span>
+						<span style="color:#A99877">
+							<h3>人物被動：</h3>
+						</span>
+						<ul id="passive-skills-choice-barbarian" class="passive-skills clear-after passive-skills-choice">
+							<li data-tooltip="#passive-skill-tooltip">
+								<input type="checkbox" name="passive-skill" value="ruthless">
+								無情暴虐
+								<br />
+							</li>
+							<li data-tooltip="#passive-skill-tooltip">
+								<input type="checkbox" name="passive-skill" value="weapons-master">
+								武器大師
+								<br />
+							</li>
+						</ul>
+						<ul id="passive-skills-choice-demon-hunter" class="passive-skills clear-after passive-skills-choice">
+							<li data-tooltip="#passive-skill-tooltip">
+								<input type="checkbox" name="passive-skill" value="steady-aim">
+								沉穩射擊
+								<br />
+							</li>
+							<li data-tooltip="#passive-skill-tooltip">
+								<input type="checkbox" name="passive-skill" value="archery">
+								箭術專精
+								<br />
+							</li>
+						</ul>
+						<ul id="passive-skills-choice-wizard" class="passive-skills clear-after passive-skills-choice">
+							<li data-tooltip="#passive-skill-tooltip">
+								<input type="checkbox" name="passive-skill" value="glass-cannon">
+								棄防強攻
+								<br />
+							</li>
+						</ul>
+						<span style="color:#A99877">
+							<h3>追隨者被動：</h3>
+						</span>
+						<ul id="passive-skills-choice-follower" class="passive-skills clear-after passive-skills-choice">
+							<li data-tooltip="#passive-skill-tooltip">
+								<input type="checkbox" name="passive-skill" value="anatomy" owner="scoundrel">
+								解剖
+								<br />
+							</li>
+							<li data-tooltip="#passive-skill-tooltip">
+								<input type="checkbox" name="passive-skill" value="focused-mind" owner="enchantress">
+								專注精神
+								<br />
+							</li>
+						</ul>
+						<span class="clear">
+							<!-- -->
+						</span>
+					</div>
+				</div>
+			</div>
+			<span class="clear">
+				<!-- -->
+			</span>
+			<div style="font: 0px/0px sans-serif;clear: both;display: block"></div>
+		</div>
+		<div id="recalc_dps" style="display:none">
+			<ul class="attributes-core" >
+				<li id="attr-old-dps-hero" class="tip">
+					<span class="label">舊dps</span>
+					<span class="value">0</span>
+				</li>
+				<li id="attr-new-dps-hero" class="tip">
+					<span class="label">新dps</span>
+					<span class="value">0</span>
+				</li>
+				<li id="attr-diff-dps-hero" class="tip">
+					<span class="label">傷害</span>
+					<span class="value" style="color:green">+0</span>
+				</li>
+				<li class="clear"></li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>
