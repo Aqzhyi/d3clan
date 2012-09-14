@@ -101,7 +101,7 @@ class Admin extends CI_Controller {
 	// AJAX集
 	public function ajax() {
 		
-		$this->load->library( 'ajax' );
+		$this->load->library( 'core/ajax' );
 		$this->ajax->uri_routes( array(
 				'ad-banners'   => 'ajax_ad_banners',
 				'home-circle'  => 'ajax_home_circle',
