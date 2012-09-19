@@ -35,7 +35,6 @@ class Msi_game_2012 extends CI_Controller {
 				'fid'    => array( 63 ),
 				'typeid' => array( 31, 32 ),
 			) );
-		$this->view->show();
 	}
 
 	public function contest( $setting = array() ) {
@@ -44,7 +43,6 @@ class Msi_game_2012 extends CI_Controller {
 				'fid'    => array( 63 ),
 				'typeid' => array( 33 ),
 			) );
-		$this->view->show();
 	}
 }
 
