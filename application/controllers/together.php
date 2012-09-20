@@ -5,10 +5,10 @@ class Together extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->view->layout( 'together/layout' );
-		$this->view->js_add( array(
+		$this->view->js( array(
 				'together/index',
 			) );
-		$this->view->css_add( array(
+		$this->view->css( array(
 				'together/index',
 			) );
 		$this->view->cache( 10 );

@@ -8,11 +8,11 @@ class Game extends CI_Controller {
 
 		$this->view->title_append( '遊戲資料' );
 		$this->view->layout( 'game/layout' );
-		$this->view->js_add( array(
+		$this->view->js( array(
 			'game/index',
 		) );
 		$this->view->js_link_add( 'http://tw.battle.net/d3/static/js/tooltips.js' );
-		$this->view->css_add( array(
+		$this->view->css( array(
 			'game/index',
 			'game/d3-guide',
 		) );
@@ -39,11 +39,11 @@ class Game extends CI_Controller {
 
 		$this->view->title( $title );
 
-		$this->view->js_add( array(
+		$this->view->js( array(
 				"game/$path",
 				"game/$path/$page",
 			) );
-		$this->view->css_add( array(
+		$this->view->css( array(
 				"game/$path",
 				"game/$path/$page",
 			) );

@@ -7,10 +7,10 @@ class Lives extends CI_Controller {
 		$this->load->model( 'core/model_live_channels' );
 		$this->view->title_append( '直播頻道' );
 		$this->view->layout( 'lives/layout' );
-		$this->view->js_add( array(
+		$this->view->js( array(
 				'lives/index',
 			) );
-		$this->view->css_add( array(
+		$this->view->css( array(
 				'lives/index',
 			) );
 		$this->view->cache( 10 );
@@ -76,10 +76,10 @@ class Lives extends CI_Controller {
 			) );
 		
 		$this->view->layout( 'lives/channel' );
-		$this->view->js_add( array(
+		$this->view->js( array(
 				'lives/channel',
 			) );
-		$this->view->css_add( array(
+		$this->view->css( array(
 				'lives/channel',
 			) );
 	}

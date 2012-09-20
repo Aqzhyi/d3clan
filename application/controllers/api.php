@@ -6,9 +6,9 @@ class Api extends CI_Controller {
 		parent::__construct();
 		$this->view->title_append( '' );
 		$this->view->layout( '' );
-		$this->view->js_add( array(
+		$this->view->js( array(
 		) );
-		$this->view->css_add( array(
+		$this->view->css( array(
 		) );
 	}
 

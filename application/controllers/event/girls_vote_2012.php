@@ -6,10 +6,10 @@ class Girls_vote_2012 extends CI_Controller {
 		parent::__construct();
 		$this->view->title_append( 'D-Girls 美少女選拔' );
 		$this->view->layout( 'event/girls_vote_2012/layout' );
-		$this->view->js_add( 'event/girls_vote_2012/index' );
-		$this->view->js_add( 'plugin/jQuery/jquery-ui-1.8.21.no.effects.min' );
-		$this->view->css_add( 'event/girls_vote_2012/index' );
-		$this->view->css_add( 'plugin/jQuery/jquery-ui-1.8.21.custom' );
+		$this->view->js( 'event/girls_vote_2012/index' );
+		$this->view->js( 'plugin/jQuery/jquery-ui-1.8.21.no.effects.min' );
+		$this->view->css( 'event/girls_vote_2012/index' );
+		$this->view->css( 'plugin/jQuery/jquery-ui-1.8.21.custom' );
 
 		$this->load->model( 'event/Model_girls_vote_2012' );
 		// 關聯投票主題,順序為 氣質系->萌系->性感系->活潑系.

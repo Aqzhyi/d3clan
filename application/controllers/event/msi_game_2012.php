@@ -9,8 +9,8 @@ class Msi_game_2012 extends CI_Controller {
 		parent::__construct();
 		$this->view->title_append( '微星盃' );
 		$this->view->layout( 'event/msi_game_2012/layout' );
-		$this->view->js_add( 'event/msi_game_2012/layout' );
-		$this->view->css_add( 'event/msi_game_2012/layout' );
+		$this->view->js( 'event/msi_game_2012/layout' );
+		$this->view->css( 'event/msi_game_2012/layout' );
 		$this->view->cache( 10 );
 	}
 

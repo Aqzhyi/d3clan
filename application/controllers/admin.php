@@ -6,7 +6,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->helper( 'form' );
 		$this->view->layout( 'admin/layout' );
-		$this->view->css_add( 'admin/common' );
+		$this->view->css( 'admin/common' );
 		$this->view->cache( 0 );
 
 		// if ( ! $this->user->auth( 21 ) ) show_404(); // 直播頻道管理大師
@@ -33,8 +33,8 @@ class Admin extends CI_Controller {
 	// 通用後台管理頁面
 	public function index() {
 
-		$this->view->js_add( 'admin/index' );
-		$this->view->css_add( 'admin/index' );
+		$this->view->js( 'admin/index' );
+		$this->view->css( 'admin/index' );
 	}
 
 	// 270x60廣告管理
@@ -48,8 +48,8 @@ class Admin extends CI_Controller {
 				'limit'         => 1000,
 			) );
 
-		$this->view->js_add( 'admin/ad_banners' );
-		$this->view->css_add( 'admin/ad_banners' );
+		$this->view->js( 'admin/ad_banners' );
+		$this->view->css( 'admin/ad_banners' );
 	}
 
 	// 週邊設備管理
@@ -73,8 +73,8 @@ class Admin extends CI_Controller {
 				'hardware_else_ads'      => $this->Model_ad->get_ad( array( 'case' => 'hardware_else_ads', 'enable_d3clan' => true, ) ),
 			);
 
-		$this->view->js_add( 'admin/hardware' );
-		$this->view->css_add( 'admin/hardware' );
+		$this->view->js( 'admin/hardware' );
+		$this->view->css( 'admin/hardware' );
 	}
 
 	// 直播頻道管理
@@ -84,8 +84,8 @@ class Admin extends CI_Controller {
 				'limit' => 200,
 				'game_type' => 'DiabloIII',
 			) );
-		$this->view->js_add( 'admin/live_channels' );
-		$this->view->css_add( 'admin/live_channels' );
+		$this->view->js( 'admin/live_channels' );
+		$this->view->css( 'admin/live_channels' );
 	}
 
 	// 首頁四輪播管理
@@ -93,8 +93,8 @@ class Admin extends CI_Controller {
 
 		$this->load->model( 'core/Model_news' );
 		$this->view->data['home_4_circle'] = $this->Model_news->get_circle_loop();
-		$this->view->js_add( 'admin/home_circle' );
-		$this->view->css_add( 'admin/home_circle' );
+		$this->view->js( 'admin/home_circle' );
+		$this->view->css( 'admin/home_circle' );
 	}
 
 	// ---------------------------------------------------------

@@ -6,10 +6,10 @@ class Hardware extends CI_Controller {
 		parent::__construct();
 		$this->load->model( 'Model_hardware' );
 		$this->view->layout( 'hardware/layout' );
-		$this->view->js_add( array(
+		$this->view->js( array(
 				'hardware/layout',
 			) );
-		$this->view->css_add( array(
+		$this->view->css( array(
 				'hardware/layout',
 			) );
 		$this->view->cache( 10 );

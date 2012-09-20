@@ -5,10 +5,10 @@ class Vod extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->view->layout( 'vod/layout' );
-		$this->view->js_add( array(
+		$this->view->js( array(
 				'vod/index',
 			) );
-		$this->view->css_add( array(
+		$this->view->css( array(
 				'vod/index',
 			) );
 		$this->view->cache( 10 );

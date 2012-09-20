@@ -5,10 +5,10 @@ class About extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->view->layout( 'about/layout' );
-		$this->view->js_add( array(
+		$this->view->js( array(
 				'about/layout',
 			) );
-		$this->view->css_add( array(
+		$this->view->css( array(
 				'about/layout',
 			) );
 		$this->view->cache( 10 );
