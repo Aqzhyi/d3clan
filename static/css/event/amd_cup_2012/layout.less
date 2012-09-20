@@ -1,0 +1,66 @@
+@import '../../instance';
+
+.diy{
+	padding-bottom: 0!important;
+}
+
+.namespace_event_amd{
+	background-image : url("/static/img/event/amd_cup_2012/bg2.jpg");
+	background-repeat: repeat-y;
+	min-height       : 300px;
+
+	.amd-btn{
+		background-image    : url("/static/img/event/amd_cup_2012/AMD_button.png");
+		background-position : 0 -90px;
+		display             : inline-block;
+		height              : 45px;
+		line-height         : 45px;
+		width               : 192px;
+		font-size           : 18px;
+		float               : left;
+		text-align          : center;
+
+		&:hover{
+			background-position: 0 -45px;
+		}
+		&:active,&.active{
+			background-position: 0 0px;
+		}
+	}
+	.amd-btn2{
+		background-image    : url("/static/img/event/amd_cup_2012/AMD_slave_button.png");
+		display             : inline-block;
+		width               : 192px;
+		height              : 43px;
+		line-height         : 43px;
+		background-position : 0 0;
+		color               : black;
+		font-size           : 18px;
+		text-align          : center;
+
+		&:hover{
+			background-position : 0 -43px; 
+			color               : #300c00;
+		}
+	}
+	.amd-b1-btn{
+		background-image : url("/static/img/event/amd_cup_2012/B1_button.png");
+		display          : inline-block;
+		width            : 201px;
+		height           : 45px;
+		line-height      : 45px;
+		font-size        : 16px;
+		text-align       : center;
+	}
+
+	.amd-banner{
+	}
+	.amd-page{
+		padding-bottom: 20px;
+		@import 'index';
+		@import 'live';
+		@import 'vote';
+		@import 'news';
+		@import 'vod';
+	}
+}

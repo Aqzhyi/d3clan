@@ -1,0 +1,16 @@
+.vote-root .vote-heading {
+  height: 100px;
+  line-height: 100px;
+}
+.vote-root .vote-section .vote-item {
+  float: left;
+  background-image: url("/static/img/event/amd_cup_2012/AMD_border.png");
+  width: 274px;
+  padding: 0 23px;
+}
+.vote-root .vote-section .vote-item .vote-name {
+  height: 80px;
+}
+.vote-root .vote-section .vote-item .vote-photo {
+  height: 260px;
+}

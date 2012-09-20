@@ -173,11 +173,13 @@ p {
 .wrapper > header > .header .navigation .single .lives {
   background-position: -132px -10px;
 }
-.wrapper > header > .header .navigation .single .event-2012-msi {
-  background-position: -175px -10px;
+.wrapper > header > .header .navigation .single .event-2012-amd-cup {
+  background-image: url("/static/img/common/icon/AMD.png");
+  background-repeat: no-repeat;
+  background-position: 50%;
 }
 .wrapper > header > .header .navigation .single .event-2012-girls-vote {
-  background-position: -213px -10px;
+  background-position: -175px -10px;
 }
 .wrapper > header > .header .navigation .single .together {
   background-position: -254px -10px;
@@ -209,11 +211,8 @@ p {
 .wrapper > header > .header .navigation .single:hover .lives {
   background-position: -132px -58px;
 }
-.wrapper > header > .header .navigation .single:hover .event-2012-msi {
-  background-position: -175px -58px;
-}
 .wrapper > header > .header .navigation .single:hover .event-2012-girls-vote {
-  background-position: -213px -58px;
+  background-position: -175px -58px;
 }
 .wrapper > header > .header .navigation .single:hover .together {
   background-position: -254px -58px;

@@ -1,0 +1,17 @@
+<div class="news-root">
+	<div class="news-bg_img">
+
+		<div class="padding">
+			{foreach $news_flows as $index => $news}
+				<div>
+					<span class="label label-info">[{date('m-d', $news['dateline'])}]</span>
+					
+					{$CI->discuzx->alink_to_bbs( [
+							'text' => $news['subject'],
+							'tid' => $news['tid']
+						] )}
+				</div>
+			{/foreach}
+		</div>
+	</div>
+</div>
