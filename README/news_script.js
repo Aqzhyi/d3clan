@@ -458,6 +458,7 @@
 			if ( keywords.match(/(图说星际)/g) ) url = typeids[1];
 			if ( keywords.match(/(新闻)/g) ) url = typeids[1];
 			if ( keywords.match(/(VOD)/g) ) url = typeids[13];
+			if ( keywords.match(/(访谈)/g) ) url = typeids[12];
 			if ( keywords.match(/(GSL)/g) ) url = typeids[22];
 			if ( keywords.match(/(GSL)/g) && keywords.match(/(访谈)/g) ) url = typeids[12];
 
