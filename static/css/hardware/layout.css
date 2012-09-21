@@ -39,6 +39,18 @@
   visibility: hidden;
   display: block;
 }
+.namespace_hardware .flows-title {
+  background-image: url("/static/img/hardware/claim_reward.png");
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+  height: 58px;
+  padding-right: 28px;
+  font-size: 26px;
+  line-height: 58px;
+  color: orange;
+  padding-left: 9px;
+}
 .namespace_hardware > .header {
   *zoom: 1;
   display: block;
@@ -177,6 +189,9 @@
   background-image: url("/static/img/hardware/search2.png");
   width: 382px;
 }
+.namespace_hardware > .body .menu {
+  margin-top: 12px;
+}
 .namespace_hardware > .body .class_news_flow {
   *zoom: 1;
   display: block;
@@ -188,6 +203,9 @@
   height: 0;
   visibility: hidden;
   display: block;
+}
+.namespace_hardware > .body .class_news_flow .flows-title {
+  color: red;
 }
 .namespace_hardware > .body .class_news_flow > .line {
   background-image: url("/static/img/common/layout/line_01.png");
@@ -201,6 +219,7 @@
   padding-left: 45px;
   height: 57px;
   line-height: 58px;
+  padding-left: 0;
   font-size: 30px;
   color: red;
 }

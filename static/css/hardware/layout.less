@@ -4,6 +4,19 @@
 .namespace_hardware{
 	.g_clear;
 
+	.flows-title{
+		background-image : url("/static/img/hardware/claim_reward.png");
+		display          : inline-block;
+		text-align       : center;
+		width            : 200px;
+		height           : 58px;
+		padding-right    : 28px;
+		font-size        : 26px;
+		line-height      : 58px;
+		color            : orange;
+		padding-left     : 9px;
+	}
+
 	>.header{
 		.g_clear();
 		>.circle_news{
@@ -110,10 +123,17 @@
 	}
 
 	>.body{
+		.menu{
+			margin-top: 12px;
+		}
 		// 焦點新聞六則
 		.class_news_flow{
 			.g_clear;
 			margin-bottom: 50px;
+
+			.flows-title{
+				color: red;
+			}
 
 			>.line{
 				.g_line_01();
@@ -122,6 +142,7 @@
 
 			>.header{
 				.g_hr();
+				padding-left : 0;
 				font-size    : 30px;
 				color        : red;
 
