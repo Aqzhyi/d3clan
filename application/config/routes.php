@@ -58,6 +58,10 @@ $route['event/2012-girls-vote/(:any)']  = 'event/girls_vote_2012/$1';
 $route['event/2012-msi']                = 'event/msi_game_2012';
 $route['event/2012-msi/(:any)']         = 'event/msi_game_2012/$1';
 
+// AMD-cup盃
+$route['event/2012-amd']                = 'event/amd_cup_2012';
+$route['event/2012-amd/(:any)']         = 'event/amd_cup_2012/$1';
+
 // API
 $route['api/([\w]*)-([\w]*)']           = 'api/$1_$2';
 

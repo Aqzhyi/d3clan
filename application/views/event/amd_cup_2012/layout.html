@@ -1,0 +1,14 @@
+<div class="namespace_event_amd">
+	<div class="amd-banner"></div>
+	<div class="amd-menu clearfix">
+		<a href="/event/2012-amd" class="amd-btn {if $CI->uri->segment(3)===false OR $CI->uri->segment(3)==='index'}active{/if}">活動簡介</a>
+		<a href="/event/2012-amd/news" class="amd-btn {if $CI->uri->segment(3)==='news'}active{/if}">活動新聞</a>
+		<a href="/event/2012-amd/live" class="amd-btn {if $CI->uri->segment(3)==='live'}active{/if}">活動LIVE</a>
+		<a href="/event/2012-amd/vote" class="amd-btn {if $CI->uri->segment(3)==='vote'}active{/if}">我要投票</a>
+		<a href="/event/2012-amd/vod" class="amd-btn {if $CI->uri->segment(3)==='vod'}active{/if}">活動影片</a>
+	</div>
+
+	<div class="amd-page">
+		{include file="file:[0]event/amd_cup_2012/{$TEMPLATE['page']}/index.html"}
+	</div>
+</div>
