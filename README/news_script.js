@@ -324,6 +324,11 @@
 					});
 				});
 
+				// 移除 系列報導 表格
+				$root.find('table,div').contents().filter(function() {
+					return ( jQuery(this).html() != null ) ? jQuery(this).html().match(/系列報導/img) : undefined;
+				}).remove();
+
 				// 移掉alink
 				$root.find('a').each(function() {
 					var $element = jQuery(this);
