@@ -393,7 +393,7 @@
 				$root.find('embed[src*=netease]').each(function() {
 					var $element = jQuery(this);
 					code = $element.attr('src');
-					$element.replaceWith('\r\n\r\n[tv163]' + code + '[/tv163]\r\n\r\n');
+					$element.replaceWith('\r\n\r\n[flash]' + code + '[/flash]\r\n\r\n');
 				});
 
 				$root.find('embed[src*=youku]').each(function() {
@@ -407,7 +407,7 @@
 					var $element = jQuery(this);
 					var code = $element.attr('src').match(/pptv\.com\/v\/(.*)\.swf/);
 					code = code ? code[1] : '';
-					$element.replaceWith('\r\n\r\n[pptv]' + code + '[/pptv]\r\n\r\n');
+					$element.replaceWith('\r\n\r\n[flash]' + code + '[/flash]\r\n\r\n');
 				});
 
 			// ------------------------------------------
