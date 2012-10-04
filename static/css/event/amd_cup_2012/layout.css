@@ -78,6 +78,9 @@
   font-size: 16px;
   text-align: center;
 }
+.namespace_event_amd .amd-banner {
+  height: 400px;
+}
 .namespace_event_amd .amd-page {
   padding-bottom: 20px;
 }
