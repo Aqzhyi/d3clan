@@ -121,16 +121,24 @@ jQuery(function(){
 
 				},
 				success  : function(response) {
-					$self.pop({
-						content: response.msg,
-						placement: 'left'
-					}, {
-						callback: function() {
-							if (level1.reload===true) {
-								window.location.reload();
+					if (response.success===true) {
+						$self.pop({
+							content: response.msg,
+							placement: 'left'
+						}, {
+							callback: function() {
+								if (level1.reload===true) {
+									window.location.reload();
+								}
 							}
-						}
-					});
+						});
+					}
+					else if (response.success!==true) {
+						$self.pop({
+							content: response.msg,
+							placement: 'left'
+						});
+					}
 				},
 				confirm: false,
 				confirm_text: "確定繼續執行?"
@@ -143,10 +151,18 @@ jQuery(function(){
 					dataType   : level2.dataType,
 					data       : $obj.serialize_content(),
 					beforeSend : function(jqXHR, settings) {
-						level2.before.apply($obj, arguments);
+						level2.before.apply({
+							$obj     : $obj,
+							$sf      : $self,
+							_setting : setting
+						}, arguments);
 					},
 					success: function(data, textStatus, jqXHR) {
-						level2.success.apply($obj, arguments);
+						level2.success.apply({
+							$obj     : $obj,
+							$sf      : $self,
+							_setting : setting
+						}, arguments);
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
 						alert( "很抱歉，系統發生無法預期的錯誤!!\r\n\r\n你可以將本畫面截圖傳送給網站管理者以協助除錯.\r\n\r\n" + jqXHR.responseText );

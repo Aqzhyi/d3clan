@@ -99,5 +99,22 @@ $db['Business']['swap_pre'] = '';
 $db['Business']['autoinit'] = TRUE;
 $db['Business']['stricton'] = FALSE;
 
+// 專案
+$db['events']['hostname'] = 'localhost';
+$db['events']['username'] = 'sc2clan';
+$db['events']['password'] = 'ilovesc2!';
+$db['events']['database'] = 'sc2clan_events';
+$db['events']['dbdriver'] = 'mysql';
+$db['events']['dbprefix'] = '';
+$db['events']['pconnect'] = FALSE;
+$db['events']['db_debug'] = TRUE;
+$db['events']['cache_on'] = FALSE;
+$db['events']['cachedir'] = APPPATH . 'cache/Business_db_cache';
+$db['events']['char_set'] = 'utf8';
+$db['events']['dbcollat'] = 'utf8_general_ci';
+$db['events']['swap_pre'] = '';
+$db['events']['autoinit'] = TRUE;
+$db['events']['stricton'] = FALSE;
+
 /* End of file database.php */
 /* Location: ./application/config/database.php */
