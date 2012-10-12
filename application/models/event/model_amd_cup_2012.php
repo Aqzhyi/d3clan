@@ -50,6 +50,19 @@ class model_amd_cup_2012 extends CI_Model {
 		}
 	}
 
+	//# 取得幸運的投票者
+	public function get_lucky_user( $setting = array() ) {
+		
+		$setting['week'] = ( ! is_null( $setting['week'] ) ) ? $setting['week'] : '第一週';
+
+		$this->db->where( 'week', $setting['week'] );
+		$this->db->group_by( 'voter_id' );
+		$this->db->order_by( 'insert_at desc' );
+		$result = $this->db->get( 'd3_amd_cup_2012__voters' )->result_array();
+
+		return $result;
+	}
+
 	//# 依當時日期取得週期索引
 	public function get_vote_week_key( $setting = array() ) {
 		$period = $this->get_vote_period();
@@ -69,10 +82,10 @@ class model_amd_cup_2012 extends CI_Model {
 	//# 取得週期
 	public function get_vote_period( $key = null, $date = null ) {
 		$period = array(
-				"第一週" => array('min' => '2012-10-08 00:00:00','max' => '2012-10-15 20:00:00',),	
-				"第二週" => array('min' => '2012-10-15 00:00:00','max' => '2012-10-21 20:00:00',),	
-				"第三週" => array('min' => '2012-10-21 00:00:00','max' => '2012-10-28 20:00:00',),	
-				"第四週" => array('min' => '2012-10-28 00:00:00','max' => '2012-11-04 20:00:00',),	
+				"第一週" => array('min' => '2012-10-16 00:00:00','max' => '2012-10-21 00:00:00',),	
+				"第二週" => array('min' => '2012-10-21 00:00:00','max' => '2012-10-28 00:00:00',),	
+				"第三週" => array('min' => '2012-10-28 00:00:00','max' => '2012-11-05 00:00:00',),	
+				"第四週" => array('min' => '2012-11-05 00:00:00','max' => '2012-11-12 00:00:00',),	
 			);
 
 		return ( $key === null ) ? $period : $period[$key] ;
@@ -83,7 +96,7 @@ class model_amd_cup_2012 extends CI_Model {
 		
 		$setting['id'] = ( ! is_null( $setting['id'] ) ) ? $setting['id'] : null;
 		
-		if ($setting['id']===null) return '未知數';
+		if ($setting['id']===null) return 0;
 
 		$this->db->where( 'vote_to', $setting['id'] );
 		$this->db->from( 'd3_amd_cup_2012__voters' );
@@ -110,15 +123,28 @@ class model_amd_cup_2012 extends CI_Model {
 							),
 						"Bella" => array(
 								'id' => '2',
-								'name' => 'Bella',
-								'class' => '???',
-								'photo' => '',
+								'name' => 'BellaBaby',
+								'class' => '秘術師',
+								'photo' => 'http://i.imgur.com/mHbFw.jpg',
 								'level' => 0,
 								'best_items' => array(
 									),
 								'personal' => '台灣電玩界專業主持人',
 								'intro' => '
 									<p>以SC2的亮麗播報聞名台灣電競圈，在D3上市之後也投入此股全民運動，以無邪的亮麗外表以及熱愛電玩的心，成為國內各大電玩廠商的首選主持人，想要度過一個美好的直播夜晚嗎？跟隨Bella就對了！</p>
+								',
+							),
+						"Jeff" => array(
+								'id' => '3',
+								'name' => 'Jeff',
+								'class' => '秘術師',
+								'photo' => 'http://i.imgur.com/2Fzbk.jpg',
+								'level' => 86,
+								'best_items' => array(
+									),
+								'personal' => '無',
+								'intro' => '
+									<p>高達86級的巔峰等級，角色的打寶率是本週三位列車長中最高的！想要將主辦單位準備的D3週邊產品帶回家，看來Jeff將會是呼聲最高的一位！但是一切將會盡如人意嗎？請鎖定10/22晚間的直播之夜！</p>
 								',
 							),
 					),

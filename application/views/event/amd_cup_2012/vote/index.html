@@ -7,24 +7,6 @@
 	</div>
 
 	<div class="vote-section clearfix">
-		{foreach $captains as $index => $captain}
-			<div class="vote-item" data-id="{$captain['id']}" style="background-image: url({$captain['photo']});">
-				<div class="vote-bgimg">
-					<div class="vote-name">{$captain['name']}</div>
-					<div class="vote-photo"></div>
-					<div class="vote-him" align="center">
-						<img data-cmd="vote_him" src="/static/img/event/amd_cup_2012/AMD_vote.png" alt="">
-					</div>
-					<div class="vote-person_intro">
-						<p><span class="title">總得票數</span>: {$captain['total_vote']}</p>
-						<p><span class="title">列車長ID</span>: {$captain['name']}</p>
-						<p><span class="title">本週職業</span>: {$captain['class']}</p>
-						<p><span class="title">特殊經歷</span>: {$captain['personal']}</p>
-						<p><span class="title">巔峰等級</span>: {$captain['level']}</p>
-						<div>{$captain['intro']}</div>
-					</div>
-				</div>
-			</div>
-		{/foreach}
+		{include file="file:[0]event/amd_cup_2012/vote/captains.html" captains=$captains}
 	</div>
 </div>

@@ -1,0 +1,6 @@
+.lucky_user .week .padding {
+  padding: 10px;
+}
+.lucky_user .week:hover {
+  background-color: #4D1D1D;
+}

@@ -9,18 +9,20 @@ class amd_cup_2012 extends CI_Controller {
 		$this->view->layout( 'event/amd_cup_2012/layout' );
 		$this->view->js( 'event/amd_cup_2012/layout' );
 		$this->view->css( 'event/amd_cup_2012/layout' );
+		$this->view->cache( 0 );
 	}
 
-	public function _remap() {
+	public function _remap( $sub_page = 'index', $page_params = array() ) {
 
 		$this->view->title_routes( array(
-				'index' => '活動簡介',
-				'news'  => '活動新聞',
-				'live'  => '活動LIVE',
-				'vote'  => '我要投票',
-				'vod'   => '活動影片',
+				'index'      => '活動簡介',
+				'news'       => '活動新聞',
+				'live'       => '活動LIVE',
+				'vote'       => '我要投票',
+				'vod'        => '活動影片',
+				'lucky_user' => '幸運的得獎者們',
 			) );
-		$this->view->page( func_get_arg(0), func_get_arg(1) );
+		$this->view->page( $sub_page, $page_params );
 		$this->view->init( $this );
 	}
 
@@ -39,7 +41,7 @@ class amd_cup_2012 extends CI_Controller {
 	}
 
 	public function vote() {
-		
+		$this->view->cache( 0 );
 		$this->load->model( 'event/model_amd_cup_2012' );
 		$this->view->data['captains'] = $this->model_amd_cup_2012->get_captains( array(
 				'week' => $this->model_amd_cup_2012->get_vote_week_key(),
@@ -55,6 +57,29 @@ class amd_cup_2012 extends CI_Controller {
 		$this->view->js( 'event/amd_cup_2012/vote' );
 	}
 
+	public function vod() {
+
+		$this->load->model( 'event/model_amd_cup_2012' );
+		$this->view->data['captains'] = $this->model_amd_cup_2012->get_captains();
+	}
+
+	//# 取得幸運的投票者
+	public function lucky_user() {
+		$this->view->cache( 0 );
+		//#
+		$this->load->model( 'event/model_amd_cup_2012' );
+
+		//#
+		$this->view->data['lucky_user']['第一週'] = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第一週') );
+		$this->view->data['lucky_user']['第二週'] = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第二週') );
+		$this->view->data['lucky_user']['第三週'] = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第三週') );
+		$this->view->data['lucky_user']['第四週'] = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第四週') );
+
+		$this->view->js( 'event/amd_cup_2012/lucky_user' );
+	}
+
+	//##########################
+	
 	public function ajax() {
 		//#
 		$this->load->library( 'core/ajax' );

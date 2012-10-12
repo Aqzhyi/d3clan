@@ -19,8 +19,14 @@
   display: block;
   position: absolute;
   top: 83px;
-  width: 630px;
-  background-color: #414141;
+  width: 620px;
+  height: 366px;
   left: 50%;
   margin-left: -312px;
+  background-color: black;
+  padding: 5px;
+}
+.index-root .index-popup th,
+.index-root .index-popup td {
+  font-size: 12px;
 }

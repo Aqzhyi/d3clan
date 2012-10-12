@@ -7,7 +7,35 @@
   line-height: 100px;
   text-align: center;
 }
-.vod-root .vod-player .vod-youtube-iframe {
+.vod-root .vod-vodplayer .vod-youtube-iframe {
   width: 700px;
   height: 367px;
+}
+.vod-root .vod-captains .player-item {
+  background-position: 50% 77px;
+  float: left;
+  width: 274px;
+  padding: 0 23px;
+}
+.vod-root .vod-captains .player-item .vote-bgimg {
+  background-image: url("/static/img/event/amd_cup_2012/AMD_border.png");
+}
+.vod-root .vod-captains .player-item .vote-name {
+  height: 80px;
+  line-height: 90px;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+.vod-root .vod-captains .player-item .vote-photo {
+  height: 260px;
+}
+.vod-root .vod-captains .player-item .vote-him {
+  cursor: pointer;
+  margin-top: 10px;
+}
+.vod-root .vod-captains .player-item .vote-person_intro .title {
+  color: #3799ff;
+  font-weight: bold;
+  font-size: 14px;
 }

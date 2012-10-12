@@ -1,0 +1,37 @@
+.player-item {
+  background-position: 50% 77px;
+  float: left;
+  width: 274px;
+  padding: 0 23px;
+}
+.player-item .vote-bgimg {
+  background-image: url("/static/img/event/amd_cup_2012/AMD_border.png");
+}
+.player-item .vote-name {
+  height: 80px;
+  line-height: 90px;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+.player-item .vote-photo {
+  height: 260px;
+}
+.player-item .vote-him {
+  cursor: pointer;
+  margin-top: 10px;
+}
+.player-item .vote-person_intro .total_vote {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+.player-item .vote-person_intro .total_vote .title {
+  color: orange;
+  font-size: 18px;
+}
+.player-item .vote-person_intro .title {
+  color: #3799ff;
+  font-weight: bold;
+  font-size: 14px;
+}

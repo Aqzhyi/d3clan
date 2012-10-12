@@ -1,0 +1,17 @@
+<div data-root="/event/2012-amd/lucky_user" class="lucky_user clearfix">
+	{foreach $lucky_user as $key => $week}
+		<div data-id class="week" style="float: left; width: 240px; min-height: 300px;">
+			<div class="padding">
+			<div align="center">
+				<button data-cmd="get_lucky_user" class="btn btn-primary btn-large">抽!!</button>
+			</div>
+			<h3>{$key} 參與投票者</h3>
+			{foreach $week as $index => $user}
+				<div data-congratulations="f" data-user-id="{$user['voter_id']}">
+					<a target="_blank" href="/bbs/home.php?mod=space&uid={$user['voter_id']}&do=profile">會員ID: {$user['voter_id']}</a>
+				</div>
+			{/foreach}
+			</div>
+		</div>
+	{/foreach}
+</div>

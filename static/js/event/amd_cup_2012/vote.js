@@ -21,9 +21,14 @@ jQuery(function(){
 					$btn_parent.html('<span style="color: #25DB25; font-size: 24px;">投票完成</span>');
 				}
 				else {
-					console.log(/log/, $sf);
-					$btn_parent.html('<span style="color: red; font-size: 24px;">投票失敗</span>');
-					alert(data.msg);
+					var no_login = jQuery(data.error_msg).filter(function() {return this == '尚未登入'; }).length;
+
+					if (no_login) {
+						$btn_parent.html('<a target="_blank" href="/bbs/member.php?mod=logging&amp;action=login" class="btn btn-danger">點我註冊登入<br>或透過FB登入</a>');
+					}
+					else {
+						$btn_parent.html('<span style="color: red; font-size: 24px;">'+data.msg+'</span>');
+					}
 				}
 			},
 			complete   : function(jqXHR, textStatus) {  }
