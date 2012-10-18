@@ -324,6 +324,12 @@
 					});
 				});
 
+				// 移掉所有a連結
+				$root.find('a').each(function() {
+					var html = jQuery(this).html();
+					jQuery(this).replaceWith( html )
+				});
+
 				// 移除 系列報導 表格
 				$root.find('table,div').contents().filter(function() {
 					return ( jQuery(this).html() != null ) ? jQuery(this).html().match(/系列報導/img) : undefined;
