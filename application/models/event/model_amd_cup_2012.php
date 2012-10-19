@@ -53,9 +53,11 @@ class model_amd_cup_2012 extends CI_Model {
 	//# 取得幸運的投票者
 	public function get_lucky_user( $setting = array() ) {
 		
-		$setting['week'] = ( ! is_null( $setting['week'] ) ) ? $setting['week'] : '第一週';
+		$setting['week']    = ( ! is_null( $setting['week'] ) ) ? $setting['week'] : '第一週';
+		$setting['vote_to'] = ( ! is_null( $setting['vote_to'] ) ) ? $setting['vote_to'] : null;
 
-		$this->db->where( 'week', $setting['week'] );
+		$setting['week']    !== null and $this->db->where( 'week', $setting['week'] );
+		$setting['vote_to'] !== null and $this->db->where( 'vote_to', $setting['vote_to'] );
 		$this->db->group_by( 'voter_id' );
 		$this->db->order_by( 'insert_at desc' );
 		$result = $this->db->get( 'd3_amd_cup_2012__voters' )->result_array();

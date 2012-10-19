@@ -70,10 +70,25 @@ class amd_cup_2012 extends CI_Controller {
 		$this->load->model( 'event/model_amd_cup_2012' );
 
 		//#
-		$this->view->data['lucky_user']['第一週'] = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第一週') );
-		$this->view->data['lucky_user']['第二週'] = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第二週') );
-		$this->view->data['lucky_user']['第三週'] = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第三週') );
-		$this->view->data['lucky_user']['第四週'] = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第四週') );
+		$this->view->data['lucky_user']['第一週選手shenhand']  = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第一週', 'vote_to' => 1) );
+		$this->view->data['lucky_user']['第一週選手BellaBaby'] = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第一週', 'vote_to' => 2) );
+		$this->view->data['lucky_user']['第一週選手Jeff']      = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第一週', 'vote_to' => 3) );
+		$this->view->data['lucky_user']['第一週全部投票參與者']= $this->model_amd_cup_2012->get_lucky_user( array('week' => '第一週') );
+		
+		$this->view->data['lucky_user']['第二週選手4']         = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第二週', 'vote_to' => 4) );
+		$this->view->data['lucky_user']['第二週選手5']         = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第二週', 'vote_to' => 5) );
+		$this->view->data['lucky_user']['第二週選手6']         = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第二週', 'vote_to' => 6) );
+		$this->view->data['lucky_user']['第二週全部投票參與者']= $this->model_amd_cup_2012->get_lucky_user( array('week' => '第二週') );
+		
+		$this->view->data['lucky_user']['第三週選手7']         = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第三週', 'vote_to' => 7) );
+		$this->view->data['lucky_user']['第三週選手8']         = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第三週', 'vote_to' => 8) );
+		$this->view->data['lucky_user']['第三週選手9']         = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第三週', 'vote_to' => 9) );
+		$this->view->data['lucky_user']['第三週全部投票參與者']= $this->model_amd_cup_2012->get_lucky_user( array('week' => '第三週') );
+		
+		$this->view->data['lucky_user']['第四週選手10']        = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第四週', 'vote_to' => 10) );
+		$this->view->data['lucky_user']['第四週選手11']        = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第四週', 'vote_to' => 11) );
+		$this->view->data['lucky_user']['第四週選手12']        = $this->model_amd_cup_2012->get_lucky_user( array('week' => '第四週', 'vote_to' => 12) );
+		$this->view->data['lucky_user']['第四週全部投票參與者']= $this->model_amd_cup_2012->get_lucky_user( array('week' => '第四週') );
 
 		$this->view->js( 'event/amd_cup_2012/lucky_user' );
 	}
