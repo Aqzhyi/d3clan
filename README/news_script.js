@@ -324,12 +324,6 @@
 					});
 				});
 
-				// 移掉所有a連結
-				$root.find('a').each(function() {
-					var html = jQuery(this).html();
-					jQuery(this).replaceWith( html )
-				});
-
 				// 移除 系列報導 表格
 				$root.find('table,div').contents().filter(function() {
 					return ( jQuery(this).html() != null ) ? jQuery(this).html().match(/系列報導/img) : undefined;
@@ -340,8 +334,18 @@
 					var $element = jQuery(this);
 					var html = $element.html();
 
-					if (html.match(/原(?:帖|文|推)地址/)) {} else if (html.match(/下載/)) {} else if (html.match(/前往原..?(觀|看|查|尋)./)) {} else if (html != '' && html.length > 5) {} else if ($element.is('a[href*=img1.cache]')) {} else if ($element.find('img').size()) {} else {
-						jQuery(this).replaceWith(jQuery(this).html());
+					if (html.match(/原(?:帖|文|推)地址/)) {}
+					else if (html.match(/下載/)) {} 
+					else if (html.match(/前往原..?(觀|看|查|尋)./)) {}
+					else if (html.match(/星盟/)) {}
+					else if ($element.is('#fetched')) {}
+					else if ($element.is('a[href*=img1.cache]')) {}
+					else if ($element.is('a[href*=img2.cache]')) {}
+					else if ($element.is('a[href*=img3.cache]')) {}
+					else if ($element.is('a[href*=img4.cache]')) {}
+					else if ($element.is('a[href*=img5.cache]')) {}
+					else {
+						jQuery(this).replaceWith( jQuery(this).html() );
 					}
 				});
 
