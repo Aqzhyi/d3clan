@@ -7,6 +7,9 @@
   line-height: 100px;
   text-align: center;
 }
+.vod-root .vod-vodplayer h3 {
+  padding: 30px 0;
+}
 .vod-root .vod-vodplayer .vod-youtube-iframe {
   width: 700px;
   height: 367px;
@@ -34,8 +37,26 @@
   cursor: pointer;
   margin-top: 10px;
 }
+.vod-root .vod-captains .player-item .vote-person_intro .total_vote {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+.vod-root .vod-captains .player-item .vote-person_intro .total_vote .title {
+  color: orange;
+  font-size: 18px;
+}
 .vod-root .vod-captains .player-item .vote-person_intro .title {
   color: #3799ff;
   font-weight: bold;
   font-size: 14px;
+}
+.vod-root .vod-captains h3 {
+  padding-left: 160px;
+}
+.vod-root .vod-captains iframe {
+  width: 560px;
+  height: 350px;
+  display: block;
+  margin: 0 auto;
 }

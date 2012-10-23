@@ -646,6 +646,26 @@
 				border : '5px solid yellow'
 			});
 
+			// 移掉alink
+				$root.find('a').each(function() {
+					var $element = jQuery(this);
+					var html = $element.html();
+
+					if (html.match(/原(?:帖|文|推)地址/)) {}
+					else if (html.match(/下載/)) {} 
+					else if (html.match(/前往原..?(觀|看|查|尋)./)) {}
+					else if (html.match(/暗盟/)) {}
+					else if ($element.is('#fetched')) {}
+					else if ($element.is('a[href*=img1.cache]')) {}
+					else if ($element.is('a[href*=img2.cache]')) {}
+					else if ($element.is('a[href*=img3.cache]')) {}
+					else if ($element.is('a[href*=img4.cache]')) {}
+					else if ($element.is('a[href*=img5.cache]')) {}
+					else {
+						jQuery(this).replaceWith( jQuery(this).html() );
+					}
+				});
+
 			// ------------------------------------------
 			// ------------------------------------------
 			// ------------------------------------------
@@ -663,8 +683,8 @@
 			title   = title.replace(/['"]/g, '＂');
 			title   = title.replace(/%/g, '％');
 
-			if ( $root.find('#d3clan_mark').length == 0 ) {
-				content = content + "<p id='d3clan_mark'>本文轉自<a id='fetched' target='_blank' href='"+document.location.href+"'>網易遊戲凱恩之角</a>，並由「暗盟《暗黑破壞神III》電競情報站」進行正體中文化及在地化詞語轉換。</p>";
+			if ( $root.find('#fetched').length == 0 ) {
+				content = content + "<p id='fetched'>本文轉自<a id='fetched' target='_blank' href='"+document.location.href+"'>網易遊戲凱恩之角</a>，並由「暗盟《暗黑破壞神III》電競情報站」進行正體中文化及在地化詞語轉換。</p>";
 			}
 
 			jQuery('h1#h1title').html(title);
