@@ -151,7 +151,45 @@ class model_amd_cup_2012 extends CI_Model {
 							),
 					),
 				"第二週" => array(
-						
+						"Rain" => array(
+								'id' => '4',
+								'name' => 'Rain',
+								'class' => '野蠻人',
+								'photo' => 'http://i.imgur.com/NtLva.png',
+								'level' => 40,
+								'best_items' => array(
+									),
+								'personal' => 'AH上10億商品標1億',
+								'intro' => '
+									<p>根據Rain的研究，不管是先焚香沐浴還是禁槍七天一律沒用，想要見到那道朝思暮想的橘光，只有保持著：「打不到」的心態，才有可能打到！在D3中快樂悠遊的Rain，自認這是一款性格中需帶點M性格的人才能堅持下去的好遊戲！</p>
+								',
+							),
+						"DenKaKEKE" => array(
+								'id' => '5',
+								'name' => 'DenKaKEKE',
+								'class' => '武僧',
+								'photo' => 'http://i.imgur.com/v7k0Y.png',
+								'level' => 0,
+								'best_items' => array(
+									),
+								'personal' => 'COS界資深美少年～',
+								'intro' => '
+									<p>以各種COS造型引起廣大鄉民的追隨與愛戴，並以LOL中的九尾狐阿離造型謀殺諸多少年少女的心靈，此次將在打寶列車長當中，陪伴諸多D3的觀眾，度過一個八卦又美好的直播夜～</p>
+								',
+							),
+						"Yui" => array(
+								'id' => '6',
+								'name' => 'Yui',
+								'class' => '秘術師',
+								'photo' => 'http://i.imgur.com/9JPAq.png',
+								'level' => 49,
+								'best_items' => array(
+									),
+								'personal' => '',
+								'intro' => '
+									<p>把D3定位為時間適當的「休閒遊戲」，巔峰等級卻也逼近50，不難讓人看出這位休閒玩家的執著與堅持！曾經打過破兩億的寶物──殷娜的節制，這次在直播互動大賽中，是否能為追隨他的觀眾，打出高價值傳奇呢？就讓我們繼～續～看～下～去！</p>
+								',
+							),
 					),
 				"第三週" => array(
 						
