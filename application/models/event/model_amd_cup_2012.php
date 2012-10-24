@@ -155,7 +155,7 @@ class model_amd_cup_2012 extends CI_Model {
 								'id' => '4',
 								'name' => 'Rain',
 								'class' => '野蠻人',
-								'photo' => 'http://i.imgur.com/NtLva.png',
+								'photo' => 'http://i.imgur.com/mAM7s.jpg',
 								'level' => 40,
 								'best_items' => array(
 									),
@@ -168,7 +168,7 @@ class model_amd_cup_2012 extends CI_Model {
 								'id' => '5',
 								'name' => 'DenKaKEKE',
 								'class' => '武僧',
-								'photo' => 'http://i.imgur.com/v7k0Y.png',
+								'photo' => 'http://i.imgur.com/uwyU4.jpg',
 								'level' => 0,
 								'best_items' => array(
 									),
@@ -181,7 +181,7 @@ class model_amd_cup_2012 extends CI_Model {
 								'id' => '6',
 								'name' => 'Yui',
 								'class' => '秘術師',
-								'photo' => 'http://i.imgur.com/9JPAq.png',
+								'photo' => 'http://i.imgur.com/z0jn0.jpg',
 								'level' => 49,
 								'best_items' => array(
 									),
