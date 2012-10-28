@@ -22,7 +22,7 @@
 		,{orig: /錄像/mg, to: '錄影'}
 		,{orig: /網絡/mg, to: '網路'}
 		,{orig: /點擊/mg, to: '點選'}
-		,{orig: /屌絲/mg, to: '<a target="_blank" href="http://zh.wikipedia.org/zh-tw/%E5%B1%8C%E4%B8%9D" title="名詞解釋">屌絲</a>'}
+		,{orig: /屌絲/mg, to: '屌絲'}
 		,{orig: /視頻/mg, to: '影片'}
 		,{orig: /菜單/mg, to: '選單'}
 		,{orig: /攢錢/mg, to: '賺錢'}
