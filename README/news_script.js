@@ -378,7 +378,7 @@
 
 				$root.find('p').filter(function() {
 					return (
-					jQuery(this).text().match(/^相關.*：$/) || jQuery(this).text().match(/^詳細.*：$/) || jQuery(this).text().match(/^更多.*：$/) || jQuery(this).text().match(/^賽前.*：$/));
+					jQuery(this).text().match(/^相關.*：$/) || jQuery(this).text().match(/^更多.*：$/) || jQuery(this).text().match(/^賽前.*：$/));
 				}).nextAll('p').andSelf().remove();
 
 				$root.find('#endText:last').html($root.find('#endText:last').children('*:not(a,img)'));
